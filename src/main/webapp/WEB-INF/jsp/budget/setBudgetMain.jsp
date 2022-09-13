@@ -125,7 +125,7 @@ $(document).ready(function() {
     <div class="border-box" id="fixedSetting" style="text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%;">
     <!-- <div class="border-box"  id="product fixed_transfer_list">     -->
         <h3>고정 지출 설정</h3>
-        <p>고정적으로 빠져나가는 돈을 자동적으로 이체 가능합니다</p>
+        <p>고정적으로 빠져나가는 돈을 자동적으로 이체 가능합니다.</p>
         
         
             <div class="col">

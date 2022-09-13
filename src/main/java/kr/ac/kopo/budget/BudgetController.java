@@ -48,7 +48,8 @@ public class BudgetController {
 		incomeMap.put("incomeDate", incomeDate);
 	
 		System.out.println("인컴맵받아오나요 : " + incomeMap);
-		
+		System.out.println("인컴맵받아오나요 : " + incomeMap);
+		System.out.println(incomeMap);
 	
 		
 		//서비스 호출 시 incomeMap 가져가기

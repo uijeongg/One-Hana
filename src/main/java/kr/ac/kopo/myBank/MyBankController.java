@@ -40,7 +40,7 @@ public class MyBankController {
 		int balance = Integer.parseInt(request.getParameter("balance"));
 
 		// System.out.println("AccountNo랑 balance 가져옴? : " + accountNo + balance);
-
+		
 		AccountVO newAccount = new AccountVO();
 		newAccount.setAccountNo(accountNo);
 		newAccount.setBalance(balance);
