@@ -84,8 +84,9 @@ public class MyBankController {
 	@GetMapping("/mybankMain")
 	public String showMain(HttpServletRequest request, HttpSession session) {
 
-		String accountNo = request.getParameter("accountNo");
-
+		//String accountNo = request.getParameter("accountNo");
+		String accountNo = (String)session.getAttribute("accountNo");
+		
 		MyBankVO MyAccount = new MyBankVO();
 		MyAccount = mybankService.getAccount(accountNo);
 

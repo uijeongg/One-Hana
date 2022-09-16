@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.member.MemberVO;
+import kr.ac.kopo.myBank.MyBankService;
 import kr.ac.kopo.myBank.MyBankVO;
 import kr.ac.kopo.myBank.PocketVO;
 
@@ -31,11 +32,28 @@ public class BudgetController {
 	@Autowired
 	private BudgetService budgetService;
 	
+	@Autowired
+	private MyBankService mybankService;
+	
+	
 	
 	@GetMapping("/setBudgetMain")
 	public String goBudgetMain() {
-		
 		return "/budget/setBudgetMain";
+	}
+	
+	@ResponseBody
+	@GetMapping("/setBudgetMain2")
+	public List<PocketVO> displayPocketList(@RequestParam("accountNo") String accountNo,@RequestParam("id") String id){
+		
+		Map<String,Object> pocketMap = new HashMap<>();
+		pocketMap.put("id", id);
+		pocketMap.put("accountNo", accountNo);
+		
+		List<PocketVO> myPocketList = mybankService.getPocketList(pocketMap);
+		
+		System.out.println("ㅆㅃ"+myPocketList);
+		return myPocketList;
 	}
 	
 	

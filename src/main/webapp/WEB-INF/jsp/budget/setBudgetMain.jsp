@@ -404,7 +404,7 @@ $(document).ready(function(){
          -->
         
         
-        <table style="margin-left:auto; margin-right:auto;">
+        <table class="table" id="table" style="margin-left:auto; margin-right:auto;">
             <thead>
                 <tr>
                     <th colspan="5" style="text-align: center; background-color: #green; font-size: 17px;">
@@ -433,34 +433,103 @@ $(document).ready(function(){
                         
                      </th>
                 </tr>
+                
+                
                 <tr style="border-bottom: 40px solid #fff;"></tr>                 
                 <tr>
                      <th scope="col" width="30%" >분할 주머니</th>
                      <th scope="col" width="30%" >분할 금액</th>
                      <th scope="col" width="25%">분할 날짜</th>
-                     <!-- <th scope="col" >이체일</th> -->
-                     <th><!-- <input type="button" value="설정"> --></th>
+                     <th scope="col" width="25%"></th>
+                     <!-- <th><input type="button" value="설정"></th> -->
                 </tr>
-            </thead>
-            
-            
-            
-            
-                       
-            <tbody>
+
+             </thead>  
+             
+             
+             <!--  -->
+             <tbody id="pocketAjaxGOGOGOGOGOGO"> 
+               <tr>
+                    <!-- 분할 주머니 -->
+                    <td>
+                    ` 기본 주머니 -> 
+                    
+                    </td>
+                    
+                    
+                    <!-- 분할 금액 --> 
+                    <td>
+                        <input type="text" id="autoDivAmount" name="autoDivAmount" placeholder="(원)" class="form-control"
+                                   style="color: #008485; text-align: center; width:200px;">
+                    </td>
+                    
+                    
+                    <!-- 분할 날짜 -->
+                    <td>
+                        <h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;
+                            <select name="autoDivDate" id="autoDivDate"
+                                    style="width: 50px; background: white; color: #008485; text-align: center; height: 37px;">
+                                <c:forEach begin="1" end="31" var="x">
+                                    <option>
+                                        <c:out value="${x}" />
+                                    </option>
+                                    <br>
+                                </c:forEach>
+                            </select>
+                        <h4 style="font-size: 20px; display: inline;">일</h4>
+                    </td> 
+                    
+                    
+                    <!-- 확인 버튼 자리 -->
+                    <td><input type="button" value="확인"></td> 
+               </tr>
+               
+               
+               
+               
                
             </tbody> 
-        </table>
-        
-        
-        
-        
-        
+             
+             
+              
+       </table>         
+                
+                
+
         
         
         
         
      </div>
+     <script>
+     $(document).ready(function(){
+    	 let accountNo = '${accountNo}';
+    	 let id = '${loginVO.id}';
+    	 
+    	 fetch("/setBudgetMain2?id="+id+'&accountNo='+accountNo)
+    	 .then(res=>res.json())
+    	 .then(res=>{
+    		console.log(res.length); 
+    		let pocketList = res;
+    		$(pocketList).each(function(){
+    			let name = this.pocketName
+    			let str ='';
+    			str += '<tr><td>'+name+'</td><td><input type="text" id="autoDivAmount" name="autoDivAmount" placeholder="(원)" class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
+    			  
+    			$('#pocketAjaxGOGOGOGOGOGO').append(str);
+    			
+    			
+    			//jsp로 넘기기부터!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    			
+    			
+    			
+    		})
+    	 })
+    	 
+    	 
+     })
+     
+     </script>
     
     
     
