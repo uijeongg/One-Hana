@@ -48,4 +48,10 @@ public class BudgetServiceImpl implements BudgetService {
 	public List<HashMap<String, Object>> getFixedSum(String accountNo) {
 		return budgetDAO.getFixedSum(accountNo);
 	}
+
+
+	@Override
+	public List<HashMap<String, Object>> getCalculation(String accountNo) {
+		return budgetDAO.getCalculation(accountNo);
+	}
 }

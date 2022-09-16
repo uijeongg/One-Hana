@@ -1,6 +1,7 @@
 package kr.ac.kopo.budget;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,8 +62,7 @@ public class BudgetController {
 		
 		//서비스 호출 시 incomeMap 가져가기
 		budgetService.updateIncome(incomeMap);
-		
-		
+	
 		//얘도 값 인서트 해주고 에이젝스 파서 성공시 석세스로 가게 만들기. 마이뱅크컨트롤러 addPocketAjax 핸들러랑 똑가티
 		//return "redirect:/"; 
 		return "success";
@@ -75,18 +75,17 @@ public class BudgetController {
 	public ModelAndView incomeAjax(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
-		String accountNo = (String)session.getAttribute("accountNo");
+		String accountNo = (String)session.getAttribute("accountNo");	
 		
 		MyBankVO updateList = new MyBankVO();
 		updateList = budgetService.getIncomeData(accountNo);
 		System.out.println("업데이트리스트!!!!!!!!!" + updateList);
-		
+				
 		
 		mav.addObject("updateList", updateList); //모델에 저장 (근데 모델앤뷰가 리퀘스트영역)
 		mav.setViewName("/budget/incomeAjax");
 		return mav;
 	}
-	
 	
 	
 	
@@ -147,9 +146,15 @@ public class BudgetController {
 	@GetMapping("/getFixedSum")
 	public List<HashMap<String, Object>> getFixedSum(String accountNo) {
 		
-		
 		return budgetService.getFixedSum(accountNo);
 	}
 	
+	
+	@ResponseBody
+	@GetMapping("/getCalculation")
+	public List<HashMap<String, Object>> getCalculation(String accountNo) {
+		
+		return budgetService.getCalculation(accountNo);
+	}
 	
 }

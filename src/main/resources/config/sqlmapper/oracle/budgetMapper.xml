@@ -29,4 +29,11 @@
     </select>
    
     
+    <select id="getCalculation" resultType="hashmap" parameterType="string">
+        select (income - b.fixedSum) as myAsset
+        from t_myone a, (select accountNo, sum(fixedCost) as fixedSum from T_FIXED_COST group by accountNo) b
+        where a.accountNo=b.accountNo and a.accountNo = #{accountNo}
+    
+    </select>
+
 </mapper>

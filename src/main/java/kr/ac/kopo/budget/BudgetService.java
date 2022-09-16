@@ -17,4 +17,9 @@ public interface BudgetService {
 	List<FixedVO> getFixedData(Map<String, Object> insertMap);
 
 	List<HashMap<String, Object>> getFixedSum(String accountNo);
+
+	
+	
+	List<HashMap<String, Object>> getCalculation(String accountNo);
+
 }

@@ -42,4 +42,10 @@ public class BudgetDAOImpl implements BudgetDAO {
 		return sqlSessionTemplate.selectList("budget.BudgetDAO.getFixedSum", accountNo);
 	}
 
+	
+	@Override
+	public List<HashMap<String, Object>> getCalculation(String accountNo) {
+		return sqlSessionTemplate.selectList("budget.BudgetDAO.getCalculation", accountNo);
+	}
+
 }

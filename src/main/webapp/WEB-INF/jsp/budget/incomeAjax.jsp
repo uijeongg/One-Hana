@@ -4,8 +4,11 @@
 
 
         <h3>월 급여</h3>
-       <!--  <p>한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p> -->
+        <p>한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p> 
     
-          <div style="font-size: 20px; display:inline;">매달 ${updateList.incomeDate}일</div>&nbsp;&nbsp;
-          <div style="font-size: 20px; display:inline;">${updateList.income} 원</div>
+          <div style="font-size:20px; display:inline;">매달 ${updateList.incomeDate}일</div>&nbsp;&nbsp;
+          <div id="updateIncome" style="font-size: 20px; display:inline; color:#008485; font-weight:bold;">${updateList.income}</div> 원
+          
+          
+        <%--  <input disabled type="text" id="income3" class="input-cal" value="${updateList.income}" style="border: none;"> --%>
      

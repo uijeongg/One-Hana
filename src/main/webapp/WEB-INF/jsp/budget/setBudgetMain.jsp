@@ -49,13 +49,17 @@ $(document).ready(function(){
            success : function(data){
         	   if(data == 'success'){
         		   //alert('incomeMap 받아오기 성공')                      
-                   getIncomeData();
+                   
+        		   
+        		   getIncomeData();
+        		  
                }	 
            }       
        })
    })
     
-    
+   
+
    function getIncomeData() {
     	$.ajax({
             url : '${ pageContext.request.contextPath }/incomeAjax',
@@ -63,15 +67,27 @@ $(document).ready(function(){
           /*   data : {
                 
             }, */
+          
             success : function(data) {
             	$('#incomeSet').empty();
-            	//alert(data);
             	$('#incomeSet').append(data);
-                //$('#updateList').html(data)
+            	   //$('#updateList').html(data)
+            
+            	
+            	//자동 예산 분할 설정에 총 예산 넣어주기   
+            	const income = document.getElementById('updateIncome').innerText;   
+            	console.log(income);
+            	   
+                const incomeAuto = document.getElementById('incomeAuto')
+            	incomeAuto.setAttribute('value', income)  
+	
             }
         })
         	
         } 
+    
+    
+
  }) 
 </script>
 
@@ -128,10 +144,10 @@ $(document).ready(function(){
    } 
    
    
-    //월 고정 지출액 총 합
+    //총 예산 ' '원 중
    function plusFixedAll() {
 	   
-	   console.log('${accountNo}') //세션에 저장하면 어디서든 사용 가능
+	  // console.log('${accountNo}') //세션에 저장하면 어디서든 사용 가능
 	   var accountNo = '${accountNo}'   
  
 	   
@@ -161,8 +177,32 @@ $(document).ready(function(){
     		if(response != null){
 	    		console.log(response[0].FIXEDSUM)
     			$('#fixedAll').val(response[0].FIXEDSUM);
+	    		
+	    		calculateBudget();
     		}
     	})
+    }
+    
+
+    //' '원 남았습니다
+    //총예산(월급여) - 고정지출액(추가시마다) = x
+    function calculateBudget() {
+    	 //alert('들어옴?')
+    	 //console.log('${accountNo}') 
+         var accountNo = '${accountNo}' 
+    	
+         
+         fetch('${ pageContext.request.contextPath }/getCalculation?accountNo='+accountNo).then(
+        	(res)=>res.json()       
+         ).then(response=>{
+        	 if(response != null){
+        	     console.log(response[0].MYASSET) //픽스드썸은 as값
+        	     $('#calcul').val(response[0].MYASSET);
+        	     
+        	 }
+         })	
+    
+    
     }
 
 })
@@ -213,15 +253,13 @@ $(document).ready(function(){
         
         
             <!-- MyBankVO - income에 update -->
-	        <div class="col-md-4">    
-	            <!-- <input class="input_month" type="text" id="totalBudget" name="totalBudget" onkeyup="numberWithCommas(this.value)" value=""> -->
-	             <input type="text" id="income" name="income" value="" 
+	        <div class="col-md-4">
+	             <input type="text" id="income" name="income"
 	                    style="border: none; border-bottom: 1px solid #008485;">
 	                <span style="color: #008485; font-size : 26px; font-weight: 700;">원</span>      
 	        </div>
 	        
 	        <div class="col-md-2">
-	     <!--        <input type="submit" id="incomeSettings" value="확인" onclick="return incomeSettings()"> -->
 	            <input type="button" id="incomeSettings" value="확인">
 	        </div>
         
@@ -357,23 +395,62 @@ $(document).ready(function(){
         
         
         <!-- 급여일로 설정 checkbox -->
+        <!-- 
         <div class="col-md-3">
             <div class="checkTerms service-checkbox">
                 <input name="checkService1" id="checkService1" type="checkbox" value="agree">급여일로 설정
             </div>
         </div>
+         -->
         
         
-        
-        
-        
-        
-        
-        
-        <div>
-            총 예산 
-        
-        </div>
+        <table style="margin-left:auto; margin-right:auto;">
+            <thead>
+                <tr>
+                    <th colspan="5" style="text-align: center; background-color: #green; font-size: 17px;">
+                       
+                       
+                       " 총 예산 &nbsp;
+                       
+                        <div style="display:inline;"> 
+                        <strong>
+                            <!-- <input type="hidden" disabled id="cal_total" value=""> -->
+                            <input disabled type="text" id="incomeAuto" class="input-cal" style="width:120px; border: none; color:#008485; font-weight:bold; text-align:center; font-size:20px;">
+                        </strong>
+                        </div>
+                        
+                        원 중, &nbsp;&nbsp;
+                        
+                        
+                        <strong style="color: blue;">
+                         <!--    <input type="hidden" disabled id=""> -->
+                            <input disabled type="text" id="calcul" class="input-cal" style="width:120px; border: none; color:red; font-weight:bold; text-align:center; font-size:20px;">
+                        </strong>
+                        
+                         
+                        원 남았습니다 "
+                        
+                        
+                     </th>
+                </tr>
+                <tr style="border-bottom: 40px solid #fff;"></tr>                 
+                <tr>
+                     <th scope="col" width="30%" >분할 주머니</th>
+                     <th scope="col" width="30%" >분할 금액</th>
+                     <th scope="col" width="25%">분할 날짜</th>
+                     <!-- <th scope="col" >이체일</th> -->
+                     <th><!-- <input type="button" value="설정"> --></th>
+                </tr>
+            </thead>
+            
+            
+            
+            
+                       
+            <tbody>
+               
+            </tbody> 
+        </table>
         
         
         
