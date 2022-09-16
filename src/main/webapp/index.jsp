@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>One Hana 11</title>
+    <title>One Hana</title>
 </head>
 <script>
 
