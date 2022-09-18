@@ -76,12 +76,11 @@ ul li {
 						<li><a href="${pageContext.request.contextPath}/joinMybank"> 통장개설 </a></li>
 						<li><a href="${pageContext.request.contextPath}/mybankMain"> 마이원하나 </a></li>
 						<li><a href="${pageContext.request.contextPath}/setBudgetMain"> 한달예산관리 </a></li>
-						<li><a href="${pageContext.request.contextPath}/"> 메뉴 4 </a></li>				
+						<li><a href="${pageContext.request.contextPath}/mailform"> 메뉴 4 </a></li>				
 					</ul>
 				</div>
             </div>
-            
-            
+
             
 			<div class="col-lg-3 d-flex justify-content-end">
 				<c:choose>

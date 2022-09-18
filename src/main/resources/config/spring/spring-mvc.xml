@@ -95,7 +95,7 @@
 	
 	
 	<!-- 메일 보내기 api -->
-<!-- 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+ 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />
       <property name="username" value="uijeong970929@gmail.com" />
@@ -111,7 +111,7 @@
             <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
             </props>
       </property>  
-   </bean> -->
+   </bean>
 	
 	
 	<!-- 트랜잭션 처리 빈 만들어주자 -->

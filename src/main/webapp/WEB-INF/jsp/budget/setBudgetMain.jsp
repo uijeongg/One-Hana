@@ -80,14 +80,9 @@ $(document).ready(function(){
             	   
                 const incomeAuto = document.getElementById('incomeAuto')
             	incomeAuto.setAttribute('value', income)  
-	
             }
-        })
-        	
-        } 
-    
-    
-
+        })  	
+      }  
  }) 
 </script>
 
@@ -201,15 +196,84 @@ $(document).ready(function(){
         	     
         	 }
          })	
-    
-    
     }
-
 })
 </script>
 
+<script>
+$(document).ready(function(){
+    let accountNo = '${accountNo}';
+    let id = '${loginVO.id}';
+         
+    fetch("/setBudgetMain2?id="+id+'&accountNo='+accountNo)
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res.length); 
+            let pocketList = res;
+            $(pocketList).each(function(){
+                let name = this.pocketName            
+                
+                let str ='';
+                str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 ➜ '+name+' 주머니</td>'
+                str += '<td><input type="text" id="autoDivAmount" name="autoDivAmount" placeholder="(원)" '
+                str += 'class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
+                str += '<td><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
+                str += '<select name="autoDivDate" id="autoDivDate" style="width: 50px; background: white; color: #008485; text-align: center; height: 30px;">'
+                str += '<c:forEach begin="1" end="31" var="x"> <option> <c:out value="${x}" /> </option> <br></c:forEach></select>'
+                str += '<h4 style="font-size: 20px; display: inline;">일</h4></td>'
+                str += '<td><input type="button" value="확인"></td> </tr>'
+                
+                $('#pocketAjaxGOGOGOGOGOGO').append(str);
+                
+                
+                //jsp로 넘기기부터!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //$("#pocketAjaxGOGOGOGOGOGO").html(name);
+                
+                
+            })
+         })
+     })     
+</script>
+
+<script>
+function autoFromParking() { 
+
+    let pock = document.getElementById("autoFromParkingSet");
+    if(pock.style.display == "none"){
+        pock.style.display = "";
+    } else {
+        pock.style.display = "none";
+    }       
+} 
+
+</script>
+
+<script>
+$(document).on('click','#checkAllDate',function(){
+	
+	let incomeDate = '${incomeMap.incomeDate}';
+	console.log(incomeDate)
+	
+	if($('#checkAllDate').is(':checked')){
+        $('#autoDivDate').prop('incomeDate');
+     }else{
+        $('#autoDivDate').prop('incomeDate');
+     } 
+	
+	
+	
+	
+    /* 
+	    if($('#checkAllDate').is(':checked')){
+	       $('.autoDivDate').prop('25',true);
+	    }else{
+	       $('autoDivDate').prop('25',false);
+	    } 
+    */
+});
 
 
+</script>
 
 
 </head>
@@ -262,7 +326,22 @@ $(document).ready(function(){
 	        <div class="col-md-2">
 	            <input type="button" id="incomeSettings" value="확인">
 	        </div>
-        
+	    
+	        
+            <div>
+	           <select name="fixedDate" id="fixedDate"
+	                 style="width:150px; background:white; color:#008485; text-align:center; height:30px;">
+	                 <option>급여일</option>
+	                 <option>급여일 다음날</option>
+	                 <c:forEach begin="1" end="31" var="x">
+	                    <option>
+	                        매달&nbsp;<c:out value="${x}" />일
+	                    </option>
+	                 </c:forEach>
+	           </select>
+	           을 예산사용 시작일로 설정
+	       </div>
+         
         </div> 
     </div>
    </form><br><br>
@@ -372,12 +451,11 @@ $(document).ready(function(){
 								</div>
 							</div>
 						</th>
-
-
-					</tr>
+   					</tr>
 				</tbody>
+				
 			</table>
-
+                  <input type="button" id="allFixedSettings" value="설정 완료" style="float:right;"><br><br>
 		</div>
 
 	</form>
@@ -393,17 +471,7 @@ $(document).ready(function(){
         <h3>자동 예산 분할 설정</h3>
         <p>더하기빼기 더하기빼기</p>
         
-        
-        <!-- 급여일로 설정 checkbox -->
-        <!-- 
-        <div class="col-md-3">
-            <div class="checkTerms service-checkbox">
-                <input name="checkService1" id="checkService1" type="checkbox" value="agree">급여일로 설정
-            </div>
-        </div>
-         -->
-        
-        
+       
         <table class="table" id="table" style="margin-left:auto; margin-right:auto;">
             <thead>
                 <tr>
@@ -434,7 +502,6 @@ $(document).ready(function(){
                      </th>
                 </tr>
                 
-                
                 <tr style="border-bottom: 40px solid #fff;"></tr>                 
                 <tr>
                      <th scope="col" width="30%" >분할 주머니</th>
@@ -447,12 +514,13 @@ $(document).ready(function(){
              </thead>  
              
              
-             <!--  -->
              <tbody id="pocketAjaxGOGOGOGOGOGO"> 
+               
+               <%-- 
                <tr>
                     <!-- 분할 주머니 -->
                     <td>
-                    ` 기본 주머니 -> 
+                    <!-- 기본 주머니 ->  -->
                     
                     </td>
                     
@@ -465,12 +533,12 @@ $(document).ready(function(){
                     
                     
                     <!-- 분할 날짜 -->
-                    <td>
+                     <td>
                         <h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;
                             <select name="autoDivDate" id="autoDivDate"
                                     style="width: 50px; background: white; color: #008485; text-align: center; height: 37px;">
                                 <c:forEach begin="1" end="31" var="x">
-                                    <option>
+                                    <option selected="selected">
                                         <c:out value="${x}" />
                                     </option>
                                     <br>
@@ -479,61 +547,86 @@ $(document).ready(function(){
                         <h4 style="font-size: 20px; display: inline;">일</h4>
                     </td> 
                     
-                    
                     <!-- 확인 버튼 자리 -->
                     <td><input type="button" value="확인"></td> 
-               </tr>
-               
-               
-               
-               
+               </tr> 
+               --%>
                
             </tbody> 
-             
-             
-              
+      
        </table>         
                 
-                
+       <div>
+        
+            <!-- 급여일로 설정 checkbox -->       
+            <div class="checkTerms service-checkbox" style="float:right;">
+                <input name="checkAllDate" id="checkAllDate" type="checkbox" value="agree">급여일로 설정&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>       
+        
+        <br><br>
+        
+            <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#setFromParking"
+                    style="width: 200px;">
+                    내 자산 <br> 영혼까지 끌어모아 <br>저축하는 방법!
+            </button>
 
-        
-        
-        
-        
+       </div>
+       
      </div>
-     <script>
-     $(document).ready(function(){
-    	 let accountNo = '${accountNo}';
-    	 let id = '${loginVO.id}';
-    	 
-    	 fetch("/setBudgetMain2?id="+id+'&accountNo='+accountNo)
-    	 .then(res=>res.json())
-    	 .then(res=>{
-    		console.log(res.length); 
-    		let pocketList = res;
-    		$(pocketList).each(function(){
-    			let name = this.pocketName
-    			let str ='';
-    			str += '<tr><td>'+name+'</td><td><input type="text" id="autoDivAmount" name="autoDivAmount" placeholder="(원)" class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
-    			  
-    			$('#pocketAjaxGOGOGOGOGOGO').append(str);
-    			
-    			
-    			//jsp로 넘기기부터!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    			
-    			
-    			
-    		})
-    	 })
-    	 
-    	 
-     })
      
-     </script>
+     
+     <!-- 모달 -->
+      <div class="modal fade" id="setFromParking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">내 자산 영혼까지 끌어모아 저축하기</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">     
+                매달 예산 사용 마지막 날, 모든 주머니에서 남은 잔액을 파킹 주머니로 자동 이동 설정을 해보세요! <br>
+                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 모이기 전까지 출금이 불가합니다. <br>
+                설정하러 가볼까요?
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()">확인</button> 
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
     
+    <br><br>
     
     
-    
+    <!-- 자동 파킹 주머니 설정 모달 확인 클릭 후 div 생성 -->
+    <div class="border-box" id="autoFromParkingSet" style="display:none; text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%; ">
+        <h3>파킹 주머니 자동 이동 설정</h3>
+        <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다.</p>
+        
+        <br>
+        <div class="row" style="margin:0 auto;">
+            <!-- <div class="col-4">파킹 주머니 목표금액 : </div> -->
+            <div style="margin:0 auto; display:inline;">파킹 주머니 목표 금액 : 
+            <input type="text" name="parkingGoal" id="parkingGoal" placeholder="(원)" 
+                   class="form-control" style="display:inline; color:#008485; width:200px; text-align: center; margin:0 auto;">
+            </div> 
+            <div>
+                파킹 주머니 이동 날짜 : 예산 사용 마지막날 (매달 <p style="display:inline; color:#008485; ">${incomeMap.incomeDate}</p>일)
+            </div>
+                
+            <br><br>
+            <div>
+                설정 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다.
+                  
+                <br>
+                <div class="btn btn-primary" id="parkingSetBtn">확인</div>
+            </div>
+            
+        </div>  
+    </div><br><br>
+ 
 </body>
 </html>

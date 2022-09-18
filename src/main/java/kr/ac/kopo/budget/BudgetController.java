@@ -42,6 +42,8 @@ public class BudgetController {
 		return "/budget/setBudgetMain";
 	}
 	
+	
+	
 	@ResponseBody
 	@GetMapping("/setBudgetMain2")
 	public List<PocketVO> displayPocketList(@RequestParam("accountNo") String accountNo,@RequestParam("id") String id){
@@ -52,10 +54,35 @@ public class BudgetController {
 		
 		List<PocketVO> myPocketList = mybankService.getPocketList(pocketMap);
 		
-		System.out.println("ㅆㅃ"+myPocketList);
+		System.out.println("마이포켓리스트" + myPocketList);
 		return myPocketList;
 	}
 	
+	
+	
+	
+	/*
+	@ResponseBody
+	@GetMapping("/setBudgetMain2")
+	public ModelAndView displayPocketList(@RequestParam("accountNo") String accountNo,@RequestParam("id") String id){
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String,Object> pocketMap = new HashMap<>();
+		pocketMap.put("id", id);
+		pocketMap.put("accountNo", accountNo);
+		
+		List<PocketVO> myPocketList = mybankService.getPocketList(pocketMap);
+		
+		
+		mav.addObject("myPocketList", myPocketList);
+		mav.setViewName("/budget/autoPocketAjax");
+		
+		System.out.println("마이포켓리스트" + myPocketList);
+		return mav;
+	}
+	*/
+	
+
 	
 	@ResponseBody
 	@PostMapping("/incomeSettings")
@@ -81,6 +108,8 @@ public class BudgetController {
 		//서비스 호출 시 incomeMap 가져가기
 		budgetService.updateIncome(incomeMap);
 	
+		session.setAttribute("incomeMap", incomeMap);
+
 		//얘도 값 인서트 해주고 에이젝스 파서 성공시 석세스로 가게 만들기. 마이뱅크컨트롤러 addPocketAjax 핸들러랑 똑가티
 		//return "redirect:/"; 
 		return "success";
