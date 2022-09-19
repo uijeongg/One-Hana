@@ -94,7 +94,7 @@ $(document).ready(function(){
     $('#fixedSettings').click(function(){
             
         let fixedName = document.fixedSet.fixedName.value;
-        let fixedDate = document.fixedSet.fixedDate.value;
+//        let fixedDate = document.fixedSet.fixedDate.value;
         let fixedCost = document.fixedSet.fixedCost.value*1;
         //console.log(fixedName)
         //console.log(fixedDate)
@@ -105,7 +105,7 @@ $(document).ready(function(){
           , method : 'post'
           , data   : {
         	          fixedName : fixedName
-                    , fixedDate : fixedDate
+//                    , fixedDate : fixedDate
                     , fixedCost : fixedCost
           },
            success : function(data){
@@ -144,27 +144,6 @@ $(document).ready(function(){
 	   
 	  // console.log('${accountNo}') //세션에 저장하면 어디서든 사용 가능
 	   var accountNo = '${accountNo}'   
- 
-	   
-    /* 	$.ajax({
-    		url : '${ pageContext.request.contextPath }/getFixedSum',
-    		type : 'post',
-    		data : {
-    		         accountNo : accountNo  			
-    		},
-    		success : function(data) {
-    			//console.log('fixedSum success :' + JSON.stringify(data))
-    			
-    			//var test = JSON.stringify(data)
-    			//console.log(test)
-    			//console.log(JSON.stringify(data.FIXEDSUM))
-    			
-    			let list = JSON.parse(data)
-    			console.log(list)
-    			
-    			
-    		}   		
-    	})	 */ 
     	
     	fetch('${ pageContext.request.contextPath }/getFixedSum?accountNo='+accountNo).then(
     		(res)=>res.json()		
@@ -200,6 +179,55 @@ $(document).ready(function(){
 })
 </script>
 
+
+
+
+<script>
+//고정비 다 입력하고 최종 '설정 완료 누르면 fixedSum값이 자동 예산 분할 설정의 고정비 주머니 분할 금액으로 바로 뜨게 하고 싶음
+
+function allFixedSettings(){
+	console.log("밥은 잘 먹었니?");
+	let fixedAllMoney = $('#fixedAll').val();
+	console.log(fixedAllMoney);
+	$('input[name=autoDivAmount2]').attr('value',fixedAllMoney);
+}
+
+
+function autoDivSetting(input) {
+	
+	let pocketCode = input.substring(8);
+    let autoDivAmount = $('#autoDivAmount'+pocketCode).val()*1;
+    let autoDivDate = $('#autoDivDate'+pocketCode).val();
+	//console.log("들어갈 포켓코드 : "+pocketCode);
+	//console.log("분할금액 : " + autoDivAmount);
+	//console.log(typeof autoDivAmount)
+	//console.log("분할날짜 : " + autoDivDate);
+	
+    $.ajax({
+        url : '${pageContext.request.contextPath}/autoDivSetting' 
+      , method : 'post'
+      , data   : {
+    	            pocketCode : pocketCode
+                  , autoDivAmount : autoDivAmount
+                  , autoDivDate : autoDivDate
+      },
+       success : function(data){
+    	   alert('autoDivList 받아오기 성공')
+    //이제 여기서 autoDivList가지고 에이젝스 호출해서 값 변경 찍ㄱ기 만들기!! 그리고 값 들어가면 빼는ㄱ 만들기
+    	   /*  if(data == 'success'){    
+               getFixedData(fixedName);
+           }   */   
+       }       
+   }) 
+	
+	
+	
+}
+</script>
+
+
+
+
 <script>
 $(document).ready(function(){
     let accountNo = '${accountNo}';
@@ -212,19 +240,27 @@ $(document).ready(function(){
             let pocketList = res;
             $(pocketList).each(function(){
                 let name = this.pocketName            
-                
+                let pocketCode = this.pocketCode 
                 let str ='';
                 str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 ➜ '+name+' 주머니</td>'
-                str += '<td><input type="text" id="autoDivAmount" name="autoDivAmount" placeholder="(원)" '
+                str += '<td><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" '
                 str += 'class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
+                
                 str += '<td><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
-                str += '<select name="autoDivDate" id="autoDivDate" style="width: 50px; background: white; color: #008485; text-align: center; height: 30px;">'
+                str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" style="width: 50px; background: white; color: #008485; text-align: center; height: 30px;">'
                 str += '<c:forEach begin="1" end="31" var="x"> <option> <c:out value="${x}" /> </option> <br></c:forEach></select>'
                 str += '<h4 style="font-size: 20px; display: inline;">일</h4></td>'
-                str += '<td><input type="button" value="확인"></td> </tr>'
+              	str += '<td><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">확인</button></td> </tr>'
+           //     str += '<td><input type="button" id="autoDivSetting" value="확인"></td> </tr>'
+                
+                
+                
                 
                 $('#pocketAjaxGOGOGOGOGOGO').append(str);
                 
+                
+                
+             
                 
                 //jsp로 넘기기부터!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 //$("#pocketAjaxGOGOGOGOGOGO").html(name);
@@ -271,9 +307,13 @@ $(document).on('click','#checkAllDate',function(){
 	    } 
     */
 });
-
-
 </script>
+
+
+
+
+
+
 
 
 </head>
@@ -360,8 +400,8 @@ $(document).on('click','#checkAllDate',function(){
 		<div class="border-box" id="fixedSet"
 			style="text-align: center; border: 1px solid; border-radius: 20px; margin: auto; width: 50%;">
 			<!-- <div class="border-box"  id="product fixed_transfer_list">     -->
-			<h3>고정 지출 설정</h3>
-			<p>고정적으로 빠져나가는 돈을 자동적으로 이체 가능합니다</p>
+			<h3>고정 지출 현황 확인</h3>
+			<p>고정적으로 빠져나가는 돈이 얼마인지 한눈에 확인할 수 있습니다</p>
 
 
 			<!-- 고정비 SUM -->
@@ -379,7 +419,9 @@ $(document).on('click','#checkAllDate',function(){
 			</div>
 
 
-			<!-- <div class="col" id="totalExpenseDiv2"></div> -->
+
+			<%-- 고정비용 현황 입력 --%><br>
+			<h5 style="display: inline; float:left;">&nbsp;&nbsp;고정비용</h5><p style="display: inline; float:left;">&nbsp;&nbsp;(금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요.)</p><br>
 			<table class="table" id="table">
 				<%-- <c:forEach items="${ fixedExpenseList }" var="fixedExpense" varStatus="loop">
                     <input type="hidden" class="fixedTransMoney" value="${ fixedExpense.transMoney }">
@@ -388,7 +430,7 @@ $(document).on('click','#checkAllDate',function(){
 				<thead>
 					<tr>
 						<th scope="col" width="40%">예산명</th>
-						<th scope="col" width="20%">이체일</th>
+						<!-- <th scope="col" width="20%">이체일</th> -->
 						<th scope="col">
 							<div class="col-md-9">금액</div>
 							<div class="col-md-3"></div>
@@ -415,8 +457,8 @@ $(document).on('click','#checkAllDate',function(){
 							class="form-control">
 						</th>
 
-
-						<!-- 고정비 이체일 -->
+                <!-- 고정비 이체일 -->
+                <!--  	
 						<th scope="col" width="20%">
 							<h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;
 							<select name="fixedDate" id="fixedDate"
@@ -430,7 +472,7 @@ $(document).on('click','#checkAllDate',function(){
 						</select>
 							<h4 style="font-size: 20px; display: inline;">일</h4>
 						</th>
-
+                 -->
 
 						<!-- 고정비 금액 -->
 						<th scope="col">
@@ -455,8 +497,10 @@ $(document).on('click','#checkAllDate',function(){
 				</tbody>
 				
 			</table>
-                  <input type="button" id="allFixedSettings" value="설정 완료" style="float:right;"><br><br>
+			
+			<button type="button" style="float:right;" onClick ="allFixedSettings()">설정완료</button><br><br>
 		</div>
+	
 
 	</form>
 	<br>
@@ -466,7 +510,8 @@ $(document).on('click','#checkAllDate',function(){
 	<!-- 자동 예산 분할 설정 -->
     <!-- 자동 예산 분할 설정 -->
     <!-- 자동 예산 분할 설정 -->
-     <div class="border-box" id="fixedSetting" style="text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%;">
+    <form name="autoSet">
+     <div class="border-box" id="autoSet" style="text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%;">
     <!-- <div class="border-box"  id="product fixed_transfer_list">     -->
         <h3>자동 예산 분할 설정</h3>
         <p>더하기빼기 더하기빼기</p>
@@ -573,6 +618,7 @@ $(document).on('click','#checkAllDate',function(){
        </div>
        
      </div>
+     </form>
      
      
      <!-- 모달 -->

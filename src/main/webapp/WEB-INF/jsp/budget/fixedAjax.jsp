@@ -18,10 +18,10 @@
                           
 
                           <!-- 고정비 이체일 -->
-                          <th scope="col" width="20%"> 
+                       <%--    <th scope="col" width="20%"> 
                           
                           
-                          <p> ${insertList[0].fixedDate}일</p>
+                          <p> ${insertList[0].fixedDate}일</p> --%>
                           
                          <%-- 
                           <h4 style="font-size: 20px; display:inline;">매달</h4>&nbsp;&nbsp;
@@ -34,7 +34,8 @@
                                </c:forEach>
                             </select>
                             <h4 style="font-size: 20px; display:inline;">일</h4> --%>
-                          </th>
+                            
+                       <!--    </th> -->
 
 
                           <!-- 고정비 금액 -->      

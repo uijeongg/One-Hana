@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.kopo.divide.DivideVO;
 import kr.ac.kopo.myBank.MyBankVO;
 
 @Service
@@ -53,5 +54,21 @@ public class BudgetServiceImpl implements BudgetService {
 	@Override
 	public List<HashMap<String, Object>> getCalculation(String accountNo) {
 		return budgetDAO.getCalculation(accountNo);
+	}
+
+
+	//자동 금액 이동 프로시저 호출
+	@Override
+	public List<DivideVO> insertAutoDiv(Map<String, Object> divideMap) {
+		
+		return budgetDAO.insertAutoDiv(divideMap);
+	}
+
+	
+	@Override
+	public List<DivideVO> selectDivList(Map<String, Object> divideMap) {
+		
+		List<DivideVO> autoDivList = budgetDAO.selectDivList(divideMap);
+		return autoDivList;
 	}
 }

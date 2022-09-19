@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.kopo.divide.DivideVO;
 import kr.ac.kopo.member.MemberVO;
 import kr.ac.kopo.myBank.MyBankService;
 import kr.ac.kopo.myBank.MyBankVO;
@@ -53,7 +55,7 @@ public class BudgetController {
 		pocketMap.put("accountNo", accountNo);
 		
 		List<PocketVO> myPocketList = mybankService.getPocketList(pocketMap);
-		
+		myPocketList.remove(0);
 		System.out.println("마이포켓리스트" + myPocketList);
 		return myPocketList;
 	}
@@ -140,16 +142,16 @@ public class BudgetController {
 	
 	@ResponseBody
 	@PostMapping("/fixedSettings")
-	public String fixedSettings(@RequestParam("fixedName") String fixedName, @RequestParam("fixedDate") String fixedDate, 
+	public String fixedSettings(@RequestParam("fixedName") String fixedName, 
 								@RequestParam("fixedCost") int fixedCost, HttpSession session) {
-	
+	//, @RequestParam("fixedDate") String fixedDate
 		String accountNo = (String)session.getAttribute("accountNo");
 		
 		Map<String, Object> fixedMap = new HashMap<>();
 		//incomeMap.put("id", loginVO.getId());
 		fixedMap.put("accountNo", accountNo);
 		fixedMap.put("fixedName", fixedName);
-		fixedMap.put("fixedDate", fixedDate);
+//		fixedMap.put("fixedDate", fixedDate);
 		fixedMap.put("fixedCost", fixedCost);
 	
 		System.out.println("픽스드맵받아오나요 : " + fixedMap);
@@ -202,6 +204,34 @@ public class BudgetController {
 	public List<HashMap<String, Object>> getCalculation(String accountNo) {
 		
 		return budgetService.getCalculation(accountNo);
+	}
+	
+	
+	//"0 59 11 14 * *" 매달 14일 11시 59분 0초
+
+	//@Scheduled(cron = "0 59 11 14 * ?")
+	@ResponseBody
+	@PostMapping("/autoDivSetting")
+	public String autoDivSetting(HttpSession session, @RequestParam("pocketCode") String pocketCode, @RequestParam("autoDivAmount") int autoDivAmount, @RequestParam("autoDivDate") String autoDivDate) {
+		
+		String accountNo = (String)session.getAttribute("accountNo");
+		
+		Map<String, Object> divideMap = new HashMap<>();
+		divideMap.put("accountNo", accountNo);
+		divideMap.put("divAmount", autoDivAmount);	         
+		divideMap.put("pocketCode", pocketCode);  //toPocket의 포켓코드 -> 포켓코드가 2,3,4.. 인 곳으로 보내라	   
+		divideMap.put("autoDivDate", autoDivDate);          
+
+		
+		//프로시저 호출
+		budgetService.insertAutoDiv(divideMap);
+		
+		//select로 ajax 띄워주기 호출
+		List<DivideVO> autoDivList = new ArrayList<DivideVO>();
+		autoDivList = budgetService.selectDivList(divideMap);
+		
+		System.out.println(autoDivList + "자동 잔액 이동 데이터 왔어요?");
+		return "success";
 	}
 	
 }

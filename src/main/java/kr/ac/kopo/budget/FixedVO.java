@@ -5,10 +5,8 @@ public class FixedVO {
 	private String accountNo;
 	private String fixedName;
 	private int    fixedCost;
-	private String fixedDate;
+	//private String fixedDate;  //고정비 자동이체가 아니라 고정비 확인용으로 바꿈. 그래서 자동이체날짜 필요 없음!! 다시 자동이체로 바꿀거면 살리셈
 	private int    pocketCode;
-	
-	
 	public String getAccountNo() {
 		return accountNo;
 	}
@@ -27,12 +25,6 @@ public class FixedVO {
 	public void setFixedCost(int fixedCost) {
 		this.fixedCost = fixedCost;
 	}
-	public String getFixedDate() {
-		return fixedDate;
-	}
-	public void setFixedDate(String fixedDate) {
-		this.fixedDate = fixedDate;
-	}
 	public int getPocketCode() {
 		return pocketCode;
 	}
@@ -42,10 +34,9 @@ public class FixedVO {
 	@Override
 	public String toString() {
 		return "FixedVO [accountNo=" + accountNo + ", fixedName=" + fixedName + ", fixedCost=" + fixedCost
-				+ ", fixedDate=" + fixedDate + ", pocketCode=" + pocketCode + "]";
+				+ ", pocketCode=" + pocketCode + "]";
 	}
-
-
 	
-
-}
+	
+	
+	}

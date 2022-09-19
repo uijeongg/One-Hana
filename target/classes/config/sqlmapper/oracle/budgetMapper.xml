@@ -16,8 +16,10 @@
    
  
     <insert id="insertFixed" parameterType="map">
-        insert into T_FIXED_COST(accountNo, pocketCode, fixedName, fixedCost, fixedDate) 
-        values(#{accountNo}, 2, #{fixedName}, #{fixedCost}, #{fixedDate})
+        <!-- insert into T_FIXED_COST(accountNo, pocketCode, fixedName, fixedCost, fixedDate) 
+        values(#{accountNo}, 2, #{fixedName}, #{fixedCost}, #{fixedDate}) -->
+        insert into T_FIXED_COST(accountNo, pocketCode, fixedName, fixedCost) 
+        values(#{accountNo}, 2, #{fixedName}, #{fixedCost})
     </insert>
     
     <select id="getFixedData" resultType="kr.ac.kopo.budget.FixedVO" parameterType="map">
@@ -35,5 +37,27 @@
         where a.accountNo=b.accountNo and a.accountNo = #{accountNo}
     
     </select>
+    
+    
+    <!-- divDate는 default값인 sysdate로 들어가는 잔액 분할 프로시저 -->
+    <select id="insertAutoDiv" statementType="CALLABLE" parameterType="map">
+        { CALL AUTO_DIVIDE_PROCESS_PROC(
+                #{accountNo},
+                #{divAmount},
+                #{pocketCode},
+                #{autoDivDate}
+                )
+            }
+    </select>
+    
+    
+    <select  id="selectDivList" resultType="kr.ac.kopo.divide.DivideVO" parameterType="map">
+        select a.divAmount, a.autoDivDate, b.pocketName, a.fromPocket
+        from T_DIV_HISTORY a, 
+             (select pocketName from T_MYONE_POCKET where pocketCode = #{pocketCode} and accountNo=#{accountNo}) b 
+        where a.divAmount =#{divAmount} and autoDivDate = #{autoDivDate} and a.fromPocket='기본'
+    
+    </select>
+    
 
 </mapper>

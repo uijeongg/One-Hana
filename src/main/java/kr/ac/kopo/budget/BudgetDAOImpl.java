@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.divide.DivideVO;
 import kr.ac.kopo.myBank.MyBankVO;
 
 @Repository
@@ -46,6 +47,21 @@ public class BudgetDAOImpl implements BudgetDAO {
 	@Override
 	public List<HashMap<String, Object>> getCalculation(String accountNo) {
 		return sqlSessionTemplate.selectList("budget.BudgetDAO.getCalculation", accountNo);
+	}
+	
+	
+	@Override
+	public List<DivideVO> insertAutoDiv(Map<String, Object> divideMap) {
+		
+		System.out.println(divideMap);
+		List<DivideVO> autoDivList = sqlSessionTemplate.selectList("budget.BudgetDAO.insertAutoDiv", divideMap);
+		
+		return autoDivList;
+	}
+
+	@Override
+	public List<DivideVO> selectDivList(Map<String, Object> divideMap) {
+		return sqlSessionTemplate.selectList("budget.BudgetDAO.selectDivList", divideMap);
 	}
 
 }

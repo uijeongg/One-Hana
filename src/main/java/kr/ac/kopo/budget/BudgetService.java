@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import kr.ac.kopo.divide.DivideVO;
 import kr.ac.kopo.myBank.MyBankVO;
 
 public interface BudgetService {
@@ -18,8 +19,10 @@ public interface BudgetService {
 
 	List<HashMap<String, Object>> getFixedSum(String accountNo);
 
-	
-	
 	List<HashMap<String, Object>> getCalculation(String accountNo);
+
+	List<DivideVO> insertAutoDiv(Map<String, Object> divideMap);
+
+	List<DivideVO> selectDivList(Map<String, Object> divideMap);
 
 }
