@@ -69,16 +69,48 @@ ul li {
                 	</a>
                 </div>
             </div>
-            <div class="col-lg-6 d-flex justify-content-center">
+            <div class="col-lg-6">
             <div class="d-flex justify-content-center">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/"> HOME </a></li>
-						<li><a href="${pageContext.request.contextPath}/joinMybank"> 통장개설 </a></li>
-						<li><a href="${pageContext.request.contextPath}/mybankMain"> 마이원하나 </a></li>
-						<li><a href="${pageContext.request.contextPath}/setBudgetMain"> 한달예산관리 </a></li>
-						<li><a href="${pageContext.request.contextPath}/mailform"> 메뉴 4 </a></li>				
-					</ul>
-				</div>
+						<%-- <li><a href="${pageContext.request.contextPath}/joinMybank"> 통장개설</a></li>
+						 <li><a href="${pageContext.request.contextPath}/mybankMain"> 마이원하나 </a></li>  --%>
+						<%--<li><a href="${pageContext.request.contextPath}/setBudgetMain"> 한달예산관리 </a></li> --%>
+		                <%-- <li><a href="${pageContext.request.contextPath}/mailform"> 메뉴 4 </a></li> --%>
+
+                    <li class="nav-item dropdown" style="display: inline-block;"><a
+                        class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            마이원하나</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/joinMybank"> 통장개설</a></li>
+                        </ul>
+                    </li>
+                    
+
+
+
+					<li class="nav-item dropdown" style="display: inline-block;">
+					   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">나의예산 </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<%-- <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mybankMain">마이원하나메인</a></li> --%>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/setBudgetMain">한달예산관리</a></li>
+							<li><a class="dropdown-item" href="#">소비내역</a></li>
+						</ul>
+					</li>
+
+
+
+
+
+
+
+
+
+
+
+				</ul>
+			</div>
             </div>
 
             

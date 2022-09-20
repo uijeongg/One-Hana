@@ -60,30 +60,6 @@ public class BudgetController {
 		return myPocketList;
 	}
 	
-	
-	
-	
-	/*
-	@ResponseBody
-	@GetMapping("/setBudgetMain2")
-	public ModelAndView displayPocketList(@RequestParam("accountNo") String accountNo,@RequestParam("id") String id){
-		ModelAndView mav = new ModelAndView();
-		
-		Map<String,Object> pocketMap = new HashMap<>();
-		pocketMap.put("id", id);
-		pocketMap.put("accountNo", accountNo);
-		
-		List<PocketVO> myPocketList = mybankService.getPocketList(pocketMap);
-		
-		
-		mav.addObject("myPocketList", myPocketList);
-		mav.setViewName("/budget/autoPocketAjax");
-		
-		System.out.println("마이포켓리스트" + myPocketList);
-		return mav;
-	}
-	*/
-	
 
 	
 	@ResponseBody
@@ -237,5 +213,7 @@ public class BudgetController {
 		
 		return autoDivList;
 	}
+	
+	
 	
 }

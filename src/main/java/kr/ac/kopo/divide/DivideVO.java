@@ -9,9 +9,6 @@ public class DivideVO {
 	private int    	divAmount;
 	private String 	divDate;
 	private String 	autoDivDate;
-//	private int 	balance;
-//	private int    	fromBalance; //보내는곳 잔액
-//	private int    	toBalance; //받는곳 잔액
 	public String getDivCode() {
 		return divCode;
 	}
@@ -53,10 +50,6 @@ public class DivideVO {
 		return "DivideVO [divCode=" + divCode + ", fromPocket=" + fromPocket + ", toPocket=" + toPocket + ", divAmount="
 				+ divAmount + ", divDate=" + divDate + ", autoDivDate=" + autoDivDate + "]";
 	}
-	
-	
-	
-	
 	
 	
 	

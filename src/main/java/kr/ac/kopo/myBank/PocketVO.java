@@ -6,8 +6,7 @@ public class PocketVO {
 	private String pocketName;
 	private String pocketDtl;
 	private int balance;
-	
-	
+	//private String autoDivDate;
 	public String getAccountNo() {
 		return accountNo;
 	}
@@ -43,6 +42,10 @@ public class PocketVO {
 		return "PocketVO [accountNo=" + accountNo + ", pocketCode=" + pocketCode + ", pocketName=" + pocketName
 				+ ", pocketDtl=" + pocketDtl + ", balance=" + balance + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

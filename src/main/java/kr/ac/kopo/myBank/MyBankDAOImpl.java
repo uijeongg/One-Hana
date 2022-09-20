@@ -62,17 +62,6 @@ public class MyBankDAOImpl implements MyBankDAO{
 	}
 	
 	
-	
-	/**
-	 * 3. 
-	 */
-	/*
-	 * @Override public void insertPocket(AddPocketVO newPocket) {
-	 * 
-	 * System.out.println("디에이오" + newPocket);
-	 * 
-	 * sqlSessionTemplate.insert("myBank.MyBankDAO.insertNewPoc", newPocket); }
-	 */
 
 
 	@Override

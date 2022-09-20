@@ -7,16 +7,18 @@
 <head>
     <meta charset="utf-8">
     <title>One Hana</title>
+
+    
 </head>
 <script>
 
 </script>
 <body>
-	<header>
-		<jsp:include page="/WEB-INF/jsp/include/header.jsp"/>
-	</header>   
-	
-	
+     <header>
+        <jsp:include page="/WEB-INF/jsp/include/header.jsp"/>
+    </header>  
+    
+ 
     <!-- Carousel Start -->
     <div class="container-fluid p-0">
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -27,7 +29,7 @@
                     <div class="carousel-caption top-0 bottom-0 start-50 end-0 d-flex flex-column align-items-center justify-content-center">
                         <div class="text-start p-6" style="max-width: 900px;">
                             <h3 class="text-black">My One HANA</h3>
-                            <h1 class="display-1 text-black mb-md-4">의정이의 자산관리</h1>
+                            <h1 class="display-1 text-black mb-md-4">자산관리</h1>
                             <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px; height:150px;">가입하기</a>
                          <!--    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px;">가입하기</a> -->
                         </div>
@@ -139,7 +141,7 @@
 
 
      <footer>
-     	<jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
+        <jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
     </footer>
 </body>
 

@@ -115,6 +115,12 @@ $(document).on('click','#checkAll',function(){
 
 
 
+
+
+
+
+
+
  
  <section>
 

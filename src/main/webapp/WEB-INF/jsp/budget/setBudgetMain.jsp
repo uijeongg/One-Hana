@@ -468,10 +468,6 @@ $(document).on('click','#checkAllDate',function(){
 			<%-- 고정비용 현황 입력 --%><br>
 			<h5 style="display: inline; float:left;">&nbsp;&nbsp;고정비용</h5><p style="display: inline; float:left;">&nbsp;&nbsp;(금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요.)</p><br>
 			<table class="table" id="table">
-				<%-- <c:forEach items="${ fixedExpenseList }" var="fixedExpense" varStatus="loop">
-                    <input type="hidden" class="fixedTransMoney" value="${ fixedExpense.transMoney }">
-                </c:forEach> --%>
-
 				<thead>
 					<tr>
 						<th scope="col" width="40%">예산명</th>
@@ -483,11 +479,6 @@ $(document).on('click','#checkAllDate',function(){
 					</tr>
 				</thead>
 			</table>
-
-			<!--      
-			<div id="fixedExpenseList"></div>
-            <div id="addFixedExpense2"></div>
-            <div id="addFixedExpense"> -->
 
 
 			<table class="table" id="table">
