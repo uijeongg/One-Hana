@@ -75,7 +75,7 @@
 	
 
 	<!-- interceptor를 사용해주기 위해 interceptor bean 만들어주기 -->
- 	<bean id="loginInterceptor" class="kr.ac.kopo.interceptor.LoginInterceptor"></bean> 
+ 	<!-- <bean id="loginInterceptor" class="kr.ac.kopo.interceptor.LoginInterceptor"></bean>  -->
 	
 	<!-- 이걸 가져다가 인터셉터로 동작을 해줘! 콘솔에 프리핸들러 포스트핸들러 등 한 동작씩 찍힐것 이거 돌리면 -->
 <!--  	<mvc:interceptors>

@@ -83,7 +83,8 @@ ul li {
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             마이원하나</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/joinMybank"> 통장개설</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/joinMybank">마이원하나란?</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/joinMybank">통장개설</a></li>
                         </ul>
                     </li>
                     
