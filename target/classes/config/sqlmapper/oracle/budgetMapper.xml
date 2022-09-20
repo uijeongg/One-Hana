@@ -52,7 +52,7 @@
     
     
     <select  id="selectDivList" resultType="kr.ac.kopo.divide.DivideVO" parameterType="map">
-        select a.divAmount, a.autoDivDate, b.pocketName, a.fromPocket
+        select a.divAmount, a.autoDivDate, b.pocketName, a.fromPocket, a.toPocket
         from T_DIV_HISTORY a, 
              (select pocketName from T_MYONE_POCKET where pocketCode = #{pocketCode} and accountNo=#{accountNo}) b 
         where a.divAmount =#{divAmount} and autoDivDate = #{autoDivDate} and a.fromPocket='기본'

@@ -210,9 +210,10 @@ public class BudgetController {
 	//"0 59 11 14 * *" 매달 14일 11시 59분 0초
 
 	//@Scheduled(cron = "0 59 11 14 * ?")
+	
 	@ResponseBody
 	@PostMapping("/autoDivSetting")
-	public String autoDivSetting(HttpSession session, @RequestParam("pocketCode") String pocketCode, @RequestParam("autoDivAmount") int autoDivAmount, @RequestParam("autoDivDate") String autoDivDate) {
+	public List<DivideVO> autoDivSetting(HttpSession session, @RequestParam("pocketCode") String pocketCode, @RequestParam("autoDivAmount") int autoDivAmount, @RequestParam("autoDivDate") String autoDivDate) {
 		
 		String accountNo = (String)session.getAttribute("accountNo");
 		
@@ -230,8 +231,11 @@ public class BudgetController {
 		List<DivideVO> autoDivList = new ArrayList<DivideVO>();
 		autoDivList = budgetService.selectDivList(divideMap);
 		
-		System.out.println(autoDivList + "자동 잔액 이동 데이터 왔어요?");
-		return "success";
+		System.out.println(autoDivList + "autoDivList 자동 잔액 이동 데이터 왔어요?");
+		
+		session.setAttribute("divideMap", divideMap);
+		
+		return autoDivList;
 	}
 	
 }

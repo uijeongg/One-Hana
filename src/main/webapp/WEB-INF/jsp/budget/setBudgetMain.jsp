@@ -203,30 +203,80 @@ function autoDivSetting(input) {
 	//console.log(typeof autoDivAmount)
 	//console.log("분할날짜 : " + autoDivDate);
 	
-    $.ajax({
-        url : '${pageContext.request.contextPath}/autoDivSetting' 
-      , method : 'post'
-      , data   : {
-    	            pocketCode : pocketCode
-                  , autoDivAmount : autoDivAmount
-                  , autoDivDate : autoDivDate
-      },
-       success : function(data){
-    	   alert('autoDivList 받아오기 성공')
-    //이제 여기서 autoDivList가지고 에이젝스 호출해서 값 변경 찍ㄱ기 만들기!! 그리고 값 들어가면 빼는ㄱ 만들기
-    	   /*  if(data == 'success'){    
-               getFixedData(fixedName);
-           }   */   
-       }       
-   }) 
+	$.ajax({
+		       url : '${pageContext.request.contextPath}/autoDivSetting' 
+		     , method : 'post'
+		     , data : {
+		  	               pocketCode : pocketCode
+                         , autoDivAmount : autoDivAmount
+                         , autoDivDate : autoDivDate
+		   },
+		      success : function(data) {
+		    	  //alert('autoDivList 성공')
+		    	  let autoDivideList  = data
+		    	  
+		    	  let fromPocket = autoDivideList[0].fromPocket
+		    	  //console.log('밥은 먹었냐 : ' + fromPocket)
+		    	 
+		    	  $('#autoAmount_'+pocketCode).empty();
+		    	  $('#autoDate_'+pocketCode).empty();
+		    	  $('#autoBtn_'+pocketCode).empty();
+		    	  let divAmount ='';
+		    	  
+		    	   $(data).each(function(){
+		        	    let fromPocket = this.fromPocket
+		                let toPocket = this.toPocket
+		                divAmount = this.divAmount
+		                let autoDivDate = this.autoDivDate
+		                //console.log(divAmount + '원')
+		        	  
+		                let str = '';
+		                str += '<p>' + divAmount + '원 </p>'
+		               $('#autoAmount_'+pocketCode).append(str);  
+		                
+		                let str2 = '';
+                        str2 += '<p>매달 ' + autoDivDate + '일 </p>'
+                        $('#autoDate_'+pocketCode).append(str2);  
+		                
+                        let str3 = '';
+                        str3 += '<button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">수정</button>'
+                        $('#autoBtn_'+pocketCode).append(str3);  
+		        	  })
+
+		        	  //''원 남았습니다 값 업데이트 함수 호출
+		        	  if(pocketCode!=2){
+		        		   calculateBudget2(divAmount) 
+		    		  }
+		    	   
+		          }	   
+	})
+  
 	
 	
-	
+	function calculateBudget2(divAmount) {
+		alert('들어옴?')
+		
+		
+        var pocketCode = '${divideMap.pocketCode}'
+        console.log(pocketCode)
+        let calcul2 = $('#calcul').val();
+		//console.log(calcul2);
+        //console.log(divAmount)
+        
+        //calcul2값 - divAmount값 계산하기
+	    calcul2 = calcul2 - divAmount       
+        console.log("calcul2의 값은? : "+ calcul2);
+	    
+        $('#calcul').val(calcul2);
+        
+        
+        
+        
+	 
+     
+	}
 }
 </script>
-
-
-
 
 <script>
 $(document).ready(function(){
@@ -243,14 +293,14 @@ $(document).ready(function(){
                 let pocketCode = this.pocketCode 
                 let str ='';
                 str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 ➜ '+name+' 주머니</td>'
-                str += '<td><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" '
+                str += '<td id="autoAmount_'+pocketCode+'"><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" '
                 str += 'class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
                 
-                str += '<td><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
+                str += '<td id="autoDate_'+pocketCode+'"><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
                 str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" style="width: 50px; background: white; color: #008485; text-align: center; height: 30px;">'
                 str += '<c:forEach begin="1" end="31" var="x"> <option> <c:out value="${x}" /> </option> <br></c:forEach></select>'
                 str += '<h4 style="font-size: 20px; display: inline;">일</h4></td>'
-              	str += '<td><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">확인</button></td> </tr>'
+              	str += '<td id="autoBtn_'+pocketCode+'"><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">확인</button></td> </tr>'
            //     str += '<td><input type="button" id="autoDivSetting" value="확인"></td> </tr>'
                 
                 
@@ -259,11 +309,6 @@ $(document).ready(function(){
                 $('#pocketAjaxGOGOGOGOGOGO').append(str);
                 
                 
-                
-             
-                
-                //jsp로 넘기기부터!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //$("#pocketAjaxGOGOGOGOGOGO").html(name);
                 
                 
             })
@@ -537,7 +582,7 @@ $(document).on('click','#checkAllDate',function(){
                         
                         <strong style="color: blue;">
                          <!--    <input type="hidden" disabled id=""> -->
-                            <input disabled type="text" id="calcul" class="input-cal" style="width:120px; border: none; color:red; font-weight:bold; text-align:center; font-size:20px;">
+                            <input disabled type="text" id="calcul" name="calcul2" class="input-cal" style="width:120px; border: none; color:red; font-weight:bold; text-align:center; font-size:20px;">
                         </strong>
                         
                          
@@ -561,41 +606,28 @@ $(document).on('click','#checkAllDate',function(){
              
              <tbody id="pocketAjaxGOGOGOGOGOGO"> 
                
-               <%-- 
+             <%--   
                <tr>
-                    <!-- 분할 주머니 -->
-                    <td>
-                    <!-- 기본 주머니 ->  -->
-                    
-                    </td>
-                    
-                    
-                    <!-- 분할 금액 --> 
-                    <td>
-                        <input type="text" id="autoDivAmount" name="autoDivAmount" placeholder="(원)" class="form-control"
-                                   style="color: #008485; text-align: center; width:200px;">
-                    </td>
-                    
-                    
-                    <!-- 분할 날짜 -->
-                     <td>
-                        <h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;
-                            <select name="autoDivDate" id="autoDivDate"
-                                    style="width: 50px; background: white; color: #008485; text-align: center; height: 37px;">
-                                <c:forEach begin="1" end="31" var="x">
-                                    <option selected="selected">
-                                        <c:out value="${x}" />
-                                    </option>
-                                    <br>
-                                </c:forEach>
-                            </select>
-                        <h4 style="font-size: 20px; display: inline;">일</h4>
-                    </td> 
-                    
-                    <!-- 확인 버튼 자리 -->
-                    <td><input type="button" value="확인"></td> 
-               </tr> 
-               --%>
+	                <td style="color: #008485; font-weight:bold;">기본 주머니 ➜ '+name+' 주머니</td>
+	                <td><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" 
+	                    class="form-control" style="color: #008485; text-align: center; width:200px;">
+	                </td>
+	                
+	                <td><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;
+	                    <select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" 
+	                            style="width: 50px; background: white; color: #008485; text-align: center; height: 30px;">
+	                        <c:forEach begin="1" end="31" var="x"> 
+	                            <option> <c:out value="${x}" /> </option> <br>
+	                        </c:forEach>
+	                    </select>
+	                    <h4 style="font-size: 20px; display: inline;">일</h4>
+	                </td>
+	                <td><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">확인</button></td> 
+	           </tr>
+               
+                --%>
+               
+         
                
             </tbody> 
       

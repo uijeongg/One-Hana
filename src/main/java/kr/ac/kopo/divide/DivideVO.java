@@ -8,11 +8,10 @@ public class DivideVO {
 	private String 	toPocket;
 	private int    	divAmount;
 	private String 	divDate;
+	private String 	autoDivDate;
 //	private int 	balance;
-	private int    	fromBalance; //보내는곳 잔액
-	private int    	toBalance; //받는곳 잔액
-	
-	
+//	private int    	fromBalance; //보내는곳 잔액
+//	private int    	toBalance; //받는곳 잔액
 	public String getDivCode() {
 		return divCode;
 	}
@@ -43,24 +42,20 @@ public class DivideVO {
 	public void setDivDate(String divDate) {
 		this.divDate = divDate;
 	}
-	public int getFromBalance() {
-		return fromBalance;
+	public String getAutoDivDate() {
+		return autoDivDate;
 	}
-	public void setFromBalance(int fromBalance) {
-		this.fromBalance = fromBalance;
-	}
-	public int getToBalance() {
-		return toBalance;
-	}
-	public void setToBalance(int toBalance) {
-		this.toBalance = toBalance;
+	public void setAutoDivDate(String autoDivDate) {
+		this.autoDivDate = autoDivDate;
 	}
 	@Override
 	public String toString() {
 		return "DivideVO [divCode=" + divCode + ", fromPocket=" + fromPocket + ", toPocket=" + toPocket + ", divAmount="
-				+ divAmount + ", divDate=" + divDate + ", fromBalance=" + fromBalance + ", toBalance=" + toBalance
-				+ "]";
+				+ divAmount + ", divDate=" + divDate + ", autoDivDate=" + autoDivDate + "]";
 	}
+	
+	
+	
 	
 	
 	
