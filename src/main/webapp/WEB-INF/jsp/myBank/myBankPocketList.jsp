@@ -7,7 +7,7 @@
 	<div class="search-box" id="search-box">
 		<c:if test="${ not empty pocketList }">
 			<c:forEach var="pocket" items="${ pocketList }">
-				<div style="margin-bottom:20px; border:3px solid; padding:10px; width:800px; height:140px; border-radius:25px; " class= "row">
+				<div style="margin-bottom:20px; border:3px solid; padding:10px; width:788px; height:140px; border-radius:25px; " class= "row">
 					<div class="col-9">
 						<h4 class="fromPocket1" style="display:inline;">${ pocket.pocketName }</h4>
 					    <h4 style="display:inline; font-weight:bold;"> 주머니 </h4><br>

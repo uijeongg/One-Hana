@@ -3,7 +3,7 @@
 
  
     <div class="container-fluid sidepanel-inner d-flex flex-column"
-      style="width: 20%; float: left; margin-top:30px;">
+      style="width:20%; float:left; margin-top:30px; margin-left:80px; margin-right:25px;">
       <div style="padding-left: 30px;">
          <h3 style="margin-bottom: 10px;">
             <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 

@@ -51,16 +51,16 @@ public class BudgetDAOImpl implements BudgetDAO {
 	
 	
 	@Override
-	public List<DivideVO> insertAutoDiv(Map<String, Object> divideMap) {
+	public List<AutoDivideVO> insertAutoDiv(Map<String, Object> divideMap) {
 		
 		System.out.println(divideMap);
-		List<DivideVO> autoDivList = sqlSessionTemplate.selectList("budget.BudgetDAO.insertAutoDiv", divideMap);
+		List<AutoDivideVO> autoDivList = sqlSessionTemplate.selectList("budget.BudgetDAO.insertAutoDiv", divideMap);
 		
 		return autoDivList;
 	}
 
 	@Override
-	public List<DivideVO> selectDivList(Map<String, Object> divideMap) {
+	public List<AutoDivideVO> selectDivList(Map<String, Object> divideMap) {
 		return sqlSessionTemplate.selectList("budget.BudgetDAO.selectDivList", divideMap);
 	}
 

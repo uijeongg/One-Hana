@@ -59,16 +59,16 @@ public class BudgetServiceImpl implements BudgetService {
 
 	//자동 금액 이동 프로시저 호출
 	@Override
-	public List<DivideVO> insertAutoDiv(Map<String, Object> divideMap) {
+	public List<AutoDivideVO> insertAutoDiv(Map<String, Object> divideMap) {
 		
 		return budgetDAO.insertAutoDiv(divideMap);
 	}
 
 	
 	@Override
-	public List<DivideVO> selectDivList(Map<String, Object> divideMap) {
+	public List<AutoDivideVO> selectDivList(Map<String, Object> divideMap) {
 		
-		List<DivideVO> autoDivList = budgetDAO.selectDivList(divideMap);
+		List<AutoDivideVO> autoDivList = budgetDAO.selectDivList(divideMap);
 		return autoDivList;
 	}
 }

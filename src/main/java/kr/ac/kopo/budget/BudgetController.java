@@ -189,9 +189,28 @@ public class BudgetController {
 	
 	@ResponseBody
 	@PostMapping("/autoDivSetting")
-	public List<DivideVO> autoDivSetting(HttpSession session, @RequestParam("pocketCode") String pocketCode, @RequestParam("autoDivAmount") int autoDivAmount, @RequestParam("autoDivDate") String autoDivDate) {
-		
+	public List<AutoDivideVO> autoDivSetting(HttpSession session, @RequestParam("pocketCode") String pocketCode, @RequestParam("autoDivAmount") int autoDivAmount, @RequestParam("autoDivDate") String autoDivDate) {
+		//List<AutoDivideVO>
 		String accountNo = (String)session.getAttribute("accountNo");
+		
+		/*
+		 * Map<String, Object> divideMap = new HashMap<>(); divideMap.put("accountNo",
+		 * accountNo); divideMap.put("divAmount", autoDivAmount);
+		 * divideMap.put("pocketCode", pocketCode); //toPocket의 포켓코드 -> 포켓코드가 2,3,4.. 인
+		 * 곳으로 보내라 divideMap.put("autoDivDate", autoDivDate);
+		 * 
+		 * 
+		 * //프로시저 호출 budgetService.insertAutoDiv(divideMap);
+		 * 
+		 * //select로 ajax 띄워주기 호출 List<DivideVO> autoDivList = new
+		 * ArrayList<DivideVO>(); autoDivList = budgetService.selectDivList(divideMap);
+		 * 
+		 * System.out.println(autoDivList + "autoDivList 자동 잔액 이동 데이터 왔어요?");
+		 * 
+		 * session.setAttribute("divideMap", divideMap);
+		 */
+		
+		
 		
 		Map<String, Object> divideMap = new HashMap<>();
 		divideMap.put("accountNo", accountNo);
@@ -202,15 +221,19 @@ public class BudgetController {
 		
 		//프로시저 호출
 		budgetService.insertAutoDiv(divideMap);
+		//인서트가 autoDivVO에 돼야지
+		
+		
+		
+		
 		
 		//select로 ajax 띄워주기 호출
-		List<DivideVO> autoDivList = new ArrayList<DivideVO>();
+		List<AutoDivideVO> autoDivList = new ArrayList<AutoDivideVO>();
 		autoDivList = budgetService.selectDivList(divideMap);
 		
 		System.out.println(autoDivList + "autoDivList 자동 잔액 이동 데이터 왔어요?");
 		
 		session.setAttribute("divideMap", divideMap);
-		
 		return autoDivList;
 	}
 	

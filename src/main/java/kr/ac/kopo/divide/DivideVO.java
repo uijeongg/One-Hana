@@ -8,7 +8,7 @@ public class DivideVO {
 	private String 	toPocket;
 	private int    	divAmount;
 	private String 	divDate;
-	private String 	autoDivDate;
+	//private String 	autoDivDate;
 	public String getDivCode() {
 		return divCode;
 	}
@@ -39,16 +39,10 @@ public class DivideVO {
 	public void setDivDate(String divDate) {
 		this.divDate = divDate;
 	}
-	public String getAutoDivDate() {
-		return autoDivDate;
-	}
-	public void setAutoDivDate(String autoDivDate) {
-		this.autoDivDate = autoDivDate;
-	}
 	@Override
 	public String toString() {
 		return "DivideVO [divCode=" + divCode + ", fromPocket=" + fromPocket + ", toPocket=" + toPocket + ", divAmount="
-				+ divAmount + ", divDate=" + divDate + ", autoDivDate=" + autoDivDate + "]";
+				+ divAmount + ", divDate=" + divDate + "]";
 	}
 	
 	

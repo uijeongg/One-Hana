@@ -226,7 +226,7 @@ function autoDivSetting(input) {
 		    	   $(data).each(function(){
 		        	    let fromPocket = this.fromPocket
 		                let toPocket = this.toPocket
-		                divAmount = this.divAmount
+		                divAmount = this.autoDivAmount
 		                let autoDivDate = this.autoDivDate
 		                //console.log(divAmount + '원')
 		        	  
@@ -341,21 +341,42 @@ $(document).on('click','#checkAllDate',function(){
         $('#autoDivDate').prop('incomeDate');
      } 
 	
-	
-	
-	
-    /* 
-	    if($('#checkAllDate').is(':checked')){
-	       $('.autoDivDate').prop('25',true);
-	    }else{
-	       $('autoDivDate').prop('25',false);
-	    } 
-    */
+
 });
 </script>
 
 
-
+<script>
+$(document).ready(function(){
+	$('#parkingSetBtn').click(function(){
+	    
+		
+		var parkingGoal = $('#parkingGoal').val()*1;
+	    //let parkingGoal = document.parkingSet.parkingGoal.value*1;
+	    console.log(parkingGoal)
+	    console.log(typeof parkingGoal)
+	        
+	    
+	 /*    $.ajax({
+	        url : '${pageContext.request.contextPath}/incomeSettings' 
+	      , method : 'post'
+	      , data   : {
+	                  income : income
+	                , incomeDate : incomeDate 
+	      },
+	       success : function(data){
+	           if(data == 'success'){
+	               //alert('incomeMap 받아오기 성공')                      
+	               
+	               
+	               getIncomeData();
+	              
+	           }     
+	       }       
+	   }) */
+	})
+})
+</script>
 
 
 
@@ -672,6 +693,7 @@ $(document).on('click','#checkAllDate',function(){
     
     
     <!-- 자동 파킹 주머니 설정 모달 확인 클릭 후 div 생성 -->
+    <form id="parkingSet">
     <div class="border-box" id="autoFromParkingSet" style="display:none; text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%; ">
         <h3>파킹 주머니 자동 이동 설정</h3>
         <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다.</p>
@@ -692,11 +714,12 @@ $(document).on('click','#checkAllDate',function(){
                 설정 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다.
                   
                 <br>
-                <div class="btn btn-primary" id="parkingSetBtn">확인</div>
+                <input type="button" id="parkingSetBtn" value="확인">
             </div>
             
         </div>  
-    </div><br><br>
+    </div>
+    </form><br><br>
  
 </body>
 </html>

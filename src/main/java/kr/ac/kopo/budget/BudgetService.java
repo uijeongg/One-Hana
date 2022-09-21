@@ -21,8 +21,8 @@ public interface BudgetService {
 
 	List<HashMap<String, Object>> getCalculation(String accountNo);
 
-	List<DivideVO> insertAutoDiv(Map<String, Object> divideMap);
+	List<AutoDivideVO> insertAutoDiv(Map<String, Object> divideMap);
 
-	List<DivideVO> selectDivList(Map<String, Object> divideMap);
+	List<AutoDivideVO> selectDivList(Map<String, Object> divideMap);
 
 }

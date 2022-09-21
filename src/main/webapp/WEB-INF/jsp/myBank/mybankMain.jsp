@@ -117,15 +117,18 @@ function dividePocket() {
 	<header>
 		<jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
 	</header>
+	
+	<div class="justify-content-center">
+	
 	<jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
 
 	<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">나의 MO HANA</h3>
-    <hr style="width:800px;  height:5px; background-color:#066262;">
-    
+    <hr style="width:779px; height:5px; background-color:#066262; position:relative; left:23px;">
+
 	
 	<div id="pocket_div">
 	
-		<div style="margin-left:320px; border: 1px solid black; width:800px; border:2px solid; border-radius:25px; ">	
+		<div style="margin-left:430px; border:1px solid black; width:785px; border:2px solid; border-radius:25px; position:relative;">	
 		
 			<h3 style="margin-left:20px; margin-top:10px;">MyOne HANA 통장</h3>	<br>
 	        <%-- <h5>통장이름 ${ MyAccount.accountName }</h5><br> --%>
@@ -136,10 +139,11 @@ function dividePocket() {
 		</div>
 	   
 	   
-	   <br><br>
-	   <h3 style="margin-left:320px;">내 주머니 현황</h3><br> <%-- ui 홍씨처럼 가로로 만들기 --%>
-		
-		<div id = "pocketList" style="margin-left:330px;">
+	   <br>
+	  <%--  <h3 style="margin-left:320px;">내 주머니 현황</h3><br> ui 홍씨처럼 가로로 만들기 --%>
+		<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">내 주머니 현황</h3>
+		<hr style="width:779px; height:5px; background-color:#066262; position:relative; left:430px;">
+		<div id = "pocketList" style="margin-left:440px;">
 			
 		</div>
 	</div>
@@ -159,10 +163,10 @@ function dividePocket() {
 		
 		
 		<%-- 주머니 추가 버튼 --%>
-		<div style="margin-left: 320px; ">
+		<div style="margin-left:430px; ">
 			<input type="button" id="pocket" value="주머니 추가" onclick="displayPocket1()"
 				   class="btn btn-secondary" 
-			       style="width:800px; height:50px; border-radius:10px; color:white; border:none; font-weight:bold;">
+			       style="width:788px; height:50px; border-radius:10px; color:white; border:none; font-weight:bold;">
 			
 			
 			<div id ="addPocket" style="width:800px; display:none; border:solid; border-radius:10px;">
@@ -236,7 +240,7 @@ function dividePocket() {
 	</div>
 
 
-
+</div>
    
      <footer>
         <jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
