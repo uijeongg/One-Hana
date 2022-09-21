@@ -17,14 +17,17 @@
          
          
          
-         
-         
-         
-         
-         
          <div>
             <a href="${pageContext.request.contextPath}/mybankMain"
                style="color:#808080;">내 주머니</a>
+         </div>
+         
+         <hr style="width: 200px;">
+         
+         
+         <div>
+            <a href="${pageContext.request.contextPath}/setBudgetMain"
+               style="color:#808080;">내 예산 관리</a>
          </div>
          
          <hr style="width: 200px;">

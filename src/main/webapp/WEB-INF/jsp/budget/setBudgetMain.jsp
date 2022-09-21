@@ -366,6 +366,7 @@ $(document).on('click','#checkAllDate',function(){
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header>
+    <jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
     
 
 

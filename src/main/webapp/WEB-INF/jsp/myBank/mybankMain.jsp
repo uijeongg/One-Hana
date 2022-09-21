@@ -117,23 +117,29 @@ function dividePocket() {
 	<header>
 		<jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
 	</header>
+	<jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
 
-	<h2>MyOne HANA 통장</h2>
+	<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">나의 MO HANA</h3>
+    <hr style="width:800px;  height:5px; background-color:#066262;">
+    
 	
 	<div id="pocket_div">
-		<div style="border: 1px solid black; padding: 10px;">	
+	
+		<div style="margin-left:320px; border: 1px solid black; width:800px; border:2px solid; border-radius:25px; ">	
 		
-			<h3>MyOne HANA 통장</h3>	<br>
+			<h3 style="margin-left:20px; margin-top:10px;">MyOne HANA 통장</h3>	<br>
 	        <%-- <h5>통장이름 ${ MyAccount.accountName }</h5><br> --%>
-			<h5>계좌번호 ${ MyAccount.accountNo }</h5><br>
-			<h5>잔액 ${ MyAccount.balance }원</h5><br>
+			<h5 style="margin-left:20px;">${ MyAccount.accountNo }</h5><br>
+			<h5 style="text-align:right; margin-right:30px;">잔액 &nbsp; <strong style="font-size:25px;">${ MyAccount.balance }&nbsp;</strong>원</h5><br>
 		
 			<!-- 조회, 이체 버튼 만들기 -> 여기서 jsp 넘어가기 거래내역 나오는! -->
 		</div>
 	   
-	   <hr><h3>내 주머니 현황</h3><br> <%-- ui 홍씨처럼 가로로 만들기 --%>
+	   
+	   <br><br>
+	   <h3 style="margin-left:320px;">내 주머니 현황</h3><br> <%-- ui 홍씨처럼 가로로 만들기 --%>
 		
-		<div id = "pocketList">
+		<div id = "pocketList" style="margin-left:330px;">
 			
 		</div>
 	</div>
@@ -143,7 +149,7 @@ function dividePocket() {
 	
 	
 	
-		<div id="createDiv">
+		<div id="createDiv" >
 			<%-- 여기에 ajax로 추가해준 div 주머니가 자동 생성 됨 --%>
 		</div>
 		
@@ -153,16 +159,19 @@ function dividePocket() {
 		
 		
 		<%-- 주머니 추가 버튼 --%>
-		<div>
-			<input type="button" id="pocket" value="주머니 추가" onclick="displayPocket1()">
+		<div style="margin-left: 320px; ">
+			<input type="button" id="pocket" value="주머니 추가" onclick="displayPocket1()"
+				   class="btn btn-secondary" 
+			       style="width:800px; height:50px; border-radius:10px; color:white; border:none; font-weight:bold;">
 			
-			<div id = "addPocket" style="display: none; border-style:solid;">
+			
+			<div id ="addPocket" style="width:800px; display:none; border:solid; border-radius:10px;">
 				<div class="row">
-					<div class="col-2">추가할 주머니 이름 : </div>
-					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" class="col-8">
+					<div class="col-3"> 추가 주머니 이름 : </div>
+					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" style="width:300px;">
 				</div>
 				<div class="row">
-					<div class="col-2">용도 : </div>
+					<div class="col-3">주머니 용도 : </div>
 					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" class="col-8">
 				</div>
 				<div class="btn btn-secondary" id="pocketAddBtn">주머니 추가하기</div>

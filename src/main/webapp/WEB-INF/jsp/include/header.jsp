@@ -78,6 +78,7 @@ ul li {
 						<%--<li><a href="${pageContext.request.contextPath}/setBudgetMain"> 한달예산관리 </a></li> --%>
 		                <%-- <li><a href="${pageContext.request.contextPath}/mailform"> 메뉴 4 </a></li> --%>
 
+
                     <li class="nav-item dropdown" style="display: inline-block;"><a
                         class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">

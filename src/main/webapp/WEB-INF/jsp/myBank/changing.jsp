@@ -89,12 +89,12 @@ $(document).on('click','#checkAll',function(){
 	<h3 style="text-align:left; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">통장 전환</h3>
     <hr style="width: 900px; height: 5px; background-color:#066262;">
     <h5 style="text-align:left; margin-bottom:20px; margin-top:40px;">전환 선택 통장</h5>
-		<div style=" background-color:#E0E0E0; width:900px; margin-left:300px; border:2px solid; border-radius:30px; ">
+		<div style=" background-color:#E0E0E0; width:900px; margin-left:300px; border:2px solid; border-radius:25px; ">
 			
-			<p style="margin-left:20px; font-size:25px;">${ accountOne.accountName }</p>
-			<p style="margin-left:20px; font-size:20px;">${ accountOne.accountNo }</p><br>
-			<h5 style="margin-left:20px; display:inline;">잔액</h5>
-			<h5 style="text-align:right;"> ${ accountOne.balance }원&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+			<p style="margin-left:25px; font-size:25px;">${ accountOne.accountName }</p>
+			<p style="margin-left:25px; font-size:20px;">${ accountOne.accountNo }</p><br>
+			<p style="text-align:right; margin-right:30px;">잔액 &nbsp; <strong style="font-size:25px;">${ accountOne.balance }&nbsp;</strong>원</p>
+			<%-- <h5 style="text-align:right;"> ${ accountOne.balance }원&nbsp;&nbsp;&nbsp;&nbsp;</h5> --%>
 				  
 		 </div>
 
@@ -140,26 +140,30 @@ $(document).on('click','#checkAll',function(){
 			</table>
 	</div>
 	
+	
+	
 	<div class="modal fade" id="confirm1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">잔액이동</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+        
+          <p style="align:right;">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+          </p>
+          
           <div class="modal-body">
                 <iframe src="${pageContext.request.contextPath }/resources/document/myone_manual.pdf"
-                        style="width:100%; height:750px;">
+                        style="width:100%; height:600px;">
                 </iframe>  
           </div>
           
-          <div class="modal-footer">
+        
           
-          <h3>※ 본인은 상품 설명서를 제공받고 그 내용을 충분히 이해하였음을 확인합니다.</h3>
+          <h6 style="text-align:center; margin-top:20px;">※ 본인은 상품 설명서를 제공받고 그 내용을 충분히 이해하였음을 확인합니다.</h6>
           
-            <button type="button" class="btn btn-primary" id="confirm1" data-bs-dismiss="modal">확인</button>         
-            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button> -->
-          </div>
+           <div style="text-align:center; margin-bottom:20px;">
+            <button type="button" class="btn btn-primary" id="confirm1" data-bs-dismiss="modal" style="width:150px; margin-top:10px; margin-bottom:25px;">확인</button>         
+            </div>
+        
         </div>
       </div>
     </div>
@@ -168,35 +172,38 @@ $(document).on('click','#checkAll',function(){
 	
 	
 	<div class="modal fade" id="confirm2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg" style="width: 600px;">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">잔액이동</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+          
+       <p style="align:right;">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+       </p>   
+          
           <div class="modal-body">
-               <b style="font-size : 25px">마이원하나 통장</b>
-                                        <table style="border : 3px solid #f5f7ff; width : 100%; height : 100px;margin-top : 15px; text-align : center;">
-                                            <tr style="background: #f5f7fa">
-                                                <td width="50%"><b>분류</b></td>
+               <h4 style="font-size:20px; text-align:center;">마이원하나 통장 금리</h4><br>
+                                        <table style="border : 3px solid #E0E0E0; width : 70%; height : 100px; margin-top : 15px;  margin : auto; text-align : center;">
+                                            <tr style="background: #E0E0E0">
+                                                <td width="50%" style="border-right:2px solid white;"><b>분류</b></td>
                                                 <td><b>금리(연율, 세전)</b></td>
                                             <tr>
                                             <tr>
-                                                <td>-</td>
-                                                <td>0.1%</td>
+                                                <td style="border-right:2px solid #E0E0E0;">예금</td>
+                                                <td>0.5%</td>
                                             </tr>
                                             
                                         </table>
     
           </div>
           
-          <div class="modal-footer">
+         
           
-          <h3>※ 본인은 상품 설명서를 제공받고 그 내용을 충분히 이해하였음을 확인합니다.</h3>
+          <h6 style="text-align:center; margin-top:20px;">※ 본인은 상품 설명서를 제공받고 그 내용을 충분히 이해하였음을 확인합니다.</h6><br>
           
-            <button type="button" class="btn btn-primary" id="confirm1" data-bs-dismiss="modal">확인</button>         
-            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button> -->
+          <div style="text-align:center; margin-bottom:20px;">
+            <button type="button" class="btn btn-primary" id="confirm1" data-bs-dismiss="modal" style="width:150px; margin-bottom: 25px;">확인</button>         
+           <!--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width:150px; background-color:#808080;">취소</button> -->
           </div>
+          
         </div>
       </div>
     </div>
@@ -289,8 +296,8 @@ $(document).on('click','#checkAll',function(){
               
                 <input type="submit" class="btn btn-primary" id="gogo" value="확인" onclick="return checkRegex()"
                 	   style="width:150px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold;"> 
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        style="width:150px; height:50px; border-radius: 5px; color:white; border:none; font-weight:bold;">취소</button> 
+                <button type="button" class="btn" data-bs-dismiss="modal"
+                        style="background-color:#808080; width:150px; height:50px; border-radius: 5px; color:white; border:none; font-weight:bold;">취소</button> 
               </div>
  
               <!--   background-color:#808080 -->

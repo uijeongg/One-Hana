@@ -15,32 +15,31 @@
 	<header>
 		<jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
 	</header>
+	<jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
 	
 	
-	
-	<h3> 통장 전환이 완료되었습니다 </h3>
-
+	<!-- <h3 style="text-align:center;"> 통장 전환이 완료되었습니다 </h3> -->
+    <h3 style="margin-left:280px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;"> 통장 전환이 완료되었습니다 </h3>
+	<hr style="width: 900px; height: 5px; background-color:#066262;">
 	
 	<form action="${pageContext.request.contextPath}/mybankMain" method="get">	
 	<input type="hidden" name="accountNo" value="${ MyBank.accountNo }">
 	
 	
-		<%-- 전환할 통장 정보 --%>
-		<h4> [ 전환 선택한 통장 ] </h4>
-			<div style="border: 1px solid black; padding: 10px;" id="newAccountList">		
-		 		
-				<h4>전환일 ${ MyBank.openDate }</h4><br>
+			<div style="background-color:#E0E0E0; width:900px; margin-left:300px; border:2px solid; border-radius:25px;" id="newAccountList">		
+		 
 				<h4>예금 종류 ${ MyBank.accountName }</h4><br>
+				<h4>전환일 ${ MyBank.openDate }</h4><br>
 				<h5>계좌번호 ${ MyBank.accountNo }</h5><br>
 				<h5>잔액 ${ MyBank.balance }원</h5><br> 	  
 			</div>
 	
 
 
-	
-		<input type="submit" id="gogo" value="내서비스통장 확인하러 가기"> 
-		
-		
+	<div style="margin-left:610px; color:#008485; display:inline-block; margin-top:30px;">
+		<input type="submit" id="gogo" value="My One HANA 통장 확인하러 가기"
+		       style="width:300px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold;"> 
+	</div>	
 		
 		
 	</form>

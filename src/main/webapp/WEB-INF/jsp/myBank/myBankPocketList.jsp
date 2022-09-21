@@ -7,19 +7,20 @@
 	<div class="search-box" id="search-box">
 		<c:if test="${ not empty pocketList }">
 			<c:forEach var="pocket" items="${ pocketList }">
-				<div style="border: 1px solid black; padding: 10px; width: 500px;" class= "row">
+				<div style="margin-bottom:20px; border:3px solid; padding:10px; width:800px; height:140px; border-radius:25px; " class= "row">
 					<div class="col-9">
-						<h4 class="fromPocket1" style='display:inline'>${ pocket.pocketName }</h4>
-					    <h4 style='display:inline'> 주머니 </h4><br>
-						<small>${ pocket.pocketDtl }</small><br><br>
-						<h4 style='display:inline'>${ pocket.balance }</h4>
-						<h4 style='display:inline'> 원 </h4><br>
-						<%-- <input type="hidden" name="accountNo" value="${ pocket.accountNo }">
-						<input type="hidden" name="pocketCode" value="${ pocket.pocketCode }"> --%>
+						<h4 class="fromPocket1" style="display:inline;">${ pocket.pocketName }</h4>
+					    <h4 style="display:inline; font-weight:bold;"> 주머니 </h4><br>
+						<small style="font-size:17px; color:black; font-weight:bold;">${ pocket.pocketDtl }</small><br><br>
+						<h4 style="text-align:right; margin-right:25px;">${ pocket.balance } 원</h4>
+					
+						
+						
 					</div>
 					
 					<%-- 각각의 pocket에서의 잔액이동 버튼 --%>
-					<button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#divideGo">
+					<button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#divideGo"
+					        style="border-radius:22px; ">
 	                    잔액이동
 	                </button>
 				
