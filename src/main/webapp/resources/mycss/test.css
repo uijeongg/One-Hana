@@ -13,8 +13,15 @@ body{
    color:black !important;
 }
 p{
+	font-family:"hanaBFont" !important;   
     color:black !important;	
 }
 div{
-   color:black !important;	
+	font-family:"hanaBFont" !important;   
+    color:black !important;	
+}
+span{
+	font-family:"hanaBFont" !important;    
+    color:black !important;
+	
 }

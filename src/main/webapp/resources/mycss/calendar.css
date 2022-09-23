@@ -12,9 +12,13 @@
 #calendar{
 	font-family:"Pretendard-ExtraBold";
 	font-size:14px;
-	width:95%;
+	width:100%;
 }
 
 .fc-event-time{
 	display:none !important;
+}
+
+.fc-toolbar-title{
+	font-family:"hanaBFont" !important;   
 }

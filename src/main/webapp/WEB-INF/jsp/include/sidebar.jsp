@@ -33,7 +33,7 @@
          <hr style="width: 200px;">
          
          <div>
-            <a href="${pageContext.request.contextPath }/"
+            <a href="${pageContext.request.contextPath}/consumeMain"
                style="color:#808080;">내 소비 현황</a>
          </div>
          

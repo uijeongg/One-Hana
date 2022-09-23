@@ -42,7 +42,8 @@
     <link href="/resources/mycss/test.css" rel="stylesheet">
 
  
- 
+    <!-- font important -->
+    <link href="/resources/mycss/test.css" rel="stylesheet">
  
 
 <style>
@@ -98,7 +99,7 @@ ul li {
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<%-- <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mybankMain">마이원하나메인</a></li> --%>
 							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/setBudgetMain">한달예산관리</a></li>
-							<li><a class="dropdown-item" href="#">소비내역</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumeMain">소비내역</a></li>
 						</ul>
 					</li>
 

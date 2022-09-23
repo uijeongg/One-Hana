@@ -22,8 +22,7 @@ public class ConsumeController {
 		
 		
 		List<Map<String,Object>> consumeList = consumeService.getConsumeData(id);
-		System.out.println("consumeMap : " + consumeList);	
-		
+	
 		return consumeList;
 	}
 	

@@ -23,21 +23,81 @@
 
 <body>
 
-	<div class="d-flex justify-content-center mt-2" id="calendarParent">
+    <header>
+        <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
+    </header> 
+    
+    <!-- side bar start -->
+    <div class="container-fluid sidepanel-inner d-flex flex-column"
+      style="width:20%; float:left; margin-top:30px; margin-left:10px; margin-right:10px;">
+      <div style="padding-left: 30px;">
+         <h3 style="margin-bottom: 10px;">
+            <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 
+            <strong style="color:#008485;"> HANA </strong>   
+         </h3>
+         <hr style="width: 200px; height: 5px; background-color:#066262;">
+         <div>
+            <a href="${pageContext.request.contextPath}/mybankMain"
+               style="color:#808080;">내 주머니</a>
+         </div>     
+         <hr style="width: 200px;">
+         <div>
+            <a href="${pageContext.request.contextPath}/setBudgetMain"
+               style="color:#808080;">내 예산 관리</a>
+         </div>
+         <hr style="width: 200px;">
+         <div>
+            <a href="${pageContext.request.contextPath}/consumeMain"
+               style="color:#808080;">내 소비 현황</a>
+         </div>
+         <hr style="width: 200px;">  
+         <div>
+            <a href="${pageContext.request.contextPath }/"
+               style="color:#808080;">내 투자 성향</a>
+         </div>
+         <hr style="width: 200px;">
+          <div>
+            <a href="${pageContext.request.contextPath }/"
+               style="color:#808080;">맞춤 금융 상품</a>
+         </div>
+         <hr style="width:200px;">
+      </div>
+   </div>
+   <!-- side bar end -->
+
+
+    
+    <div class="container text-center">
+       <div class="row">
+       <div class="col-12">
+    <div class="row g-5 justify-content-center mb-5">
+               <div style="text-align: center; font-size:30px;">
+      <!--          
+        <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 
+        <strong style="color:#008485;"> HANA </strong>  통장 가입</h2>
+         -->
+         
+        <!--  <span> 나의 </span><span  style="color:#008485;"> 소비 현황</span> -->
+          <span style="text-align:left; color:#008485; display:inline-block; margin-bottom: 0px; ">나의 소비 현황</span>
+       </div>
+    </div>
+
+    
+    <hr style="width: 900px; height: 5px; background-color:#066262;">
+
+
+
+
+
+	<div class="d-flex justify-content-center mt-5" id="calendarParent">
 		<div id='calendar'></div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
+     <div class="">
+     </div>
+     </div>
+     </div>
+    
 	<!--JQUERY  -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -69,9 +129,9 @@
 				     calendar.allDay = false;
 				     consumeArray.push(calendar);
 				 }
-				    console.log("의정이 청년이룸: "+consumeArray.length);
+				  //  console.log("의정이 청년이룸: "+consumeArray.length);
 				 return new Promise((resolve,reject)=>{
-					 resolve("사랑합니다");
+					 resolve("확인");
 				 })	 
 			 })
 			 .then(res=>{
@@ -124,7 +184,7 @@
 	                 }
 	               },
 	               editable: true,
-	               dayMaxEvents: true, // allow "more" link when too many events
+	               dayMaxEvents: true, // all  ow "more" link when too many events
 	               events:consumeArray
 	
 	              })
@@ -133,6 +193,11 @@
 	             
 		});
     </script>
+    
+    
+    
+    
+  
 
 </body>
 </html>
