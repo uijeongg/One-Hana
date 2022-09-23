@@ -9,6 +9,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <body>
 
@@ -19,14 +23,20 @@
 	
 	
 	<!-- <h3 style="text-align:center;"> 통장 전환이 완료되었습니다 </h3> -->
-    <h3 style="margin-left:280px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;"> 통장 전환이 완료되었습니다 </h3>
+	   <img src="${pageContext.request.contextPath}/resources/img/My_success.png" 
+	        class="animate__animated animate__swing"
+            style="width:230px; height:180px; margin-left:325px; margin-top:50px;"/><br>
+            
+            <!-- animate rubberBand 랑 swing 중 택 1 -->
+            
+    <h3 style="margin-left:280px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 35px;"> 통장 전환이 완료되었습니다 </h3>
 	<hr style="width: 900px; height: 5px; background-color:#066262;">
 	
 	<form action="${pageContext.request.contextPath}/mybankMain" method="get">	
 	<input type="hidden" name="accountNo" value="${ MyBank.accountNo }">
 	
 	
-			<div style="background-color:#E0E0E0; width:900px; margin-left:300px; border:2px solid; border-radius:25px;" id="newAccountList">		
+			<div style="background-color:#E0E0E0; width:900px; margin-left:405px; border:2px solid; border-radius:25px;" id="newAccountList">		
 		 
 				<h4>예금 종류 ${ MyBank.accountName }</h4><br>
 				<h4>전환일 ${ MyBank.openDate }</h4><br>
@@ -38,7 +48,7 @@
 
 	<div style="margin-left:610px; color:#008485; display:inline-block; margin-top:30px;">
 		<input type="submit" id="gogo" value="My One HANA 통장 확인하러 가기"
-		       style="width:300px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold;"> 
+		       style="width:475px; height:55px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px; font-weight:bold;"> 
 	</div>	
 		
 		

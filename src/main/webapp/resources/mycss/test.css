@@ -25,3 +25,11 @@ span{
     color:black !important;
 	
 }
+
+h2, h3, h4, h5, h6{
+	font-family:"hanaBFont" !important;    
+}
+
+strong{
+	font-family:"hanaBFont" !important;    
+}

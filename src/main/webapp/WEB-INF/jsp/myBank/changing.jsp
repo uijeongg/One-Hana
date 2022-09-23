@@ -85,11 +85,15 @@ $(document).on('click','#checkAll',function(){
 
 
 	<%-- 전환할 통장 정보 --%>
-	<!-- <h4> [ 전환 선택한 통장 ] </h4> -->
-	<h3 style="text-align:left; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">통장 전환</h3>
+	<h2 style="text-align:left; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 25px;">통장 전환</h2>
     <hr style="width: 900px; height: 5px; background-color:#066262;">
-    <h5 style="text-align:left; margin-bottom:20px; margin-top:40px;">전환 선택 통장</h5>
-		<div style=" background-color:#E0E0E0; width:900px; margin-left:300px; border:2px solid; border-radius:25px; ">
+    <h4 style="text-align:left; margin-bottom:7px; margin-top:30px;">전환 선택 통장</h4><br>
+    
+    
+    
+    
+    
+		<div style=" background-color:#E0E0E0; width:900px; margin-left:405px; border:2px solid; border-radius:20px; ">
 			
 			<p style="margin-left:25px; font-size:25px;">${ accountOne.accountName }</p>
 			<p style="margin-left:25px; font-size:20px;">${ accountOne.accountNo }</p><br>
@@ -107,7 +111,7 @@ $(document).on('click','#checkAll',function(){
 	
 	
 		<%-- 상품정보, 금리 등 안내 확인 --%>
-		<div style="margin-left:300px; width:980px;">
+		<div style="margin-left:405px; width:980px;">
 		<h5 style="margin-bottom:10px; margin-top:20px;">상품 정보 및 금리 안내</h5>
 			<table id="check" style="width:95%;">
 			<br>
@@ -115,7 +119,7 @@ $(document).on('click','#checkAll',function(){
 	      			<!-- <td><b> 통장 상품 설명서 </b></td> -->
 	      			<td>
 	      			    <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm1"
-	      			            style="width:600px; font-size:17px;">통장 상품 설명서 </button> 
+	      			            style="width:600px; font-size:18px; font-family:hanaBFont;">통장 상품 설명서 </button> 
                     </td>
                     <td>
 	                    <div class="checkTerms service-checkbox">
@@ -127,7 +131,7 @@ $(document).on('click','#checkAll',function(){
 	      		
 	      		<tr>
 	      			<td><button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm2"
-	      			            style="width:600px; font-size:17px;">금리 안내 </button> 
+	      			            style="width:600px; font-size:18px; font-family:hanaBFont;">금리 안내 </button> 
                     </td>
                     <td>
                         <div class="checkTerms service-checkbox">
@@ -216,8 +220,7 @@ $(document).on('click','#checkAll',function(){
 	
 	
 	
-	
-	
+	 
 	
 	
 	
@@ -229,11 +232,13 @@ $(document).on('click','#checkAll',function(){
 		<br><br>
 	
 		<%-- 약관 동의 --%>
-		<div style="margin-left:300px;">
+		<div style="margin-left:405px;">
 		<h5 style="margin-bottom:10px; margin-top:20px;">통장 약관 동의</h5>
 		<h6> 통장전환 및 안전한 금융거래를 위하여 관련 법률과 규정에 따라 동의 및 확인이 필요합니다. </h6>
 		   
-		   <table id="check" style="width:900px; height:220px; border: 2px solid #008485;"><br>
+		   
+		   
+		   <table id="check" style="width:900px; height:220px; border:2px solid #008485;"><br>
 
 		   		<tr style="text-align:center; border-bottom:2px solid #008485;">
 	      			<th colspan="2" style="font-size:17px; color:black;"> 통장약관</th>
@@ -272,7 +277,7 @@ $(document).on('click','#checkAll',function(){
 	      		</tr>
 		                                                                
 		   </table>
-        
+       
 
 
 		<!-- <button type="submit" class="send" id="submitBtn" data-toggle="modal" data-target="#confirm-modal">확인</button> -->

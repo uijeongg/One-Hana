@@ -16,6 +16,14 @@ public class ConsumeController {
 	private ConsumeService consumeService;
 	
 	
+
+	@GetMapping("/consumeMain")
+	public String consumeMain() {
+
+		return "consume/consumeCalandar";
+	}
+	
+	
 	@ResponseBody
 	@GetMapping("/getConsumeData")
 	public List<Map<String,Object>> consumeMain(@RequestParam("id") String id) {
@@ -27,14 +35,10 @@ public class ConsumeController {
 	}
 	
 	
+	@GetMapping("/consumePattern")
+	public String consumePattern() {
 
-	@GetMapping("/consumeMain")
-	public String consumeMain() {
-		
-		
-
-		
-		return "consume/consumeMain";
+		return "consume/consumePattern";
 	}
 	
 	

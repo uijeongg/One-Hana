@@ -33,9 +33,9 @@
 
 	   
 	
-	    <h3 style="text-align:left; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">통장 전환</h3>
+	    <h2 style="text-align:left; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 25px;">통장 전환</h2>
 	    <hr style="width: 900px; height: 5px; background-color:#066262;">
-		<h5 style="text-align:left; margin-bottom:10px; margin-top:40px;">전환 가능 통장 목록</h5><br>
+		<h4 style="text-align:left; margin-bottom:7px; margin-top:30px;">전환 가능 통장 목록</h4><br>
 	
 	<form action="${pageContext.request.contextPath}/changing" method="post">	
 	
@@ -72,8 +72,8 @@
 	 
 	    <div style="text-align:center;">
 		   <input type="submit" id="gogo" value="통장전환"
-		          style="width:150px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold;"> <%-- post버튼 --%>
-           <button style="width:150px; height:50px; border-radius: 5px; background-color:#808080; color:white; border:none; font-weight:bold;">돌아가기</button>		  
+		          style="width:160px; height:60px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold; font-size:20px;"> <%-- post버튼 --%>
+           <button style="width:160px; height:60px; border-radius: 5px; background-color:#808080; color:white; border:none; font-weight:bold; font-size:20px;">돌아가기</button>		  
 		</div>
 		<br><br>
 		
