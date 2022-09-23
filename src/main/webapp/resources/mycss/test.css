@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@font-face{
+    src : url("/resources/font/HanaB.ttf");
+    font-family:"hanaBFont";
+}
+@font-face{
+    src : url("/resources/font/Pretendard-ExtraBold.otf");
+    font-family:"Pretendard-ExtraBold";
+}
+
+body{
+   font-family:"hanaBFont" !important;	
+   color:black !important;
+}
+p{
+    color:black !important;	
+}
+div{
+   color:black !important;	
+}

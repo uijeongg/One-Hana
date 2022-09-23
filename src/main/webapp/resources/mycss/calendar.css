@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@font-face{
+	src : url("/resources/font/HanaB.ttf");
+	font-family:"hanaBFont";
+}
+@font-face{
+    src : url("/resources/font/Pretendard-ExtraBold.otf");
+    font-family:"Pretendard-ExtraBold";
+}
+
+
+#calendar{
+	font-family:"Pretendard-ExtraBold";
+	font-size:14px;
+	width:95%;
+}
+
+.fc-event-time{
+	display:none !important;
+}

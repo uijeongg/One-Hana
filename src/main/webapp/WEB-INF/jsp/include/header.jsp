@@ -39,6 +39,9 @@
     <!-- Template Stylesheet -->
     <link href="/resources/css/style.css" rel="stylesheet"> 
  
+    <link href="/resources/mycss/test.css" rel="stylesheet">
+
+ 
  
  
 
@@ -56,8 +59,6 @@ ul li {
 
 
 </style>
-
-
 
   <!-- Topbar Start -->
     <div class="container-fluid px-5 d-none d-lg-block">

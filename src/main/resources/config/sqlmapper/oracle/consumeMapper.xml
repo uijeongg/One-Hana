@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="consume.ConsumeDAO">
+
+    <!-- 캘린더에 들어갈 일 단위 데이터 불러오기 -->
+    <select id="getConsumeData" resultType="map" parameterType="string">    
+        SELECT A.CATECODE,B.CONDATE,B.CONNAME,B.CONAMOUNT
+        FROM T_CONSUME_CATEGORY A, T_CONSUME_HISTORY B
+        WHERE A.CATECODE = B.CATECODE AND B.ID = #{id}
+    </select>
+    
+
+</mapper>
