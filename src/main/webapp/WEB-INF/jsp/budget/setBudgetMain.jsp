@@ -241,7 +241,9 @@ function autoDivSetting(input) {
                         $('#autoDate_'+pocketCode).append(str2);  
 		                
                         let str3 = '';
-                        str3 += '<button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">수정</button>'
+                        str3 += '<button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)"'
+                        str3 += 'style="background-color:#FA6400; color:white; border:none; border-radius:10px; width:70px; height:40px;">수정</button>'
+                        
                         $('#autoBtn_'+pocketCode).append(str3);  
 		        	  })
 
@@ -299,10 +301,12 @@ $(document).ready(function(){
                 str += 'class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
                 
                 str += '<td id="autoDate_'+pocketCode+'"><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
-                str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" style="width: 50px; background: white; color: #008485; text-align: center; height: 30px;">'
+                str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" style="width:50px; background:white; color:#008485; text-align:center; border-radius:10px; height:30px;">'
                 str += '<c:forEach begin="1" end="31" var="x"> <option> <c:out value="${x}" /> </option> <br></c:forEach></select>'
-                str += '<h4 style="font-size: 20px; display: inline;">일</h4></td>'
-              	str += '<td id="autoBtn_'+pocketCode+'"><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)">확인</button></td> </tr>'
+                str += '<h4 style="font-size: 20px; display: inline;">&nbsp;일</h4></td>'
+              	str += '<td id="autoBtn_'+pocketCode+'"><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)"'
+              	str += 'style="background-color:#008485; color:white; border:none; border-radius:10px; width:70px; height:40px;" >확인</button></td> </tr>'
+            
            //     str += '<td><input type="button" id="autoDivSetting" value="확인"></td> </tr>'
                 
                 
@@ -391,6 +395,17 @@ $(document).ready(function(){
     </header>
     <jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
     
+    
+    
+     <!-- page title start -->
+    <div style="margin-left:670px;" class="animate__animated animate__bounce" >
+        <img src="${pageContext.request.contextPath}/resources/img/My_calendar.png" 
+            style="width:70px; height:70px;"/>
+        <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 관리 "</span>
+    </div>
+    <hr style="width:900px; height: 5px; background-color:#066262;">
+    <!-- page title end -->
+    
 
 
    <!-- 한달 월급 (총 예산) 입력 -->
@@ -398,8 +413,9 @@ $(document).ready(function(){
    <!-- 한달 월급 (총 예산) 입력 -->
    <%-- <form action="${pageContext.request.contextPath}/incomeSettings" method="post">   --%> 
    <form name="incomeSet"> 
-    <div class="border-box" id="incomeSet" style="text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%; ">
-        <h3>월 급여 설정</h3>
+    <div class="border-box" id="incomeSet" 
+         style="margin-left:410px; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px; height:230px; margin-top:25px;">
+        <h3 style="margin-top:20px;">월 급여 설정</h3>
         <p>한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p>
         
         
@@ -408,10 +424,10 @@ $(document).ready(function(){
             
             
             <!-- MyBankVO - incomeDate에 insert -->                         
-	        <div class="col-md-4"> <h4 style="display:inline;">매달</h4>&nbsp;&nbsp;
+	        <div class="col-md-3" style="margin-top:5px;"> <h4 style="display:inline;">매달</h4>&nbsp;&nbsp;
 		       
 		       <select id="incomeDate" name="incomeDate" 
-		              style="width:80px; background:white; color:#008485; border:none; border-bottom:1px solid #008485;
+		              style="width:80px; background:white; color:#008485; border:none; border-bottom:2px solid #008485;
 		                     text-align:center; margin:5px; font-size:25px; font-weight:800; height:40px; display:inline;">                  
 		          
 		          <c:forEach begin="1" end="31" var="x">
@@ -426,20 +442,21 @@ $(document).ready(function(){
         
         
             <!-- MyBankVO - income에 update -->
-	        <div class="col-md-4">
+	        <div class="col-md-4" style="margin-top:12px;">
 	             <input type="text" id="income" name="income"
-	                    style="border: none; border-bottom: 1px solid #008485;">
+	                    style="border: none; border-bottom: 2px solid #008485;">
 	                <span style="color: #008485; font-size : 26px; font-weight: 700;">원</span>      
 	        </div>
 	        
-	        <div class="col-md-2">
-	            <input type="button" id="incomeSettings" value="확인">
+	        <div class="col-md-2" style="margin-top:10px;">
+	            <input type="button" id="incomeSettings" value="설정"
+	                   style="background-color:#008485; color:white; border:none; border-radius:10px; width:90px; height:42px;">
 	        </div>
 	    
 	        
-            <div>
+            <div style="margin-top:18px;">
 	           <select name="fixedDate" id="fixedDate"
-	                 style="width:150px; background:white; color:#008485; text-align:center; height:30px;">
+	                 style="width:150px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">
 	                 <option>급여일</option>
 	                 <option>급여일 다음날</option>
 	                 <c:forEach begin="1" end="31" var="x">
@@ -453,7 +470,7 @@ $(document).ready(function(){
          
         </div> 
     </div>
-   </form><br><br>
+   </form><br>
     
     
     
@@ -467,20 +484,19 @@ $(document).ready(function(){
     <%-- <form action="${pageContext.request.contextPath}/fixedSettings" method="post">  --%>
 	<form name="fixedSet">
 		<div class="border-box" id="fixedSet"
-			style="text-align: center; border: 1px solid; border-radius: 20px; margin: auto; width: 50%;">
-			<!-- <div class="border-box"  id="product fixed_transfer_list">     -->
-			<h3>고정 지출 현황 확인</h3>
+			style="margin-left:410px; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
+			<h3 style="margin-top:20px;">고정 지출 현황 확인</h3>
 			<p>고정적으로 빠져나가는 돈이 얼마인지 한눈에 확인할 수 있습니다</p>
 
 
 			<!-- 고정비 SUM -->
-			<div class="col">
+			<div class="col" style="margin-top:27px;">
 				<!-- <input class="form-control form-control-lg" type="hidden" id="fixed_sum" name="fixedSum" value=""> -->
-				<span style="font-size: 26px;">
-					<h4 style="display: inline;">총 월 고정 지출액 :</h4>
+				<span style="font-size:26px;">
+					<h4 style="display:inline;">총 월 고정 지출액 :</h4>
 				</span> <input disabled type="text" id="fixedAll" name="fixedAll" value=""
-					           style="width: 150px; background: white; color: #008485; border: none; border-bottom: 1px solid #008485; 
-					                  text-align: center; margin: 5px; font-size: 20px; font-weight: 800; height: 40px;">
+					           style="width: 150px; background: white; color: #008485; border: none; border-bottom: 2px solid #008485; 
+					                  text-align:center; margin:5px; font-size:26px; font-weight:800; height:40px;">
 
 				<span style="font-size: 26px;">
 					<h4 style="display: inline;">원</h4>
@@ -490,20 +506,24 @@ $(document).ready(function(){
 
 
 			<%-- 고정비용 현황 입력 --%><br>
-			<h5 style="display: inline; float:left;">&nbsp;&nbsp;고정비용</h5><p style="display: inline; float:left;">&nbsp;&nbsp;(금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요.)</p><br>
+			<div style="margin-left:3px; margin-bottom:20px;">
+			 <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
+            style="width:40px; height:40px; display:inline;"/>
+			<p style=" display:inline;">&nbsp;금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요</p><br>
+			</div>
 			<table class="table" id="table">
 				<thead>
 					<tr>
-						<th scope="col" width="40%">예산명</th>
+						<th scope="col" width="40%" style="color:black;">예산명</th>
 						<!-- <th scope="col" width="20%">이체일</th> -->
 						<th scope="col">
 							<div class="col-md-9">금액</div>
-							<div class="col-md-3"></div>
+							<!-- <div class="col-md-3"></div> -->
 						</th>
 					</tr>
 				</thead>
 			</table>
-
+            
 
 			<table class="table" id="table">
 				<tbody id="fixedTable">
@@ -548,7 +568,8 @@ $(document).ready(function(){
                                          style="width:38px; height:38px;"/> --%>
 									<!-- <button type="button" >추가</button> -->
 
-									<input type="button" id="fixedSettings" value="추가">
+									<input type="button" id="fixedSettings" value="추가"
+									       style="background-color:#008485; color:white; border:none; border-radius:10px; width:90px; height:42px;">
 
 								</div>
 							</div>
@@ -558,12 +579,12 @@ $(document).ready(function(){
 				
 			</table>
 			
-			<button type="button" style="float:right;" onClick ="allFixedSettings()">설정완료</button><br><br>
+			<button type="button" onClick ="allFixedSettings()"
+			        style="background-color:#008485; margin-top:20px; color:white; border:none; border-radius:10px; width:120px; height:45px;">설정완료</button><br><br>
 		</div>
 	
 
 	</form>
-	<br>
 	<br>
 
 
@@ -571,16 +592,17 @@ $(document).ready(function(){
     <!-- 자동 예산 분할 설정 -->
     <!-- 자동 예산 분할 설정 -->
     <form name="autoSet">
-     <div class="border-box" id="autoSet" style="text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%;">
+     <div class="border-box" id="autoSet" 
+          style="margin-left:410px; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
     <!-- <div class="border-box"  id="product fixed_transfer_list">     -->
-        <h3>자동 예산 분할 설정</h3>
-        <p>더하기빼기 더하기빼기</p>
+        <h3 style="margin-top:20px;">자동 예산 분할 설정</h3>
+        <!-- <p>더하기빼기 더하기빼기</p> -->
         
        
-        <table class="table" id="table" style="margin-left:auto; margin-right:auto;">
+        <table class="table" id="table" style="margin-left:auto; margin-right:auto; margin-top:40px;">
             <thead>
                 <tr>
-                    <th colspan="5" style="text-align: center; background-color: #green; font-size: 17px;">
+                    <th colspan="5" style="color:black; text-align:center; font-size:23px;">
                        
                        
                        " 총 예산 &nbsp;
@@ -608,7 +630,7 @@ $(document).ready(function(){
                 </tr>
                 
                 <tr style="border-bottom: 40px solid #fff;"></tr>                 
-                <tr>
+                <tr style="margin-top:20px;">
                      <th scope="col" width="30%" >분할 주머니</th>
                      <th scope="col" width="30%" >분할 금액</th>
                      <th scope="col" width="25%">분할 날짜</th>
@@ -696,27 +718,34 @@ $(document).ready(function(){
     
     <!-- 자동 파킹 주머니 설정 모달 확인 클릭 후 div 생성 -->
     <form id="parkingSet">
-    <div class="border-box" id="autoFromParkingSet" style="display:none; text-align:center; border:1px solid; border-radius:20px; margin:auto; width:50%; ">
-        <h3>파킹 주머니 자동 이동 설정</h3>
-        <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다.</p>
+    <div class="border-box" id="autoFromParkingSet" 
+    style="margin-left:410px; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
+        <h3 style="margin-top:20px; margin-bottom:10px;">파킹 주머니 자동 이동 설정</h3>
+        <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다</p>
         
         <br>
         <div class="row" style="margin:0 auto;">
             <!-- <div class="col-4">파킹 주머니 목표금액 : </div> -->
-            <div style="margin:0 auto; display:inline;">파킹 주머니 목표 금액 : 
+            <div style="font-size:20px; margin:0 auto; display:inline;">파킹 주머니 목표 금액 : 
             <input type="text" name="parkingGoal" id="parkingGoal" placeholder="(원)" 
-                   class="form-control" style="display:inline; color:#008485; width:200px; text-align: center; margin:0 auto;">
+                   class="form-control" style="font-size:20px; display:inline; color:#008485; width:200px; text-align:center; margin:0 auto;">
             </div> 
-            <div>
-                파킹 주머니 이동 날짜 : 예산 사용 마지막날 (매달 <p style="display:inline; color:#008485; ">${incomeMap.incomeDate}</p>일)
+            <div style="font-size:20px;">
+                파킹 주머니 이동 날짜 : 예산 사용 마지막날 ("매달 <p style="display:inline; color:#008485;">${incomeMap.incomeDate}</p>일")
             </div>
                 
             <br><br>
             <div>
-                설정 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다.
-                  
-                <br>
-                <input type="button" id="parkingSetBtn" value="확인">
+                
+                 
+            <div style="margin-left:3px; margin-bottom:20px; margin-top:20px;">
+	            <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
+	                 style="width:40px; height:40px; display:inline;"/>
+	            <p style=" display:inline;">&nbsp;목표 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다</p>
+            </div>  
+         
+                <input type="button" id="parkingSetBtn" value="확인"
+                       style="background-color:#008485; margin-bottom:20px; color:white; border:none; border-radius:10px; width:120px; height:45px;">
             </div>
             
         </div>  

@@ -75,7 +75,7 @@ $(document).on('click','#checkAll',function(){
 		<jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
 	</header>
 	
-    <jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/jsp/include/sidebar0.jsp"></jsp:include>
 
 
 

@@ -54,7 +54,8 @@
                                 
                                  
                              <!--    <input type="submit" id="fixedSettings" value="확인" onclick="return fixedDate()"> -->
-                             <input type="button" id="fixedReSettings" value="삭제">
+                             <input type="button" id="fixedReSettings" value="삭제"
+                                    style="background-color:#FA6400; color:white; border:none; border-radius:10px; width:90px; height:42px;">
                                 <!-- <input type="button" id="fixedSettings" value="추가"> -->
                                 
                                 </div>

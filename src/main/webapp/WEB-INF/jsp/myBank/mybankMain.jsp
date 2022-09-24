@@ -122,7 +122,8 @@ function dividePocket() {
 	
 	<jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
 
-	<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">나의 MO HANA</h3>
+	<h3 style="text-align:left; margin-left:26px; display:inline-block; margin-bottom: 0px; margin-top: 30px;">나의</h3>
+    <h3 style="text-align:left; margin-left:7px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;"> MO HANA</h3>
     <hr style="width:779px; height:5px; background-color:#066262; position:relative; left:23px;">
 
 	
@@ -166,7 +167,7 @@ function dividePocket() {
 		<div style="margin-left:430px; ">
 			<input type="button" id="pocket" value="주머니 추가" onclick="displayPocket1()"
 				   class="btn btn-secondary" 
-			       style="width:788px; height:50px; border-radius:10px; color:white; border:none; font-weight:bold;">
+			       style="font-family:hanaBFont; font-size:18px; width:788px; height:53px; border-radius:10px; color:white; border:none;">
 			
 			
 			<div id ="addPocket" style="width:800px; display:none; border:solid; border-radius:10px;">
@@ -206,12 +207,12 @@ function dividePocket() {
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">잔액이동</h5>
+	        <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액이동</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
 	        
-	           <table>
+	           <table style="text-align:center;">
 	               <tr>
 	                   <%-- 보내는 통장 --%>
 	                   <th ><p id="fromPocket"></p></th>

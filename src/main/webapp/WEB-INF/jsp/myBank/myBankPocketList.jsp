@@ -20,7 +20,7 @@
 					
 					<%-- 각각의 pocket에서의 잔액이동 버튼 --%>
 					<button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#divideGo"
-					        style="border-radius:22px; ">
+					        style="font-family:hanaBFont; border-radius:22px; ">
 	                    잔액이동
 	                </button>
 				

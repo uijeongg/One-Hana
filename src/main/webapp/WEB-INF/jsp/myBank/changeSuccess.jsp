@@ -29,32 +29,56 @@
             
             <!-- animate rubberBand 랑 swing 중 택 1 -->
             
-    <h3 style="margin-left:280px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 35px;"> 통장 전환이 완료되었습니다 </h3>
-	<hr style="width: 900px; height: 5px; background-color:#066262;">
+    <h3 style="margin-left:280px; color:#008485; display:inline-block; margin-bottom: 20px; margin-top: 35px;"> 통장 전환</h3>
+    <h3 style="display:inline-block; margin-bottom: 20px; margin-top: 35px;">이 완료되었습니다 </h3><br>
+	<hr style="width: 900px; height: 5px; background-color:#066262; margin-bottom: 20px; ">
 	
 	<form action="${pageContext.request.contextPath}/mybankMain" method="get">	
 	<input type="hidden" name="accountNo" value="${ MyBank.accountNo }">
 	
 	
-			<div style="background-color:#E0E0E0; width:900px; margin-left:405px; border:2px solid; border-radius:25px;" id="newAccountList">		
+			<!-- <div style="background-color:#E0E0E0; width:900px; margin-left:405px; border:2px solid; border-radius:25px;" id="newAccountList">		 -->
 		 
-				<h4>예금 종류 ${ MyBank.accountName }</h4><br>
-				<h4>전환일 ${ MyBank.openDate }</h4><br>
+		 <div style="width:900px; margin-left:405px;" id="newAccountList">        
+         
+				<h4 style="text-align:justify;">상품명</h4>
+				<h4 style="text-align:right;">${ MyBank.accountName }</h4><br>
+				
+				<h4 style="margin-left:10px; display:inline;">전환일</h4>
+                <h4 style="margin-right:10px; display:inline;">${ MyBank.openDate }</h4><br>
+				
+				<h4 style="margin-left:10px; display:inline;">계좌번호</h4>
+                <h4 style="margin-right:10px; display:inline;">${ MyBank.accountNo }</h4><br>
+                
+                <h4 style="margin-left:10px; display:inline;">잔액</h4>
+                <h4 style="margin-right:10px; display:inline;">${ MyBank.balance } 원</h4><br>
+                
+				
+				
+				<%-- <h4>전환일 ${ MyBank.openDate }</h4><br>
 				<h5>계좌번호 ${ MyBank.accountNo }</h5><br>
-				<h5>잔액 ${ MyBank.balance }원</h5><br> 	  
+				<h5>잔액 ${ MyBank.balance }원</h5><br>  --%>
+				
+				
+				<hr style="width: 900px; height: 2px; background-color:#066262; margin-top:30px; margin-bottom:30px;">
+				<h5 style="margin-bottom:10px;">금융거래 한도계좌 안내</h5>
+				<h6 style="margin-bottom:20px;">금융 사고 방지를 위해 '금융거래한도 제한계좌'로 개설됩니다</h6> 
 			</div>
 	
 
 
 	<div style="margin-left:610px; color:#008485; display:inline-block; margin-top:30px;">
 		<input type="submit" id="gogo" value="My One HANA 통장 확인하러 가기"
-		       style="width:475px; height:55px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px; font-weight:bold;"> 
+		       style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;"> 
+	
+	           <!-- font-weight:bold; -->
+	
 	</div>	
 		
 		
 	</form>
 	
-	
+	<br><br><br>
 	
 </body>
 </html>
