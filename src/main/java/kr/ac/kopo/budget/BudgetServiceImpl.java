@@ -71,4 +71,15 @@ public class BudgetServiceImpl implements BudgetService {
 		List<AutoDivideVO> autoDivList = budgetDAO.selectDivList(divideMap);
 		return autoDivList;
 	}
+	
+	@Override
+	public void updateParkingGoal(Map<String, Object> parkingMap) {	
+		budgetDAO.updateParkingGoal(parkingMap);	
+	}
+	
+	@Override
+	public MyBankVO getParkingData(String accountNo) {
+		MyBankVO selectParking = budgetDAO.getParkingData(accountNo);
+		return selectParking;
+	}
 }

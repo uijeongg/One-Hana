@@ -64,4 +64,14 @@ public class BudgetDAOImpl implements BudgetDAO {
 		return sqlSessionTemplate.selectList("budget.BudgetDAO.selectDivList", divideMap);
 	}
 
+	@Override
+	public void updateParkingGoal(Map<String, Object> parkingMap) {
+		sqlSessionTemplate.update("budget.BudgetDAO.updateParkingGoal", parkingMap);
+	}
+	
+	
+	@Override
+	public MyBankVO getParkingData(String accountNo) {
+		return sqlSessionTemplate.selectOne("budget.BudgetDAO.getParkingData", accountNo);
+	}
 }

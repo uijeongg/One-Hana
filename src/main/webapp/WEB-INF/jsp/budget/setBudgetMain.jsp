@@ -363,24 +363,46 @@ $(document).ready(function(){
 	    console.log(typeof parkingGoal)
 	        
 	    
-	 /*    $.ajax({
-	        url : '${pageContext.request.contextPath}/incomeSettings' 
+	   $.ajax({
+	        url : '${pageContext.request.contextPath}/parkingSettings' 
 	      , method : 'post'
 	      , data   : {
-	                  income : income
-	                , incomeDate : incomeDate 
+	    	          parkingGoal : parkingGoal
 	      },
 	       success : function(data){
 	           if(data == 'success'){
-	               //alert('incomeMap 받아오기 성공')                      
+	               alert('parking 받아오기 성공')                      
 	               
-	               
-	               getIncomeData();
-	              
+	               getParkingData();
+	       
 	           }     
 	       }       
-	   }) */
+	   }) 
 	})
+	
+	
+	function getParkingData() {
+		$.ajax({
+			url : '${ pageContext.request.contextPath }/parkingAjax',
+            type : 'post',
+            success : function(data) {
+            	 alert('parking 에이젝스 들어오기 성공')
+            	 $('#parkingSet').empty();
+                 $('#parkingSet').append(data);
+                
+           
+                
+            }
+			
+		})
+		
+		
+	}
+
+	
+	
+
+	
 })
 </script>
 

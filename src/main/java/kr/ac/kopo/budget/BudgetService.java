@@ -25,4 +25,8 @@ public interface BudgetService {
 
 	List<AutoDivideVO> selectDivList(Map<String, Object> divideMap);
 
+	void updateParkingGoal(Map<String, Object> parkingMap);
+
+	MyBankVO getParkingData(String accountNo);
+
 }

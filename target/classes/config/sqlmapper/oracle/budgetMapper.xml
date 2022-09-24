@@ -59,5 +59,14 @@
     
     </select>
     
+    
+    <update id="updateParkingGoal" parameterType="map">
+        update T_MYONE set parkingLimit=#{parkingGoal} where accountNo=#{accountNo}  
+    </update>
+    
+    
+    <select id="getParkingData" resultType="kr.ac.kopo.myBank.MyBankVO" parameterType="String">
+        select parkingLimit from T_MYONE where accountNo=#{accountNo}
+    </select>
 
 </mapper>

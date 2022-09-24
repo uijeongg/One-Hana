@@ -96,6 +96,50 @@ public class BudgetController {
 	
 	
 	@ResponseBody
+	@PostMapping("/parkingSettings")
+	public String parkingSettings(@RequestParam("parkingGoal") int parkingGoal, HttpSession session) {
+		
+		String accountNo = (String)session.getAttribute("accountNo");
+		
+		
+		
+		Map<String, Object> parkingMap = new HashMap<>();
+		//incomeMap.put("id", loginVO.getId());
+		parkingMap.put("accountNo", accountNo);
+		parkingMap.put("parkingGoal", parkingGoal);
+		
+		budgetService.updateParkingGoal(parkingMap);
+		
+		System.out.println("파킹맵받아오나요 : " + parkingMap);
+		//session.setAttribute("incomeMap", incomeMap);
+		
+		return "success";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/parkingAjax")
+	public ModelAndView parkingAjax(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+
+		String accountNo = (String)session.getAttribute("accountNo");	
+		//incomeMap도 불러와야함
+	
+		MyBankVO updateData = new MyBankVO();
+		updateData = budgetService.getParkingData(accountNo);
+		System.out.println("파킹리밋 : " + updateData);
+				
+		
+		mav.addObject("updateData", updateData); //모델에 저장 (근데 모델앤뷰가 리퀘스트영역)
+		mav.setViewName("/budget/parkingGoalAjax");
+		return mav;
+	
+	}
+	
+	
+	
+	
+	@ResponseBody
 	@RequestMapping("/incomeAjax")
 	public ModelAndView incomeAjax(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
