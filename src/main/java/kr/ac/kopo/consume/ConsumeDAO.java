@@ -7,4 +7,8 @@ public interface ConsumeDAO {
 
 	List<Map<String, Object>> getConsumeData(String id);
 
+	List<Map<String,Object>> getMonthConsume(Map<String,Object> monthMap);
+
+	List<Map<String, Object>> getSixMonthConsume(Map<String, Object> monthMap);
+
 }

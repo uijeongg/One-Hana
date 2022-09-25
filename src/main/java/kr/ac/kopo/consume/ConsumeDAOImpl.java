@@ -20,4 +20,22 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 		
 		return consumeList;
 	}
+	
+	
+	@Override
+	public List<Map<String,Object>> getMonthConsume(Map<String,Object> monthMap) {
+		
+		List<Map<String,Object>> monthConsumeList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getMonthConsumeData", monthMap);
+		
+		return monthConsumeList;
+	}
+	
+	
+	@Override
+	public List<Map<String,Object>> getSixMonthConsume(Map<String,Object> monthMap) {
+		
+		List<Map<String,Object>> sixMonthConsumeList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getSixMonthConsumeData", monthMap);
+		
+		return sixMonthConsumeList;
+	}
 }

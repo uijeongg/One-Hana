@@ -20,16 +20,6 @@
 <link href="/resources/mycss/test.css" rel="stylesheet">
 
 <script>
-$(document).ready(function() {
-	function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } 
-	
-})
-</script>
-
- 
-<script>
 //월 급여액
 $(document).ready(function(){
         
@@ -298,7 +288,7 @@ $(document).ready(function(){
                 let str ='';
                 str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 ➜ '+name+' 주머니</td>'
                 str += '<td id="autoAmount_'+pocketCode+'"><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" '
-                str += 'class="form-control" style="color: #008485; text-align: center; width:200px;"></td>'
+                str += 'class="form-control" style="color: #008485; text-align:center; width:200px;"></td>'
                 
                 str += '<td id="autoDate_'+pocketCode+'"><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
                 str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" style="width:50px; background:white; color:#008485; text-align:center; border-radius:10px; height:30px;">'
@@ -466,8 +456,8 @@ $(document).ready(function(){
             <!-- MyBankVO - income에 update -->
 	        <div class="col-md-4" style="margin-top:12px;">
 	             <input type="text" id="income" name="income"
-	                    style="border: none; border-bottom: 2px solid #008485;">
-	                <span style="color: #008485; font-size : 26px; font-weight: 700;">원</span>      
+	                    style="border:none; border-bottom:2px solid #008485;">
+	                <span style="color:#008485; font-size:26px; font-weight:700;">원</span>      
 	        </div>
 	        
 	        <div class="col-md-2" style="margin-top:10px;">
@@ -528,7 +518,7 @@ $(document).ready(function(){
 
 
 			<%-- 고정비용 현황 입력 --%><br>
-			<div style="margin-left:3px; margin-bottom:20px;">
+			<div style="margin-left:3px; margin-bottom:25px;">
 			 <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
             style="width:40px; height:40px; display:inline;"/>
 			<p style=" display:inline;">&nbsp;금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요</p><br>
@@ -591,7 +581,7 @@ $(document).ready(function(){
 									<!-- <button type="button" >추가</button> -->
 
 									<input type="button" id="fixedSettings" value="추가"
-									       style="background-color:#008485; color:white; border:none; border-radius:10px; width:90px; height:42px;">
+									       style="background-color:#008485; color:white; border:none; border-radius:10px; width:90px; height:38px;">
 
 								</div>
 							</div>
@@ -624,7 +614,7 @@ $(document).ready(function(){
         <table class="table" id="table" style="margin-left:auto; margin-right:auto; margin-top:40px;">
             <thead>
                 <tr>
-                    <th colspan="5" style="color:black; text-align:center; font-size:23px;">
+                    <th colspan="5" style="color:black; text-align:center; font-size:21px;">
                        
                        
                        " 총 예산 &nbsp;
@@ -632,7 +622,7 @@ $(document).ready(function(){
                         <div style="display:inline;"> 
                         <strong>
                             <!-- <input type="hidden" disabled id="cal_total" value=""> -->
-                            <input disabled type="text" id="incomeAuto" class="input-cal" style="width:120px; border: none; color:#008485; font-weight:bold; text-align:center; font-size:20px;">
+                            <input disabled type="text" id="incomeAuto" class="input-cal" style="width:130px; border: none; color:#008485; font-weight:bold; text-align:center; font-size:25px;">
                         </strong>
                         </div>
                         
@@ -641,7 +631,7 @@ $(document).ready(function(){
                         
                         <strong style="color: blue;">
                          <!--    <input type="hidden" disabled id=""> -->
-                            <input disabled type="text" id="calcul" name="calcul2" class="input-cal" style="width:120px; border: none; color:red; font-weight:bold; text-align:center; font-size:20px;">
+                            <input disabled type="text" id="calcul" name="calcul2" class="input-cal" style="width:130px; border: none; color:red; font-weight:bold; text-align:center; font-size:25px;">
                         </strong>
                         
                          
@@ -716,20 +706,33 @@ $(document).ready(function(){
       <div class="modal fade" id="setFromParking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">내 자산 영혼까지 끌어모아 저축하기</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+          <p style="align:right;">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+         </p>   
+         
           <div class="modal-body">     
+                
+                 <h4 style="font-size:20px; text-align:center;">내 자산 영혼까지 끌어모아 저축하기</h4><br>
+          
                 매달 예산 사용 마지막 날, 모든 주머니에서 남은 잔액을 파킹 주머니로 자동 이동 설정을 해보세요! <br>
                 ※ 파킹 주머니는 고객님이 설정한 목표 금액이 모이기 전까지 출금이 불가합니다. <br>
                 설정하러 가볼까요?
             
           </div>
+          
+         <!--  
           <div class="modal-footer">
             <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()">확인</button> 
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
           </div>
+          --> 
+          
+          <div style="text-align:center; margin-bottom:20px;">
+            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()" data-bs-dismiss="modal" style="width:150px; margin-bottom: 25px;">확인</button>         
+           <!--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width:150px; background-color:#808080;">취소</button> -->
+          </div>
+          
+          
         </div>
       </div>
     </div>

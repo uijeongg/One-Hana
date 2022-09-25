@@ -41,8 +41,8 @@
 		 
 		 <div style="width:900px; margin-left:405px;" id="newAccountList">        
          
-				<h4 style="text-align:justify;">상품명</h4>
-				<h4 style="text-align:right;">${ MyBank.accountName }</h4><br>
+				<h4 style="text-align:justify;">상품명 ${ MyBank.accountName }</h4>
+				
 				
 				<h4 style="margin-left:10px; display:inline;">전환일</h4>
                 <h4 style="margin-right:10px; display:inline;">${ MyBank.openDate }</h4><br>

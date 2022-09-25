@@ -20,4 +20,21 @@ public class ConsumeServiceImpl implements ConsumeService {
 		return consumeList;
 	}
 	
+	
+	@Override
+	public List<Map<String,Object>> getMonthConsume(Map<String,Object> monthMap) {
+		
+		List<Map<String,Object>> getMonthConsumeList = consumeDAO.getMonthConsume(monthMap);
+		
+		return getMonthConsumeList;
+	}
+	
+	@Override
+	public List<Map<String, Object>> getSixMonthConsume(Map<String, Object> monthMap) {
+		List<Map<String,Object>> getSixMonthConsumeList = consumeDAO.getSixMonthConsume(monthMap);
+		
+		return getSixMonthConsumeList;
+	}
+	
+	
 }

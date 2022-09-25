@@ -164,22 +164,25 @@ function dividePocket() {
 		
 		
 		<%-- 주머니 추가 버튼 --%>
-		<div style="margin-left:430px; ">
+		<div style="margin-left:430px;">
 			<input type="button" id="pocket" value="주머니 추가" onclick="displayPocket1()"
-				   class="btn btn-secondary" 
-			       style="font-family:hanaBFont; font-size:18px; width:788px; height:53px; border-radius:10px; color:white; border:none;">
+				   class="btn" 
+			       style="font-family:hanaBFont; background-color:#FA6400; font-size:18px; width:788px; height:53px; border-radius:10px; color:white; border:none;">
 			
 			
-			<div id ="addPocket" style="width:800px; display:none; border:solid; border-radius:10px;">
-				<div class="row">
+			<div id ="addPocket" style="width:788px; display:none; border:solid; border-radius:10px; margin-bottom:20px;">
+				<div class="row" style="text-align:center; margin-top:20px;">
 					<div class="col-3"> 추가 주머니 이름 : </div>
 					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" style="width:300px;">
 				</div>
-				<div class="row">
+				<div class="row" style="text-align:center; margin-top:5px;">
 					<div class="col-3">주머니 용도 : </div>
-					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" class="col-8">
+					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" class="col-6">
 				</div>
-				<div class="btn btn-secondary" id="pocketAddBtn">주머니 추가하기</div>
+				<!-- <div class="btn" style="background-color:#FA6400; color:white;" id="pocketAddBtn">주머니 추가하기</div> -->
+				<input type="button" value="추가하기" id="pocketAddBtn" 
+				       style="background-color:#FA6400; color:white; border:none; border-radius:10px; margin-top:10px; margin-bottom:10px;
+				              width:130px; height:35px;">
 			</div>			
 		</div><br>
 	

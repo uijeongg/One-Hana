@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="consume.ConsumeDAO">
+ 
 
     <!-- 캘린더에 들어갈 일 단위 데이터 불러오기 -->
     <select id="getConsumeData" resultType="map" parameterType="string">    
@@ -11,5 +12,20 @@
         WHERE A.CATECODE = B.CATECODE AND B.ID = #{id}
     </select>
     
-
+    <!-- 9(당월)월의 총 소비액 -->
+    <select id="getMonthConsumeData" resultType="map" parameterType="map">
+        SELECT SUM(conAmount) AS MONTHSUM, SUBSTR(condate,1,7) AS CURRENT_MONTH FROM T_CONSUME_HISTORY 
+        WHERE TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${month}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${month})) 
+        AND POCKETCODE=2 AND ID=#{id}
+        GROUP BY SUBSTR(condate,1,7)   
+    </select>
+    
+    <!-- 9(당월)월의 소비액 추이 -->
+    <select id="getSixMonthConsumeData" resultType="map" parameterType="map">
+        SELECT conAmount, ROUND(TO_NUMBER(TO_DATE(CONDATE,'yyyy-MM-dd hh24:mi:ss')-TO_DATE('01-01-1970 00:00:00', 'DD-MM-YYYY HH24:MI:SS'))*24*60*60*1000) AS CONDATE FROM T_CONSUME_HISTORY 
+        WHERE TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd})) 
+        AND POCKETCODE=2 AND ID=#{id} ORDER BY CONDATE DESC
+    </select>
+    
+    
 </mapper>

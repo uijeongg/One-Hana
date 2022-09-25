@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
@@ -12,11 +13,22 @@
         <br>
         <div class="row" style="margin:0 auto;">
             <!-- <div class="col-4">파킹 주머니 목표금액 : </div> -->
-            <div style="font-size:20px; margin:0 auto; display:inline;">파킹 주머니 목표 금액 : ${updateData.parkingLimit} 원
             
-            </div> 
-            <div style="font-size:20px;">
-                파킹 주머니 이동 날짜 : 예산 사용 마지막날 ("매달 <p style="display:inline; color:#008485;">${incomeMap.incomeDate}</p>일")
+            <div style="margin:0 auto; display:inline;">
+	            <p style="font-size:18px; margin:0 auto; display:inline;">파킹 주머니 목표 금액 : </p>
+	
+	            <p style="font-size:23px; margin:0 auto; display:inline;">
+	               "<fmt:formatNumber value="${updateData.parkingLimit}" pattern="#,###"/>&nbsp;원"
+	            </p> 
+            
+            </div>
+            
+            <div style="margin:0 auto; display:inline;">
+	            <p style="font-size:18px; display:inline;">파킹 주머니 이동 날짜 : </p>
+	             
+	            <p style="font-size:20px; display:inline;">    
+	                예산 사용 마지막날 ("매달 ${incomeMap.incomeDate} 일")
+	            </p>
             </div>
                 
             <br><br>
