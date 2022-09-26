@@ -15,20 +15,28 @@
             <!-- <div class="col-4">파킹 주머니 목표금액 : </div> -->
             
             <div style="margin:0 auto; display:inline;">
-	            <p style="font-size:18px; margin:0 auto; display:inline;">파킹 주머니 목표 금액 : </p>
+	            <p style="font-size:18px; margin:0 auto; display:inline;">파킹 주머니 목표 금액은 </p>
 	
-	            <p style="font-size:23px; margin:0 auto; display:inline;">
+	            <p style="font-size:25px; margin:0 auto; display:inline; color:#008485;">
 	               "<fmt:formatNumber value="${updateData.parkingLimit}" pattern="#,###"/>&nbsp;원"
 	            </p> 
+	            
+	            <p style="font-size:18px; margin:0 auto; display:inline;">
+	               입니다
+	            </p>
             
             </div>
             
             <div style="margin:0 auto; display:inline;">
-	            <p style="font-size:18px; display:inline;">파킹 주머니 이동 날짜 : </p>
+	            <p style="font-size:18px; display:inline;">파킹 주머니 이동 날짜는 예산 사용 마지막 날인</p>
 	             
-	            <p style="font-size:20px; display:inline;">    
-	                예산 사용 마지막날 ("매달 ${incomeMap.incomeDate} 일")
+	            <p style="font-size:25px; display:inline; color:#008485;">    
+	                 "매달 ${incomeMap.incomeDate} 일"
 	            </p>
+	            
+	            <p style="font-size:18px; margin:0 auto; display:inline;">
+                   입니다
+                </p>
             </div>
                 
             <br><br>

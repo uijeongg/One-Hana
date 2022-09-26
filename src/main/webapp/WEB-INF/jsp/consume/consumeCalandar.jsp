@@ -53,6 +53,11 @@
          </div>
          <hr style="width: 200px;">
          <div>
+            <a href="${pageContext.request.contextPath }/"
+               style="color:#808080;">나의 파킹 관리</a>
+         </div>
+         <hr style="width:200px;">
+         <div>
             <a href="${pageContext.request.contextPath}/consumeMain"
                style="color:#808080;">나의 소비 달력</a>
          </div>

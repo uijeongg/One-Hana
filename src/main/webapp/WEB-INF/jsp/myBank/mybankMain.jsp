@@ -20,7 +20,10 @@
 	$(function(){
 		search();
 		$('#pocketAddBtn').on("click", function(){
+			$('#pocket').show();
+			$('#addPocket').hide();
 			addPocket();
+			
 		})
 	})
 	
@@ -54,6 +57,7 @@
 			},
 			success : function(data) {
 				$('#pocketList').html(data)
+				
 			}
 		})
 	}
@@ -170,19 +174,22 @@ function dividePocket() {
 			       style="font-family:hanaBFont; background-color:#FA6400; font-size:18px; width:788px; height:53px; border-radius:10px; color:white; border:none;">
 			
 			
-			<div id ="addPocket" style="width:788px; display:none; border:solid; border-radius:10px; margin-bottom:20px;">
-				<div class="row" style="text-align:center; margin-top:20px;">
-					<div class="col-3"> 추가 주머니 이름 : </div>
-					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" style="width:300px;">
+			<div id ="addPocket" style="text-align:center; width:788px; display:none; border:solid 5px; border-radius:20px; border-color:#FA6400;">
+				<div class="row" style="text-align:center; display:inline; margin-top:20px;">
+					<!-- <div class="col-4"> 추가 주머니 이름 : </div> -->
+					<div style="display:inline; font-size:18px; margin-top:30px;"> 추가 주머니 이름 : </div>
+					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" style="font-size:20px; width:300px; margin-top:30px; border:none; border-bottom:2px solid #008485;">
 				</div>
-				<div class="row" style="text-align:center; margin-top:5px;">
-					<div class="col-3">주머니 용도 : </div>
-					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" class="col-6">
+				<br>
+				<div class="row" style="text-align:center; display:inline; margin-top:5px;">
+					<div style="display:inline; font-size:18px;"> 주머니 용도 : </div>
+					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" style="border:none; border-bottom:2px solid #008485; font-size:20px; width:500px;  margin-top:10px;">
 				</div>
-				<!-- <div class="btn" style="background-color:#FA6400; color:white;" id="pocketAddBtn">주머니 추가하기</div> -->
+				<br>
+				
 				<input type="button" value="추가하기" id="pocketAddBtn" 
-				       style="background-color:#FA6400; color:white; border:none; border-radius:10px; margin-top:10px; margin-bottom:10px;
-				              width:130px; height:35px;">
+				       style="background-color:#FA6400; color:white; border:none; border-radius:10px; margin-top:20px; margin-bottom:20px;
+				              width:130px; height:50px;">
 			</div>			
 		</div><br>
 	
@@ -193,13 +200,19 @@ function dividePocket() {
 	<script>
  		function displayPocket1() { 
 
-			let pock = document.getElementById("addPocket");
+ 			$('#pocket').hide();
+            $('#addPocket').show();
+          //  $('pocketName').val('');
+           // $('pocketPurpose').val('');
+		/* 	let pock = document.getElementById("addPocket");
 			if(pock.style.display == "none"){
 				pock.style.display = "";
 			} else {
 				pock.style.display = "none";
-			}		
+			} */		
 	 	} 
+ 		
+ 		
 	</script>	
 	
 

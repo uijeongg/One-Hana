@@ -16,8 +16,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 <!-- my css  -->
-
 <link href="/resources/mycss/test.css" rel="stylesheet">
+
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
 <script>
 //월 급여액
@@ -223,11 +227,11 @@ function autoDivSetting(input) {
 		                //console.log(divAmount + '원')
 		        	  
 		                let str = '';
-		                str += '<p>' + divAmount + '원 </p>'
+		                str += '<p style="font-size:20px;">' + divAmount + '원 </p>'
 		               $('#autoAmount_'+pocketCode).append(str);  
 		                
 		                let str2 = '';
-                        str2 += '<p>매달 ' + autoDivDate + '일 </p>'
+                        str2 += '<p style="font-size:20px;">매달 ' + autoDivDate + '일 </p>'
                         $('#autoDate_'+pocketCode).append(str2);  
 		                
                         let str3 = '';
@@ -252,14 +256,14 @@ function autoDivSetting(input) {
 		
 		
         var pocketCode = '${divideMap.pocketCode}'
-        console.log(pocketCode)
+      //  console.log(pocketCode)
         let calcul2 = $('#calcul').val();
 		//console.log(calcul2);
         //console.log(divAmount)
         
         //calcul2값 - divAmount값 계산하기
 	    calcul2 = calcul2 - divAmount       
-        console.log("calcul2의 값은? : "+ calcul2);
+       // console.log("calcul2의 값은? : "+ calcul2);
 	    
         $('#calcul').val(calcul2);
         
@@ -361,7 +365,7 @@ $(document).ready(function(){
 	      },
 	       success : function(data){
 	           if(data == 'success'){
-	               alert('parking 받아오기 성공')                      
+	              // alert('parking 받아오기 성공')                      
 	               
 	               getParkingData();
 	       
@@ -376,7 +380,7 @@ $(document).ready(function(){
 			url : '${ pageContext.request.contextPath }/parkingAjax',
             type : 'post',
             success : function(data) {
-            	 alert('parking 에이젝스 들어오기 성공')
+            	// alert('parking 에이젝스 들어오기 성공')
             	 $('#parkingSet').empty();
                  $('#parkingSet').append(data);
                 
@@ -457,7 +461,7 @@ $(document).ready(function(){
 	        <div class="col-md-4" style="margin-top:12px;">
 	             <input type="text" id="income" name="income"
 	                    style="border:none; border-bottom:2px solid #008485;">
-	                <span style="color:#008485; font-size:26px; font-weight:700;">원</span>      
+	                <span style="font-size:26px; font-weight:700; color:#263A4F;">원</span>      
 	        </div>
 	        
 	        <div class="col-md-2" style="margin-top:10px;">
@@ -468,7 +472,7 @@ $(document).ready(function(){
 	        
             <div style="margin-top:18px;">
 	           <select name="fixedDate" id="fixedDate"
-	                 style="width:150px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">
+	                 style="width:100px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">
 	                 <option>급여일</option>
 	                 <option>급여일 다음날</option>
 	                 <c:forEach begin="1" end="31" var="x">
@@ -691,15 +695,22 @@ $(document).ready(function(){
         
         <br><br>
         
-            <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#setFromParking"
+         <!--    <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#setFromParking"
                     style="width: 200px;">
                     내 자산 <br> 영혼까지 끌어모아 <br>저축하는 방법!
             </button>
-
+ -->
        </div>
        
      </div>
      </form>
+     
+     <div style="margin-top:20px; margin-left:410px;">
+      <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#setFromParking" style="width: 200px;">
+              내 자산 <br> 영혼까지 끌어모아 <br>저축하는 방법!
+      </button>
+     </div>
+     
      
      
      <!-- 모달 -->
@@ -712,11 +723,15 @@ $(document).ready(function(){
          
           <div class="modal-body">     
                 
-                 <h4 style="font-size:20px; text-align:center;">내 자산 영혼까지 끌어모아 저축하기</h4><br>
+                 <h4 class="animate__animated animate__fadeInDownBig" style="font-size:20px; text-align:center;">내 자산 영혼까지 끌어모아 저축하기</h4><br>
           
-                매달 예산 사용 마지막 날, 모든 주머니에서 남은 잔액을 파킹 주머니로 자동 이동 설정을 해보세요! <br>
-                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 모이기 전까지 출금이 불가합니다. <br>
-                설정하러 가볼까요?
+                 <h4 style="text-align:center; font-size:17px;">
+	                매달 예산 사용 마지막 날, <br> 모든 주머니에서 남은 잔액을 <br> 파킹 주머니로 자동 이동 설정을 해보세요! <br><br>
+	                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 <br> 모이기 전까지 출금이 불가합니다. <br><br>
+	             </h4>
+	             <h4 style="text-align:center; font-size:17px; color:#FA6400">
+	                설정하러 가볼까요?
+	             </h4>
             
           </div>
           
@@ -728,11 +743,11 @@ $(document).ready(function(){
           --> 
           
           <div style="text-align:center; margin-bottom:20px;">
-            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()" data-bs-dismiss="modal" style="width:150px; margin-bottom: 25px;">확인</button>         
+            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()" data-bs-dismiss="modal" style="font-family:hanaBFont; width:150px; margin-bottom: 25px;">확인</button>         
            <!--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width:150px; background-color:#808080;">취소</button> -->
           </div>
           
-          
+
         </div>
       </div>
     </div>

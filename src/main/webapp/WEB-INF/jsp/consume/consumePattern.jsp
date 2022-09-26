@@ -50,6 +50,11 @@
          </div>
          <hr style="width: 200px;">
          <div>
+            <a href="${pageContext.request.contextPath }/"
+               style="color:#808080;">나의 파킹 관리</a>
+         </div>
+         <hr style="width: 200px;">
+         <div>
             <a href="${pageContext.request.contextPath}/consumeMain"
                style="color:#808080;">나의 소비 달력</a>
          </div>
@@ -69,6 +74,8 @@
    <!-- side bar end -->
    
    
+   
+   
    <!-- page title start -->
    <div style="margin-left:670px; margin-top:11px;" class="animate__animated animate__bounce" >
         <img src="${pageContext.request.contextPath}/resources/img/My_gragh3.png" 
@@ -82,7 +89,7 @@
     
     
    <!-- 월 총 이용 금액 start -->
-   <div style="margin-left:600px; margin-top:50px; margin-bottom:40px;">
+   <div style="margin-left:620px; margin-top:50px; margin-bottom:40px;">
 	    <div id="month" style="font-size:25px;">
 	        <!-- fetch로 불러옴 -->
 	    </div>
@@ -92,21 +99,56 @@
    <div style="margin-left:430px;">
             <input type="button" id="pocket" value="이번 달 전체적인 소비 추이 확인" onclick="displaySixMonth()"
                    class="btn" 
-                   style="font-family:hanaBFont; background-color:#008485; font-size:17px; width:788px; height:50px; border-radius:10px; color:white; border:none;">
+                   style="font-family:hanaBFont; background-color:#008485; font-size:17px; width:788px; height:50px; 
+                   border-radius:10px; color:white; border:none; margin-bottom:40px;">
+   </div>
+      
             
-            <div id="sixmonth" style="display:none">                 
-                <figure class="highcharts-figure">
-                    <div id="container"></div>
-                    <p class="highcharts-description">
-                       <!-- 그래프자리 -->
-                    </p>
-                </figure>                  
-            </div>
-                     
+            <div id="sixmonth" style="display:none;">
+            
+                 <div style="margin-bottom:60px; border:5px solid; border-radius:20px; border-color:#008485; width:890px; margin-left:400px;">                
+	                <figure class="highcharts-figure" style="margin-left:42px; margin-top:30px;">
+	                    <div id="container"></div>
+	                    <p class="highcharts-description">
+	                       <!-- 그래프자리 -->
+	                    </p>
+	                </figure>  
+	                
+	                <div style="font-size:25px; margin-top:40px; margin-left:370px; margin-bottom:30px;">
+                       "comment"
+                    </div>      
+	                 
+                 </div>       
+            </div>          
+    
+    
+    <!-- 주간 소비 추이 -->
+    <!-- 막대그래프로 뽑을거임 / 주별 총금액, 주별 건수, 큰소비 있는지 없는지? -->
+    <hr style="border:ridge; width:1060px; height:3px; background-color:#066262; margin-left:280px;">
+    <div style="margin-bottom:30px; margin-left:740px; font-size:25px;">
+        <div style="color:#008485; display:inline;"> 주간 </div>
+	    <div style="display:inline;">소비 추이</div>
     </div>
     
     
     
+    
+    
+    <!-- 요일별 -->
+    <!-- 막대그래프, 탑2  -->
+    
+    <!-- 일별은 일별로 제일 많이 쓴 날짜 top3 -> 카테고리, 상호명, 금액 리스트 보여주기  -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- 맨 윗단 이번달 총 소비 금액 -->
 	<script>
 	$(document).ready(function(){
 	 
@@ -122,7 +164,7 @@
 	        		/* $('#month').append('<div>'+consumeList[i].CURRENT_MONTH+'에 쓴 금액은 ' +consumeList[i].MONTHSUM+ '입니다</div>'); */
 	     
 	        		let str ='';
-	                str += '<div style="display:inline;">'+consumeList[i].CURRENT_MONTH+'</div> <div style="display:inline;">에 쓴 금액은 총 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ '원 입니다</div>';
+	                str += '<div style="display:inline; ">'+consumeList[i].CURRENT_MONTH+'</div> <div style="display:inline;">월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
 	        	
 	                $('#month').append(str);
 	                
@@ -130,9 +172,6 @@
 	        })
 	})
 	</script>
-	
-
-	
 	
 	
 	<!-- 하이차트 src -->
@@ -142,7 +181,7 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
-    <!-- 버튼 클릭 시 이번달 소비 추이 보이기 -->
+    <!-- 버튼 클릭 시 이번달 소비 추이 보이기 - high chart -->
     <script>
         function displaySixMonth(){ 
         	let dayArray = [];
@@ -154,7 +193,6 @@
             fetch("/getSixMonthConsume?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
             .then(res=>res.json())
             .then(res=>{
-            	console.log("의정이랑 풀밧세: " +res.length)
             	recentConsumeList = res; 
             	for(let i=0;i<recentConsumeList.length;i++){
             		let dayConsumeArray = [];
@@ -174,11 +212,11 @@
             		                zoomType: 'x'
             		            },
             		            title: {
-            		                text: '${loginVO.name}님의 이번달 소비데이터'
+            		                text: '" ${loginVO.name} 님의 이번 달 소비 추이 "'
             		            },
             		            subtitle: {
             		                text: document.ontouchstart === undefined ?
-            		                    '이번 달의 총 소비 추이를 확인해 보세요' : 'Pinch the chart to zoom in'
+            		                    '이번 달의 총 소비 패턴을 확인해 보세요' : 'Pinch the chart to zoom in'
             		            },
             		            xAxis: {
             		                type: 'datetime'

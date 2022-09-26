@@ -62,7 +62,7 @@ function newJoin(){
              <%-- 통장전환 --%>   
             <%--  <form action="${pageContext.request.contextPath}/accountList" method="get">  --%>
                     <div onclick="accountList()" style="margin-right:20px; width:400px; height:400px; padding: 10px;  border: solid; border-color: #008485; border-width: 7px; border-radius: 20px;" class="service-item bg-white text-center p-5">
-                        <img src="${pageContext.request.contextPath }/resources/img/My_bankchange.png" width="250"/>
+                        <img src="${pageContext.request.contextPath }/resources/img/My_bankchange2.png" width="250"/>
                         <br><span style="font-size:30px;">통장 전환</span><br>
                         <!-- <input type="submit" value="통장 전환">  -->
                         <p style="margin-top:15px;">새로 개설 없이 기존의 계좌를 전환하여 가입</p>
@@ -76,7 +76,7 @@ function newJoin(){
             <%-- 통장신규가입 --%> 
             <%-- <form action="${pageContext.request.contextPath}/newJoin" method="get">  --%>   
                   <div onclick="newJoin()" style="width:400px; height:400px; padding: 10px;  border: solid; border-color: #008485; border-width: 7px; border-radius: 20px;" class="service-item bg-white text-center p-5">
-                      <img src="${pageContext.request.contextPath }/resources/img/My_bankadd.png" width="250" style="height:212px;"/>
+                      <img src="${pageContext.request.contextPath }/resources/img/My_bankadd2.png" width="250" style="height:212px;"/>
                       <br><span style="font-size:30px; margin-top:20px;">신규 가입</span><br>
                       <!-- <input type="submit" value="통장 신규 가입">  --> 
                        <p style="margin-top:15px;" class="mb-0">신규 통장을 개설하여 마이원 하나 통장 가입 </p>
