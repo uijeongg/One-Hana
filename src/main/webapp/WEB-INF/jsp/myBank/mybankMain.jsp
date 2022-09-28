@@ -147,7 +147,7 @@ function dividePocket() {
 	   <br>
 	  <%--  <h3 style="margin-left:320px;">내 주머니 현황</h3><br> ui 홍씨처럼 가로로 만들기 --%>
 		<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">내 주머니 현황</h3>
-		<hr style="width:779px; height:5px; background-color:#066262; position:relative; left:430px;">
+		<hr style="width:779px; height:5px; background-color:#066262; position:relative; left:20px;">
 		<div id = "pocketList" style="margin-left:440px;">
 			
 		</div>

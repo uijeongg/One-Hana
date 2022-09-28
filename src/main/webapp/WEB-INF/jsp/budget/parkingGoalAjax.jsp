@@ -28,7 +28,7 @@
             </div>
             
             <div style="margin:0 auto; display:inline;">
-	            <p style="font-size:18px; display:inline;">파킹 주머니 이동 날짜는 예산 사용 마지막 날인</p>
+	            <p style="font-size:18px; display:inline;">파킹 주머니 이동 날짜는 </p>
 	             
 	            <p style="font-size:25px; display:inline; color:#008485;">    
 	                 "매달 ${incomeMap.incomeDate} 일"

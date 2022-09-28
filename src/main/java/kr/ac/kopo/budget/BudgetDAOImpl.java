@@ -74,4 +74,18 @@ public class BudgetDAOImpl implements BudgetDAO {
 	public MyBankVO getParkingData(String accountNo) {
 		return sqlSessionTemplate.selectOne("budget.BudgetDAO.getParkingData", accountNo);
 	}
+	
+	
+	@Override
+	public List<MyBankVO> selectOneList() {
+		return sqlSessionTemplate.selectList("budget.BudgetDAO.selectOneList");
+	}
+	
+	
+	@Override
+	public List<AutoDivideVO> doAutoParking(MyBankVO myBankVO) {
+		
+		sqlSessionTemplate.selectOne("budget.BudgetDAO.doAutoParking", myBankVO);
+		return null;
+	}
 }

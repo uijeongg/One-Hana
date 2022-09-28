@@ -53,7 +53,7 @@
          </div>
          <hr style="width: 200px;">
          <div>
-            <a href="${pageContext.request.contextPath }/"
+            <a href="${pageContext.request.contextPath }/myParkingMain"
                style="color:#808080;">나의 파킹 관리</a>
          </div>
          <hr style="width:200px;">

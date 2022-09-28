@@ -29,4 +29,10 @@ public interface BudgetService {
 
 	MyBankVO getParkingData(String accountNo);
 
+	List<MyBankVO> showAutoParkingDayOne();
+
+	//void doAutoParking(AutoDivideVO autoDivideVO);
+
+	List<AutoDivideVO> doAutoParking(MyBankVO myBankVO);
+
 }

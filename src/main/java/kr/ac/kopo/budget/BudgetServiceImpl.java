@@ -82,4 +82,23 @@ public class BudgetServiceImpl implements BudgetService {
 		MyBankVO selectParking = budgetDAO.getParkingData(accountNo);
 		return selectParking;
 	}
+	
+	
+	@Override
+	public List<MyBankVO> showAutoParkingDayOne() {
+		
+		List<MyBankVO> autoParkingDayOne = budgetDAO.selectOneList();
+		
+		return autoParkingDayOne;
+	}
+	
+	
+	@Override
+	public List<AutoDivideVO> doAutoParking(MyBankVO myBankVO) {
+		
+		return budgetDAO.doAutoParking(myBankVO);
+	}
+	
+	
+	
 }

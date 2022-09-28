@@ -28,4 +28,6 @@ public interface MyBankDAO {
 	void insertPocketDetail(Map<String, Object> paramMap);
 
 	void insertPockets(MyBankVO MyBank);
+
+
 }

@@ -266,10 +266,7 @@ public class BudgetController {
 		//프로시저 호출
 		budgetService.insertAutoDiv(divideMap);
 		//인서트가 autoDivVO에 돼야지
-		
-		
-		
-		
+
 		
 		//select로 ajax 띄워주기 호출
 		List<AutoDivideVO> autoDivList = new ArrayList<AutoDivideVO>();
@@ -282,5 +279,24 @@ public class BudgetController {
 	}
 	
 	
+	
+	//자동파킹날짜에 따른 스케줄러 작동
+	@Scheduled(cron = "0 0 10 1 * *") //매달 1일 10시
+	//@Scheduled(cron = "0 0/5 * * * *") //5분
+	public void autoParking() {
+	      //System.out.println("monthlySaving1");
+	      List<MyBankVO> autoParkingDayList = budgetService.showAutoParkingDayOne();
+	      
+	      System.out.println("autoParkingDayList : " + autoParkingDayList);
+	      
+	      for (MyBankVO MyBankVO : autoParkingDayList) {
+	    	  List<AutoDivideVO> selectAutoDiv = budgetService.doAutoParking(MyBankVO); //프로시저 호출
+	      
+	    	    System.out.println("selectAutoDiv : " + selectAutoDiv);
+	      }
+	   }
+
+	
+
 	
 }

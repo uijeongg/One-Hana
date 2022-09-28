@@ -6,7 +6,7 @@
 
     <!-- 월급, 월급일 insert -->
     <update id="updateIncome" parameterType="map">
-        update T_MYONE set income=#{income}, incomeDate=#{incomeDate}
+        update T_MYONE set income=#{income}, incomeDate=#{incomeDate} ,parkingDate=#{incomeDate}
         where accountNo=#{accountNo}
     </update>
    
@@ -47,7 +47,7 @@
                 #{pocketCode},
                 #{autoDivDate}
                 )
-            }
+         }
     </select>
     
     
@@ -69,4 +69,20 @@
         select parkingLimit from T_MYONE where accountNo=#{accountNo}
     </select>
 
+
+    <select id="selectOneList" resultType="kr.ac.kopo.myBank.MyBankVO">
+        select * from T_MYONE where parkingDate=1
+    </select>
+    
+   
+   
+     <select id="doAutoParking" statementType="CALLABLE" parameterType="kr.ac.kopo.myBank.MyBankVO">
+        { CALL AUTO_PARKING_PROCESS_PROC(
+                #{accountNo},
+                #{parkingDate}
+                )
+            }
+    </select>
+
+    
 </mapper>

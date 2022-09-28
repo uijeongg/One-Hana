@@ -29,5 +29,13 @@ public interface BudgetDAO {
 
 	MyBankVO getParkingData(String accountNo);
 
+	List<MyBankVO> selectOneList();
+
+	List<AutoDivideVO> doAutoParking(MyBankVO myBankVO);
+
+
+	
+	
+
 
 }

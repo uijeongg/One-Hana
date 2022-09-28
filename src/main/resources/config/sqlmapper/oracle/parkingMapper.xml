@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="parking.ParkingDAO">
+
+
+    <select id="getParkingSum" resultType="int" parameterType="String">
+        SELECT parkingLimit FROM T_MYONE WHERE ACCOUNTNO=#{ACCOUNTNO}
+    </select>
+    
+    <select id="getParkingBal" resultType="int" parameterType="String">
+        SELECT BALANCE FROM T_MYONE_POCKET WHERE POCKETCODE=4 AND ACCOUNTNO=#{ACCOUNTNO}
+    </select>
+    
+
+
+    <select id="getParkingData" resultType="map" parameterType="map">
+        SELECT accountNo, fromPocket, toPocket, autoDivAmount, autoDivDate FROM T_AUTO_DIVIDE WHERE ACCOUNTNO=#{ACCOUNTNO}   
+    </select>
+
+</mapper>

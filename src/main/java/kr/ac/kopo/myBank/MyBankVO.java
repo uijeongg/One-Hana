@@ -9,9 +9,8 @@ public class MyBankVO {
 	private String openDate;
 	private int income;
 	private String incomeDate;
+	private String parkingDate;
 	private int parkingLimit;
-	
-	
 	public String getAccountNo() {
 		return accountNo;
 	}
@@ -48,6 +47,12 @@ public class MyBankVO {
 	public void setIncomeDate(String incomeDate) {
 		this.incomeDate = incomeDate;
 	}
+	public String getParkingDate() {
+		return parkingDate;
+	}
+	public void setParkingDate(String parkingDate) {
+		this.parkingDate = parkingDate;
+	}
 	public int getParkingLimit() {
 		return parkingLimit;
 	}
@@ -57,9 +62,10 @@ public class MyBankVO {
 	@Override
 	public String toString() {
 		return "MyBankVO [accountNo=" + accountNo + ", accountName=" + accountName + ", balance=" + balance
-				+ ", openDate=" + openDate + ", income=" + income + ", incomeDate=" + incomeDate + ", parkingLimit="
-				+ parkingLimit + "]";
+				+ ", openDate=" + openDate + ", income=" + income + ", incomeDate=" + incomeDate + ", parkingDate="
+				+ parkingDate + ", parkingLimit=" + parkingLimit + "]";
 	}
+	
 	
 	
 	
