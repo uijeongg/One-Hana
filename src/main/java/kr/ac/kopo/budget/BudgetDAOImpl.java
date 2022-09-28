@@ -83,7 +83,7 @@ public class BudgetDAOImpl implements BudgetDAO {
 	
 	
 	@Override
-	public List<AutoDivideVO> doAutoParking(MyBankVO myBankVO) {
+	public List<Map<String, Object>> doAutoParking(MyBankVO myBankVO) {
 		
 		sqlSessionTemplate.selectOne("budget.BudgetDAO.doAutoParking", myBankVO);
 		return null;

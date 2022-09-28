@@ -10,5 +10,7 @@ public interface ConsumeService {
 	List<Map<String,Object>> getMonthConsume(Map<String,Object> monthMap);
 
 	List<Map<String, Object>> getSixMonthConsume(Map<String, Object> monthMap);
+	
+
 
 }

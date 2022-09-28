@@ -281,8 +281,8 @@ public class BudgetController {
 	
 	
 	//자동파킹날짜에 따른 스케줄러 작동
-	@Scheduled(cron = "0 0 10 1 * *") //매달 1일 10시
-	//@Scheduled(cron = "0 0/5 * * * *") //5분
+	@Scheduled(cron = "0 40 20 28 * *") //매달 1일 10시
+	//@Scheduled(cron = "0 0/2 * * * *") //5분
 	public void autoParking() {
 	      //System.out.println("monthlySaving1");
 	      List<MyBankVO> autoParkingDayList = budgetService.showAutoParkingDayOne();
@@ -290,7 +290,7 @@ public class BudgetController {
 	      System.out.println("autoParkingDayList : " + autoParkingDayList);
 	      
 	      for (MyBankVO MyBankVO : autoParkingDayList) {
-	    	  List<AutoDivideVO> selectAutoDiv = budgetService.doAutoParking(MyBankVO); //프로시저 호출
+	    	  List<Map<String, Object>> selectAutoDiv = budgetService.doAutoParking(MyBankVO); //프로시저 호출
 	      
 	    	    System.out.println("selectAutoDiv : " + selectAutoDiv);
 	      }

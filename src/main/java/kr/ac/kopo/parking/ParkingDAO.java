@@ -1,7 +1,10 @@
 package kr.ac.kopo.parking;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import kr.ac.kopo.budget.AutoDivideVO;
 
 public interface ParkingDAO {
 
@@ -12,7 +15,8 @@ public interface ParkingDAO {
 	
 	
 	
-	List<Map<String, Object>> getParkingData(String accountNo);
+	List<HashMap<String, Object>> getParkingData(String accountNo);
+	
 
 
 

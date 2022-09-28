@@ -31,7 +31,7 @@ public interface BudgetDAO {
 
 	List<MyBankVO> selectOneList();
 
-	List<AutoDivideVO> doAutoParking(MyBankVO myBankVO);
+	List<Map<String, Object>> doAutoParking(MyBankVO myBankVO);
 
 
 	

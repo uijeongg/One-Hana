@@ -94,7 +94,7 @@ public class BudgetServiceImpl implements BudgetService {
 	
 	
 	@Override
-	public List<AutoDivideVO> doAutoParking(MyBankVO myBankVO) {
+	public List<Map<String, Object>> doAutoParking(MyBankVO myBankVO) {
 		
 		return budgetDAO.doAutoParking(myBankVO);
 	}

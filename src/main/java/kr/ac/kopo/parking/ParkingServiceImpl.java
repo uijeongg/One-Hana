@@ -1,10 +1,13 @@
 package kr.ac.kopo.parking;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import kr.ac.kopo.budget.AutoDivideVO;
 
 @Service
 public class ParkingServiceImpl implements ParkingService {
@@ -30,14 +33,14 @@ public class ParkingServiceImpl implements ParkingService {
 		return parkingBal;
 	}
 	
-	
+
 	
 	
 	
 	@Override
-	public List<Map<String, Object>> getParkingData(String accountNo) {
+	public List<HashMap<String, Object>> getParkingData(String accountNo) {
 		
-		List<Map<String, Object>> parkingList = parkingDAO.getParkingData(accountNo);
+		List<HashMap<String, Object>> parkingList = parkingDAO.getParkingData(accountNo);
 		
 		return parkingList;
 	}

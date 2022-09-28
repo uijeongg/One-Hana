@@ -13,10 +13,13 @@
         SELECT BALANCE FROM T_MYONE_POCKET WHERE POCKETCODE=4 AND ACCOUNTNO=#{ACCOUNTNO}
     </select>
     
+    
 
 
-    <select id="getParkingData" resultType="map" parameterType="map">
-        SELECT accountNo, fromPocket, toPocket, autoDivAmount, autoDivDate FROM T_AUTO_DIVIDE WHERE ACCOUNTNO=#{ACCOUNTNO}   
+    <select id="getParkingData" resultType="hashmap" parameterType="String">
+        SELECT A.ACCOUNTNO AS ACCOUNTNO, A.AUTODIVAMOUNT AS AUTODIVAMOUNT, B.FROMPOCKET AS FROMPOCKET, B.PARKINGAMOUNT AS PARKINGAMOUNT
+        FROM T_AUTO_DIVIDE A, T_AUTO_PARKING B
+        WHERE A.TOPOCKET = B.FROMPOCKET AND A.ACCOUNTNO='${ACCOUNTNO}'
     </select>
 
 </mapper>

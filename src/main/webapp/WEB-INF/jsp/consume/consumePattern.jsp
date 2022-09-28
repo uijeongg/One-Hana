@@ -130,6 +130,7 @@
 	    <div style="display:inline;">소비 추이</div>
     </div>
     
+    <div class="weeklyGraph1"></div>
     
     
     
@@ -150,26 +151,28 @@
     
     <!-- 맨 윗단 이번달 총 소비 금액 -->
 	<script>
-	$(document).ready(function(){
-	 
+	$(document).ready(function(){	 
 	        let month = 0; //sysdate 기준 이번달
 	        let id = '${loginVO.id}';
 	        console.log("id : " + id );
 	        console.log("month : " + month);
+	        
+	        
 	        fetch('/getMonthConsume?id='+id+'&month='+month)
 	        .then(res=>res.json())
 	        .then(res=>{
-	        	let consumeList = res
+	        	let consumeList = res;
+                console.log("의정이: "+consumeList.length);
 	        	for(let i=0;i<consumeList.length;i++){
 	        		/* $('#month').append('<div>'+consumeList[i].CURRENT_MONTH+'에 쓴 금액은 ' +consumeList[i].MONTHSUM+ '입니다</div>'); */
-	     
+
 	        		let str ='';
 	                str += '<div style="display:inline; ">'+consumeList[i].CURRENT_MONTH+'</div> <div style="display:inline;">월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
 	        	
 	                $('#month').append(str);
 	                
 	        	}
-	        })
+	        })   	        
 	})
 	</script>
 	
@@ -187,6 +190,8 @@
         	let dayArray = [];
         	$('#pocket').hide();
             $('#sixmonth').fadeIn(2000);
+            
+            
             let monthStart = -1;
             let monthEnd = -1;
             let id ='${loginVO.id}';
@@ -202,11 +207,11 @@
             	}
             	return new Promise((resolve,reject)=>{
             		resolve("의정이 풀바셋");
+            		
             	})
             })
             .then(res=>{
-            	console.log(res);
-
+     
             		        Highcharts.chart('container', {
             		            chart: {
             		                zoomType: 'x'
@@ -262,13 +267,20 @@
             		                data: dayArray
             		            }]
             		        });
-            });
+
+            })
 
         } 
     </script> 
     
     
-    <!-- 주간 -->  
+    
+    
+    
+    
+    
+    <!-- 주간 -->
+    
    
     
 </body>

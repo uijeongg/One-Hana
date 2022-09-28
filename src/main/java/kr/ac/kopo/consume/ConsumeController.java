@@ -82,7 +82,10 @@ public class ConsumeController {
 				
 		List<Map<String,Object>> sixMonthConsumeList = consumeService.getSixMonthConsume(monthMap);
 		
-	
+		
 		return sixMonthConsumeList;	
 	}
+	
+	
+	
 }

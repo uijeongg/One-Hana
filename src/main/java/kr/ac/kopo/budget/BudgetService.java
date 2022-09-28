@@ -33,6 +33,6 @@ public interface BudgetService {
 
 	//void doAutoParking(AutoDivideVO autoDivideVO);
 
-	List<AutoDivideVO> doAutoParking(MyBankVO myBankVO);
+	List<Map<String, Object>> doAutoParking(MyBankVO myBankVO);
 
 }
