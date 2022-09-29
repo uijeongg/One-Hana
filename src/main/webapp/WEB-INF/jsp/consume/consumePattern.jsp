@@ -17,11 +17,20 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.8.5/bootstrap-progressbar.min.js" integrity="sha512-ShSScKTSdSD7IiMKfgTdqaEY8gOGm5cNfqMr6Wc5BZvMgc1UveS+UqpS0TNUtRD1CZ9KhmbGtzwUN7HJlXxY8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.8.5/bootstrap-progressbar.js" integrity="sha512-tH+o43f9pBn8Kw1Nbyr+wrAQ/SbmKVMuGy2hoGWm9/xFacsOFIz3OmHeEEorjq/CKD4BxHT86qu7zp1wJKGtVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>             
+   
+   
 <!-- my css  -->
 
 <link href="/resources/mycss/consumeDate.css" rel="stylesheet">
 
-
+<style>
+.nav-tabs {
+    border-bottom: 3px solid #008485;
+    width: 1060px;
+}
+</style>
 
 </head>
 <body>
@@ -86,8 +95,82 @@
    <!-- page title end -->
    
    
+   
+   
+   <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <!-- <a class="nav-link active" aria-current="page" href="monthPage">월별</a> -->
+    
+     <button
+                          type="button"
+                          class="nav-link active"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#monthPage"
+                          aria-controls="monthPage"
+                          aria-selected="true"
+                        >
+                          월별
+                        </button>
     
     
+    
+  </li>
+  <li class="nav-item">
+     <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#weeklyPage"
+                          aria-controls="weeklyPage"
+                          aria-selected="true"
+                        >
+                          주차별
+                        </button>
+  </li>
+  <li class="nav-item">
+    <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#dayPage"
+                          aria-controls="dayPage"
+                          aria-selected="true"
+                        >
+                          요일별
+                        </button>
+  </li>
+  <li class="nav-item">
+    <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#datePage"
+                          aria-controls="datePage"
+                          aria-selected="true"
+                        >
+                          일별
+                        </button>
+    
+  </li>
+</ul>
+   
+   
+   
+   
+   
+<div class="tab-content">
+
+
+<!-- 월별 tab -->
+<!-- 월별 tab -->
+<!-- 월별 tab -->
+<div class="tab-pane fade show active" id="monthPage" role="tabpanel">
+
+
    <!-- 월 총 이용 금액 start -->
    <div style="margin-left:620px; margin-top:50px; margin-bottom:40px;">
 	    <div id="month" style="font-size:25px;">
@@ -122,39 +205,85 @@
             </div>          
     
     
-    <!-- 주간 소비 추이 -->
-    <!-- 막대그래프로 뽑을거임 / 주별 총금액, 주별 건수, 큰소비 있는지 없는지? -->
-    <hr style="border:ridge; width:1060px; height:3px; background-color:#066262; margin-left:280px;">
-    <div style="margin-bottom:30px; margin-left:740px; font-size:25px;">
+</div>
+
+    
+    
+    
+    
+  
+<!-- 주차별 tab -->
+<!-- 주차별 tab -->
+<!-- 주차별 tab -->
+<div class="tab-pane fade show" id="weeklyPage" role="tabpanel">
+   <!-- 막대그래프로 뽑을거임 / 주별 총금액, 주별 건수, 큰소비 있는지 없는지? -->
+   <!-- <hr style="border:ridge; width:1060px; height:3px; background-color:#066262; margin-left:280px;"> -->
+   <!--  <div style="margin-bottom:30px; margin-left:740px; font-size:25px;">
         <div style="color:#008485; display:inline;"> 주간 </div>
 	    <div style="display:inline;">소비 추이</div>
+    </div> -->
+    
+   <div class="container justify-content-center" style="position:absolute; display:flex; margin-top:50px;"> 
+    <div id="chart" style="width:900px; margin-left:350px;">
+    <!-- fetch로 apexchart 삽입 -->
+    </div>
+   </div> 
+    
+</div>    
+    
+    
+    
+    
+    
+<div class="tab-pane fade show" id="dayPage" role="tabpanel">    
+    <!-- 요일별 -->
+     <div id="chart2">
+    <!-- fetch로 apexchart 삽입 -->
     </div>
     
-    <div class="weeklyGraph1"></div>
-    
-    
-    
-    
-    <!-- 요일별 -->
     <!-- 막대그래프, 탑2  -->
-    
+</div>  
+
+
+   
+   
+<div class="tab-pane fade show" id="datePage" role="tabpanel">     
     <!-- 일별은 일별로 제일 많이 쓴 날짜 top3 -> 카테고리, 상호명, 금액 리스트 보여주기  -->
+ </div>   
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+</div>  <!-- 탭 가장 상단 div -->  
     
     
     
     
     
-    
-    
-    
-    
-    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- 맨 윗단 이번달 총 소비 금액 -->
 	<script>
 	$(document).ready(function(){	 
 	        let month = 0; //sysdate 기준 이번달
 	        let id = '${loginVO.id}';
-	        console.log("id : " + id );
+	      //console.log("id : " + id );
 	        console.log("month : " + month);
 	        
 	        
@@ -162,7 +291,7 @@
 	        .then(res=>res.json())
 	        .then(res=>{
 	        	let consumeList = res;
-                console.log("의정이: "+consumeList.length);
+          //      console.log("의정이: "+consumeList.length);
 	        	for(let i=0;i<consumeList.length;i++){
 	        		/* $('#month').append('<div>'+consumeList[i].CURRENT_MONTH+'에 쓴 금액은 ' +consumeList[i].MONTHSUM+ '입니다</div>'); */
 
@@ -172,7 +301,17 @@
 	                $('#month').append(str);
 	                
 	        	}
-	        })   	        
+	        }) 
+	        
+	        
+	        
+       //weekly
+	   weeklyBar();
+	   
+       dayBar();     
+            
+	        
+	       
 	})
 	</script>
 	
@@ -186,7 +325,7 @@
     
     <!-- 버튼 클릭 시 이번달 소비 추이 보이기 - high chart -->
     <script>
-        function displaySixMonth(){ 
+    function displaySixMonth(){ 
         	let dayArray = [];
         	$('#pocket').hide();
             $('#sixmonth').fadeIn(2000);
@@ -270,7 +409,11 @@
 
             })
 
-        } 
+    
+        }
+    
+  
+    
     </script> 
     
     
@@ -281,6 +424,243 @@
     
     <!-- 주간 -->
     
+    <script>
+  
+    
+    function weeklyBar() {
+        let weeklyArray = [];
+        //받아와야할건 한달치의 하루 소비값
+         let monthStart = -1;
+         let monthEnd = -1;
+         let id ='${loginVO.id}';
+         console.log(id + '아이디')
+         let object = {};
+         let weeklyConsumeData = [];
+         let dayofweek = [];
+         
+         
+         fetch("/getDayConsume?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+            .then(res=>res.json())
+            .then(res=>{
+               let dayConsumeList = res;
+               
+               lastDay = dayConsumeList[dayConsumeList.length-1].CONDATE;
+               console.log(lastDay.substring(8,10));
+               let lastDate = Number(lastDay.substring(8,10));
+               console.log(lastDate);
+               let mod = parseInt(lastDate/7)+1;
+               for(let i=0;i<mod;i++){
+            	  weeklyConsumeData.push(0);
+               }
+               for(let i=1;i<=mod;i++){
+            	    dayofweek.push(i+'주차');
+            	    console.log(i+'주차'); 
+            	    for(let j=0;j<dayConsumeList.length;j++){
+            	    	if(parseInt(dayConsumeList[j].CONDATE.substring(8,10)/7)==i-1){
+            	    		weeklyConsumeData[i-1] = weeklyConsumeData[i-1] + Number(dayConsumeList[j].CONAMOUNT);
+            	    	}
+            	    }
+               }
+               console.log(weeklyConsumeData);
+               console.log(dayofweek);
+
+              return new Promise((resolve,reject)=>{
+            	    resolve('hihi');
+              })
+            })
+           
+              
+            .then(res=>{
+            	console.log(weeklyConsumeData);
+                weekArray = res;
+                
+                var options = {
+                          series: [{
+                          data: weeklyConsumeData
+                        }],
+                          chart: {
+                        	  /* fill: {
+                                  colors: ['red', 'green', 'gray', 'blue', 'orange']
+                              }, */
+                       
+                          height: 400,
+                          type: 'bar',
+                          events: {
+                            click: function(chart, w, e) {
+                              // console.log(chart, w, e)
+                            }
+                          }
+                        },
+                        
+                        plotOptions: {
+                          bar: {
+                            columnWidth: '40%',
+                            distributed: true,
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false                           
+                        },
+                        legend: {
+                          show: false
+                        },
+                        xaxis: {
+                          categories: 
+                        	  dayofweek
+                            ,
+                          labels: {
+                            style: {                           
+                              fontSize: '20px',
+                              fontWeight: 'bold',
+                              fontFamily: 'hanaBFont',
+                            }
+                          }
+                        }
+                        };
+
+                        var chart = new ApexCharts(document.querySelector("#chart"), options);
+                        chart.render();
+                        
+                        
+            })
+            
+        
+        
+    }
+ 
+    
+    </script>
+    
+    
+    <script>
+    
+    function dayBar() {
+    	  let monthStart = -1;
+          let monthEnd = -1;
+          let id ='${loginVO.id}';
+         // console.log(id + '아이디')
+          
+          
+          
+        
+       //  let dayArray = [];
+         
+         let dayArray2 = [];
+         let daySum = [];
+         
+         fetch("/getDayConsume2?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+            .then(res=>res.json())
+            .then(res=>{
+               let dayList = res;
+               
+               for(let i=0;i<dayList.length;i++){
+               
+               //let dayListArray = [];
+           
+
+               //dayListArray.push(dayList[i].COUNT*1);
+               daySum.push(dayList[i].SUM*1);
+               dayArray2.push(dayList[i].DAY);
+         //      dayArray.push(dayListArray);
+               
+               
+               } 
+               
+               console.log('daySum : ' + daySum);
+               console.log('dayArray2 : ' + dayArray2);
+               
+              return new Promise((resolve,reject)=>{
+                    resolve('hihi22');
+              })
+            })
+            
+            .then(res=>{
+               // console.log(weeklyConsumeData);
+               // weekArray = res;
+                
+
+                
+                var options = {
+                  series: [{
+                  name: 'Servings',
+                  data: daySum
+                }],
+                  annotations: {
+                  points: [{
+                    x: 'Bananas',
+                    seriesIndex: 0,
+                    label: {
+                      borderColor: '#775DD0',
+                      offsetY: 0,
+                      style: {
+                        color: '#fff',
+                        background: '#775DD0',
+                      },
+                      text: 'Bananas are good',
+                    }
+                  }]
+                },
+                chart: {
+                  height: 350,
+                  type: 'bar',
+                },
+                plotOptions: {
+                  bar: {
+                    borderRadius: 10,
+                    columnWidth: '50%',
+                  }
+                },
+                dataLabels: {
+                  enabled: false
+                },
+                stroke: {
+                  width: 2
+                },
+                
+                grid: {
+                  row: {
+                    colors: ['#fff', '#f2f2f2']
+                  }
+                },
+                xaxis: {
+                  labels: {
+                    rotate: -45
+                  },
+                  categories:dayArray2,
+                  tickPlacement: 'on'
+                },
+                yaxis: {
+                  title: {
+                    text: 'Servings',
+                  },
+                },
+                fill: {
+                  type: 'gradient',
+                  gradient: {
+                    shade: 'light',
+                    type: "horizontal",
+                    shadeIntensity: 0.25,
+                    gradientToColors: undefined,
+                    inverseColors: true,
+                    opacityFrom: 0.85,
+                    opacityTo: 0.85,
+                    stops: [50, 0, 100]
+                  },
+                }
+                };
+
+                var chart = new ApexCharts(document.querySelector("#chart2"), options);
+                chart.render();
+                        
+                        
+            })
+            
+            
+          
+          
+          
+    }
+    </script>
    
     
 </body>

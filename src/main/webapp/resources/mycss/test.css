@@ -33,3 +33,13 @@ h2, h3, h4, h5, h6{
 strong, small{
 	font-family:"hanaBFont" !important;    
 }
+
+.doDivide{
+       
+        color:black;
+    }
+
+.doDivide:hover{
+        background-color:#008485;
+        color:#FFF;
+    }

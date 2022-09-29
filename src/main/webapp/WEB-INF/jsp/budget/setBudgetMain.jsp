@@ -23,6 +23,13 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 
+<style>
+    .doDivide:hover{
+        background-color:#008485;
+        color:#FFF;
+    }
+</style>
+
 <script>
 //월 급여액
 $(document).ready(function(){
@@ -706,8 +713,11 @@ $(document).ready(function(){
      </form>
      
      <div style="margin-top:20px; margin-left:410px;">
-      <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#setFromParking" style="width: 200px;">
-              내 자산 <br> 영혼까지 끌어모아 <br>저축하는 방법!
+      <button type="button" class="doDivide col-3 btn btn-white" data-bs-toggle="modal" id="divideDo" data-bs-target="#setFromParking" style="margin-left:0px; width:310px; font-size:16px; font-family:hanaBFont;">
+              <img src="${pageContext.request.contextPath}/resources/img/My_star_yellow.png" 
+            class="animate__animated animate__swing"
+            style="width:30px; height:30px;"/>
+              &nbsp;내 자산 영혼까지 끌어모으는 방법
       </button>
      </div>
      

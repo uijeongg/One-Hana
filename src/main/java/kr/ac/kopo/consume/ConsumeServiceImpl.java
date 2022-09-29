@@ -1,10 +1,15 @@
 package kr.ac.kopo.consume;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import kr.ac.kopo.date.DayVO;
+
+
 
 @Service
 public class ConsumeServiceImpl implements ConsumeService {
@@ -37,4 +42,17 @@ public class ConsumeServiceImpl implements ConsumeService {
 	}
 	
 	
+	@Override
+	public List<Map<String, Object>> getDayConsume(Map<String, Object> dayMap) {
+		List<Map<String, Object>>  getDayConsumeList = consumeDAO.getDayConsume(dayMap);
+		
+		return getDayConsumeList;
+	}
+	
+	@Override
+	public List<DayVO> getDayConsume2(Map<String, Object> dayMap2) {
+		List<DayVO> getDayList = consumeDAO.getDayConsume2(dayMap2);
+		
+		return getDayList;
+	}
 }

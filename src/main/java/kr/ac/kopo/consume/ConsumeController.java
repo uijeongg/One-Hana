@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.date.DayVO;
 import kr.ac.kopo.divide.DivideVO;
 
 @Controller
@@ -87,5 +88,49 @@ public class ConsumeController {
 	}
 	
 	
+	@ResponseBody
+	@GetMapping("/getDayConsume") //한달치 일별로 받기 
+	public List<Map<String,Object>> getDayConsume(@RequestParam("id") String id, 
+            									  @RequestParam("monthStart") int monthStart,
+            									  @RequestParam("monthEnd") int monthEnd) {
+		System.out.println("id : "+id);
+		System.out.println("monthStart : "+monthStart);
+		System.out.println("monthEnd : "+monthEnd);
+		
+		Map<String,Object> dayMap = new HashMap<>();
+		dayMap.put("id", id);
+		dayMap.put("monthStart", monthStart);
+		dayMap.put("monthEnd", monthEnd);
+				
+		List<Map<String,Object>> dayConsumeList = consumeService.getDayConsume(dayMap);
+		
+		System.out.println("dayConsumeList : " + dayConsumeList);
+		return dayConsumeList;	
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("/getDayConsume2")
+	public List<DayVO> getDayConsume2(@RequestParam("id") String id, 
+			  						  @RequestParam("monthStart") int monthStart,
+			                          @RequestParam("monthEnd") int monthEnd){
+	
+		System.out.println("id : "+id);
+		System.out.println("monthStart : "+monthStart);
+		System.out.println("monthEnd : "+monthEnd);
+		
+		Map<String,Object> dayMap2 = new HashMap<>();
+		dayMap2.put("id", id);
+		dayMap2.put("monthStart", monthStart);
+		dayMap2.put("monthEnd", monthEnd);
+		
+		List<DayVO> dayList = consumeService.getDayConsume2(dayMap2);
+		
+		
+		System.out.println("dayList : " + dayList);
+		
+		
+		return dayList;
+	}
 	
 }

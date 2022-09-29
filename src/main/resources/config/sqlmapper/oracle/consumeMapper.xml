@@ -28,4 +28,22 @@
     </select>
     
     
+    <select id="getDayConsume" resultType="map" parameterType="map">
+         SELECT SUBSTR(CONDATE,0,10) AS CONDATE,SUM(B.CONAMOUNT) AS CONAMOUNT
+        FROM T_CONSUME_CATEGORY A, T_CONSUME_HISTORY B
+        WHERE (TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'),${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))) 
+               AND A.CATECODE = B.CATECODE AND B.ID=#{id} 
+               GROUP BY SUBSTR(CONDATE,0,10)
+               order by CONDATE ASC
+                      
+    </select>
+    
+    
+    <select id="getDayConsume2" resultType="map" parameterType="map">
+        SELECT TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'DAY') AS DAY, COUNT(*) COUNT, SUM(CONAMOUNT) SUM
+        FROM T_CONSUME_HISTORY 
+        WHERE TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd})) 
+        GROUP BY TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'DAY')
+    </select>
+    
 </mapper>

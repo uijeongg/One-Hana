@@ -41,18 +41,26 @@
 		 
 		 <div style="width:900px; margin-left:405px;" id="newAccountList">        
          
-				<h4 style="text-align:justify;">상품명 ${ MyBank.accountName }</h4>
+                <div class="d-flex justify-content-between">
+				<h4>상품명</h4>
+				<h4 style="font-size:25px;">${ MyBank.accountName }</h4>
+				</div>
 				
+				<div class="d-flex justify-content-between" style="font-size:30px;">
+				<h4>전환일</h4>
+                <h4 style="font-size:25px;">${ MyBank.openDate }</h4>
+				</div>
 				
-				<h4 style="margin-left:10px; display:inline;">전환일</h4>
-                <h4 style="margin-right:10px; display:inline;">${ MyBank.openDate }</h4><br>
-				
-				<h4 style="margin-left:10px; display:inline;">계좌번호</h4>
-                <h4 style="margin-right:10px; display:inline;">${ MyBank.accountNo }</h4><br>
+				<div class="d-flex justify-content-between" style="font-size:30px;">
+				<h4>계좌번호</h4>
+				<h4 style="font-size:25px;">${ MyBank.accountNo }</h4>
+                <%-- <h4 style="margin-right:10px; display:inline;">${ MyBank.accountNo }</h4><br> --%>
+                </div>
                 
-                <h4 style="margin-left:10px; display:inline;">잔액</h4>
-                <h4 style="margin-right:10px; display:inline;">${ MyBank.balance } 원</h4><br>
-                
+                <div class="d-flex justify-content-between" style="font-size:30px;">
+                <h4>잔액</h4>
+                <h4 style="font-size:25px;">${ MyBank.balance } 원</h4>
+                </div>
 				
 				
 				<%-- <h4>전환일 ${ MyBank.openDate }</h4><br>
