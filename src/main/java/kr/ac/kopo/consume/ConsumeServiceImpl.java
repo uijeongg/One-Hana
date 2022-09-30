@@ -55,4 +55,13 @@ public class ConsumeServiceImpl implements ConsumeService {
 		
 		return getDayList;
 	}
+	
+	
+	@Override
+	public List<DayVO> getdayTop(Map<String, Object> dayMap3) {
+		List<DayVO> getDateTopList = consumeDAO.getDateTop(dayMap3);
+		
+		return getDateTopList;
+		
+	}
 }

@@ -281,7 +281,7 @@ public class BudgetController {
 	
 	
 	//자동파킹날짜에 따른 스케줄러 작동
-	@Scheduled(cron = "0 40 20 28 * *") //매달 1일 10시
+	@Scheduled(cron = "0 42 14 30 * *") //매달 1일 10시
 	//@Scheduled(cron = "0 0/2 * * * *") //5분
 	public void autoParking() {
 	      //System.out.println("monthlySaving1");

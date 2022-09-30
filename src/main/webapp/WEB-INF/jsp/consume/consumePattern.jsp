@@ -237,7 +237,7 @@
     
 <div class="tab-pane fade show" id="dayPage" role="tabpanel">    
     <!-- 요일별 -->
-     <div id="chart2">
+     <div id="chart2" style="width:1000px; margin-left:350px; margin-top:40px;">
     <!-- fetch로 apexchart 삽입 -->
     </div>
     
@@ -249,6 +249,10 @@
    
 <div class="tab-pane fade show" id="datePage" role="tabpanel">     
     <!-- 일별은 일별로 제일 많이 쓴 날짜 top3 -> 카테고리, 상호명, 금액 리스트 보여주기  -->
+     <div id="chart3" style="width:1000px; margin-left:350px; margin-top:40px;">
+    <!-- fetch로 apexchart 삽입 -->
+    </div>
+    
  </div>   
     
    
@@ -308,7 +312,9 @@
        //weekly
 	   weeklyBar();
 	   
-       dayBar();     
+       dayBar();
+       
+       dateTopBar();
             
 	        
 	       
@@ -532,6 +538,7 @@
     </script>
     
     
+    
     <script>
     
     function dayBar() {
@@ -543,7 +550,7 @@
           
           
         
-       //  let dayArray = [];
+    //     let dayArray = [];
          
          let dayArray2 = [];
          let daySum = [];
@@ -555,19 +562,25 @@
                
                for(let i=0;i<dayList.length;i++){
                
-               //let dayListArray = [];
+            //   let dayListArray = [];
            
 
-               //dayListArray.push(dayList[i].COUNT*1);
                daySum.push(dayList[i].SUM*1);
                dayArray2.push(dayList[i].DAY);
-         //      dayArray.push(dayListArray);
+            //   dayArray.push(dayListArray);
                
+             
                
                } 
                
-               console.log('daySum : ' + daySum);
-               console.log('dayArray2 : ' + dayArray2);
+             //  console.log('daySum : ' + daySum);
+             //  console.log('dayArray2 : ' + dayArray2);
+               
+               let sumMax = Math.max.apply(null, daySum);
+               console.log(sumMax)
+           //    console.log(dayArray)
+               
+               
                
               return new Promise((resolve,reject)=>{
                     resolve('hihi22');
@@ -582,7 +595,7 @@
                 
                 var options = {
                   series: [{
-                  name: 'Servings',
+                  name: '사용 금액',
                   data: daySum
                 }],
                   annotations: {
@@ -595,6 +608,7 @@
                       style: {
                         color: '#fff',
                         background: '#775DD0',
+                        
                       },
                       text: 'Bananas are good',
                     }
@@ -631,7 +645,7 @@
                 },
                 yaxis: {
                   title: {
-                    text: 'Servings',
+                    text: '사용 금액',
                   },
                 },
                 fill: {
@@ -650,16 +664,194 @@
                 };
 
                 var chart = new ApexCharts(document.querySelector("#chart2"), options);
-                chart.render();
-                        
-                        
+                chart.render();           
+            })
+    }
+    </script>
+    
+    <script>
+    function dateTopBar() {
+    	
+    	let monthStart = -1;
+        let monthEnd = -1;
+        let id ='${loginVO.id}';
+       
+       let date = [];
+       let dateSum = [];
+       
+       fetch("/getDateTop?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+            .then(res=>{
+               let dateTopList = res;
+               
+               for(let i=0;i<3;i++){
+     
+            	    dateSum.push(dateTopList[i].AMOUNT_SUM*1);
+                    date.push(dateTopList[i].DAY);
+      
+               } 
+               
+               //console.log('dateSum : ' + dateSum);
+               //console.log('date : ' + date);
+               
+               let dateSumList = [dateSum[1], dateSum[0], dateSum[2]];
+               let dateList = [date[1]+'일', date[0]+'일', date[2]+'일'];
+              console.log(dateSumList);
+             console.log(dateList);
+               
+  
+          return new Promise((resolve,reject)=>{
+                    resolve(dateSumList);
+              })
             })
             
-            
-          
-          
-          
+            .then(res=>{
+             dateSumList = res;
+             console.log(dateSumList);
+            	
+         /*         
+                 var options = {
+          series: [{
+          data: dateSumList
+        }],
+          chart: {
+          height: 350,
+          type: 'bar',
+          events: {
+            click: function(chart, w, e) {
+              // console.log(chart, w, e)
+            }
+          }
+        },
+       
+        plotOptions: {
+          bar: {
+            columnWidth: '45%',
+            distributed: true,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          show: false
+        },
+        xaxis: {
+          categories: dateList,
+          labels: {
+            style: {
+            	 fontSize: '20px',
+                 fontWeight: 'bold',
+                 fontFamily: 'hanaBFont'
+            }
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart3"), options);
+        chart.render();
+      
+      
+                 */
+               
+               
+               
+               
+               
+               
+             
+               
+               var options = {
+                  series: [{
+                  name: '사용 금액',
+                  data: [dateSum[1], dateSum[0], dateSum[2]]
+                }],
+                  annotations: {
+                  points: [{
+                    x: 'Bananas',
+                    seriesIndex: 0,
+                    label: {
+                      borderColor: '#fff',
+                      offsetY: 0,
+                      style: {
+                        color: '#fff',
+                        background: '#008485',
+                        
+                      },
+                      text: 'Bananas are good',
+                    }
+                  }]
+                },
+                chart: {
+                  height: 350,
+                  type: 'bar',
+                },
+                plotOptions: {
+                  bar: {
+                    borderRadius: 10,
+                    columnWidth: '70%',
+                  }
+                },
+                dataLabels: {
+                  enabled: false
+                },
+                stroke: {
+                  width: 2
+                },
+                
+                grid: {
+                  row: {
+                    colors: ['#fff', '#f2f2f2']
+                  }
+                },
+                xaxis: {
+                  labels: {
+                    rotate: -45
+                  },
+                  categories:[date[1]+'일', date[0]+'일', date[2]+'일'],
+                  tickPlacement: 'on'
+                },
+                yaxis: {
+                  title: {
+                    text: '사용 금액',
+                  },
+                  
+                  min:0,
+                  max:200000,
+                  tickAmount:4
+       
+                },
+                fill: {
+                  type: 'gradient',
+                  colors: ['green','red']
+                  , 
+                  gradient: {
+                	  
+                    shade: 'light',
+                    type: "horizontal",
+                    shadeIntensity: 0.25,
+                    gradientToColors: undefined,
+                    inverseColors: true,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [50, 0, 100]
+                
+                  },
+                }
+                }; 
+
+                 var chart = new ApexCharts(document.querySelector("#chart3"), options);
+                chart.render(); 
+ 
+                
+                          
+            })
+    	
+    	
+    	
     }
+    
+    
     </script>
    
     

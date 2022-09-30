@@ -53,4 +53,14 @@
         ORDER BY TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS')-1,'D') 
     </select>
     
+    <select id="getDateTop" resultType="map" parameterType="map">
+       SELECT TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'DD') AS DAY,
+              SUM(CONAMOUNT) AS AMOUNT_SUM,
+              RANK() OVER (ORDER BY  SUM(CONAMOUNT) DESC) RANK
+       FROM T_CONSUME_HISTORY 
+       where ID=#{id}
+             AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd})) 
+       GROUP BY TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'DD')
+    </select>
+    
 </mapper>

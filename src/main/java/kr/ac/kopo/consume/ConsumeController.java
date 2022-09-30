@@ -114,10 +114,7 @@ public class ConsumeController {
 	public List<DayVO> getDayConsume2(@RequestParam("id") String id, 
 			  						  @RequestParam("monthStart") int monthStart,
 			                          @RequestParam("monthEnd") int monthEnd){
-	
-		System.out.println("id : "+id);
-		System.out.println("monthStart : "+monthStart);
-		System.out.println("monthEnd : "+monthEnd);
+
 		
 		Map<String,Object> dayMap2 = new HashMap<>();
 		dayMap2.put("id", id);
@@ -133,4 +130,25 @@ public class ConsumeController {
 		return dayList;
 	}
 	
+	
+	@ResponseBody
+	@GetMapping("/getDateTop")
+	public List<DayVO> dayTopList (@RequestParam("id") String id, 
+								   @RequestParam("monthStart") int monthStart,
+                                   @RequestParam("monthEnd") int monthEnd){
+		
+		
+		Map<String,Object> dayMap3 = new HashMap<>();
+		dayMap3.put("id", id);
+		dayMap3.put("monthStart", monthStart);
+		dayMap3.put("monthEnd", monthEnd);
+		
+		List<DayVO> dateTopList = consumeService.getdayTop(dayMap3);
+		System.out.println("dateTopList : " + dateTopList);
+		
+		return dateTopList;
+	}
+	
+	
 }
+

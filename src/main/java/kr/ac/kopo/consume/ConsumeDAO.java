@@ -20,4 +20,6 @@ public interface ConsumeDAO {
 
 	List<DayVO> getDayConsume2(Map<String, Object> dayMap2);
 
+	List<DayVO> getDateTop(Map<String, Object> dayMap3);
+
 }

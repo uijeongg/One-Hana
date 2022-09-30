@@ -57,4 +57,10 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 		List<DayVO> dayList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getDayConsume2", dayMap2);
 		return dayList;
 	}
+	
+	@Override
+	public List<DayVO> getDateTop(Map<String, Object> dayMap3) {
+		List<DayVO> dateTopList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getDateTop", dayMap3);
+		return dateTopList;
+	}
 }

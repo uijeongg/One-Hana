@@ -16,6 +16,8 @@ public interface ConsumeService {
 	List<Map<String, Object>> getDayConsume(Map<String, Object> dayMap);
 
 	List<DayVO> getDayConsume2(Map<String, Object> dayMap2);
+
+	List<DayVO> getdayTop(Map<String, Object> dayMap3);
 	
 
 
