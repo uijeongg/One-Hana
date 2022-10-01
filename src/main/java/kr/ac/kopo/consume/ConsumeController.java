@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
 import kr.ac.kopo.divide.DivideVO;
 
@@ -37,6 +38,7 @@ public class ConsumeController {
 		
 		List<Map<String,Object>> consumeList = consumeService.getConsumeData(id);
 	
+		System.out.println("consumeList : 달력 " + consumeList);
 		return consumeList;
 	}
 	
@@ -149,6 +151,45 @@ public class ConsumeController {
 		return dateTopList;
 	}
 	
+	
+	@ResponseBody
+	@GetMapping("/getCateAmount")
+	public List<CateVO> getCateAmount (@RequestParam("id") String id, 
+			   @RequestParam("monthStart") int monthStart,
+               @RequestParam("monthEnd") int monthEnd){
+		
+		Map<String,Object> cateMap = new HashMap<>();
+		cateMap.put("id", id);
+		cateMap.put("monthStart", monthStart);
+		cateMap.put("monthEnd", monthEnd);
+		
+		List<CateVO> cateList = consumeService.getCateAmount(cateMap);
+		System.out.println("cateList : " + cateList);
+		
+		
+		return cateList;
+	}
+	
+	
+	
+	@ResponseBody
+	@GetMapping("/getTimesData")
+	public List<DayVO> getTimesData (@RequestParam("id") String id, 
+			   						 @RequestParam("monthStart") int monthStart,
+			   						 @RequestParam("monthEnd") int monthEnd) {
+		
+		Map<String,Object> timesMap = new HashMap<>();
+		timesMap.put("id", id);
+		timesMap.put("monthStart", monthStart);
+		timesMap.put("monthEnd", monthEnd);
+		
+		List<DayVO> timesList = consumeService.getTimesData(timesMap);
+		
+		System.out.println("timesList : " + timesList);
+		
+		return timesList;
+		
+	}
 	
 }
 

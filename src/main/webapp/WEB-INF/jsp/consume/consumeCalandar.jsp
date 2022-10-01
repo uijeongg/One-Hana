@@ -154,16 +154,19 @@
 			 })
 			 .then(res=>{
 			 
-				    const now = new Date().toLocaleString();
-				    let year = now.substring(0,4);
-				    let month = now.substring(5,7);
-				    let day = now.substring(8,10);
-				    if(month.startsWith(' ')){
-				    	   month = '0'+month.substring(1,2);
-				    }
-				    if(day.startsWith(' ')){
-				        day = '0'+day.substring(1,2);
-				     }
+				 
+			         const now = new Date().toLocaleString();
+			         let realNow = now.split('.');
+			         console.log(realNow);
+			         let year = realNow[0];
+			         let month = realNow[1].trim();
+			         let day = realNow[2];
+			         if(month.startsWith(' ')){
+			            month = '0'+month.trim();
+			         }
+			         if(day.startsWith(' ')){
+			            day = '0'+day.trim();
+			         }
 				    let initialDate = year+'-'+month+'-'+day;
 				    console.log("initialDate : "+initialDate);
 				    let calendarEl = document.getElementById('calendar');

@@ -27,7 +27,9 @@ public class DayVO {
 */
 	
 	private String day;
+	private int times;
 	private int sum;
+	private int amount;
 	private int rank;
 	public String getDay() {
 		return day;
@@ -35,11 +37,23 @@ public class DayVO {
 	public void setDay(String day) {
 		this.day = day;
 	}
+	public int getTimes() {
+		return times;
+	}
+	public void setTimes(int times) {
+		this.times = times;
+	}
 	public int getSum() {
 		return sum;
 	}
 	public void setSum(int sum) {
 		this.sum = sum;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	public int getRank() {
 		return rank;
@@ -49,11 +63,9 @@ public class DayVO {
 	}
 	@Override
 	public String toString() {
-		return "DayVO [day=" + day + ", sum=" + sum + ", rank=" + rank + "]";
+		return "DayVO [day=" + day + ", times=" + times + ", sum=" + sum + ", amount=" + amount + ", rank=" + rank
+				+ "]";
 	}
-	
-	
-	
 	
 	
 }

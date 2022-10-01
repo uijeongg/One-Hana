@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
 
 
@@ -64,4 +65,22 @@ public class ConsumeServiceImpl implements ConsumeService {
 		return getDateTopList;
 		
 	}
+	
+	
+	@Override
+	public List<CateVO> getCateAmount(Map<String, Object> cateMap) {
+		List<CateVO> cateAmount = consumeDAO.getCateAmount(cateMap);
+		
+		return cateAmount;
+	}
+
+
+
+	@Override
+	public List<DayVO> getTimesData(Map<String, Object> timesMap) {
+		List<DayVO> timesAmount = consumeDAO.getTimesData(timesMap);
+		
+		return timesAmount;		
+	}
+
 }

@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
 
 
@@ -62,5 +63,17 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 	public List<DayVO> getDateTop(Map<String, Object> dayMap3) {
 		List<DayVO> dateTopList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getDateTop", dayMap3);
 		return dateTopList;
+	}
+	
+	@Override
+	public List<CateVO> getCateAmount(Map<String, Object> cateMap) {
+		List<CateVO> cateAmountList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getCateAmount", cateMap);
+		return cateAmountList;
+	}
+	
+	@Override
+	public List<DayVO> getTimesData(Map<String, Object> timesMap) {
+		List<DayVO> timesList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getTimesData", timesMap);
+		return timesList;
 	}
 }

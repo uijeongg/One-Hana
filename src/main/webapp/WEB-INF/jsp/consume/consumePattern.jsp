@@ -106,104 +106,76 @@
                           class="nav-link active"
                           role="tab"
                           data-bs-toggle="tab"
-                          data-bs-target="#monthPage"
-                          aria-controls="monthPage"
-                          aria-selected="true"
-                        >
-                          월별
-                        </button>
-    
-    
-    
-  </li>
-  <li class="nav-item">
-     <button
-                          type="button"
-                          class="nav-link"
-                          role="tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#weeklyPage"
-                          aria-controls="weeklyPage"
-                          aria-selected="true"
-                        >
-                          주차별
-                        </button>
-  </li>
-  <li class="nav-item">
-    <button
-                          type="button"
-                          class="nav-link"
-                          role="tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#dayPage"
-                          aria-controls="dayPage"
-                          aria-selected="true"
-                        >
-                          요일별
-                        </button>
-  </li>
-  <li class="nav-item">
-    <button
-                          type="button"
-                          class="nav-link"
-                          role="tab"
-                          data-bs-toggle="tab"
                           data-bs-target="#datePage"
                           aria-controls="datePage"
                           aria-selected="true"
                         >
-                          일별
+                        요약분석
                         </button>
     
   </li>
+
+   <li class="nav-item">
+    <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#catePage"
+                          aria-controls="catePage"
+                          aria-selected="true"
+                        >
+                          세부분석
+                        </button>
+  </li>
 </ul>
-   
-   
-   
    
    
 <div class="tab-content">
 
 
-<!-- 월별 tab -->
-<!-- 월별 tab -->
-<!-- 월별 tab -->
-<div class="tab-pane fade show active" id="monthPage" role="tabpanel">
+<!-- 요약분석 tab -->
+<!-- 요약분석 tab -->
+<!-- 요약분석 tab -->
+<div class="tab-pane fade show active" id="datePage" role="tabpanel">
 
-
-   <!-- 월 총 이용 금액 start -->
+   <!-- 월 총 이용 금액 -->
    <div style="margin-left:620px; margin-top:50px; margin-bottom:40px;">
 	    <div id="month" style="font-size:25px;">
 	        <!-- fetch로 불러옴 -->
 	    </div>
    </div>
-    
-   <!-- 이번달 총(일별) 소비 추이 확인 버튼 -->
-   <div style="margin-left:430px;">
-            <input type="button" id="pocket" value="이번 달 전체적인 소비 추이 확인" onclick="displaySixMonth()"
-                   class="btn" 
-                   style="font-family:hanaBFont; background-color:#008485; font-size:17px; width:788px; height:50px; 
-                   border-radius:10px; color:white; border:none; margin-bottom:40px;">
+ 
+ 
+   <!-- 요일별 -->
+   <div id="chart2" style="width:1000px; margin-left:350px; margin-top:40px;">
+      <!-- fetch로 apexchart 삽입 -->
    </div>
+   
+   <div id="chart2comment">
+   
+   </div>
+            
       
-            
-            <div id="sixmonth" style="display:none;">
-            
-                 <div style="margin-bottom:60px; border:5px solid; border-radius:20px; border-color:#008485; width:890px; margin-left:400px;">                
-	                <figure class="highcharts-figure" style="margin-left:42px; margin-top:30px;">
-	                    <div id="container"></div>
-	                    <p class="highcharts-description">
-	                       <!-- 그래프자리 -->
-	                    </p>
-	                </figure>  
-	                
-	                <div style="font-size:25px; margin-top:40px; margin-left:370px; margin-bottom:30px;">
-                       "comment"
-                    </div>      
-	                 
-                 </div>       
-            </div>          
+   
+   <!-- 주차별 -->  
+   <!-- <div class="container" style="position:absolute; display:flex; margin-top:50px;">  -->
+   <!-- <div id="chart" style="width:650px; margin-left:350px; text-align:left;"> -->
+   <div id="chart" style="width:1000px; margin-left:350px; margin-top:40px;">
+	    <!-- fetch로 apexchart 삽입 -->
+   </div>
+   
+   <div id="chartcomment" style="width:400px; margin-right:350px; ">
+	   <!--  -목-요일의 소비가 가장 많네요!<br>      -->      
+   </div>
+        
     
+    
+  
+     <!-- 일별 -->
+     <div id="chart3" style="width:1000px; margin-left:350px; margin-top:40px;">
+            <!-- fetch로 apexchart 삽입 -->
+     </div>
     
 </div>
 
@@ -211,23 +183,19 @@
     
     
     
-  
-<!-- 주차별 tab -->
-<!-- 주차별 tab -->
-<!-- 주차별 tab -->
-<div class="tab-pane fade show" id="weeklyPage" role="tabpanel">
-   <!-- 막대그래프로 뽑을거임 / 주별 총금액, 주별 건수, 큰소비 있는지 없는지? -->
-   <!-- <hr style="border:ridge; width:1060px; height:3px; background-color:#066262; margin-left:280px;"> -->
-   <!--  <div style="margin-bottom:30px; margin-left:740px; font-size:25px;">
-        <div style="color:#008485; display:inline;"> 주간 </div>
-	    <div style="display:inline;">소비 추이</div>
-    </div> -->
     
-   <div class="container justify-content-center" style="position:absolute; display:flex; margin-top:50px;"> 
-    <div id="chart" style="width:900px; margin-left:350px;">
-    <!-- fetch로 apexchart 삽입 -->
-    </div>
-   </div> 
+    
+    
+    
+    
+  
+
+<!-- 시간대별 -->
+<!-- 시간대별 -->
+<div class="tab-pane fade show" id="timePage" role="tabpanel">
+<figure class="highcharts-figure">   
+   <div id="container4"></div>
+ </figure>
     
 </div>    
     
@@ -235,26 +203,67 @@
     
     
     
-<div class="tab-pane fade show" id="dayPage" role="tabpanel">    
-    <!-- 요일별 -->
-     <div id="chart2" style="width:1000px; margin-left:350px; margin-top:40px;">
-    <!-- fetch로 apexchart 삽입 -->
-    </div>
     
-    <!-- 막대그래프, 탑2  -->
+    
+    
+    
+    
+    
+    
+    
+    
+<!-- 6개월치 세부분석 tab -->
+<!-- 세부분석 tab -->
+<!-- 세부분석 tab -->    
+<div class="tab-pane fade show" id="catePage" role="tabpanel"> 
+    
+    
+    
+    <!-- 시간대별 amount 차트 -->
+    <!-- 시간대별 amount 차트 -->
+    <!-- 이번달 총(일별) 소비 추이 확인 버튼 -->
+   <div style="margin-left:430px;">
+            <input type="button" id="pocket" value="이번 달 전체적인 소비 추이 확인" onclick="displaySixMonth()"
+                   class="btn" 
+                   style="font-family:hanaBFont; background-color:#008485; font-size:17px; width:788px; height:50px; 
+                   border-radius:10px; color:white; border:none; margin-bottom:40px;">
+    </div>
+      
+            
+            <div id="sixmonth" style="display:none;">
+            
+                 <div style="margin-bottom:60px; border:5px solid; border-radius:20px; border-color:#008485; width:890px; margin-left:400px;">                
+                    <figure class="highcharts-figure" style="margin-left:42px; margin-top:30px;">
+                        <div id="container"></div>
+                        <p class="highcharts-description">
+                           <!-- 그래프자리 -->
+                        </p>
+                    </figure>  
+                    
+                    <div style="font-size:25px; margin-top:40px; margin-left:370px; margin-bottom:30px;">
+                       "comment"
+                    </div>      
+                     
+                 </div>       
+            </div>   
+    
+    
+    <!-- 중분류 파이 그래프 -->
+    <!-- 중분류 파이 그래프 -->
+	<div> <span style="font-size:25px;"> 6개월치 중분류 </span>
+	<figure class="highcharts-figure">   
+	   <div id="container3"></div>
+	 </figure>
+	</div>
+	
+	
+	
+	
+            
+
 </div>  
 
 
-   
-   
-<div class="tab-pane fade show" id="datePage" role="tabpanel">     
-    <!-- 일별은 일별로 제일 많이 쓴 날짜 top3 -> 카테고리, 상호명, 금액 리스트 보여주기  -->
-     <div id="chart3" style="width:1000px; margin-left:350px; margin-top:40px;">
-    <!-- fetch로 apexchart 삽입 -->
-    </div>
-    
- </div>   
-    
    
    
    
@@ -276,16 +285,20 @@
    
     
 </div>  <!-- 탭 가장 상단 div -->  
+   
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <!-- 맨 윗단 이번달 총 소비 금액 -->
 	<script>
 	$(document).ready(function(){	 
-	        let month = 0; //sysdate 기준 이번달
+	        let month = -1; //9월
 	        let id = '${loginVO.id}';
 	      //console.log("id : " + id );
 	        console.log("month : " + month);
@@ -315,6 +328,14 @@
        dayBar();
        
        dateTopBar();
+       
+       cateAmount();
+       
+       
+       //시간대별
+       times();
+       
+       
             
 	        
 	       
@@ -323,12 +344,11 @@
 	
 	
 	<!-- 하이차트 src -->
-	<script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	
+
     
+    
+ 
     <!-- 버튼 클릭 시 이번달 소비 추이 보이기 - high chart -->
     <script>
     function displaySixMonth(){ 
@@ -412,14 +432,8 @@
             		                data: dayArray
             		            }]
             		        });
-
             })
-
-    
-        }
-    
-  
-    
+      }
     </script> 
     
     
@@ -428,18 +442,14 @@
     
     
     
-    <!-- 주간 -->
-    
-    <script>
-  
-    
+    <!-- 주간 -->   
+    <script>    
     function weeklyBar() {
         let weeklyArray = [];
         //받아와야할건 한달치의 하루 소비값
          let monthStart = -1;
          let monthEnd = -1;
          let id ='${loginVO.id}';
-         console.log(id + '아이디')
          let object = {};
          let weeklyConsumeData = [];
          let dayofweek = [];
@@ -451,9 +461,9 @@
                let dayConsumeList = res;
                
                lastDay = dayConsumeList[dayConsumeList.length-1].CONDATE;
-               console.log(lastDay.substring(8,10));
+           //    console.log(lastDay.substring(8,10));
                let lastDate = Number(lastDay.substring(8,10));
-               console.log(lastDate);
+
                let mod = parseInt(lastDate/7)+1;
                for(let i=0;i<mod;i++){
             	  weeklyConsumeData.push(0);
@@ -467,28 +477,28 @@
             	    	}
             	    }
                }
-               console.log(weeklyConsumeData);
-               console.log(dayofweek);
+            //   console.log(weeklyConsumeData);
+           //    console.log(dayofweek);
+                let maxWeek = Math.max.apply(null, weeklyConsumeData);
+               let index = weeklyConsumeData.indexOf(maxWeek);
+                     console.log('maxWeek : ' + maxWeek);
+               
+               console.log('index : ' + dayofweek[index]);
 
               return new Promise((resolve,reject)=>{
-            	    resolve('hihi');
+            	    resolve(dayofweek[index]);
               })
             })
            
-              
             .then(res=>{
             	console.log(weeklyConsumeData);
-                weekArray = res;
-                
+               let weekComment = res;
+               
                 var options = {
                           series: [{
                           data: weeklyConsumeData
                         }],
-                          chart: {
-                        	  /* fill: {
-                                  colors: ['red', 'green', 'gray', 'blue', 'orange']
-                              }, */
-                       
+                          chart: {                    
                           height: 400,
                           type: 'bar',
                           events: {
@@ -525,16 +535,14 @@
                         };
 
                         var chart = new ApexCharts(document.querySelector("#chart"), options);
-                        chart.render();
+                        chart.render();   
                         
+                        str = '';
+                        str += '<div>소비가 가장 많은 주는 "' + weekComment + '" 입니다</div>';
                         
-            })
-            
-        
-        
+                        $('#chartcomment').append(str);     
+            })       
     }
- 
-    
     </script>
     
     
@@ -546,173 +554,37 @@
           let monthEnd = -1;
           let id ='${loginVO.id}';
          // console.log(id + '아이디')
-          
-          
-          
-        
-    //     let dayArray = [];
-         
          let dayArray2 = [];
          let daySum = [];
-         
+                 
          fetch("/getDayConsume2?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
             .then(res=>res.json())
             .then(res=>{
                let dayList = res;
                
                for(let i=0;i<dayList.length;i++){
-               
-            //   let dayListArray = [];
-           
 
                daySum.push(dayList[i].SUM*1);
                dayArray2.push(dayList[i].DAY);
-            //   dayArray.push(dayListArray);
-               
-             
-               
-               } 
-               
-             //  console.log('daySum : ' + daySum);
-             //  console.log('dayArray2 : ' + dayArray2);
-               
-               let sumMax = Math.max.apply(null, daySum);
-               console.log(sumMax)
-           //    console.log(dayArray)
-               
-               
-               
-              return new Promise((resolve,reject)=>{
-                    resolve('hihi22');
-              })
-            })
-            
-            .then(res=>{
-               // console.log(weeklyConsumeData);
-               // weekArray = res;
-                
-
-                
-                var options = {
-                  series: [{
-                  name: '사용 금액',
-                  data: daySum
-                }],
-                  annotations: {
-                  points: [{
-                    x: 'Bananas',
-                    seriesIndex: 0,
-                    label: {
-                      borderColor: '#775DD0',
-                      offsetY: 0,
-                      style: {
-                        color: '#fff',
-                        background: '#775DD0',
-                        
-                      },
-                      text: 'Bananas are good',
-                    }
-                  }]
-                },
-                chart: {
-                  height: 350,
-                  type: 'bar',
-                },
-                plotOptions: {
-                  bar: {
-                    borderRadius: 10,
-                    columnWidth: '50%',
-                  }
-                },
-                dataLabels: {
-                  enabled: false
-                },
-                stroke: {
-                  width: 2
-                },
-                
-                grid: {
-                  row: {
-                    colors: ['#fff', '#f2f2f2']
-                  }
-                },
-                xaxis: {
-                  labels: {
-                    rotate: -45
-                  },
-                  categories:dayArray2,
-                  tickPlacement: 'on'
-                },
-                yaxis: {
-                  title: {
-                    text: '사용 금액',
-                  },
-                },
-                fill: {
-                  type: 'gradient',
-                  gradient: {
-                    shade: 'light',
-                    type: "horizontal",
-                    shadeIntensity: 0.25,
-                    gradientToColors: undefined,
-                    inverseColors: true,
-                    opacityFrom: 0.85,
-                    opacityTo: 0.85,
-                    stops: [50, 0, 100]
-                  },
-                }
-                };
-
-                var chart = new ApexCharts(document.querySelector("#chart2"), options);
-                chart.render();           
-            })
-    }
-    </script>
-    
-    <script>
-    function dateTopBar() {
-    	
-    	let monthStart = -1;
-        let monthEnd = -1;
-        let id ='${loginVO.id}';
-       
-       let date = [];
-       let dateSum = [];
-       
-       fetch("/getDateTop?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
-       .then(res=>res.json())
-            .then(res=>{
-               let dateTopList = res;
-               
-               for(let i=0;i<3;i++){
-     
-            	    dateSum.push(dateTopList[i].AMOUNT_SUM*1);
-                    date.push(dateTopList[i].DAY);
       
                } 
+           
+               let sumMax = Math.max.apply(null, daySum);
+               let index = daySum.indexOf(sumMax);
+         //      console.log('index : ' + index);
                
-               //console.log('dateSum : ' + dateSum);
-               //console.log('date : ' + date);
-               
-               let dateSumList = [dateSum[1], dateSum[0], dateSum[2]];
-               let dateList = [date[1]+'일', date[0]+'일', date[2]+'일'];
-              console.log(dateSumList);
-             console.log(dateList);
-               
-  
-          return new Promise((resolve,reject)=>{
-                    resolve(dateSumList);
+               console.log('index : ' + dayArray2[index]);
+                           
+               return new Promise((resolve,reject)=>{
+                    resolve(dayArray2[index]);
               })
-            })
-            
-            .then(res=>{
-             dateSumList = res;
-             console.log(dateSumList);
-            	
-         /*         
-                 var options = {
+          })
+          .then(res=>{
+        	  let arrayComment = res;
+        	  console.log(arrayComment);
+          var options = {
           series: [{
-          data: dateSumList
+          data: daySum
         }],
           chart: {
           height: 350,
@@ -737,7 +609,102 @@
           show: false
         },
         xaxis: {
-          categories: dateList,
+          categories: dayArray2,
+          labels: {
+            style: {
+                 fontSize: '20px',
+                 fontWeight: 'bold',
+                 fontFamily: 'hanaBFont'
+            }
+          }
+        }
+        };
+             var chart = new ApexCharts(document.querySelector("#chart2"), options);
+             chart.render();   
+             
+             let str = '';
+             str += '<div> 일주일 중 소비가 가장 많은 날은 "'+arrayComment+'" 입니다 <br>' + arrayComment + ' 소비를 주의하세요</div>';
+ 
+             $('#chart2comment').append(str);     
+            })
+    }
+    </script>
+    
+    <script>
+    function dateTopBar() {
+    	
+    	let monthStart = -1;
+        let monthEnd = -1;
+        let id ='${loginVO.id}';
+       
+       let date = [];
+       let dateSum = [];
+       
+       fetch("/getDateTop?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+            .then(res=>{
+               let dateTopList = res;
+               
+               for(let i=0;i<3;i++){
+            	    dateSum.push(dateTopList[i].AMOUNT_SUM*1);
+                    date.push(dateTopList[i].DAY);
+               } 
+               
+               //console.log('dateSum : ' + dateSum);
+               //console.log('date : ' + date);
+               
+               let dateSumList = [dateSum[1], dateSum[0], dateSum[2]];
+               let dateList = [date[1]+'일', date[0]+'일', date[2]+'일'];
+ 
+               let object = {};
+               object.dateSumList = dateSumList;
+               object.dateList = dateList;
+               
+               
+               let sumMax = Math.max.apply(null, dateSumList);
+               console.log('sumMax2 : ' + sumMax);
+               //let index = daySum.indexOf(sumMax);
+               //console.log('index : ' + index);
+               
+               //console.log('index : ' + object[index]);
+  
+          return new Promise((resolve,reject)=>{
+                    resolve(object);
+              })
+            })
+            
+            .then(res=>{
+            	
+             let receivedObject = res;
+              
+                 var options = {
+          series: [{
+          data: receivedObject.dateSumList
+        }],
+          chart: {
+          height: 350,
+          type: 'bar',
+          events: {
+            click: function(chart, w, e) {
+              // console.log(chart, w, e)
+            }
+          }
+        },
+       
+        plotOptions: {
+          bar: {
+            columnWidth: '45%',
+            distributed: true,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          show: false
+        },
+        xaxis: {
+          categories: receivedObject.dateList,
           labels: {
             style: {
             	 fontSize: '20px',
@@ -749,110 +716,105 @@
         };
 
         var chart = new ApexCharts(document.querySelector("#chart3"), options);
-        chart.render();
-      
-      
-                 */
-               
-               
-               
-               
-               
-               
-             
-               
-               var options = {
-                  series: [{
-                  name: '사용 금액',
-                  data: [dateSum[1], dateSum[0], dateSum[2]]
-                }],
-                  annotations: {
-                  points: [{
-                    x: 'Bananas',
-                    seriesIndex: 0,
-                    label: {
-                      borderColor: '#fff',
-                      offsetY: 0,
-                      style: {
-                        color: '#fff',
-                        background: '#008485',
-                        
-                      },
-                      text: 'Bananas are good',
-                    }
-                  }]
-                },
-                chart: {
-                  height: 350,
-                  type: 'bar',
-                },
-                plotOptions: {
-                  bar: {
-                    borderRadius: 10,
-                    columnWidth: '70%',
-                  }
-                },
-                dataLabels: {
-                  enabled: false
-                },
-                stroke: {
-                  width: 2
-                },
-                
-                grid: {
-                  row: {
-                    colors: ['#fff', '#f2f2f2']
-                  }
-                },
-                xaxis: {
-                  labels: {
-                    rotate: -45
-                  },
-                  categories:[date[1]+'일', date[0]+'일', date[2]+'일'],
-                  tickPlacement: 'on'
-                },
-                yaxis: {
-                  title: {
-                    text: '사용 금액',
-                  },
-                  
-                  min:0,
-                  max:200000,
-                  tickAmount:4
-       
-                },
-                fill: {
-                  type: 'gradient',
-                  colors: ['green','red']
-                  , 
-                  gradient: {
-                	  
-                    shade: 'light',
-                    type: "horizontal",
-                    shadeIntensity: 0.25,
-                    gradientToColors: undefined,
-                    inverseColors: true,
-                    opacityFrom: 1,
-                    opacityTo: 1,
-                    stops: [50, 0, 100]
-                
-                  },
-                }
-                }; 
-
-                 var chart = new ApexCharts(document.querySelector("#chart3"), options);
-                chart.render(); 
- 
-                
-                          
-            })
-    	
-    	
-    	
+        chart.render();                       
+      })
     }
-    
-    
-    </script>
+     </script>
+     
+     
+     
+     <script>
+     function cateAmount() {
+    	 
+    	 let monthStart = -6;
+         let monthEnd = -1;
+         let id ='${loginVO.id}';
+         
+         let allCate = [];
+          
+         fetch("/getCateAmount?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+              .then(res=>res.json())
+              .then(res=>{
+                 let cateList = res;
+              
+                 for(let i=0;i<cateList.length;i++){
+                	 let allCate2 = {};
+                		 
+                	 allCate2.name=cateList[i].CATE2;
+                	 allCate2.y=cateList[i].COUNT*1;
+                	 allCate2.z=cateList[i].AMOUNT*1;
+                	 console.log(allCate2);
+                	 allCate.push(allCate2);
+                       
+                 }             
+                  return new Promise((resolve,reject)=>{
+                      resolve(allCate);
+                      })
+              })
+              
+              .then(res=>{
+            	  let objectList = res;
+            	  console.log("objectList : " + objectList[1].y);
+                                 
+               Highcharts.chart('container3', {
+            	    chart: {
+            	        type: 'variablepie'
+            	    },
+            	    title: {
+            	        text: '카테고리별 소비 빈도 수와 총 금액'
+            	        
+            	    },
+            	    tooltip: {
+            	        headerFormat: '',
+            	        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+            	            '거래 빈도수: <b>{point.y} 번</b><br/>' +
+            	            '총 금액: <b>{point.z} 원</b><br/>'
+            	    },
+            	    series: [{
+            	        minPointSize: 10,
+            	        innerSize: '20%',
+            	        zMin: 0,
+            	        name: 'CATEGORY',
+            	        data: objectList
+            	    }]
+            	});               
+        })
+      }
+     </script>
+     
+     
+     
+     <script>
+     /* chart container4 주기 */
+     function times() {
+    	 let monthStart = -2;
+         let monthEnd = 0;
+         let id ='${loginVO.id}';
+  //       let object = {};
+   //      let weeklyConsumeData = [];
+   //      let dayofweek = [];
+    	 
+         fetch("/getTimesData?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+         .then(res=>res.json())
+         .then(res=>{
+                 let timesList = res;
+                 console.log("timesList : "+timesList)
+              
+                 for(let i=0;i<timesList.length;i++){
+                  
+                       
+                 }             
+                  return new Promise((resolve,reject)=>{
+                      resolve('22');
+                      })
+              })
+              //return
+         
+         
+    	 
+     }
+     
+     </script>
    
     
 </body>
