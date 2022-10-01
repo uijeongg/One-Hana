@@ -38,7 +38,7 @@ public class ConsumeController {
 		
 		List<Map<String,Object>> consumeList = consumeService.getConsumeData(id);
 	
-		System.out.println("consumeList : 달력 " + consumeList);
+	//	System.out.println("consumeList : 달력 " + consumeList);
 		return consumeList;
 	}
 	
@@ -64,7 +64,7 @@ public class ConsumeController {
 				
 		List<Map<String,Object>> monthConsumeList = consumeService.getMonthConsume(monthMap);
 		
-		System.out.println("monthConsumeList : " + monthConsumeList);
+		//System.out.println("monthConsumeList : " + monthConsumeList);
 		return monthConsumeList;	
 	}
 	
@@ -106,7 +106,7 @@ public class ConsumeController {
 				
 		List<Map<String,Object>> dayConsumeList = consumeService.getDayConsume(dayMap);
 		
-		System.out.println("dayConsumeList : " + dayConsumeList);
+	//	System.out.println("dayConsumeList : " + dayConsumeList);
 		return dayConsumeList;	
 	}
 	
@@ -126,7 +126,7 @@ public class ConsumeController {
 		List<DayVO> dayList = consumeService.getDayConsume2(dayMap2);
 		
 		
-		System.out.println("dayList : " + dayList);
+		//System.out.println("dayList : " + dayList);
 		
 		
 		return dayList;
@@ -146,7 +146,7 @@ public class ConsumeController {
 		dayMap3.put("monthEnd", monthEnd);
 		
 		List<DayVO> dateTopList = consumeService.getdayTop(dayMap3);
-		System.out.println("dateTopList : " + dateTopList);
+	//	System.out.println("dateTopList : " + dateTopList);
 		
 		return dateTopList;
 	}
@@ -164,13 +164,33 @@ public class ConsumeController {
 		cateMap.put("monthEnd", monthEnd);
 		
 		List<CateVO> cateList = consumeService.getCateAmount(cateMap);
-		System.out.println("cateList : " + cateList);
+	//	System.out.println("cateList : " + cateList);
 		
 		
 		return cateList;
 	}
+
 	
-	
+	@ResponseBody
+	@GetMapping("/getCate3Data")
+	public List<CateVO> getCate3Data (@RequestParam("id") String id, 
+				                      @RequestParam("monthStart") int monthStart,
+				                      @RequestParam("monthEnd") int monthEnd) {
+		
+		Map<String,Object> cate3Map = new HashMap<>();
+		cate3Map.put("id", id);
+		cate3Map.put("monthStart", monthStart);
+		cate3Map.put("monthEnd", monthEnd);
+		
+		List<CateVO> cate3List = consumeService.getCate3Data(cate3Map);
+		
+		System.out.println("cate3List : " + cate3List);
+		
+		return cate3List;	
+		
+		
+		
+	}
 	
 	@ResponseBody
 	@GetMapping("/getTimesData")
@@ -185,11 +205,11 @@ public class ConsumeController {
 		
 		List<DayVO> timesList = consumeService.getTimesData(timesMap);
 		
-		System.out.println("timesList : " + timesList);
+		//System.out.println("timesList : " + timesList);
 		
-		return timesList;
-		
+		return timesList;	
 	}
+	
 	
 }
 

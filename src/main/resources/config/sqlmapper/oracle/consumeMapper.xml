@@ -65,11 +65,11 @@
     
     
     <select id="getCateAmount" resultType="map" parameterType="map">
-       SELECT B.CATENAME2 AS CATE2, COUNT(B.CATENAME1) AS COUNT, sum(A.conamount) as AMOUNT
+       SELECT B.CATENAME1 AS CATE1, COUNT(B.CATENAME1) AS COUNT, sum(A.conamount) as AMOUNT
        FROM T_CONSUME_HISTORY A, T_CONSUME_CATEGORY B
        WHERE A.CATECODE=B.CATECODE AND ID=#{id}
              AND TO_DATE(A.CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd})) 
-      GROUP BY B.CATENAME2    
+      GROUP BY B.CATENAME1   
     </select>
     
     
@@ -78,6 +78,14 @@
         FROM T_CONSUME_HISTORY 
         WHERE ID=#{id} AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
         GROUP BY SUBSTR(LPAD(SUBSTR(CONDATE,12,15),5,'0'),0,2) ORDER BY TIMES
+    </select>
+    
+    <select id="getCate3Data" resultType="map" parameterType="map">  
+        SELECT B.CATENAME2 AS CATE2, B.CATENAME3 AS CATE3, COUNT(B.CATENAME1) AS COUNT, sum(A.conamount) as AMOUNT
+        FROM T_CONSUME_HISTORY A, T_CONSUME_CATEGORY B
+        WHERE A.CATECODE=B.CATECODE AND ID=#{id}
+              AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
+        GROUP BY B.CATENAME2, B.CATENAME3
     </select>
     
 </mapper>

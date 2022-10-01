@@ -116,17 +116,9 @@
   </li>
 
    <li class="nav-item">
-    <button
-                          type="button"
-                          class="nav-link"
-                          role="tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#catePage"
-                          aria-controls="catePage"
-                          aria-selected="true"
-                        >
-                          세부분석
-                        </button>
+    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#catePage" aria-controls="catePage" aria-selected="true" id="displayChart">
+         세부분석
+    </button>
   </li>
 </ul>
    
@@ -257,7 +249,11 @@
 	</div>
 	
 	
-	
+	<div> <span style="font-size:25px;"> 6개월치 소분류 </span>
+    <figure class="highcharts-figure">   
+       <div id="container5"></div>
+     </figure>
+    </div>
 	
             
 
@@ -288,6 +284,8 @@
    
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -296,6 +294,16 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <!-- 맨 윗단 이번달 총 소비 금액 -->
+    <script>
+       $(function(){
+    	    $('#displayChart').click(function(){
+    	    	cateAmount();
+    	    	cate3Amount();
+    	    	
+    	    })
+       })   
+    </script>
+    
 	<script>
 	$(document).ready(function(){	 
 	        let month = -1; //9월
@@ -329,10 +337,11 @@
        
        dateTopBar();
        
-       cateAmount();
+       //cateAmount();
        
        
-       //시간대별
+       
+       //시간대별아직미완!!
        times();
        
        
@@ -342,7 +351,7 @@
 	})
 	</script>
 	
-	
+
 	<!-- 하이차트 src -->
 	
 
@@ -738,13 +747,13 @@
                  let cateList = res;
               
                  for(let i=0;i<cateList.length;i++){
-                	 let allCate2 = {};
+                	 let allCate1 = {};
                 		 
-                	 allCate2.name=cateList[i].CATE2;
-                	 allCate2.y=cateList[i].COUNT*1;
-                	 allCate2.z=cateList[i].AMOUNT*1;
-                	 console.log(allCate2);
-                	 allCate.push(allCate2);
+                	 allCate1.name=cateList[i].CATE1;
+                	 allCate1.y=cateList[i].COUNT*1;
+                	 allCate1.z=cateList[i].AMOUNT*1;
+                	 console.log(allCate1);
+                	 allCate.push(allCate1);
                        
                  }             
                   return new Promise((resolve,reject)=>{
@@ -790,32 +799,127 @@
     	 let monthStart = -2;
          let monthEnd = 0;
          let id ='${loginVO.id}';
-  //       let object = {};
-   //      let weeklyConsumeData = [];
-   //      let dayofweek = [];
     	 
          fetch("/getTimesData?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
          .then(res=>res.json())
          .then(res=>{
-                 let timesList = res;
-                 console.log("timesList : "+timesList)
-              
-                 for(let i=0;i<timesList.length;i++){
-                  
-                       
+                 let timesList = res;  
+                 for(let i=0;i<timesList.length;i++){             
                  }             
                   return new Promise((resolve,reject)=>{
                       resolve('22');
                       })
-              })
-              //return
-         
-         
-    	 
+              })       
      }
-     
      </script>
    
+   
+   <script>
+   function cate3Amount() {	   
+	   let monthStart = -6;
+       let monthEnd = -1;
+       let id ='${loginVO.id}';
+       let sixMonthLargeCate = [];
+       let sixMonthsmallDrilldownArray = [];
+       
+       
+       fetch("/getCate3Data?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+       .then(res=>{
+               let cate3List = res;
+               let largeConsumeList = cate3List.filter(function(item1,idx1){
+            	   return cate3List.findIndex(function(item2,idx){
+            		 return item1.CATE2 == item2.CATE2  
+            	   })==idx1;
+               })
+               for(let i=0;i<largeConsumeList.length;i++){
+            	  
+            	   let sum = 0;
+            	   let largeComponent = {};
+            	   largeComponent.name = largeConsumeList[i].CATE2;
+            	   largeComponent.drilldown = largeConsumeList[i].CATE2;
+                   let drilldownObject = {};
+                   drilldownObject.name = largeConsumeList[i].CATE2;
+                   drilldownObject.id = largeConsumeList[i].CATE2;
+                   drilldownObject.data = [];
+            	   for(let j=0;j<cate3List.length;j++){
+            		   if(largeConsumeList[i].CATE2==cate3List[j].CATE2){
+            			   
+            			   drilldownCate3Array = [];
+            			   drilldownCate3Array.push(cate3List[j].CATE3);
+            			   drilldownCate3Array.push(cate3List[j].AMOUNT);
+            			   drilldownObject.data.push(drilldownCate3Array);
+            			   
+            			   sum += cate3List[j].AMOUNT;	   
+            		   }
+            	   }
+            	   largeComponent.y= sum;
+            	   sixMonthLargeCate.push(largeComponent);
+            	   sixMonthsmallDrilldownArray.push(drilldownObject);
+            	   console.log(drilldownObject.data.length);
+            	
+               }
+
+               
+                return new Promise((resolve,reject)=>{
+                    resolve('22');
+                })
+            })
+            .then(res=>{
+            	Highcharts.chart('container5', {
+            	    chart: {
+            	        type: 'pie'
+            	    },
+            	    title: {
+            	        text: '세부 소비 내역과 금액'
+            	    },
+            	   /*  subtitle: {
+            	        text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+            	    }, */
+
+            	    accessibility: {
+            	        announceNewData: {
+            	            enabled: true
+            	        },
+            	        point: {
+            	            valueSuffix: ' 원'
+            	        }
+            	    },
+
+            	    plotOptions: {
+            	        series: {
+            	            dataLabels: {
+            	                enabled: true,
+            	                format: '{point.name}'
+            	            }
+            	        }
+            	    },
+
+            	    tooltip: {
+            	        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            	        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}원</b><br/>'
+            	    },
+
+            	    series: [
+            	        {
+            	            name: "금액",
+            	            colorByPoint: true,
+            	            data:sixMonthLargeCate 
+            	        }
+            	    ],
+            	    drilldown: {
+            	        series:sixMonthsmallDrilldownArray
+            	            }
+            	        
+            	    
+            	})
+            })
+	   
+   }
+   </script>
+   <script>
+
+   </script>
     
 </body>
 </html>

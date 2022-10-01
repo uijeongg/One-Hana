@@ -74,13 +74,15 @@ public class ConsumeServiceImpl implements ConsumeService {
 		return cateAmount;
 	}
 
-
-
 	@Override
 	public List<DayVO> getTimesData(Map<String, Object> timesMap) {
 		List<DayVO> timesAmount = consumeDAO.getTimesData(timesMap);
-		
 		return timesAmount;		
 	}
 
+	@Override
+	public List<CateVO> getCate3Data(Map<String, Object> cate3Map) {
+		List<CateVO> cate3Amount = consumeDAO.getCate3Data(cate3Map);
+		return cate3Amount;		
+	}
 }

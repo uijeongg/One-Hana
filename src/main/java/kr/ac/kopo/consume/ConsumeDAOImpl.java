@@ -76,4 +76,12 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 		List<DayVO> timesList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getTimesData", timesMap);
 		return timesList;
 	}
+	
+	
+	@Override
+	public List<CateVO> getCate3Data(Map<String, Object> cate3Map) {
+		List<CateVO> cate3List = sqlSessionTemplate.selectList("consume.ConsumeDAO.getCate3Data", cate3Map);
+		return cate3List;
+		
+	}
 }

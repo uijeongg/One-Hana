@@ -24,6 +24,8 @@ public interface ConsumeService {
 
 	List<DayVO> getTimesData(Map<String, Object> timesMap);
 
+	List<CateVO> getCate3Data(Map<String, Object> cate3Map);
+
 	
 	
 
