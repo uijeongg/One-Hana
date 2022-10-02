@@ -6,6 +6,7 @@ import java.util.Map;
 
 import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.date.MixVO;
 
 
 
@@ -28,5 +29,11 @@ public interface ConsumeDAO {
 	List<DayVO> getTimesData(Map<String, Object> timesMap);
 
 	List<CateVO> getCate3Data(Map<String, Object> cate3Map);
+
+	List<MixVO> getCate3Count(Map<String, Object> cate3countMap);
+
+	List<DayVO> getDateTopList(Map<String, Object> dateTopMap);
+
+	List<DayVO> getSixAmountData(Map<String, Object> sixMap);
 
 }

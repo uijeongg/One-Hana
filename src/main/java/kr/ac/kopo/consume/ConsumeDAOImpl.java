@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.date.MixVO;
 
 
 
@@ -82,6 +83,25 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 	public List<CateVO> getCate3Data(Map<String, Object> cate3Map) {
 		List<CateVO> cate3List = sqlSessionTemplate.selectList("consume.ConsumeDAO.getCate3Data", cate3Map);
 		return cate3List;
-		
+	}
+	
+	@Override
+	public List<MixVO> getCate3Count(Map<String, Object> cate3countMap) {
+		List<MixVO> cate3CountList =  sqlSessionTemplate.selectList("consume.ConsumeDAO.getCate3Count", cate3countMap);
+		return cate3CountList;
+	}
+	
+	
+	@Override
+	public List<DayVO> getDateTopList(Map<String, Object> dateTopMap) {
+		List<DayVO> dateTopHistoryList =  sqlSessionTemplate.selectList("consume.ConsumeDAO.getDateTopList", dateTopMap);
+		return dateTopHistoryList;
+	}
+	
+	
+	@Override
+	public List<DayVO> getSixAmountData(Map<String, Object> sixMap) {
+		List<DayVO> sixAmountList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getSixAmountData", sixMap);
+		return sixAmountList;
 	}
 }

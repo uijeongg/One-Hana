@@ -38,9 +38,9 @@ public class ParkingServiceImpl implements ParkingService {
 	
 	
 	@Override
-	public List<HashMap<String, Object>> getParkingData(String accountNo) {
+	public List<HashMap<String, Object>> getParkingData(String id) {
 		
-		List<HashMap<String, Object>> parkingList = parkingDAO.getParkingData(accountNo);
+		List<HashMap<String, Object>> parkingList = parkingDAO.getParkingData(id);
 		
 		return parkingList;
 	}

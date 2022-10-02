@@ -29,7 +29,7 @@
     
     
     <select id="getDayConsume" resultType="map" parameterType="map">
-         SELECT SUBSTR(CONDATE,0,10) AS CONDATE,SUM(B.CONAMOUNT) AS CONAMOUNT
+        SELECT SUBSTR(CONDATE,0,10) AS CONDATE,SUM(B.CONAMOUNT) AS CONAMOUNT
         FROM T_CONSUME_CATEGORY A, T_CONSUME_HISTORY B
         WHERE (TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'),${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))) 
                AND A.CATECODE = B.CATECODE AND B.ID=#{id} 
@@ -72,20 +72,59 @@
       GROUP BY B.CATENAME1   
     </select>
     
-    
-    <select id="getTimesData" resultType="map" parameterType="map">
-        SELECT SUBSTR(LPAD(SUBSTR(CONDATE,12,15),5,'0'),0,2) AS TIMES, SUM(CONAMOUNT) AS AMOUNT, COUNT(*) AS COUNT
-        FROM T_CONSUME_HISTORY 
-        WHERE ID=#{id} AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
-        GROUP BY SUBSTR(LPAD(SUBSTR(CONDATE,12,15),5,'0'),0,2) ORDER BY TIMES
-    </select>
-    
+        
     <select id="getCate3Data" resultType="map" parameterType="map">  
         SELECT B.CATENAME2 AS CATE2, B.CATENAME3 AS CATE3, COUNT(B.CATENAME1) AS COUNT, sum(A.conamount) as AMOUNT
         FROM T_CONSUME_HISTORY A, T_CONSUME_CATEGORY B
         WHERE A.CATECODE=B.CATECODE AND ID=#{id}
               AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
         GROUP BY B.CATENAME2, B.CATENAME3
+    </select>
+    
+    
+    <select id="getCate3Count" resultType="map" parameterType="map">
+        SELECT B.CATENAME2 AS cate2, B.CATENAME3 AS cate3, COUNT(B.CATENAME3) AS cate3count, sum(A.conamount) as conamount1
+        FROM T_CONSUME_HISTORY A, T_CONSUME_CATEGORY B
+        WHERE A.CATECODE=B.CATECODE AND ID=#{id}
+              AND TO_DATE(A.CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd})) 
+        GROUP BY B.CATENAME3, B.CATENAME2
+        ORDER BY cate3count DESC
+    </select>
+    
+    
+    <select id="getDateTopList" resultType="map" parameterType="map">
+        SELECT CONNAME, CONAMOUNT, DAY, TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'HH24:MI') AS TIME
+        FROM T_CONSUME_HISTORY A, 
+             (SELECT TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'DD') AS DAY, RANK() OVER (ORDER BY  SUM(CONAMOUNT) DESC) RANK
+              FROM T_Consume_History
+              WHERE TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
+              GROUP BY TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'DD')
+              ORDER BY rank) B 
+        WHERE TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
+              AND SUBSTR(A.CONDATE,9,2)=B.DAY AND ID=#{id}
+        ORDER BY B.RANK
+    </select>
+    
+    <select id="getSixAmountData" resultType="map" parameterType="map">
+        SELECT TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'MM') AS MONTH, SUM(CONAMOUNT) AS SUM
+        FROM T_CONSUME_HISTORY
+        WHERE ID=#{id}
+              AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
+        GROUP BY TO_CHAR(TO_DATE(CONDATE, 'YYYY-MM-DD HH24:MI:SS'),'MM')
+        ORDER BY MONTH ASC
+    </select>
+    
+        
+    <select id="getTimesData" resultType="map" parameterType="map">
+        <!-- SELECT SUBSTR(LPAD(SUBSTR(CONDATE,12,15),5,'0'),0,2) AS TIMES, SUM(CONAMOUNT) AS AMOUNT, COUNT(*) AS COUNT
+        FROM T_CONSUME_HISTORY 
+        WHERE ID=#{id} AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
+        GROUP BY SUBSTR(LPAD(SUBSTR(CONDATE,12,15),5,'0'),0,2) ORDER BY TIMES -->
+        
+        SELECT A.CONDATE, A.CONAMOUNT, B.CATENAME3
+        FROM T_CONSUME_HISTORY A, T_CONSUME_CATEGORY B
+        WHERE A.CATECODE=B.CATECODE AND ID=#{id}
+              AND TO_DATE(CONDATE,'YYYY-MM-DD HH24:MI:SS') BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthStart}) AND LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), ${monthEnd}))
     </select>
     
 </mapper>

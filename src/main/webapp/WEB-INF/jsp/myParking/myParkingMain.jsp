@@ -109,7 +109,9 @@
      $(document).ready(function(){
         
          var accountNo = '${accountNo}';  
-         console.log("accountNo : " + accountNo );
+       //  console.log("accountNo : " + accountNo );
+         //let id ='${loginVO.id}';
+        // console.log("id : " + id );
          fetch("/getParkingSum?accountNo="+accountNo)
          .then(res=>res.json())
          .then(data=>{
@@ -219,16 +221,16 @@
 <script>
     $(document).ready(function(){
   
-         var accountNo = '<c:out value="${accountNo}"/>' ;
-        //console.log("accountNo : " + accountNo );
+         //var accountNo = '<c:out value="${accountNo}"/>' ;
+         let id ='${loginVO.id}';
+         console.log("id : " + id );
           
-         fetch('/getParkingData?accountNo='+accountNo)
+         fetch('/getParkingData?id='+id)
          .then(res=>res.json())
          .then(res=>{
               let parkingList = res
                
-             console.log(parkingList);
-             //parkingList[0].AUTODIVAMOUNT
+             //console.log(parkingList);
                  
              let str ='';
              str += '<div style="font-size:23px; text-align:center; margin-bottom:30px;"> 이번달엔 총 "'+ (parkingList[0].PARKINGAMOUNT*1 + parkingList[1].PARKINGAMOUNT*1+parkingList[2].PARKINGAMOUNT*1) +'" 원 을 파킹했어요! </div><br>';

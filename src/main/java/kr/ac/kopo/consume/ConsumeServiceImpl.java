@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.date.MixVO;
 
 
 
@@ -85,4 +86,24 @@ public class ConsumeServiceImpl implements ConsumeService {
 		List<CateVO> cate3Amount = consumeDAO.getCate3Data(cate3Map);
 		return cate3Amount;		
 	}
+	
+	@Override
+	public List<MixVO> getCate3Count(Map<String, Object> cate3countMap) {
+		List<MixVO> cate3Count = consumeDAO.getCate3Count(cate3countMap);
+		return cate3Count;
+	}
+	
+	@Override
+	public List<DayVO> getDateTopList(Map<String, Object> dateTopMap) {
+		List<DayVO> dateTopList = consumeDAO.getDateTopList(dateTopMap);
+		return dateTopList;		
+	}
+
+	@Override
+	public List<DayVO> getSixAmountData(Map<String, Object> sixMap) {
+		List<DayVO> sixAmountList = consumeDAO.getSixAmountData(sixMap);
+		return sixAmountList;
+		
+	}
+
 }

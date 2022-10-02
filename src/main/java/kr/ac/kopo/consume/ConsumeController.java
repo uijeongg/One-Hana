@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.date.CateVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.date.MixVO;
 import kr.ac.kopo.divide.DivideVO;
 
 @Controller
@@ -153,6 +154,29 @@ public class ConsumeController {
 	
 	
 	@ResponseBody
+	@GetMapping("/getDateTopList")
+	public List<DayVO> getDateTopList(@RequestParam("id") String id, 
+			                          @RequestParam("monthStart") int monthStart,
+                                      @RequestParam("monthEnd") int monthEnd) {
+		
+		Map<String,Object> dateTopMap = new HashMap<>();
+		dateTopMap.put("id", id);
+		dateTopMap.put("monthStart", monthStart);
+		dateTopMap.put("monthEnd", monthEnd);
+		
+		List<DayVO> dateTopHitoryList = consumeService.getDateTopList(dateTopMap);
+		//System.out.println("dateTopHitoryList : " + dateTopHitoryList);
+		
+		return dateTopHitoryList;
+		
+		
+		
+	}
+	
+	
+	
+	
+	@ResponseBody
 	@GetMapping("/getCateAmount")
 	public List<CateVO> getCateAmount (@RequestParam("id") String id, 
 			   @RequestParam("monthStart") int monthStart,
@@ -183,14 +207,32 @@ public class ConsumeController {
 		cate3Map.put("monthEnd", monthEnd);
 		
 		List<CateVO> cate3List = consumeService.getCate3Data(cate3Map);
-		
-		System.out.println("cate3List : " + cate3List);
-		
+		//System.out.println("cate3List : " + cate3List);
 		return cate3List;	
-		
-		
-		
 	}
+	
+	
+	
+	@ResponseBody
+	@GetMapping("/getCateCount")
+	public List<MixVO> getCateCount(@RequestParam("id") String id, 
+				 		@RequestParam("monthStart") int monthStart,
+				 		@RequestParam("monthEnd") int monthEnd) {
+		
+		Map<String,Object> cate3countMap = new HashMap<>();
+		cate3countMap.put("id", id);
+		cate3countMap.put("monthStart", monthStart);
+		cate3countMap.put("monthEnd", monthEnd);
+		
+		List<MixVO> cate3CountList = consumeService.getCate3Count(cate3countMap);
+		//System.out.println("cate3countList : " + cate3CountList);
+		
+		return cate3CountList;
+	}
+	
+	
+	
+	
 	
 	@ResponseBody
 	@GetMapping("/getTimesData")
@@ -205,11 +247,28 @@ public class ConsumeController {
 		
 		List<DayVO> timesList = consumeService.getTimesData(timesMap);
 		
-		//System.out.println("timesList : " + timesList);
+		System.out.println("timesList : " + timesList);
 		
 		return timesList;	
 	}
 	
+	
+	
+	@ResponseBody
+	@GetMapping("/getSixMonthAmount")
+	public List<DayVO> getSixMonthAmount (@RequestParam("id") String id, 
+				                          @RequestParam("monthStart") int monthStart,
+				                          @RequestParam("monthEnd") int monthEnd) {
+		
+		Map<String,Object> sixMap = new HashMap<>();
+		sixMap.put("id", id);
+		sixMap.put("monthStart", monthStart);
+		sixMap.put("monthEnd", monthEnd);
+		
+		List<DayVO> sixMonthAmountList = consumeService.getSixAmountData(sixMap);
+		//System.out.println("sixMonthAmountList 왔쥬? " + sixMonthAmountList);
+		return sixMonthAmountList;
+	}
 	
 }
 

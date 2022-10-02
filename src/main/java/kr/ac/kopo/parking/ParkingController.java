@@ -30,37 +30,11 @@ public class ParkingController {
 		return "/myParking/myParkingMain";
 	}
 	
-	
-	/*
-	@ResponseBody
-	@RequestMapping("/getParkingSum")
-	public ModelAndView parkingMain1(@RequestParam("accountNo") String accountNo) {
-		ModelAndView mav = new ModelAndView();
-		
-		//List<Map<String,Object>> parkingSum = parkingService.getParkingData(accountNo);
-		int parkingSum = parkingService.getParkingSum(accountNo);
-		System.out.println("parkingSum : " + parkingSum);
-		
-		int parkingBal = parkingService.getParkingBal(accountNo);
-		System.out.println("parkingBal : " + parkingBal);
-		
-		
 
-		Map<String, Object> parkingMap = new HashMap<>();
-		parkingMap.put("parkingSum", parkingSum);
-		parkingMap.put("parkingBal", parkingBal);
-	
-		mav.addObject("parkingMap", parkingMap); //모델에 저장 (근데 모델앤뷰가 리퀘스트영역)
-		mav.setViewName("/myParking/myParkingAjax");
-		return mav;
-	}
-	*/
-	
 	@ResponseBody
 	@RequestMapping("/getParkingSum")
 	public Map<String,Object> parkingMain1(@RequestParam("accountNo") String accountNo) {
 		
-		//List<Map<String,Object>> parkingSum = parkingService.getParkingData(accountNo);
 		int parkingSum = parkingService.getParkingSum(accountNo);
 		System.out.println("parkingSum : " + parkingSum);
 		
@@ -78,14 +52,13 @@ public class ParkingController {
 	}
 	
 	
-	
-	
-	
 	@ResponseBody
 	@GetMapping("/getParkingData")
-	public List<HashMap<String, Object>> parkingMain(@RequestParam("accountNo") String accountNo) {
+	//public List<HashMap<String, Object>> parkingMain(@RequestParam("accountNo") String accountNo) {
+	public List<HashMap<String, Object>> parkingMain(@RequestParam("id") String id) {
+			
 		
-		List<HashMap<String, Object>> parkingList = parkingService.getParkingData(accountNo);
+		List<HashMap<String, Object>> parkingList = parkingService.getParkingData(id);
 		System.out.println("parkingList 불러와? : " + parkingList);
 		
 		return parkingList;
