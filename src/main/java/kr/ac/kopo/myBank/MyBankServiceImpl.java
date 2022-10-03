@@ -20,9 +20,10 @@ public class MyBankServiceImpl implements MyBankService {
 	
 	//1-1
 	@Override
-	public void updateOne(String accountNo) {
+	//public void updateOne(String accountNo) {
+	public void updateOne(AccountVO newAccount) {
 		
-		mybankDAO.updateAccount(accountNo);	
+		mybankDAO.updateAccount(newAccount);	
 	}
 
 
@@ -36,9 +37,10 @@ public class MyBankServiceImpl implements MyBankService {
 	  
 	  //1-3 select
 	  @Override
-	  public MyBankVO getNewAccount(String accountNo) {
+	  //public MyBankVO getNewAccount(String accountNo) {
+	  public MyBankVO getNewAccount(AccountVO newAccount) {
 		  
-		  MyBankVO mybankAccount = mybankDAO.selectNew(accountNo);
+		  MyBankVO mybankAccount = mybankDAO.selectNew(newAccount);
 		  
 		  return mybankAccount ; //여기서 받아온 값으로 success.jsp에서 뿌려줌
 	  }
@@ -46,9 +48,10 @@ public class MyBankServiceImpl implements MyBankService {
 	  
 	  //2 select
 	  @Override
-	  public MyBankVO getAccount(String accountNo) {
+	  //public MyBankVO getAccount(String accountNo) {
+	  public MyBankVO getAccount(AccountVO newAccount2) {
 		  
-		  MyBankVO mybankAccount = mybankDAO.selectSuccess(accountNo);
+		  MyBankVO mybankAccount = mybankDAO.selectSuccess(newAccount2);
 		  
 		  return mybankAccount;
 	  }

@@ -280,7 +280,15 @@
 	
             
             
-            
+      
+      
+      
+    <div> <span style="font-size:25px;"> 6개월치 소분류 </span>
+    <figure class="highcharts-figure">   
+       <div id="container7"></div>
+     </figure>
+    </div>
+          
 
 </div>  
 
@@ -306,6 +314,8 @@
    
     
 </div>  <!-- 탭 가장 상단 div -->  
+
+ 
    
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
@@ -1057,42 +1067,237 @@
      
      
      <script>
-     /* chart container4 주기 */
      function times() {
     	 let monthStart = -6;
          let monthEnd = -1;
          let id ='${loginVO.id}';
+         
+         timeListObject_1 = {};
+         timeListObject_1.name = '0~4시';
+         timeListObject_1.drilldown= '0~4시';
+         
+         timeListObject_2 = {};
+         timeListObject_2.name = '4~8시';
+         timeListObject_2.drilldown= '4~8시';
+         
+         timeListObject_3 = {};
+         timeListObject_3.name = '8~12시';
+         timeListObject_3.drilldown= '8~12시';
+         
+         timeListObject_4 = {};
+         timeListObject_4.name = '12~16시';
+         timeListObject_4.drilldown= '12~16시';
+         
+         timeListObject_5 = {};
+         timeListObject_5.name = '16~20시';
+         timeListObject_5.drilldown= '16~20시';
+         
+         timeListObject_6 = {};
+         timeListObject_6.name = '20~24시';
+         timeListObject_6.drilldown = '20~24시';
+         
+         
+         let timeListArray_1 = [];
+         let timeListArray_2 = [];
+         let timeListArray_3 = [];
+         let timeListArray_4 = [];
+         let timeListArray_5 = [];
+         let timeListArray_6 = [];
+         
+         let timeListTimeBiggerArray = [];
+         
+         let detailTimeArray = [];
+         
+         let detailTimeObject_1 = {};
+         detailTimeObject_1.name = '0~4시';
+         detailTimeObject_1.id = '0~4시';
+         detailTimeObject_1.data=[];
+         
+         let detailTimeObject_2 = {};
+         detailTimeObject_2.name = '4~8시';
+         detailTimeObject_2.id = '4~8시';
+         detailTimeObject_2.data=[];
+         
+         
+         let detailTimeObject_3 = {};
+         detailTimeObject_3.name = '8~12시';
+         detailTimeObject_3.id = '8~12시';
+         detailTimeObject_3.data=[];
+         
+         
+         let detailTimeObject_4 = {};
+         detailTimeObject_4.name = '12~16시';
+         detailTimeObject_4.id = '12~16시';
+         detailTimeObject_4.data=[];
+         
+         
+         let detailTimeObject_5 = {};
+         detailTimeObject_5.name = '16~20시';
+         detailTimeObject_5.id = '16~20시';
+         detailTimeObject_5.data=[];
+         
+         
+         let detailTimeObject_6 = {};
+         detailTimeObject_6.name = '20~24시';
+         detailTimeObject_6.id = '20~24시';
+         detailTimeObject_6.data=[];
+         
+         
     	 
          fetch("/getTimesData?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
          .then(res=>res.json())
          .then(res=>{
-                 let timesList = res;
-                 timeListArray_1 = [];
-                 timeListArray_2 = [];
-                 timeListArray_3 = [];
-                 timeListArray_4 = [];
-                 timeListArray_5 = [];
-                 timeListArray_6 = [];
-                 console.log("케이시 노래듣는중 " + timesList[6].CONDATE.substring(11,16));
+
+                
+        	    let timesList = res;
+                 
+                 console.log("timesList " + timesList[6].CONDATE.substring(11,16));
                  for(let i=0;i<timesList.length;i++){
                 	 let mod = parseInt(Number(timesList[i].CONDATE.substring(11,13).replace(':',''))/4); 
+                     let detailTimeOneArray = [];
+                     
                 	 if(mod<1){
                 		 timeListArray_1.push(mod);
+                		 detailTimeOneArray.push(timesList[i].CATENAME3);
+                		 detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                         
+                	     detailTimeObject_1.data.push(detailTimeOneArray);
+                	     
                 	 }else if(mod<2){
                 		 timeListArray_2.push(mod);
+                		 detailTimeOneArray.push(timesList[i].CATENAME3);
+                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                         
+                         detailTimeObject_2.data.push(detailTimeOneArray);
+                    
+                		 
                 	 }else if(mod<3){
                 		 timeListArray_3.push(mod);
+                		 detailTimeOneArray.push(timesList[i].CATENAME3);
+                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                         
+                         detailTimeObject_3.data.push(detailTimeOneArray);
+                    
                 	 }else if(mod<4){
                 		 timeListArray_4.push(mod);
+                		 detailTimeOneArray.push(timesList[i].CATENAME3);
+                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                         
+                         detailTimeObject_4.data.push(detailTimeOneArray);
+                    
                 	 }else if(mod<5){
                 		 timeListArray_5.push(mod);
+                		 detailTimeOneArray.push(timesList[i].CATENAME3);
+                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                         
+                         detailTimeObject_5.data.push(detailTimeOneArray);
+                    
                 	 }else{
                 		 timeListArray_6.push(mod);
+                		 detailTimeOneArray.push(timesList[i].CATENAME3);
+                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                         
+                         detailTimeObject_6.data.push(detailTimeOneArray);
+                    
                 	 }
+             
                  }
+                 timeListObject_1.y = timeListArray_1.length;
+                 timeListObject_2.y = timeListArray_2.length;
+                 timeListObject_3.y = timeListArray_3.length;
+                 timeListObject_4.y = timeListArray_4.length;
+                 timeListObject_5.y = timeListArray_5.length;
+                 timeListObject_6.y = timeListArray_6.length;
                  
-               
-           })       
+                 
+                 timeListTimeBiggerArray.push(timeListObject_1);
+                 timeListTimeBiggerArray.push(timeListObject_2);
+                 timeListTimeBiggerArray.push(timeListObject_3);
+                 timeListTimeBiggerArray.push(timeListObject_4);
+                 timeListTimeBiggerArray.push(timeListObject_5);
+                 timeListTimeBiggerArray.push(timeListObject_6);
+                 
+                 
+                 detailTimeArray.push(detailTimeObject_1);
+                 detailTimeArray.push(detailTimeObject_2);
+                 detailTimeArray.push(detailTimeObject_3);
+                 detailTimeArray.push(detailTimeObject_4);
+                 detailTimeArray.push(detailTimeObject_5);
+                 detailTimeArray.push(detailTimeObject_6);
+              
+                 
+                 
+                 return new Promise((resolve,reject)=>{
+                	 resolve('gogo');
+                 })
+                 
+         }) 
+         .then(res=>{
+                 
+                 Highcharts.chart('container7', {
+                	    chart: {
+                	        type: 'column'
+                	    },
+                	    title: {
+                	        align: 'left',
+                	        text: '시간대별 소비 빈도 수 현황'
+                	    },
+                	    subtitle: {
+                	        align: 'left',
+                	        text: ''
+                	    },
+                	    accessibility: {
+                	        announceNewData: {
+                	            enabled: true
+                	        }
+                	    },
+                	    xAxis: {
+                	        type: 'category'
+                	    },
+                	    yAxis: {
+                	        title: {
+                	            text: '소비 횟수'
+                	        }
+
+                	    },
+                	    legend: {
+                	        enabled: false
+                	    },
+                	    plotOptions: {
+                	        series: {
+                	            borderWidth: 0,
+                	            dataLabels: {
+                	                enabled: true,
+                	                format: '{point.y} 회'
+                	            }
+                	        }
+                	    },
+
+                	    tooltip: {
+                	        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                	        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y} 회</b><br/>'
+                	    },
+
+                	    series: [
+                	        {
+                	            name: "Browsers",
+                	            colorByPoint: true,
+                	            data: timeListTimeBiggerArray
+                	        }
+                	    ],
+                	    drilldown: {
+                	        breadcrumbs: {
+                	            position: {
+                	                align: 'right'
+                	            }
+                	        },
+                	        series: detailTimeArray
+                	    }
+                	});
+                 
+         })
+           
+            
      }
      </script>
    

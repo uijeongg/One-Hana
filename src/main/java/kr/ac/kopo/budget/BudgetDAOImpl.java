@@ -88,4 +88,10 @@ public class BudgetDAOImpl implements BudgetDAO {
 		sqlSessionTemplate.selectOne("budget.BudgetDAO.doAutoParking", myBankVO);
 		return null;
 	}
+	
+//	@Override
+//	public void insertAutoParkingSetting(int id) {
+//		sqlSessionTemplate.insert("budget.BudgetDAO.insertAutoParkingSetting", id);
+		
+//	}
 }

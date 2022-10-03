@@ -83,6 +83,12 @@
                 )
             }
     </select>
-
+    
+    
+ <!--    <insert id="insertAutoParkingSetting" parameterType="String">
+         insert into t_auto_parking_setting(id, parkingDate) 
+         values(#{id}, '1') 
+    </insert>
+ -->
     
 </mapper>

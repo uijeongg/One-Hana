@@ -362,6 +362,7 @@ $(document).ready(function(){
 	    //let parkingGoal = document.parkingSet.parkingGoal.value*1;
 	    console.log(parkingGoal)
 	    console.log(typeof parkingGoal)
+	   //let id = '${loginVO.id}';
 	        
 	    
 	   $.ajax({
@@ -369,6 +370,7 @@ $(document).ready(function(){
 	      , method : 'post'
 	      , data   : {
 	    	          parkingGoal : parkingGoal
+	    	
 	      },
 	       success : function(data){
 	           if(data == 'success'){

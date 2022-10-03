@@ -9,17 +9,27 @@ public interface MyBankDAO {
 
 	
 	//update
-	void updateAccount(String accountNo);
+	//void updateAccount(String accountNo);
+	void updateAccount(AccountVO newAccount);
 
 	//insert
 	void insertNew(AccountVO newAccount);
 	
 	//select
-	MyBankVO selectNew(String accountNo);
+	//MyBankVO selectNew(String accountNo);
+	MyBankVO selectNew(AccountVO newAccount);
+	
+	
+	
+	
+	
 	
 	//select
-	MyBankVO selectSuccess(String accountNo);
+	//MyBankVO selectSuccess(String accountNo);
+	MyBankVO selectSuccess(AccountVO newAccount2);
 
+	
+	
 	//insert pocket
 	/* void insertPocket(AddPocketVO newPocket); */
 

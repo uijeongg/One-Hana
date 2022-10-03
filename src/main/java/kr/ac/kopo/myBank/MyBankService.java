@@ -7,13 +7,20 @@ import kr.ac.kopo.account.AccountVO;
 
 public interface MyBankService {
 
-	void updateOne(String accountNo);
+	//void updateOne(String accountNo);
+	void updateOne(AccountVO newAccount);
 	
 	void insertOne(AccountVO newAccount);
 	
-	MyBankVO getNewAccount(String account);
+	//MyBankVO getNewAccount(String account);
+	MyBankVO getNewAccount(AccountVO newAccount);
 	
-	MyBankVO getAccount(String accountNo);
+	
+	
+	
+	//MyBankVO getAccount(String accountNo);
+	MyBankVO getAccount(AccountVO newAccount2);
+	
 	
 	/* void insertNewPoc(AddPocketVO newPocket); */
 

@@ -100,5 +100,9 @@ public class BudgetServiceImpl implements BudgetService {
 	}
 	
 	
+//	@Override
+//	public void insertAutoParking(int id) {
+//		budgetDAO.insertAutoParkingSetting(id);	
+//	}
 	
 }

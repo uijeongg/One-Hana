@@ -2,6 +2,7 @@ package kr.ac.kopo.myBank;
 
 public class MyBankVO {
 
+	private String id; 
 	private String accountNo;
 	private String accountName;
 	/* private int basicBal; */
@@ -11,6 +12,13 @@ public class MyBankVO {
 	private String incomeDate;
 	private String parkingDate;
 	private int parkingLimit;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getAccountNo() {
 		return accountNo;
 	}
@@ -61,11 +69,10 @@ public class MyBankVO {
 	}
 	@Override
 	public String toString() {
-		return "MyBankVO [accountNo=" + accountNo + ", accountName=" + accountName + ", balance=" + balance
-				+ ", openDate=" + openDate + ", income=" + income + ", incomeDate=" + incomeDate + ", parkingDate="
-				+ parkingDate + ", parkingLimit=" + parkingLimit + "]";
+		return "MyBankVO [id=" + id + ", accountNo=" + accountNo + ", accountName=" + accountName + ", balance="
+				+ balance + ", openDate=" + openDate + ", income=" + income + ", incomeDate=" + incomeDate
+				+ ", parkingDate=" + parkingDate + ", parkingLimit=" + parkingLimit + "]";
 	}
-	
 	
 	
 	

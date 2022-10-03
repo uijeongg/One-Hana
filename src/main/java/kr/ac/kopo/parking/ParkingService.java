@@ -13,7 +13,7 @@ public interface ParkingService {
 	int getParkingBal(String accountNo);
 	
 	
-	List<HashMap<String, Object>> getParkingData(String id);
+	List<HashMap<String, Object>> getParkingData(String accountNo);
 	
 
 

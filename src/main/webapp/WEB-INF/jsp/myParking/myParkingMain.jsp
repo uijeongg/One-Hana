@@ -109,9 +109,9 @@
      $(document).ready(function(){
         
          var accountNo = '${accountNo}';  
-       //  console.log("accountNo : " + accountNo );
+         console.log("accountNo : " + accountNo );
          //let id ='${loginVO.id}';
-        // console.log("id : " + id );
+         //console.log("id 파킹 : " + id );
          fetch("/getParkingSum?accountNo="+accountNo)
          .then(res=>res.json())
          .then(data=>{
@@ -221,11 +221,12 @@
 <script>
     $(document).ready(function(){
   
-         //var accountNo = '<c:out value="${accountNo}"/>' ;
-         let id ='${loginVO.id}';
-         console.log("id : " + id );
+         var accountNo = '<c:out value="${accountNo}"/>' ;
+         //let id ='${loginVO.id}';
+         //console.log("id  겟파킹데이터!!: " + id );
+         
           
-         fetch('/getParkingData?id='+id)
+         fetch('/getParkingData?accountNo='+accountNo)
          .then(res=>res.json())
          .then(res=>{
               let parkingList = res

@@ -19,9 +19,9 @@ public class MyBankDAOImpl implements MyBankDAO{
 	 * 1. 1) t_account에서 통장 이름 update
 	 */
 	@Override
-	public void updateAccount(String accountNo) {
+	public void updateAccount(AccountVO newAccount) {
 		 
-		sqlSessionTemplate.update("myBank.MyBankDAO.updateAccount", accountNo); 
+		sqlSessionTemplate.update("myBank.MyBankDAO.updateAccount", newAccount); 
 	}
 	
 	
@@ -41,9 +41,10 @@ public class MyBankDAOImpl implements MyBankDAO{
 	 * 1. 3) changeSuccess.jsp에 전환한 통장 정보 뿌려주기
 	 */
 	@Override
-	public MyBankVO selectNew(String accountNo) {
+	//public MyBankVO selectNew(String accountNo) {
+	public MyBankVO selectNew(AccountVO newAccount) {
 		
-		MyBankVO mybankAccount = sqlSessionTemplate.selectOne("myBank.MyBankDAO.selectNew", accountNo);		
+		MyBankVO mybankAccount = sqlSessionTemplate.selectOne("myBank.MyBankDAO.selectNew", newAccount);		
 		 
 		return mybankAccount;
 		
@@ -54,9 +55,10 @@ public class MyBankDAOImpl implements MyBankDAO{
 	 * 2. 
 	 */
 	@Override
-	public MyBankVO selectSuccess(String accountNo) {
+	//public MyBankVO selectSuccess(String accountNo) {
+	public MyBankVO selectSuccess(AccountVO newAccount2) {
 		
-		MyBankVO mybankAccount = sqlSessionTemplate.selectOne("myBank.MyBankDAO.selectSuccess", accountNo);		
+		MyBankVO mybankAccount = sqlSessionTemplate.selectOne("myBank.MyBankDAO.selectSuccess", newAccount2);		
 		 
 		return mybankAccount;
 	}

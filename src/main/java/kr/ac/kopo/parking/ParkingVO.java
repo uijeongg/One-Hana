@@ -3,6 +3,7 @@ package kr.ac.kopo.parking;
 public class ParkingVO {
 
 	private String accountNo;
+	private String id;
 	private String toPocket;
 	private int    parkingAmount;
 	private String parkingDate;
@@ -13,6 +14,12 @@ public class ParkingVO {
 	}
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getToPocket() {
 		return toPocket;
@@ -34,8 +41,8 @@ public class ParkingVO {
 	}
 	@Override
 	public String toString() {
-		return "ParkingVO [accountNo=" + accountNo + ", toPocket=" + toPocket + ", parkingAmount=" + parkingAmount
-				+ ", parkingDate=" + parkingDate + "]";
+		return "ParkingVO [accountNo=" + accountNo + ", id=" + id + ", toPocket=" + toPocket + ", parkingAmount="
+				+ parkingAmount + ", parkingDate=" + parkingDate + "]";
 	}
 	
 	

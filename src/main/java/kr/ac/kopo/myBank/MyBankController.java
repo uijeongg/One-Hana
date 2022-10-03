@@ -38,12 +38,15 @@ public class MyBankController {
 
 		String accountNo = request.getParameter("accountNo");
 		int balance = Integer.parseInt(request.getParameter("balance"));
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("loginVO");
 
-		// System.out.println("AccountNo랑 balance 가져옴? : " + accountNo + balance);
+	    //System.out.println("AccountNo랑 loginVO 가져옴? : " + accountNo + loginVO);
 		
 		AccountVO newAccount = new AccountVO();
 		newAccount.setAccountNo(accountNo);
 		newAccount.setBalance(balance);
+		newAccount.setId(loginVO.getId());
 
 		/*
 		 * 1. t_account 에서 accountName을 '내서비스통장' 으로 update 2. t_mybank 에서 고객정보 그대로
@@ -54,15 +57,23 @@ public class MyBankController {
 		// 1. 서비스 호출할 때 (accountNo) 가져가기
 		// 2. 서비스 호출할 때 (newAccount) 가져가기
 
-		mybankService.updateOne(accountNo);
+	//	mybankService.updateOne(accountNo);
+	//	System.out.println("업데이트 성공");
+		
+		mybankService.updateOne(newAccount);
 		System.out.println("업데이트 성공");
 
 		mybankService.insertOne(newAccount);
 		System.out.println("인서트 성공");
 
-		MyBankVO MyBank = mybankService.getNewAccount(accountNo);	
+		//MyBankVO MyBank = mybankService.getNewAccount(accountNo);	
+		MyBankVO MyBank = mybankService.getNewAccount(newAccount);	
 		System.out.println(MyBank + " 셀렉트성공");
 
+		
+		
+		
+		
 		request.setAttribute("MyBank", MyBank); // request에 저장해주자
 		session.setAttribute("accountNo", accountNo);
 		
@@ -71,10 +82,7 @@ public class MyBankController {
 		//기본포켓 3개 넣어주고 기본주머니에 잔액 넣기
 		mybankService.insertBasicPockets(MyBank);
 		
-		
-		
-		
-		
+	
 		return "/myBank/changeSuccess";
 	}
 
@@ -86,10 +94,22 @@ public class MyBankController {
 
 		//String accountNo = request.getParameter("accountNo");
 		String accountNo = (String)session.getAttribute("accountNo");
+		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
+		
+		
+		AccountVO newAccount2 = new AccountVO();
+		newAccount2.setAccountNo(accountNo);
+		//newAccount2.setBalance(balance);
+		newAccount2.setId(loginVO.getId());
+		
+		
 		
 		MyBankVO MyAccount = new MyBankVO();
-		MyAccount = mybankService.getAccount(accountNo);
-
+		//MyAccount = mybankService.getAccount(accountNo); 원래
+		MyAccount = mybankService.getAccount(newAccount2);
+		
+		
+		
 		// tbl_bank_detail 을 where accountNo = #{accountNo} 로 넣고 count(*)
 		// 만약 count(*) == 0 insert 후 select
 		// 사회초년생 아니면 select
