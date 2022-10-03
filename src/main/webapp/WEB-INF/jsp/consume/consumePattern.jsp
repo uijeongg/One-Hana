@@ -283,10 +283,13 @@
       
       
       
-    <div> <span style="font-size:25px;"> 6개월치 소분류 </span>
+    <div> <span style="font-size:25px;"> 6개월치 소비 빈도수 </span>
     <figure class="highcharts-figure">   
        <div id="container7"></div>
      </figure>
+    </div>
+    <div id="topCountComment">
+    
     </div>
           
 
@@ -344,6 +347,7 @@
     	    	sixMonthLine();
     	        //시간대별아직미완!!
     	        times();
+    	        topCount();
     	    })
        })   
     </script>
@@ -1112,35 +1116,42 @@
          detailTimeObject_1.name = '0~4시';
          detailTimeObject_1.id = '0~4시';
          detailTimeObject_1.data=[];
+         detailTimeObject_1.data.push([0,0]);
+         
          
          let detailTimeObject_2 = {};
          detailTimeObject_2.name = '4~8시';
          detailTimeObject_2.id = '4~8시';
          detailTimeObject_2.data=[];
+         detailTimeObject_2.data.push([0,0]);
          
          
          let detailTimeObject_3 = {};
          detailTimeObject_3.name = '8~12시';
          detailTimeObject_3.id = '8~12시';
          detailTimeObject_3.data=[];
+         detailTimeObject_3.data.push([0,0]);
          
          
          let detailTimeObject_4 = {};
          detailTimeObject_4.name = '12~16시';
          detailTimeObject_4.id = '12~16시';
          detailTimeObject_4.data=[];
+         detailTimeObject_4.data.push([0,0]);
          
          
          let detailTimeObject_5 = {};
          detailTimeObject_5.name = '16~20시';
          detailTimeObject_5.id = '16~20시';
          detailTimeObject_5.data=[];
+         detailTimeObject_5.data.push([0,0]);
          
          
          let detailTimeObject_6 = {};
          detailTimeObject_6.name = '20~24시';
          detailTimeObject_6.id = '20~24시';
          detailTimeObject_6.data=[];
+         detailTimeObject_6.data.push([0,0]);
          
          
     	 
@@ -1150,58 +1161,99 @@
 
                 
         	    let timesList = res;
-                 
-                 console.log("timesList " + timesList[6].CONDATE.substring(11,16));
+
+              
                  for(let i=0;i<timesList.length;i++){
                 	 let mod = parseInt(Number(timesList[i].CONDATE.substring(11,13).replace(':',''))/4); 
                      let detailTimeOneArray = [];
                      
                 	 if(mod<1){
                 		 timeListArray_1.push(mod);
-                		 detailTimeOneArray.push(timesList[i].CATENAME3);
-                		 detailTimeOneArray.push(timesList[i].CONAMOUNT);
-                         
-                	     detailTimeObject_1.data.push(detailTimeOneArray);
+                         if(detailTimeObject_1.data[detailTimeObject_1.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_1.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                       
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_1.data.push(detailTimeOneArray);
                 	     
                 	 }else if(mod<2){
                 		 timeListArray_2.push(mod);
-                		 detailTimeOneArray.push(timesList[i].CATENAME3);
-                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
-                         
+                         if(detailTimeObject_2.data[detailTimeObject_2.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_2.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                   
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
                          detailTimeObject_2.data.push(detailTimeOneArray);
                     
                 		 
                 	 }else if(mod<3){
                 		 timeListArray_3.push(mod);
-                		 detailTimeOneArray.push(timesList[i].CATENAME3);
-                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
-                         
+                         if(detailTimeObject_3.data[detailTimeObject_3.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_3.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                       
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
                          detailTimeObject_3.data.push(detailTimeOneArray);
                     
                 	 }else if(mod<4){
                 		 timeListArray_4.push(mod);
-                		 detailTimeOneArray.push(timesList[i].CATENAME3);
-                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
-                         
+                         if(detailTimeObject_4.data[detailTimeObject_4.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_4.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                   
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
                          detailTimeObject_4.data.push(detailTimeOneArray);
                     
                 	 }else if(mod<5){
                 		 timeListArray_5.push(mod);
-                		 detailTimeOneArray.push(timesList[i].CATENAME3);
-                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
-                         
+                        if(detailTimeObject_5.data[detailTimeObject_5.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_5.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+              
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
                          detailTimeObject_5.data.push(detailTimeOneArray);
-                    
                 	 }else{
                 		 timeListArray_6.push(mod);
-                		 detailTimeOneArray.push(timesList[i].CATENAME3);
-                         detailTimeOneArray.push(timesList[i].CONAMOUNT);
+                		 if(detailTimeObject_6.data[detailTimeObject_6.data.length-1][0]===timesList[i].CATENAME3){                			 
+                			 let lastNumber = Number(detailTimeObject_6.data.pop()[1]);
+                			 detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                
+                        	 detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                        	 detailTimeOneArray.push(1);                                                  
+                         }
+                		 detailTimeObject_6.data.push(detailTimeOneArray);
                          
-                         detailTimeObject_6.data.push(detailTimeOneArray);
-                    
                 	 }
              
                  }
+               
                  timeListObject_1.y = timeListArray_1.length;
                  timeListObject_2.y = timeListArray_2.length;
                  timeListObject_3.y = timeListArray_3.length;
@@ -1217,6 +1269,13 @@
                  timeListTimeBiggerArray.push(timeListObject_5);
                  timeListTimeBiggerArray.push(timeListObject_6);
                  
+                 detailTimeObject_1.data.shift();
+                 detailTimeObject_2.data.shift();
+                 detailTimeObject_3.data.shift();
+                 detailTimeObject_4.data.shift();
+                 detailTimeObject_5.data.shift();
+                 detailTimeObject_6.data.shift();
+                 
                  
                  detailTimeArray.push(detailTimeObject_1);
                  detailTimeArray.push(detailTimeObject_2);
@@ -1227,6 +1286,10 @@
               
                  
                  
+                 
+                 console.log(Number(detailTimeObject_6.data.pop()[1])+1);
+               
+      
                  return new Promise((resolve,reject)=>{
                 	 resolve('gogo');
                  })
@@ -1470,14 +1533,47 @@
 	    		        data: sum
 	    		    }]
 	    		});
-	    	   
-    	   
-       })
-	   
-	   
+       })  
    }
-   
    </script>
+    
+   <script>
+   function topCount() {
+	   let monthStart = -6;
+       let monthEnd = -1;
+       let id ='${loginVO.id}';
+       
+       let cate3 = [];
+       let cate3count = [];
+       
+       fetch("/getTopCount?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+       .then(res=>{
+    	   let topCountList = res;
+    	   
+    	   for(let i=0;i<2;i++){
+               cate3.push(topCountList[i].CATE3);
+               cate3count.push(topCountList[i].CATE3COUNT*1);      
+           }  
+    	   
+
+    	     let str = '';
+    	     str += '<div> 소비 횟수가 가장 잦은 카테고리 1 위는' + cate3[0] + ' (' + cate3count[0] + ') 회 입니다 <br>';
+    	              str += '2 위는' + cate3[1] + ' (' + cate3count[1] + ') 회 입니다 </div>';
+    	              
+    	              $('#topCountComment').append(str);  
+	   
+	   
+	   
+   })
+   
+   }
+   </script> 
+   
+   
+   
+             
+    
     
 </body>
 </html>

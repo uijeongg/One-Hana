@@ -104,4 +104,10 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 		List<DayVO> sixAmountList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getSixAmountData", sixMap);
 		return sixAmountList;
 	}
+	
+	@Override
+	public List<CateVO> getTopCountData(Map<String, Object> topCountMap) {
+		List<CateVO> topCountList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getTopCountData", topCountMap);
+		return topCountList;
+	}
 }

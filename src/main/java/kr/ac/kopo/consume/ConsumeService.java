@@ -33,6 +33,8 @@ public interface ConsumeService {
 
 	List<DayVO> getSixAmountData(Map<String, Object> sixMap);
 
+	List<CateVO> getTopCountData(Map<String, Object> topCountMap);
+
 	
 	
 

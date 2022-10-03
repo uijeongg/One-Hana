@@ -247,7 +247,7 @@ public class ConsumeController {
 		
 		List<DayVO> timesList = consumeService.getTimesData(timesMap);
 		
-		System.out.println("timesList : " + timesList);
+		//System.out.println("timesList : " + timesList);
 		
 		return timesList;	
 	}
@@ -270,5 +270,22 @@ public class ConsumeController {
 		return sixMonthAmountList;
 	}
 	
+	
+	@ResponseBody
+	@GetMapping("/getTopCount")
+	public List<CateVO> getTopCount(@RequestParam("id") String id, 
+            						@RequestParam("monthStart") int monthStart,
+            						@RequestParam("monthEnd") int monthEnd) {
+		
+		Map<String,Object> topCountMap = new HashMap<>();
+		topCountMap.put("id", id);
+		topCountMap.put("monthStart", monthStart);
+		topCountMap.put("monthEnd", monthEnd);
+		
+		List<CateVO> topCountList = consumeService.getTopCountData(topCountMap);
+		System.out.println("topCountList에서 탑2만 " + topCountList);
+		return topCountList;
+		
+	}
 }
 

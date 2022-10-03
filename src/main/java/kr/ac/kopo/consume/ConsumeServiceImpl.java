@@ -103,7 +103,11 @@ public class ConsumeServiceImpl implements ConsumeService {
 	public List<DayVO> getSixAmountData(Map<String, Object> sixMap) {
 		List<DayVO> sixAmountList = consumeDAO.getSixAmountData(sixMap);
 		return sixAmountList;
-		
 	}
 
+	@Override
+	public List<CateVO> getTopCountData(Map<String, Object> topCountMap) {
+		List<CateVO> topCountList = consumeDAO.getTopCountData(topCountMap);
+		return topCountList;
+	}
 }
