@@ -135,47 +135,58 @@
  
  
  
+ 
+ 
    <!-- 주차별 -->  
    <!-- <div class="container" style="position:absolute; display:flex; margin-top:50px;">  -->
    <!-- <div id="chart" style="width:650px; margin-left:350px; text-align:left;"> -->
-   <div id="chart" style="width:1000px; margin-left:350px; margin-top:40px;">
-        <!-- fetch로 apexchart 삽입 -->
-   </div>
-   
-   <div id="chartcomment" style="width:400px; margin-right:350px; ">
-       <!--  -목-요일의 소비가 가장 많네요!<br>      -->      
+   <div style="height:500px; margin-bottom:10px;">
+	   <!-- <div id="chart" style="width:600px; margin-top:40px; display:inline-block;"> -->
+	   <div id="chart" style="float:left; width:600px;">
+	        <!-- fetch로 apexchart 삽입 -->
+	   </div>
+	   
+	   <div id="chartcomment" style="width:400px; display:inline-block;">
+	       <!--  -목-요일의 소비가 가장 많네요!<br>      -->      
+	   </div>
    </div>
  
  
  
    <!-- 요일별 -->
-   <div id="chart2" style="width:1000px; margin-left:350px; margin-top:40px;">
-      <!-- fetch로 apexchart 삽입 -->
+   <div style="height:500px; margin-bottom:10px;">
+       <div id="chart2comment" style="float:left; width:400px; text-align: center;">
+       
+       </div>
+	   <div id="chart2" style="width:600px; margin-right:10px; display:inline-block;">
+	      <!-- fetch로 apexchart 삽입 -->
+	   </div>
    </div>
-   
-   <div id="chart2comment">
-   
-   </div>
+ 
    
   
    <!-- 일별 -->
-   <div id="chart3" style="width:1000px; margin-left:350px; margin-top:40px;">
-            <!-- fetch로 apexchart 삽입 -->
-   </div>
-   <div id="chart3comment" style="width:400px; margin-right:350px; ">
-    
-   </div>
-   
-   <div id="dateTopHisto">
-   
-   </div>
-    
+   <div style="height:500px; margin-bottom:10px;">
+	   <div id="chart3" style="float:left; width:600px; margin-left:350px;">
+	            <!-- fetch로 apexchart 삽입 -->
+	   </div>
+	   
+	   <div style="display:inline-block; width:500px;">
+		   <div id="chart3comment">
+		   </div>
+		
+		   <div id="dateTopHisto">   
+		   </div>
+	   </div>
+   </div> 
      
    <!-- 잦은 거래 수 -->
-   <div id="chart4" style="width:1000px; margin-left:350px; margin-top:40px;">
-        <!-- fetch로 apexchart 삽입 -->
-   </div>
-   <div id="chart4comment">
+   <div style="height:500px; margin-bottom:10px;">
+       <div id="chart4comment" style="float:left; width:400px;">
+       </div>
+	   <div id="chart4" style="width:600px; display:inline-block;">
+	        <!-- fetch로 apexchart 삽입 -->
+	   </div> 
    </div>
      
      
@@ -289,10 +300,11 @@
      </figure>
     </div>
     <div id="topCountComment">
-    
+    </div>
+    <div id="countMedianComment">
     </div>
           
-
+    
 </div>  
 
 
@@ -345,9 +357,10 @@
     	    	cateAmount();
     	    	cate3Amount();
     	    	sixMonthLine();
-    	        //시간대별아직미완!!
+    	       
     	        times();
     	        topCount();
+    	        countMedian();
     	    })
        })   
     </script>
@@ -676,7 +689,7 @@
                   }
                 },
                 title: {
-                  text: 'Radar with Polygon Fill'
+                  text: '요일별 소비 금액 추이'
                 },
                 colors: ['#FF4560'],
                 markers: {
@@ -1284,9 +1297,7 @@
                  detailTimeArray.push(detailTimeObject_5);
                  detailTimeArray.push(detailTimeObject_6);
               
-                 
-                 
-                 
+               
                  console.log(Number(detailTimeObject_6.data.pop()[1])+1);
                
       
@@ -1555,21 +1566,63 @@
                cate3.push(topCountList[i].CATE3);
                cate3count.push(topCountList[i].CATE3COUNT*1);      
            }  
-    	   
 
     	     let str = '';
-    	     str += '<div> 소비 횟수가 가장 잦은 카테고리 1 위는' + cate3[0] + ' (' + cate3count[0] + ') 회 입니다 <br>';
-    	              str += '2 위는' + cate3[1] + ' (' + cate3count[1] + ') 회 입니다 </div>';
+    	     str += '<div> 소비 횟수가 가장 잦은 카테고리 1 위는 ' + cate3[0] + ' (' + cate3count[0] + ' 회) 입니다 <br>';
+    	              str += '2 위는 ' + cate3[1] + ' (' + cate3count[1] + ' 회) 입니다 </div>';
     	              
-    	              $('#topCountComment').append(str);  
-	   
-	   
-	   
-   })
-   
+    	              $('#topCountComment').append(str); 	   
+    	              })
    }
    </script> 
    
+   <script>
+   function countMedian() {
+	   let monthStart = -6;
+       let monthEnd = -1;
+       let id ='${loginVO.id}';
+       
+       let count = [];
+       let month = [];
+       let sum = [];
+       
+       fetch("/getCountMedian?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+       .then(res=>{
+           let countMedianList = res;
+           
+           for(let i=0;i<countMedianList.length;i++){
+        	   count.push(countMedianList[i].COUNT*1);
+        	   sum.push(countMedianList[i].SUM*1);      
+           }  
+           
+           let countSum = 0;
+           for(let i=0;i<count.length;i++) {
+        	   countSum += count[i];   
+           }
+           let countAvg = Math.floor(countSum/count.length); //소비 횟수 평균
+               
+           
+           let amountSum = 0;
+           for(let i=0;i<sum.length;i++) {
+        	   amountSum += sum[i];   
+           }
+           let amountAvg = Math.floor(amountSum/sum.length); //소비 금액 평균
+           
+           let amountMax = Math.max.apply(null, sum);
+           console.log('amountMax' + amountMax)
+           
+           let savingAmount = amountMax - amountAvg; 
+           
+           str = '';
+           str += '<div> 소비가 가장 많은 카테고리의 각 달의 사용금액 평균은 ' + amountAvg + '원 이므로 <br>';
+           str += '소비를 ' + countAvg + '회로 줄이면 약 ' + savingAmount + '원을 세이빙 할 수 있습니다</div>';
+           
+           $('#countMedianComment').append(str);       
+       })
+   }
+   
+   </script>
    
    
              

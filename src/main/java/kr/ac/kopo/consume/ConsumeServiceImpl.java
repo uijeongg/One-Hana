@@ -110,4 +110,10 @@ public class ConsumeServiceImpl implements ConsumeService {
 		List<CateVO> topCountList = consumeDAO.getTopCountData(topCountMap);
 		return topCountList;
 	}
+	
+	@Override
+	public List<DayVO> getCountMedianData(Map<String, Object> countMedMap) {
+		List<DayVO> countMedList = consumeDAO.getCountMedianData(countMedMap);
+		return countMedList;
+	}
 }

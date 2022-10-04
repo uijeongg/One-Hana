@@ -8,6 +8,7 @@ public class MixVO {
 	private String day;
 	private int count;
 	private int sum;
+	
 	public String getCate1() {
 		return cate1;
 	}

@@ -284,8 +284,24 @@ public class ConsumeController {
 		
 		List<CateVO> topCountList = consumeService.getTopCountData(topCountMap);
 		System.out.println("topCountList에서 탑2만 " + topCountList);
-		return topCountList;
+		return topCountList;	
+	}
+	
+	@ResponseBody
+	@GetMapping("/getCountMedian")
+	public List<DayVO> getCountMedian(@RequestParam("id") String id, 
+			                          @RequestParam("monthStart") int monthStart,
+			                          @RequestParam("monthEnd") int monthEnd) {
+
+		Map<String,Object> countMedMap = new HashMap<>();
+		countMedMap.put("id", id);
+		countMedMap.put("monthStart", monthStart);
+		countMedMap.put("monthEnd", monthEnd);
+		
+		List<DayVO> countMedList = consumeService.getCountMedianData(countMedMap);
+		System.out.println("countMedList는 1등 빈도수 카테고리의 달 별 카운트값 : " + countMedList);
+		return countMedList;	
 		
 	}
-}
+} 
 

@@ -38,4 +38,6 @@ public interface ConsumeDAO {
 
 	List<CateVO> getTopCountData(Map<String, Object> topCountMap);
 
+	List<DayVO> getCountMedianData(Map<String, Object> countMedMap);
+
 }
