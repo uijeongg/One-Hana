@@ -85,20 +85,21 @@ public class BudgetServiceImpl implements BudgetService {
 	
 	
 	@Override
-	public List<MyBankVO> showAutoParkingDayOne() {
-		
-		List<MyBankVO> autoParkingDayOne = budgetDAO.selectOneList();
-		
+	public List<MyBankVO> showAutoParkingDayOne() {	
+		List<MyBankVO> autoParkingDayOne = budgetDAO.selectOneList();		
 		return autoParkingDayOne;
 	}
 	
 	
 	@Override
-	public List<Map<String, Object>> doAutoParking(MyBankVO myBankVO) {
-		
+	public List<Map<String, Object>> doAutoParking(MyBankVO myBankVO) {		
 		return budgetDAO.doAutoParking(myBankVO);
 	}
 	
+	@Override
+	public void insertAutoDivSetting(Map<String, Object> divideMap) {
+		budgetDAO.insertAutoDivSetting(divideMap);
+	}
 	
 //	@Override
 //	public void insertAutoParking(int id) {

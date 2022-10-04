@@ -33,6 +33,8 @@ public interface BudgetDAO {
 
 	List<Map<String, Object>> doAutoParking(MyBankVO myBankVO);
 
+	void insertAutoDivSetting(Map<String, Object> divideMap);
+
 	//void insertAutoParkingSetting(int id);
 
 

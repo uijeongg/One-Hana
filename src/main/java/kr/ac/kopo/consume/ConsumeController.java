@@ -36,7 +36,6 @@ public class ConsumeController {
 	@GetMapping("/getConsumeData")
 	public List<Map<String,Object>> consumeMain(@RequestParam("id") String id) {
 		
-		
 		List<Map<String,Object>> consumeList = consumeService.getConsumeData(id);
 	
 	//	System.out.println("consumeList : 달력 " + consumeList);
@@ -64,7 +63,6 @@ public class ConsumeController {
 		monthMap.put("month", month);
 				
 		List<Map<String,Object>> monthConsumeList = consumeService.getMonthConsume(monthMap);
-		
 		//System.out.println("monthConsumeList : " + monthConsumeList);
 		return monthConsumeList;	
 	}
@@ -85,8 +83,7 @@ public class ConsumeController {
 		monthMap.put("monthEnd", monthEnd);
 				
 		List<Map<String,Object>> sixMonthConsumeList = consumeService.getSixMonthConsume(monthMap);
-		
-		
+
 		return sixMonthConsumeList;	
 	}
 	
@@ -117,7 +114,6 @@ public class ConsumeController {
 	public List<DayVO> getDayConsume2(@RequestParam("id") String id, 
 			  						  @RequestParam("monthStart") int monthStart,
 			                          @RequestParam("monthEnd") int monthEnd){
-
 		
 		Map<String,Object> dayMap2 = new HashMap<>();
 		dayMap2.put("id", id);
@@ -125,11 +121,8 @@ public class ConsumeController {
 		dayMap2.put("monthEnd", monthEnd);
 		
 		List<DayVO> dayList = consumeService.getDayConsume2(dayMap2);
-		
-		
 		//System.out.println("dayList : " + dayList);
-		
-		
+
 		return dayList;
 	}
 	
@@ -283,10 +276,12 @@ public class ConsumeController {
 		topCountMap.put("monthEnd", monthEnd);
 		
 		List<CateVO> topCountList = consumeService.getTopCountData(topCountMap);
-		System.out.println("topCountList에서 탑2만 " + topCountList);
+	//	System.out.println("topCountList에서 탑2만 " + topCountList);
 		return topCountList;	
 	}
 	
+	
+	//지워도됨
 	@ResponseBody
 	@GetMapping("/getCountMedian")
 	public List<DayVO> getCountMedian(@RequestParam("id") String id, 
@@ -299,9 +294,50 @@ public class ConsumeController {
 		countMedMap.put("monthEnd", monthEnd);
 		
 		List<DayVO> countMedList = consumeService.getCountMedianData(countMedMap);
-		System.out.println("countMedList는 1등 빈도수 카테고리의 달 별 카운트값 : " + countMedList);
+	//	System.out.println("countMedList는 1등 빈도수 카테고리의 달 별 카운트값 : " + countMedList);
 		return countMedList;	
 		
 	}
+	
+	
+	
+	@ResponseBody
+	@GetMapping("/getTop2Data")
+	public List<Map<String,Object>> getTop2Data(@RequestParam("id") String id, @RequestParam("cate3name") List<Object> cate3name) {
+
+		List<Map<String,Object>> bigArrayList = new ArrayList<>();
+	
+		//System.out.println("size 확인 : "+ cate3name.size());
+	
+		for(int i=0; i<cate3name.size(); i++) {
+			Map<String,String> memberMap = new HashMap<>();
+			memberMap.put("id", id);
+			memberMap.put("cate3Name",(String)cate3name.get(i));
+			//System.out.println("memberMap : "+memberMap);
+			List<Map<String,Object>> smallArrayList = consumeService.getTop2Data(memberMap);
+			bigArrayList.addAll(smallArrayList);
+		}
+		
+	//	System.out.println("bigArrayList 탑투 : " + bigArrayList);
+		return bigArrayList;
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("/getSumMedian")
+	public List<DayVO> getSumMedian(@RequestParam("id") String id, 
+                                    @RequestParam("monthStart") int monthStart,
+                                    @RequestParam("monthEnd") int monthEnd) {
+
+		Map<String,Object> sumMedMap = new HashMap<>();
+		sumMedMap.put("id", id);
+		sumMedMap.put("monthStart", monthStart);
+		sumMedMap.put("monthEnd", monthEnd);
+
+		List<DayVO> sumMedList = consumeService.getSumMedianData(sumMedMap);
+		//System.out.println("sumMedList는 1등 소비금액 달 별 카운트값 : " + sumMedList);
+		return sumMedList;	
+
+}
 } 
 

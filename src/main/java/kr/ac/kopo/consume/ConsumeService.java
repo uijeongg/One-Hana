@@ -34,8 +34,14 @@ public interface ConsumeService {
 	List<DayVO> getSixAmountData(Map<String, Object> sixMap);
 
 	List<CateVO> getTopCountData(Map<String, Object> topCountMap);
-
+	
 	List<DayVO> getCountMedianData(Map<String, Object> countMedMap);
+
+	List<Map<String,Object>> getTop2Data(Map<String, String> memberMap);
+
+	List<DayVO> getSumMedianData(Map<String, Object> sumMedMap);
+
+
 
 	
 	

@@ -102,8 +102,6 @@ public class BudgetController {
 		
 		String accountNo = (String)session.getAttribute("accountNo");
 		
-		
-		
 		Map<String, Object> parkingMap = new HashMap<>();
 		//incomeMap.put("id", loginVO.getId());
 		parkingMap.put("accountNo", accountNo);
@@ -112,14 +110,11 @@ public class BudgetController {
 		budgetService.updateParkingGoal(parkingMap);
 		
 		System.out.println("파킹맵받아오나요 : " + parkingMap);
-		//session.setAttribute("incomeMap", incomeMap);
-		
 		//추가
 		//budgetService.insertAutoParking(id);
 		
 		return "success";
 	}
-	
 	
 	@ResponseBody
 	@RequestMapping("/parkingAjax")
@@ -137,12 +132,9 @@ public class BudgetController {
 		mav.addObject("updateData", updateData); //모델에 저장 (근데 모델앤뷰가 리퀘스트영역)
 		mav.setViewName("/budget/parkingGoalAjax");
 		return mav;
-	
 	}
 	
-	
-	
-	
+
 	@ResponseBody
 	@RequestMapping("/incomeAjax")
 	public ModelAndView incomeAjax(HttpSession session) {
@@ -152,16 +144,12 @@ public class BudgetController {
 		
 		MyBankVO updateList = new MyBankVO();
 		updateList = budgetService.getIncomeData(accountNo);
-		System.out.println("업데이트리스트!!!!!!!!!" + updateList);
-				
+		System.out.println("업데이트리스트!!!!!!!!!" + updateList);		
 		
 		mav.addObject("updateList", updateList); //모델에 저장 (근데 모델앤뷰가 리퀘스트영역)
 		mav.setViewName("/budget/incomeAjax");
 		return mav;
 	}
-	
-	
-	
 	
 	
 	@ResponseBody
@@ -175,10 +163,9 @@ public class BudgetController {
 		//incomeMap.put("id", loginVO.getId());
 		fixedMap.put("accountNo", accountNo);
 		fixedMap.put("fixedName", fixedName);
-//		fixedMap.put("fixedDate", fixedDate);
 		fixedMap.put("fixedCost", fixedCost);
 	
-		System.out.println("픽스드맵받아오나요 : " + fixedMap);
+		//System.out.println("픽스드맵받아오나요 : " + fixedMap);
 		
 		//서비스 호출 시 fixedMap 가져가기
 		budgetService.insertFixed(fixedMap);		
@@ -201,15 +188,12 @@ public class BudgetController {
 		insertMap.put("accountNo", accountNo);
 		insertMap.put("fixedName", fixedName);
 		
-		
-		
 		List<FixedVO> insertList = new ArrayList<FixedVO>();
 		insertList = budgetService.getFixedData(insertMap);
-		System.out.println("인서트리스트!!!!!!!!!" + insertList);
+		//System.out.println("인서트리스트!!!!!!!!!" + insertList);
 		
 		mav.addObject("insertList", insertList); 
 		mav.setViewName("/budget/fixedAjax");
-		
 		
 		return mav;
 	}
@@ -218,10 +202,8 @@ public class BudgetController {
 	@ResponseBody
 	@GetMapping("/getFixedSum")
 	public List<HashMap<String, Object>> getFixedSum(String accountNo) {
-		
 		return budgetService.getFixedSum(accountNo);
 	}
-	
 	
 	@ResponseBody
 	@GetMapping("/getCalculation")
@@ -232,13 +214,11 @@ public class BudgetController {
 	
 	
 	//"0 59 11 14 * *" 매달 14일 11시 59분 0초
-
 	//@Scheduled(cron = "0 59 11 14 * ?")
 	
 	@ResponseBody
 	@PostMapping("/autoDivSetting")
 	public List<AutoDivideVO> autoDivSetting(HttpSession session, @RequestParam("pocketCode") String pocketCode, @RequestParam("autoDivAmount") int autoDivAmount, @RequestParam("autoDivDate") String autoDivDate) {
-		//List<AutoDivideVO>
 		String accountNo = (String)session.getAttribute("accountNo");
 		
 		/*
@@ -258,19 +238,23 @@ public class BudgetController {
 		 * session.setAttribute("divideMap", divideMap);
 		 */
 		
-		
-		
 		Map<String, Object> divideMap = new HashMap<>();
 		divideMap.put("accountNo", accountNo);
 		divideMap.put("divAmount", autoDivAmount);	         
 		divideMap.put("pocketCode", pocketCode);  //toPocket의 포켓코드 -> 포켓코드가 2,3,4.. 인 곳으로 보내라	   
 		divideMap.put("autoDivDate", autoDivDate);          
-
+		
+		
+		//추가!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//자동잔액이동 (예산설정금액) 설정 테이블에 추가 (1회성)
+		budgetService.insertAutoDivSetting(divideMap);
+		
 		
 		//프로시저 호출
 		budgetService.insertAutoDiv(divideMap);
 		//인서트가 autoDivVO에 돼야지
-
+		
+		
 		
 		//select로 ajax 띄워주기 호출
 		List<AutoDivideVO> autoDivList = new ArrayList<AutoDivideVO>();
@@ -283,24 +267,24 @@ public class BudgetController {
 	}
 	
 	
-	
 	//자동파킹날짜에 따른 스케줄러 작동
 	@Scheduled(cron = "0 42 14 30 * *") //매달 1일 10시
 	//@Scheduled(cron = "0 0/2 * * * *") //5분
 	public void autoParking() {
-	      //System.out.println("monthlySaving1");
 	      List<MyBankVO> autoParkingDayList = budgetService.showAutoParkingDayOne();
 	      
-	      System.out.println("autoParkingDayList : " + autoParkingDayList);
+	      //System.out.println("autoParkingDayList : " + autoParkingDayList);
 	      
 	      for (MyBankVO MyBankVO : autoParkingDayList) {
 	    	  List<Map<String, Object>> selectAutoDiv = budgetService.doAutoParking(MyBankVO); //프로시저 호출
-	      
-	    	    System.out.println("selectAutoDiv : " + selectAutoDiv);
+	    	   // System.out.println("selectAutoDiv : " + selectAutoDiv);
 	      }
 	   }
-
 	
-
+	
+	//@ResponseBody
+	//@PostMapping("/reBudgetSetting")
+	//public reBudgetSetting
+//마이뱅크컨트롤러 참고해서 리퀘스트로 값 받고 계산해서 넘기기
 	
 }

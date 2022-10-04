@@ -89,6 +89,12 @@ public class BudgetDAOImpl implements BudgetDAO {
 		return null;
 	}
 	
+	@Override
+	public void insertAutoDivSetting(Map<String, Object> divideMap) {
+		sqlSessionTemplate.insert("budget.BudgetDAO.insertAutoDivSetting", divideMap);
+		
+	}
+	
 //	@Override
 //	public void insertAutoParkingSetting(int id) {
 //		sqlSessionTemplate.insert("budget.BudgetDAO.insertAutoParkingSetting", id);

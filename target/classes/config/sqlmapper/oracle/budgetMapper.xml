@@ -85,6 +85,11 @@
     </select>
     
     
+    <insert id="insertAutoDivSetting" parameterType="map">
+        INSERT INTO T_AUTO_DIVIDE_SETTING (accountNo, toPocketCode, autoDivAmount, autoDivDate) 
+        VALUES(#{accountNo}, #{pocketCode}, #{divAmount},#{autoDivDate})
+    </insert>
+    
  <!--    <insert id="insertAutoParkingSetting" parameterType="String">
          insert into t_auto_parking_setting(id, parkingDate) 
          values(#{id}, '1') 

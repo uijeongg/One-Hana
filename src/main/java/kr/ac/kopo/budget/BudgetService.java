@@ -35,6 +35,8 @@ public interface BudgetService {
 
 	List<Map<String, Object>> doAutoParking(MyBankVO myBankVO);
 
+	void insertAutoDivSetting(Map<String, Object> divideMap);
+
 	
 	
 	//void insertAutoParking(int id);

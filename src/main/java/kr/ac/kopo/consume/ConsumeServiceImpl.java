@@ -111,9 +111,25 @@ public class ConsumeServiceImpl implements ConsumeService {
 		return topCountList;
 	}
 	
+	
+	
 	@Override
 	public List<DayVO> getCountMedianData(Map<String, Object> countMedMap) {
 		List<DayVO> countMedList = consumeDAO.getCountMedianData(countMedMap);
 		return countMedList;
 	}
+	
+	
+	@Override
+	public List<Map<String,Object>> getTop2Data(Map<String, String> memberMap) {
+		List<Map<String,Object>> top2List = consumeDAO.getTop2Data(memberMap);
+		return top2List;
+	}
+	
+	@Override
+	public List<DayVO> getSumMedianData(Map<String, Object> sumMedMap) {
+		List<DayVO> sumMedList = consumeDAO.getSumMedianData(sumMedMap);
+		return sumMedList;
+	}
+	
 }

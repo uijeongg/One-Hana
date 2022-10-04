@@ -60,19 +60,16 @@ public class AccountController {
 		
 		request.setAttribute("accountList", accountList); //request에 accountList를 저장해주자
 		
-		
 		/*
 		 * 로그인 정보를 가지고 넘어갔으니까, accountMapper에서 parameterType을 String(id)로 해줬고, 
 		 * 그에 따라서 이에 관련한 service, dao 모두 다 파라미터에 id를 달고 다님!!
 		 */
-		
-		
+
 		return "/account/accountList";
 	}
 	
 	
 	
-
 	/**
 	 * 2. 전환할 통장 선택 -> 전환하기 버튼 submit
 	 * accountList.jsp에서 전환할 통장 선택하고 changing.jsp로 가기
@@ -91,9 +88,7 @@ public class AccountController {
 	
 		  request.setAttribute("accountOne", accountOne); //request에 accountOne을 저장해주자
 			
-		  
-		  
-		  
+	
 	  		//전환하기 버튼이면 
 	  		return "/myBank/changing";
 	  

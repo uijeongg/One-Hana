@@ -40,4 +40,8 @@ public interface ConsumeDAO {
 
 	List<DayVO> getCountMedianData(Map<String, Object> countMedMap);
 
+	List<Map<String, Object>> getTop2Data(Map<String, String> memberMap);
+
+	List<DayVO> getSumMedianData(Map<String, Object> sumMedMap);
+
 }
