@@ -312,6 +312,8 @@
     
     </div>
 
+
+<!-- button으로 업데이트하기 -->
 <input type="submit" id="reBudget" value="재설정하기"
                style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;"> 
 </form>          
@@ -1631,9 +1633,9 @@
            //console.log('secondAmountMax' + secondAmountMax);
              
            let secondSavingAmount = secondAmountMax - secondAmountAvg; //세이빙 금액
-           console.log('secondSavingAmount 세이빙금액' + secondSavingAmount);   
+           //console.log('secondSavingAmount 세이빙금액' + secondSavingAmount);   
 
-           let newBudgetSaving = firstSavingAmount + secondSavingAmount;
+           let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
   
            let str = '';
            str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
@@ -1646,7 +1648,7 @@
            
            $('#countMedianComment').append(str);  
            
-           $('input[name=countTopSavingAmount]').attr('value',no);
+           $('input[name=countTopSavingAmount]').attr('value',countTopSavingAmount);
            
        })
  

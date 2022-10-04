@@ -37,6 +37,8 @@ public interface BudgetService {
 
 	void insertAutoDivSetting(Map<String, Object> divideMap);
 
+	void updateReBudgetSet(AutoDivideSettingVO reBudgetSet);
+
 	
 	
 	//void insertAutoParking(int id);

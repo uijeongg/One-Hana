@@ -101,9 +101,10 @@ public class BudgetServiceImpl implements BudgetService {
 		budgetDAO.insertAutoDivSetting(divideMap);
 	}
 	
-//	@Override
-//	public void insertAutoParking(int id) {
-//		budgetDAO.insertAutoParkingSetting(id);	
-//	}
+
+	@Override
+	public void updateReBudgetSet(AutoDivideSettingVO reBudgetSet) {
+		budgetDAO.updateReBudgetSet(reBudgetSet);
+	}
 	
 }

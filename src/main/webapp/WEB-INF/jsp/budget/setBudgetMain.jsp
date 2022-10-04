@@ -219,7 +219,6 @@ function autoDivSetting(input) {
 		    	  let autoDivideList  = data
 		    	  
 		    	  let fromPocket = autoDivideList[0].fromPocket
-		    	  //console.log('밥은 먹었냐 : ' + fromPocket)
 		    	 
 		    	  $('#autoAmount_'+pocketCode).empty();
 		    	  $('#autoDate_'+pocketCode).empty();
@@ -259,7 +258,7 @@ function autoDivSetting(input) {
 	
 	
 	function calculateBudget2(divAmount) {
-		alert('들어옴?')
+		//alert('들어옴?')
 		
 		
         var pocketCode = '${divideMap.pocketCode}'

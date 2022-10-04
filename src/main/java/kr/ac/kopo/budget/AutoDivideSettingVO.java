@@ -4,8 +4,8 @@ public class AutoDivideSettingVO {
 
 	//private String id;
 	private String accountNo;
-	private String toPocket;
-	//private int toPocketCode;
+	//private String toPocket;
+	private int toPocketCode;
 	private int autoDivAmount;
 	private String autoDivDate;
 	public String getAccountNo() {
@@ -14,11 +14,11 @@ public class AutoDivideSettingVO {
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
-	public String getToPocket() {
-		return toPocket;
+	public int getToPocketCode() {
+		return toPocketCode;
 	}
-	public void setToPocket(String toPocket) {
-		this.toPocket = toPocket;
+	public void setToPocketCode(int toPocketCode) {
+		this.toPocketCode = toPocketCode;
 	}
 	public int getAutoDivAmount() {
 		return autoDivAmount;
@@ -34,10 +34,9 @@ public class AutoDivideSettingVO {
 	}
 	@Override
 	public String toString() {
-		return "AutoDivideSettingVO [accountNo=" + accountNo + ", toPocket=" + toPocket + ", autoDivAmount="
+		return "AutoDivideSettingVO [accountNo=" + accountNo + ", toPocketCode=" + toPocketCode + ", autoDivAmount="
 				+ autoDivAmount + ", autoDivDate=" + autoDivDate + "]";
 	}
 	
-	
-	
+
 }

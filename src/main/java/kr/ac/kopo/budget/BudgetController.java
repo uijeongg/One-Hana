@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.kopo.account.AccountVO;
 import kr.ac.kopo.divide.DivideVO;
 import kr.ac.kopo.member.MemberVO;
 import kr.ac.kopo.myBank.MyBankService;
@@ -282,9 +283,28 @@ public class BudgetController {
 	   }
 	
 	
-	//@ResponseBody
-	//@PostMapping("/reBudgetSetting")
-	//public reBudgetSetting
+	//생활비 예산 주머니 금액 update -> 프로시저도 돌려줘야하나??
+	@ResponseBody
+	@PostMapping("/reBudgetSetting")
+	public void reBudgetSetting(HttpServletRequest request, HttpSession session) {
+		
+		//MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
+		String accountNo = (String)session.getAttribute("accountNo");
+	
+		int sumTopSavingAmount = Integer.parseInt(request.getParameter("sumTopSavingAmount"));
+		int countTopSavingAmount = Integer.parseInt(request.getParameter("countTopSavingAmount"));
+		int newBudgetSettingAmount = sumTopSavingAmount + countTopSavingAmount;
+		
+		//System.out.println("섬어마운트랑" + sumTopSavingAmount + "카운트어마운트" + countTopSavingAmount );
+		
+		AutoDivideSettingVO reBudgetSet = new AutoDivideSettingVO();
+		//reBudgetSet.setId(loginVO.getId());
+		reBudgetSet.setAccountNo(accountNo);
+		reBudgetSet.setAutoDivAmount(newBudgetSettingAmount);
+		
+		budgetService.updateReBudgetSet(reBudgetSet);
+		
+	}
 //마이뱅크컨트롤러 참고해서 리퀘스트로 값 받고 계산해서 넘기기
 	
 }

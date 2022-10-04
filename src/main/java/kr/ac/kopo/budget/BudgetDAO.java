@@ -35,6 +35,8 @@ public interface BudgetDAO {
 
 	void insertAutoDivSetting(Map<String, Object> divideMap);
 
+	void updateReBudgetSet(AutoDivideSettingVO reBudgetSet);
+
 	//void insertAutoParkingSetting(int id);
 
 

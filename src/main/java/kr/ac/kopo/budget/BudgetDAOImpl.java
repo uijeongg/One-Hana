@@ -95,9 +95,8 @@ public class BudgetDAOImpl implements BudgetDAO {
 		
 	}
 	
-//	@Override
-//	public void insertAutoParkingSetting(int id) {
-//		sqlSessionTemplate.insert("budget.BudgetDAO.insertAutoParkingSetting", id);
-		
-//	}
+	@Override
+	public void updateReBudgetSet(AutoDivideSettingVO reBudgetSet) {
+		sqlSessionTemplate.update("budget.BudgetDAO.updateReBudgetSet", reBudgetSet);
+	}
 }

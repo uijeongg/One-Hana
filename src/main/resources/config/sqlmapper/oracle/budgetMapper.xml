@@ -56,7 +56,12 @@
         from T_AUTO_DIVIDE a, 
              (select pocketName from T_MYONE_POCKET where pocketCode = #{pocketCode} and accountNo=#{accountNo}) b 
         where a.autoDivAmount =#{divAmount} and autoDivDate = #{autoDivDate} and a.fromPocket='기본'
-    
+        
+       <!--  select a.autoDivAmount, a.autoDivDate, b.pocketName, a.fromPocket, a.toPocket
+        from T_AUTO_DIVIDE_SETTING a, 
+             (select pocketName from T_MYONE_POCKET where pocketCode = #{pocketCode} and accountNo=#{accountNo}) b 
+        where a.autoDivAmount =#{divAmount} and autoDivDate = #{autoDivDate}
+     -->
     </select>
     
     
@@ -90,10 +95,11 @@
         VALUES(#{accountNo}, #{pocketCode}, #{divAmount},#{autoDivDate})
     </insert>
     
- <!--    <insert id="insertAutoParkingSetting" parameterType="String">
-         insert into t_auto_parking_setting(id, parkingDate) 
-         values(#{id}, '1') 
-    </insert>
- -->
+    <!-- 생활비예산 업데이트 -->
+    <update id="updateReBudgetSet" parameterType="map">
+        UPDATE T_AUTO_DIVIDE_SETTING 
+        SET AUTODIVAMOUNT=(SELECT AUTODIVAMOUNT FROM T_AUTO_DIVIDE_SETTING WHERE ACCOUNTNO=#{accountNo} AND TOPOCKETCODE=3) - #{autoDivAmount}
+        WHERE ACCOUNTNO=#{accountNo} AND TOPOCKETCODE=3
+    </update>
     
 </mapper>
