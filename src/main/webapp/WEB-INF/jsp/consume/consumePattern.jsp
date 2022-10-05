@@ -24,7 +24,7 @@
 <!-- my css  -->
 
 <link href="/resources/mycss/consumeDate.css" rel="stylesheet">
-<link href="/resources/mycss/chart.css" rel="stylesheet">
+<!-- <link href="/resources/mycss/chart.css" rel="stylesheet"> -->
 
 <style>
 .nav-tabs {
@@ -57,6 +57,11 @@
          <div>
             <a href="${pageContext.request.contextPath}/setBudgetMain"
                style="color:#808080;">나의 예산 관리</a>
+         </div>
+         <hr style="width: 200px;">
+         <div>
+            <a href="${pageContext.request.contextPath}/checkBudgetMain"
+               style="color:#808080;">나의 예산 확인</a>
          </div>
          <hr style="width: 200px;">
          <div>
@@ -134,41 +139,118 @@
  
  
  
+    <div class="d-flex flex-column" style="width: 60%;">
+    
+        <!-- 주차별 -->
+        <div class="d-flex">
+        <span>주차별 소비 추이</span>
+            <div style="width: 70%"> 
+                <div id="chart" style="margin-bottom: 40px;"></div>
+            </div>
+            
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <h2>코멘트</h2>
+                    <div id="chartcomment"></div> <!-- 소비가 가장 많은 주는 x주차 입니다 -->
+                </div>
+            </div>    
+        </div>
+        
+        
+         <!-- 요일별 -->
+        <div class="d-flex">
+         <span>요일별 소비 추이</span>
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <h2>코멘트</h2>
+                    <div id="chart2comment"></div> <!-- 소비가 가장 많은 주는 x주차 입니다 -->
+                </div>
+            </div>  
+
+             <div style="width: 70%">
+                <div id="chart2" style="margin-bottom: 40px;"></div>
+            </div>
+        </div>
+        
+
+        <!-- 일별  -->
+        <div class="d-flex">
+        <span>일별 소비 추이</span>
+            <div style="width: 70%"> 
+                <div id="chart3" style="margin-bottom: 40px;"></div>
+            </div>
+            
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <h2>코멘트</h2>
+                    <div id="chart3comment"></div> <!-- 소비 top3 입니다 -->
+                    <div id="dateTopHisto"></div>
+                </div>
+            </div>    
+        </div>
+        
+        
+        
+         <!-- 잦은 거래 수  -->
+        <div class="d-flex">
+         <span>카테고리별 소비 추이</span>
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <h2>코멘트</h2>
+                    <div id="chart4comment"></div> <!-- 소비가 가장 많은 주는 x주차 입니다 -->
+                </div>
+            </div>  
+
+             <div style="width: 70%">
+                <div id="chart4" style="margin-bottom: 40px;"></div>
+            </div>
+        </div>
+        
+        
+     </div>
+ 
+ 
+ 
+ 
+ 
  
  
  
    <!-- 주차별 -->  
    <!-- <div class="container" style="position:absolute; display:flex; margin-top:50px;">  -->
    <!-- <div id="chart" style="width:650px; margin-left:350px; text-align:left;"> -->
-   <div style="height:500px; margin-bottom:10px;">
-	   <!-- <div id="chart" style="width:600px; margin-top:40px; display:inline-block;"> -->
+<!--    <div style="height:500px; margin-bottom:10px;">
+	   <div id="chart" style="width:600px; margin-top:40px; display:inline-block;">
 	   <div id="chart" style="float:left; width:600px;">
-	        <!-- fetch로 apexchart 삽입 -->
+	        fetch로 apexchart 삽입
 	   </div>
 	   
 	   <div id="chartcomment" style="width:400px; display:inline-block;">
-	       <!--  -목-요일의 소비가 가장 많네요!<br>      -->      
+	        -목-요일의 소비가 가장 많네요!<br>           
 	   </div>
    </div>
  
- 
+ --> 
  
    <!-- 요일별 -->
-   <div style="height:500px; margin-bottom:10px;">
+   <!-- <div style="height:500px; margin-bottom:10px;">
        <div id="chart2comment" style="float:left; width:400px; text-align: center;">
        
        </div>
 	   <div id="chart2" style="width:600px; margin-right:10px; display:inline-block;">
-	      <!-- fetch로 apexchart 삽입 -->
+	      fetch로 apexchart 삽입
 	   </div>
-   </div>
+   </div> -->
+ 
+ 
+ 
  
    
   
    <!-- 일별 -->
-   <div style="height:500px; margin-bottom:10px;">
+ <!--   <div style="height:500px; margin-bottom:10px;">
 	   <div id="chart3" style="float:left; width:600px; margin-left:350px;">
-	            <!-- fetch로 apexchart 삽입 -->
+	            fetch로 apexchart 삽입
 	   </div>
 	   
 	   <div style="display:inline-block; width:500px;">
@@ -178,18 +260,18 @@
 		   <div id="dateTopHisto">   
 		   </div>
 	   </div>
-   </div> 
+   </div>  -->
      
    <!-- 잦은 거래 수 -->
-   <div style="height:500px; margin-bottom:10px;">
+<!--    <div style="height:500px; margin-bottom:10px;">
        <div id="chart4comment" style="float:left; width:400px;">
        </div>
 	   <div id="chart4" style="width:600px; display:inline-block;">
-	        <!-- fetch로 apexchart 삽입 -->
+	        fetch로 apexchart 삽입
 	   </div> 
    </div>
      
-     
+ -->     
      
      
      
@@ -212,14 +294,12 @@
 
 <!-- 시간대별 -->
 <!-- 시간대별 -->
-<div class="tab-pane fade show" id="timePage" role="tabpanel">
+<!-- <div class="tab-pane fade show" id="timePage" role="tabpanel">
 <figure class="highcharts-figure">   
    <div id="container4"></div>
- </figure>
-    
+ </figure>    
 </div>    
-    
-    
+-->
     
     
     
@@ -237,18 +317,111 @@
 <!-- 세부분석 tab -->    
 <div class="tab-pane fade show" id="catePage" role="tabpanel"> 
     
- 
- <div style="border: 2px solid; border-radius:20px; width:50%; margin-left:">   
-    <div> <span style="font-size:25px;"> 6개월치 소비 추이 라인그래프 </span>
-    <figure class="highcharts-figure">   
-       <div id="container6"></div>
-     </figure>
-    </div>
- </div>   
+
+    <div class="d-flex flex-column" style="width: 60%;">
+    
+    
+       
+        <div class="d-flex">
+            <div style="width: 100%">
+            <span> 6개월치 소비 추이 라인그래프 </span>
+                 <figure class="highcharts-figure">   
+                    <div id="container6"></div>
+                 </figure>
+            </div>
+          <!--   
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <h2>코멘트</h2>
+                    <h5>6개월간 고정비 예산은 900,000원이고, 평균 사용 금액은 xx입니다. <br> 고정비 예산을 약 xx% 줄여도 충분합니다! </h5>
+                </div>
+            </div>
+             -->
+        </div>
+        
+        
+        
+        
+          
+    <!-- 중분류 파이 그래프 -->
+    <!-- 중분류 파이 그래프 -->
+         <div class="d-flex">
+            <div style="width: 100%">
+            <span> 6개월치 중분류 카테고리 </span>
+                <figure class="highcharts-figure">   
+                    <div id="container3"></div>
+                </figure>
+            </div>
+          <!--   
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <h2>코멘트</h2>
+                    <h5>6개월간 고정비 예산은 900,000원이고, 평균 사용 금액은 xx입니다. <br> 고정비 예산을 약 xx% 줄여도 충분합니다! </h5>
+                </div>
+            </div>
+             -->
+        </div>
+        
+      
+        
+
+<form action="${pageContext.request.contextPath}/reBudgetSetting" method="post">   <!-- 계산 값을 보내서 핸들러로 보내고 예산재설정 들어가기 -->
+    <input type="hidden" name="sumTopSavingAmount" value="">
+    <input type="hidden" name="countTopSavingAmount" value="">
+        
+        
+        <div class="d-flex">
+            <div style="width: 100%">
+            <span> 6개월치 소분류 카테고리 </span>
+               <figure class="highcharts-figure">   
+                    <div id="container5"></div>
+               </figure>
+            </div>
+        
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                    <div id="sumMedianComment"></div>
+                </div>
+            </div>
+        
+        </div>
+        
+        
+        
+        
+        
+           <div class="d-flex">
+            <div style="width: 100%">
+            <span> 6개월치 시간대별 소비 빈도수 </span>
+               <figure class="highcharts-figure">   
+                    <div id="container7"></div>
+               </figure>
+            </div>
+        
+            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
+                <div style="background-color:#E90061; height:300px; width:250px">
+                     <div id="topCountComment"></div>
+                     <div id="countMedianComment"></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+       <input type="submit" id="reBudget" value="재설정하기"
+               style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;"> 
+</form>    
+        
+        
+        
+        </div>
+
+
+</div>  
     
     
     
-    <!-- 시간대별 amount 차트 -->
+
     <!-- 시간대별 amount 차트 -->
     <!-- 이번달 총(일별) 소비 추이 확인 버튼 -->
 <!--    <div style="margin-left:430px;">
@@ -272,21 +445,13 @@
                     <div style="font-size:25px; margin-top:40px; margin-left:370px; margin-bottom:30px;">
                        "comment"
                     </div>      
-                     
-                 </div>       
+                </div>       
             </div>   
     
-    
-    <!-- 중분류 파이 그래프 -->
-    <!-- 중분류 파이 그래프 -->
-	<div> <span style="font-size:25px;"> 6개월치 중분류 </span>
-	<figure class="highcharts-figure">   
-	   <div id="container3"></div>
-	 </figure>
-	</div>
+ 
 	
 	
-	
+<%-- 	
     
 <form action="${pageContext.request.contextPath}/reBudgetSetting" method="post">   <!-- 계산 값을 보내서 핸들러로 보내고 예산재설정 들어가기 -->
     <input type="hidden" name="sumTopSavingAmount" value="">
@@ -318,7 +483,15 @@
                style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;"> 
 </form>          
     
-</div>  
+    
+    
+     --%>
+    
+    
+    
+    
+    
+
 
 
    

@@ -55,8 +55,8 @@ public class ConsumeController {
 	@ResponseBody
 	@GetMapping("/getMonthConsume")
 	public List<Map<String,Object>> getMonthConsume(@RequestParam("id") String id, @RequestParam("month") int month) {
-		System.out.println("id : "+id);
-		System.out.println("month : "+month);
+		//System.out.println("id : "+id);
+		//System.out.println("month : "+month);
 		
 		Map<String,Object> monthMap = new HashMap<>();
 		monthMap.put("id", id);
@@ -73,9 +73,6 @@ public class ConsumeController {
 	public List<Map<String,Object>> getSixMonthConsume(@RequestParam("id") String id, 
 			                                           @RequestParam("monthStart") int monthStart,
 			                                           @RequestParam("monthEnd") int monthEnd) {
-		System.out.println("id : "+id);
-		System.out.println("monthStart : "+monthStart);
-		System.out.println("monthEnd : "+monthEnd);
 		
 		Map<String,Object> monthMap = new HashMap<>();
 		monthMap.put("id", id);
@@ -93,9 +90,6 @@ public class ConsumeController {
 	public List<Map<String,Object>> getDayConsume(@RequestParam("id") String id, 
             									  @RequestParam("monthStart") int monthStart,
             									  @RequestParam("monthEnd") int monthEnd) {
-		System.out.println("id : "+id);
-		System.out.println("monthStart : "+monthStart);
-		System.out.println("monthEnd : "+monthEnd);
 		
 		Map<String,Object> dayMap = new HashMap<>();
 		dayMap.put("id", id);
