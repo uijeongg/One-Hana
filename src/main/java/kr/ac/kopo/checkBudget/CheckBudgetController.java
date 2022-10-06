@@ -32,32 +32,23 @@ public class CheckBudgetController {
 	@GetMapping("/getBudgetGraphData")
 	public Map<String,Object> getBudgetGraphData(@RequestParam("id") String id, @RequestParam("accountNo") String accountNo) {
 		
-		//autoDivSetting에서 amount (불러오기 - 포켓번호별로 싹 다)
-		//한달 사용 금액 불러오기
-		
 		//autoDivideAmount 불러오기
 		List<AutoDivideSettingVO> settingAmountList = checkBudgetService.getBudgetSettingAmount(accountNo);
-		System.out.println("settingAmountList : " + settingAmountList);
-		
-		
-		//pocketcode2
+		//System.out.println("settingAmountList : " + settingAmountList);
 		List<DayVO> secondConsumeList = checkBudgetService.getMonthConsumeList2(id);
-		System.out.println("secondConsumeList : " + secondConsumeList);
-		
-		
-		//pocketcode3 (생활비)
+		//System.out.println("secondConsumeList : " + secondConsumeList);
 		List<DayVO> thirdConsumeList = checkBudgetService.getMonthConsumeList(id);
-		System.out.println("thirdConsumeList : " + thirdConsumeList);
-		
+		//System.out.println("thirdConsumeList : " + thirdConsumeList);
+		List<DayVO> consumeNameList = checkBudgetService.getConsumeNameList(id);
+		//System.out.println("consumeNameList : " + consumeNameList);
 		
 		Map<String,Object> budgetGraphMap = new HashMap<>();
 		budgetGraphMap.put("settingAmountList", settingAmountList);
 		budgetGraphMap.put("secondConsumeList", secondConsumeList);
 		budgetGraphMap.put("thirdConsumeList", thirdConsumeList);
-		System.out.println("budgetGraphMap : " + budgetGraphMap);
-		
+		budgetGraphMap.put("consumeNameList", consumeNameList);
+		//System.out.println("budgetGraphMap : " + budgetGraphMap);
 		
 		return budgetGraphMap;
 	}
-	
 }

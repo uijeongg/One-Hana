@@ -15,6 +15,8 @@ public interface CheckBudgetDAO {
 
 	List<DayVO> getMonthConsumeList2(String id);
 
+	List<DayVO> getConsumeNameList(String id);
+
 	
 
 }

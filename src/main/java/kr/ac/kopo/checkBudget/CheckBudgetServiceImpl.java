@@ -34,4 +34,10 @@ public class CheckBudgetServiceImpl implements CheckBudgetService{
 		List<DayVO> monthConsumeList = checkBudgetDAO.getMonthConsumeList2(id);
 		return monthConsumeList;
 	}
+	
+	@Override
+	public List<DayVO> getConsumeNameList(String id) {
+		List<DayVO> consumeNameList = checkBudgetDAO.getConsumeNameList(id);
+		return consumeNameList;
+	}
 }

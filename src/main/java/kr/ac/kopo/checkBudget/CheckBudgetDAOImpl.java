@@ -34,4 +34,10 @@ public class CheckBudgetDAOImpl implements CheckBudgetDAO {
 		return monthConsumeList2;
 		
 	}
+	
+	@Override
+	public List<DayVO> getConsumeNameList(String id) {
+		List<DayVO> consumeNameList = sqlSessionTemplate.selectList("checkBudget.CheckBudgetDAO.getConsumeNameList", id);
+		return consumeNameList;
+	}
 }

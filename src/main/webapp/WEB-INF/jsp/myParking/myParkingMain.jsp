@@ -118,7 +118,7 @@
         	 console.log(data);
         	 let parkingSum = data.parkingSum*1; 
         	 let parkingBal = data.parkingBal*1; 
-        	 let parkingPer = parkingBal/parkingSum*1;
+        	 let parkingPer = parkingBal/parkingSum*100;
              let str ='';
              
              
@@ -246,19 +246,19 @@
              
                  
              
-             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[1].FROMPOCKET+'</p> 예산 &nbsp;' + parkingList[1].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[1].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
+             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[6].FROMPOCKET+'</p> 예산 &nbsp;' + parkingList[6].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[1].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
 	             str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
 	             str += '<div class="progress-bar bg-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[1].AUTODIVAMOUNT*1 - parkingList[1].PARKINGAMOUNT*1)/(parkingList[1].AUTODIVAMOUNT*1)  + '%">';
 	             str += + (parkingList[1].AUTODIVAMOUNT*1 - parkingList[1].PARKINGAMOUNT*1) + ' 원 사용  </div></div><br>'
              
 	            	 
              
-             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[2].FROMPOCKET+' </p> 예산 &nbsp;' + parkingList[2].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[2].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
+          /*    str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[2].FROMPOCKET+' </p> 예산 &nbsp;' + parkingList[2].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[2].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
 	             str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
 	             str += '<div class="progress-bar bg-info progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1)/(parkingList[2].AUTODIVAMOUNT*1)  + '%">';
 	             str += + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1) + ' 원 사용  </div></div>'
              
-	            
+	       */      
              
              $('#parkingAmount').append(str);
         })

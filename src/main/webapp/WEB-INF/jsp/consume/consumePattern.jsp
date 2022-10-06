@@ -408,8 +408,8 @@
         
         
         
-       <input type="submit" id="reBudget" value="재설정하기"
-               style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;"> 
+      <!--  <input type="submit" id="reBudget" value="재설정하기"
+               style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;">  -->
 </form>    
         
         

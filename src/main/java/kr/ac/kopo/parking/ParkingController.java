@@ -33,22 +33,16 @@ public class ParkingController {
 	@RequestMapping("/getParkingSum")
 	public Map<String,Object> parkingMain1(@RequestParam("accountNo") String accountNo) {
 		
-		
-		//System.out.println("파킹 파라미터 아이디!! " + id);
-		
 		int parkingSum = parkingService.getParkingSum(accountNo);
-		System.out.println("parkingSum : " + parkingSum);
+		//System.out.println("parkingSum : " + parkingSum);
 		
 		int parkingBal = parkingService.getParkingBal(accountNo);
-		System.out.println("parkingBal : " + parkingBal);
-		
-	
+		//System.out.println("parkingBal : " + parkingBal);
 		
 		Map<String, Object> parkingMap = new HashMap<>();
 		parkingMap.put("parkingSum", parkingSum);
 		parkingMap.put("parkingBal", parkingBal);
-		
-		
+
 		return parkingMap;
 	}
 	
@@ -58,6 +52,8 @@ public class ParkingController {
 	public List<HashMap<String, Object>> parkingMain(@RequestParam("accountNo") String accountNo) {
 	//public List<HashMap<String, Object>> parkingMain(@RequestParam("id") String id) {
 			
+		//고정비 파킹 리스트
+		
 		
 		List<HashMap<String, Object>> parkingList = parkingService.getParkingData(accountNo);
 		System.out.println("parkingList 불러와? : " + parkingList);
