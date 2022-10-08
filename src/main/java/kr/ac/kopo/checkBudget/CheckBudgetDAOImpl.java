@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.budget.AutoDivideSettingVO;
+import kr.ac.kopo.budget.AutoDivideVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.myBank.PocketVO;
 
 @Repository
 public class CheckBudgetDAOImpl implements CheckBudgetDAO {
@@ -39,5 +41,22 @@ public class CheckBudgetDAOImpl implements CheckBudgetDAO {
 	public List<DayVO> getConsumeNameList(String id) {
 		List<DayVO> consumeNameList = sqlSessionTemplate.selectList("checkBudget.CheckBudgetDAO.getConsumeNameList", id);
 		return consumeNameList;
+	}
+	
+	@Override
+	public List<PocketVO> getReBudgetPocketList(Map<String, Object> reBudgetMap){
+		List<PocketVO> reBudgetList = sqlSessionTemplate.selectList("checkBudget.CheckBudgetDAO.getReBudgetPocketList", reBudgetMap);
+		return reBudgetList;
+	}
+	
+	@Override
+	public void updateReBudgetSet(Map<String, Object> reBudgetMap2) {
+		sqlSessionTemplate.update("checkBudget.CheckBudgetDAO.updateReBudgetSet", reBudgetMap2);
+	}
+	
+	@Override
+	public List<AutoDivideVO> selectChangeModal(Map<String, Object> reBudgetMap3) {
+		List<AutoDivideVO> changeModalList = sqlSessionTemplate.selectList("checkBudget.CheckBudgetDAO.selectChangeModal", reBudgetMap3);
+		return changeModalList;
 	}
 }

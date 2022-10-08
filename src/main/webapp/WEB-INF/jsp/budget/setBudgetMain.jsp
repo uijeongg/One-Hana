@@ -423,9 +423,13 @@ $(document).ready(function(){
     
      <!-- page title start -->
     <div style="margin-left:670px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_calendar.png" 
-            style="width:70px; height:70px;"/>
-        <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 관리 "</span>
+        <img src="${pageContext.request.contextPath}/resources/img/My_budget1.png" 
+            style="width:110px; height:80px;"/>
+        <!-- <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 관리 "</span> -->
+        
+        <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
+         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">예산 관리</span>
+         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
     </div>
     <hr style="width:900px; height: 5px; background-color:#066262;">
     <!-- page title end -->
@@ -481,13 +485,15 @@ $(document).ready(function(){
             <div style="margin-top:18px;">
 	           <select name="fixedDate" id="fixedDate"
 	                 style="width:100px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">
-	                 <option>급여일</option>
-	                 <option>급여일 다음날</option>
+	                 <!-- <option>급여일</option>
+	                 <option>급여일 다음날</option> -->
 	                 <c:forEach begin="1" end="31" var="x">
 	                    <option>
 	                        매달&nbsp;<c:out value="${x}" />일
 	                    </option>
 	                 </c:forEach>
+	                 <option>급여일</option>
+                     <option>급여일 다음날</option>
 	           </select>
 	           을 예산사용 시작일로 설정
 	       </div>

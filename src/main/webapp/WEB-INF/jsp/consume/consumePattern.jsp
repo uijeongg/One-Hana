@@ -25,7 +25,7 @@
 
 <link href="/resources/mycss/consumeDate.css" rel="stylesheet">
 <!-- <link href="/resources/mycss/chart.css" rel="stylesheet"> -->
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
 .nav-tabs {
     border-bottom: 3px solid #008485;
@@ -80,8 +80,8 @@
          </div>
          <hr style="width: 200px;">
           <div>
-            <a href="${pageContext.request.contextPath }/"
-               style="color:#808080;">나의 투자 성향</a>
+            <a href="${pageContext.request.contextPath }/productsMain"
+               style="color:#808080;">MO HANA 상품</a>
          </div>
          <hr style="width:200px;">
       </div>
@@ -93,9 +93,13 @@
    
    <!-- page title start -->
    <div style="margin-left:670px; margin-top:11px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_gragh3.png" 
-            style="width:110px; height:60px;"/>
-        <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 소비 패턴 "</span>
+        <img src="${pageContext.request.contextPath}/resources/img/My_pattern.png" 
+            style="width:110px; height:70px;"/>
+        <!-- <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 소비 패턴 "</span> -->
+        
+         <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
+         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">소비 패턴</span>
+         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
    </div>
    <hr style="width: 1060px; height: 5px; background-color:#066262;">
    <!-- page title end -->
@@ -208,77 +212,7 @@
         
         
      </div>
- 
- 
- 
- 
- 
- 
- 
- 
-   <!-- 주차별 -->  
-   <!-- <div class="container" style="position:absolute; display:flex; margin-top:50px;">  -->
-   <!-- <div id="chart" style="width:650px; margin-left:350px; text-align:left;"> -->
-<!--    <div style="height:500px; margin-bottom:10px;">
-	   <div id="chart" style="width:600px; margin-top:40px; display:inline-block;">
-	   <div id="chart" style="float:left; width:600px;">
-	        fetch로 apexchart 삽입
-	   </div>
-	   
-	   <div id="chartcomment" style="width:400px; display:inline-block;">
-	        -목-요일의 소비가 가장 많네요!<br>           
-	   </div>
-   </div>
- 
- --> 
- 
-   <!-- 요일별 -->
-   <!-- <div style="height:500px; margin-bottom:10px;">
-       <div id="chart2comment" style="float:left; width:400px; text-align: center;">
-       
-       </div>
-	   <div id="chart2" style="width:600px; margin-right:10px; display:inline-block;">
-	      fetch로 apexchart 삽입
-	   </div>
-   </div> -->
- 
- 
- 
- 
-   
   
-   <!-- 일별 -->
- <!--   <div style="height:500px; margin-bottom:10px;">
-	   <div id="chart3" style="float:left; width:600px; margin-left:350px;">
-	            fetch로 apexchart 삽입
-	   </div>
-	   
-	   <div style="display:inline-block; width:500px;">
-		   <div id="chart3comment">
-		   </div>
-		
-		   <div id="dateTopHisto">   
-		   </div>
-	   </div>
-   </div>  -->
-     
-   <!-- 잦은 거래 수 -->
-<!--    <div style="height:500px; margin-bottom:10px;">
-       <div id="chart4comment" style="float:left; width:400px;">
-       </div>
-	   <div id="chart4" style="width:600px; display:inline-block;">
-	        fetch로 apexchart 삽입
-	   </div> 
-   </div>
-     
- -->     
-     
-     
-     
-     
-     
-     
-    
 </div>
 
     
@@ -387,10 +321,7 @@
         </div>
         
         
-        
-        
-        
-           <div class="d-flex">
+        <div class="d-flex">
             <div style="width: 100%">
             <span> 6개월치 시간대별 소비 빈도수 </span>
                <figure class="highcharts-figure">   
@@ -402,22 +333,70 @@
                 <div style="background-color:#E90061; height:300px; width:250px">
                      <div id="topCountComment"></div>
                      <div id="countMedianComment"></div>
-                </div>
+                     
+                     <div id="setNoticeSMSParent">
+                          
+                     </div>
+                </div>              
             </div>
-        </div>
-        
-        
+        </div>        
         
       <!--  <input type="submit" id="reBudget" value="재설정하기"
                style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;">  -->
 </form>    
         
         
-        
-        </div>
+    </div>
 
 
 </div>  
+    
+    
+
+
+
+<!-- 모달 -->
+<div class="modal fade" id="setNotice" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <!--  <div class="modal-header"> -->
+            <!-- <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액 이동 재설정</h5> -->
+            <p style="align:right;">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            </p>   
+            
+          <div class="modal-body" id="modalbody">
+          
+          
+            <div id="getModalTime">
+            <!-- 알림모달 -->
+            가장 빈번한 소비가 발생하는 xx시가 되면
+            소비 주의 알림을 받겠습니까?
+            </div>
+          
+            매주 <select name="noticeDate" id="noticeDate"
+	                     style="width:100px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">	                    
+	            <option>월요일</option>
+	            <option>화요일</option>
+	            <option>수요일</option>
+	            <option>목요일</option>
+	            <option>금요일</option>
+	            <option>토요일</option>
+	            <option>일요일</option>
+	        </select>
+	          
+          
+          </div>
+         
+           <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="divBtn" onclick="doSetNotice()" style="width:150px; margin-top:10px; margin-bottom:25px;">문자 알림 받기</button>         
+            </div>
+        </div>
+      </div>
+    </div>
+<!--  data-bs-dismiss="modal" --> 
+    
+    
     
     
     
@@ -451,68 +430,6 @@
  
 	
 	
-<%-- 	
-    
-<form action="${pageContext.request.contextPath}/reBudgetSetting" method="post">   <!-- 계산 값을 보내서 핸들러로 보내고 예산재설정 들어가기 -->
-    <input type="hidden" name="sumTopSavingAmount" value="">
-    <input type="hidden" name="countTopSavingAmount" value="">
-      	
-	<div> <span style="font-size:25px;"> 6개월치 소분류 </span>
-    <figure class="highcharts-figure">   
-       <div id="container5"></div>
-     </figure>
-    </div>
-	 <div id="sumMedianComment">
-    </div>
-  
-    <div> <span style="font-size:25px;"> 6개월치 소비 빈도수 </span>
-    <figure class="highcharts-figure">   
-       <div id="container7"></div>
-     </figure>
-    </div>
-    <div id="topCountComment">
-    
-    </div>
-    <div id="countMedianComment">
-    
-    </div>
-
-
-<!-- button으로 업데이트하기 -->
-<input type="submit" id="reBudget" value="재설정하기"
-               style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;"> 
-</form>          
-    
-    
-    
-     --%>
-    
-    
-    
-    
-    
-
-
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
     
 </div>  <!-- 탭 가장 상단 div -->  
 
@@ -528,6 +445,15 @@
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+<script>
+   function setNoticeSMS(input1,input2){
+	   console.log("귀여운 의정이:"+input1);
+	   console.log("잘꾸미는 의정이:"+input2);
+   }
+</script>
+
 
 <script>
   Highcharts.setOptions({
@@ -1231,6 +1157,12 @@
          let monthEnd = -1;
          let id ='${loginVO.id}';
          
+         let topCountData = [];
+         let count = 0 ;
+         let time = '';
+         
+         
+         
          timeListObject_1 = {};
          timeListObject_1.name = '0~4시';
          timeListObject_1.drilldown= '0~4시';
@@ -1396,14 +1328,14 @@
                 	 }         
                  }
                
-                 timeListObject_1.y = timeListArray_1.length;
+                 timeListObject_1.y = timeListArray_1.length; //소비횟수
                  timeListObject_2.y = timeListArray_2.length;
                  timeListObject_3.y = timeListArray_3.length;
                  timeListObject_4.y = timeListArray_4.length;
                  timeListObject_5.y = timeListArray_5.length;
                  timeListObject_6.y = timeListArray_6.length; 
                  
-                 timeListTimeBiggerArray.push(timeListObject_1);
+                 timeListTimeBiggerArray.push(timeListObject_1); //를 timeListTimeBiggerArray 배열에 푸쉬
                  timeListTimeBiggerArray.push(timeListObject_2);
                  timeListTimeBiggerArray.push(timeListObject_3);
                  timeListTimeBiggerArray.push(timeListObject_4);
@@ -1424,6 +1356,10 @@
                  detailTimeArray.push(detailTimeObject_5);
                  detailTimeArray.push(detailTimeObject_6);
                  //console.log(Number(detailTimeObject_6.data.pop()[1])+1);
+                 
+                 
+                 //detailTimeArray 뽑기
+                 console.log(" detailTimeArray " + detailTimeArray[0]);
 
                  return new Promise((resolve,reject)=>{
                 	 resolve('gogo');
@@ -1492,12 +1428,43 @@
                 	        series: detailTimeArray
                 	    }
                 	});
-   
-                 //console.log("timeListTimeBiggerArray" + Math.max(timeListTimeBiggerArray.length))        
+                 
+                 
+      
+                 //let count = 0 ;
+                 //let time = '';
+                 for(let i=0;i<timeListTimeBiggerArray.length;i++){
+                     if(i==0){
+                         count=timeListTimeBiggerArray[i].y;
+                     }else{
+                         if(count<timeListTimeBiggerArray[i].y){
+                             count = timeListTimeBiggerArray[i].y;
+                             time = timeListTimeBiggerArray[i].name;
+                         }
+                     }
+                   
+                 } 
+                 
+                 //let topCountData = [];
+                 console.log("의정이" + count + time);
+                 topCountData.push(count);
+                 topCountData.push(Number(time.substring(0,2)));
+                 
+
+                 console.log(topCountData + "여기서 찍히나");
+                 
+                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');
+                 
+
+                 
         })
-  
+
+
+ 
      }
      </script>
+     
+
    
    
    <script>
@@ -1976,7 +1943,7 @@
    
    </script>
    
-   
+ 
              
     
     

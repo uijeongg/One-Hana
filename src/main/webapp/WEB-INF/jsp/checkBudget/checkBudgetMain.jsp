@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,23 +13,29 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- CSS only -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 <!-- my css  -->
 <!-- <link href="/resources/mycss/test.css" rel="stylesheet"> -->
 <!-- 	<link href="/resources/mycss/chart.css" rel="stylesheet"> -->
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.8.5/bootstrap-progressbar.min.js" integrity="sha512-ShSScKTSdSD7IiMKfgTdqaEY8gOGm5cNfqMr6Wc5BZvMgc1UveS+UqpS0TNUtRD1CZ9KhmbGtzwUN7HJlXxY8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.8.5/bootstrap-progressbar.js" integrity="sha512-tH+o43f9pBn8Kw1Nbyr+wrAQ/SbmKVMuGy2hoGWm9/xFacsOFIz3OmHeEEorjq/CKD4BxHT86qu7zp1wJKGtVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>             
+   
+<style type="text/css">
+.progress {
+    width: 350px;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    }  
+</style> 
 
 </head>
 
@@ -90,12 +97,50 @@
  
    <!-- page title start -->
    <div style="margin-left:670px; margin-top:11px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_gragh3.png" 
-            style="width:110px; height:60px;"/>
-        <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 확인 "</span>
+        <img src="${pageContext.request.contextPath}/resources/img/My_sobi.png" 
+            style="width:130px; height:70px;"/>
+    <!--     <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 확인 "</span> -->
+        
+        <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
+         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">예산 확인</span>
+         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
+        
    </div>
    <hr style="width: 1060px; height: 5px; background-color:#066262; margin-bottom:30px;">
    <!-- page title end -->
+   
+   
+   
+   
+   
+   
+   
+<!-- ///////////////////////////////파킹로딩바///////////////////////////////////////////////// -->   
+   
+     
+    <!-- 프로그레스 로딩바 + 파킹 주머니 현황 텍스트 -->
+    <div id="parkingMap" style="margin-right:21%;"></div>
+   
+    <!-- 이번달 예산 구성 파이차트, 금액 표 자리 -->
+    
+    <!-- 정의정 님의 9월 파킹 내역 -->
+    <!-- 정의정 님의 9월 파킹 내역 -->
+    <div id="parkingDetail" style="border:1px solid; display:none; margin-top:30px; width:60%; margin-left:27%;">
+       <!--  <span style="font-size:23px; margin-left:350px;">파킹 현황</span> -->
+
+        <div id="parkingAmount">
+            <!--   이번달의 총 파킹 금액은    parkingList[0].autoDivAmount   원 입니다 -->
+        </div>
+  
+        <!-- 주머니 추가 버튼 누르면 뜨는 파킹디테일 div -->
+        <div></div> 
+
+    </div>   
+    
+<!-- //////////////////////////////////////////////////////////////////////////////// -->
+   
+   
+   
    
    
    
@@ -114,8 +159,8 @@
 				
 					<!-- <h2>코멘트</h2>
 					<h5>6개월간 고정비 예산은 1,200,000원이고, 평균 사용 금액은 xx입니다. <br> 고정비 예산을 약 xx% 줄여도 충분합니다! </h5> -->
-					
 				</div>
+				 
 			</div>
 		</div>
 		
@@ -135,10 +180,10 @@
                    <!--  <h2>코멘트</h2>
                     <h5>6개월간 생활비 예산은 1,200,000원이고, 평균 사용 금액은 xx원입니다. <br> 자세한 사용 내역을 확인할 수 있습니다. </h5> -->
                     
-                    <div>
+                    <%-- <div>
                          <a href="${pageContext.request.contextPath }/consumePattern"
                             style="border:2px solid; border-color:none; background-color:#008485; color:white;">소비 패턴 확인하러 가기 </a>
-                    </div>
+                    </div> --%>
                 </div>
 
             </div>
@@ -149,6 +194,79 @@
 	
 	
 	    
+
+
+
+
+
+
+
+ 
+ 
+
+    
+    
+
+<!-- 모달 -->
+<div class="modal fade" id="reBudget" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <!--  <div class="modal-header"> -->
+            <!-- <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액 이동 재설정</h5> -->
+            <p style="align:right;">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            </p>   
+            
+          <!-- </div> -->
+          <div class="modal-body" id="modalbody">
+            
+            <h4 style="text-align:center; margin-bottom:40px;">예산 정보 변경</h4>
+            <div>
+                <div class="d-flex justify-content-center align-items-center mb-3"  style="font-size:120%">
+                    기본 주머니에서 &nbsp;
+                    <select id="toPocket" name="toPocket" style="width:40%" class="form-select form-control" aria-label="Default select example">
+                     
+                     </select>  &nbsp;로
+                </div>  
+               
+                <div class="d-flex justify-content-center align-items-center mb-3"  style="font-size:120%">
+                    매달 &nbsp; 
+                    
+                     <select id="autoDivDate" name="autoDivDate" 
+                      style="width:80px; background:white; color:#008485; border:none; border-bottom:2px solid #008485;
+                             text-align:center; margin:5px; font-size:25px; font-weight:800; height:40px; display:inline;">       
+                             
+                     <c:forEach begin="1" end="31" var="x">
+                      <option><!-- 매달 -->
+                          <c:out value="${x}" />
+                      </option>                                
+                  </c:forEach>  
+                  </select>    &nbsp;일에  &nbsp; &nbsp; 
+                    
+                   <!--  <select id="autoDivDate" name="autoDivDate" style="width:10%;" class="form-select form-control" aria-label="Default select example">
+                               <option selected></option>
+                    </select>  -->
+                    
+                    
+                    <input value="" class="form-control" style="width:40%; height:40px;" placeholder="설정 금액" type="text" id="divAmount" name="divAmount">&nbsp;원으로
+                </div>      
+                <div class="d-flex justify-content-center" style="font-size:140%">자동 잔액 이동 정보를 변경합니다</div>
+             </div>
+            
+            
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="doReBudgetSet()">잔액이동</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+          </div> -->
+           <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
+            <button type="button" class="btn btn-primary" id="divBtn" onclick="doReBudgetSet()" style="width:150px; margin-top:10px; margin-bottom:25px;">변경</button>         
+            </div>
+        </div>
+      </div>
+    </div>
+<!--  data-bs-dismiss="modal" -->
+
 
 
 
@@ -174,9 +292,11 @@
    })
 </script>   
     
-	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-	<script>
-    $(document).ready(function(){   
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+$(document).ready(function(){   
 	//autoDivSetting에서 amount (불러오기 - 포켓번호별로 싹 다)
 	//한달 사용 금액 불러오기
 	
@@ -215,7 +335,7 @@
                 	amountSum1 += secondConsumeList[i].AMOUNT 	
                 }
                 let sumAvg1 = Math.floor(amountSum1/secondConsumeList.length); //평균
-                //console.log("sumAvg1 :" + sumAvg1);
+                console.log("sumAvg1 :" + sumAvg1);
                
                 
                 let amountSum2 = 0;
@@ -389,11 +509,24 @@
                             
       
                        let str1 ='';
-                       str1 += '<div>' + thirdConsumeList.length + '개월간 ' + settingAmountList[0].POCKETNAME + ' 주머니 예산은 ' + settingAmountList[0].AUTODIVAMOUNT + '원이고,   </div>';
-                       //str += '평균 사용 금액은 ' +  sumAvg1  + '원 입니다. <br> ' + settingAmountList[0].POCKETNAME + '주머니 예산을 약 ' +    + '% 줄여도 충분합니다 </div>'
+                       str1 += '<div>' + settingAmountList[0].POCKETNAME + ' 주머니 예산은 ' + settingAmountList[0].AUTODIVAMOUNT + '원이고, ' + thirdConsumeList.length + '개월 간 ' + ' 평균 사용 금액은 ' + sumAvg1 + ' 원 입니다. <br></div>';
+                       
+                 
+                       
+                       if ((settingAmountList[0].AUTODIVAMOUNT)*0.8 > sumAvg1 ) {  //고정비 예산에 비해 평균금액이 80%가 넘지 않는다면
+                           
+                           str1 += '<br><br><div>※ ' + sumAvg1 + '원은 예산 대비 20% 이하의 금액입니다. <br>';
+                           str1 += ' 그러므로 ' + settingAmountList[0].POCKETNAME + ' 주머니 예산을 약 ' + sumAvg1 + '원 이하로 줄여도 충분합니다 </div>';
+                 
+                       }
+                    	  
+                       str1 += '<div><button type="button" class="intoReBudget col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
+                       str1 += 'style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="intoReBudgetSet(this.class)">재설정하기</button>  </div>';
                        
                        $('#container1comment').append(str1); 
                        
+                       
+            
                        
                        
                        //<h2>코멘트</h2>
@@ -402,12 +535,312 @@
                        str2 += '<div>' + thirdConsumeList.length + '개월간 ' + settingAmountList[1].POCKETNAME + ' 주머니 예산은 ' + settingAmountList[1].AUTODIVAMOUNT + '원이고, ';
                        str2 += '평균 사용 금액은 ' +  sumAvg2  + '원 입니다. <br> 자세한 사용 내역을 확인할 수 있습니다. </div>';
                        
+                       str2 += '<div><button type="button" class="intoReBudgetSet2 col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
+                       str2 += 'style="width:200px; font-size:18px; onclick="intoReBudgetSet(this.class)" font-family:hanaBFont;">재설정하기</button>  </div>';
+                       str2 += '<div> <a href="${pageContext.request.contextPath }/consumePattern" style="border:2px solid;';
+                       str2 += 'border-color:none; background-color:#008485; color:white;">소비 패턴 확인하러 가기 </a></div>';
+                       
+                  
+                       
                        $('#container2comment').append(str2); 
                        
-            })     
+            })
+            
+            
+            
+            
+            
+/////////////////////////////////////////////////////////////////////////////////////         
+            
+            
+            
+            fetch("/getParkingSum?accountNo="+accountNo)
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                let parkingSum = data.parkingSum*1; 
+                let parkingBal = data.parkingBal*1; 
+                let parkingPer = parkingBal/parkingSum*100;
+                let str ='';
+                
+                
+                str += '<div class="container text-center"><div class="row">'; 
+               
+                    str += '<div class="col-6 chartLcoation" style="justify-content : center; align-items : center; display : flex;">';
+                        str += '<div id="chart"></div>';
+                        /* 프로그레스바 들어가는 자리 */          
+                        /* str += '<span>' + parkingPer + '% 달성 </span>'; */
+                    str += '</div>'
+                
+                
+                    str += '<div class="col-6 chartLocation2" style="justify-content:center; align-items:center;">';
+                        str += '<div style="font-size:22px; margin-top:80px; justify-content:center;"> 지금까지 <br>파킹 주머니 목표금액 <p style="color:#008485; display:inline;"><br>'+ parkingSum + '&nbsp;원</p> 중';
+                        str += '<br> 총 <p style="color:#008485; display:inline; font-size:30px;">"' + parkingBal + ' 원"</p>을 모았어요';
+                        
+                        str += '<div style="margin-top:10px;">';
+                        str += '<input type="button" id="parking" value="상세 파킹 내역" onclick="displayParkingDetail()" class="btn"';
+                        str += 'style="font-family:hanaBFont; background-color:#008485; font-size:15px; width:150px; height:40px;';
+                        str += 'border-radius:10px; color:white; border:none; margin-right:0px;">';
+                        str += '</div>';
+               
+                        str += '</div>'; 
+                    str +='</div>'; 
+                
+                str += '</div>';
+                
+              
+                $('#parkingMap').append(str);
+                return new Promise((resolve,reject)=>{
+                    resolve(parkingPer);
+                })
+            })
+            .then(res=>{
+                parkingPer = res;
+                var options = {
+                        series: [parkingPer],
+                        chart: {
+                        height: 350,
+                        type: 'radialBar',
+                      },
+                      plotOptions: {
+                        radialBar: {
+                          hollow: {
+                            margin: 15,
+                            size: '70%',
+                            image: '/resources/img/My_!green2.png',
+                            
+                            imageWidth: 64,
+                            imageHeight: 64,
+                            imageClipped: false
+                          },
+                          dataLabels: {
+                            name: {
+                              show: false,
+                              color: '#fff'
+                            },
+                            value: {
+                              show: true,
+                              color: '#333',
+                              offsetY: 70,
+                              fontSize: '22px'
+                            }
+                          }
+                        }
+                      },
+                      fill: {
+                        type: 'image',
+                        image: {
+                          src: ['/resources/img/My_008485.jpg'],
+                        }
+                      },
+                      stroke: {
+                        lineCap: 'round'
+                      },
+                      labels: ['Volatility'],
+                      };
+
+                      var chart = new ApexCharts(document.querySelector("#chart"), options);
+                      chart.render();           
+                 
+            }) 
     }) 
 </script>
 
+
+
+
+
+
+
+
+   
+<!-- 재설정하기 버튼 누를 때 모달에 값 넘기기 용 -->
+<script>
+function intoReBudgetSet(input){
+
+   //기본주머니에서 (셀렉트박스)id="toPocket"으로 매달 id="autoDivDate"일에 id="divAmount"로 변경됩니다
+   //값을 가지고 가야함
+   //$('#toPocket').empty();
+   
+   let id ='${loginVO.id}';
+   let accountNo = '${accountNo}';
+   let pocketName = [];
+   
+	   fetch('/intoReBudgetSet?id='+id+'&accountNo='+accountNo)
+       .then(res=>res.json())
+       .then(res=>{
+            let reBudgetSet = res
+            
+            for(let i=1; i<reBudgetSet.length; i++) {
+            	pocketName.push(reBudgetSet[i].POCKETNAME);
+            }
+            
+           $('#toPocket').append('<option value="0"> 주머니 선택 </option>');
+          
+            for(let i=0; i<pocketName.length; i++) {
+                $('#toPocket').append('<option value='+pocketName[i]+'> ' + pocketName[i] + ' 주머니 </option>');               
+            }
+   
+       })
+   
+  
+
+}   
+</script>   
+
+
+<script>
+function doReBudgetSet() {
+	
+	let accountNo = '${accountNo}';
+	let toPocket = $('#toPocket').val();
+    let autoDivDate = $('#autoDivDate').val(); //select option 중 선택된 값만 가져오기
+    let divAmount = $('#divAmount').val()*1;
+    console.log(accountNo);
+   // console.log(autoDivDate);
+   // console.log(divAmount);
+   
+    fetch("/doReBudgetSet?accountNo="+accountNo+"&toPocket="+toPocket+'&autoDivDate='+autoDivDate+'&divAmount='+divAmount)
+
+            .then(res=>{
+            	
+            	 //$('#modalbody').empty();
+            	 
+            	changeModal(toPocket);
+            	
+          })
+}
+</script>
+
+<script>
+function changeModal(toPocket) {
+	let accountNo = '${accountNo}';
+	//console.log(toPocket + '찍힘?');
+	
+	fetch("/changeModal?accountNo="+accountNo+"&toPocket="+toPocket)
+	.then(res=>res.json())
+    .then(res=>{
+        changeModalList = res;
+        console.log(changeModalList[0].POCKETNAME)
+        
+      //  changeModalList.POCKETNAME 주머니
+        $('#modalbody').empty();
+        str ='';
+        str += '<h4 style="font-size:20px; text-align:center;">잔액 이동 변경 내역</h4><br>';
+        str += '<table style="border : 3px solid #E0E0E0; width : 70%; height : 100px; margin-top : 15px;  margin : auto; text-align : center;">';
+        str += '<tr style="background: #E0E0E0">';
+        str += '<td width="30%" style="border-right:2px solid white;"><b>이동 주머니</b></td>';
+        str += '<td><b>자동 이동 날짜</b></td>';
+        str += '<td><b>금액</b></td>';
+        str += '</tr>';
+        str += '<tr>';
+        str += '<td style="border-right:2px solid #E0E0E0;">' + changeModalList[0].POCKETNAME + ' 주머니</td>';
+        	str += '<td style="border-right:2px solid #E0E0E0;">매달 ' + changeModalList[0].AUTODIVDATE + ' 일</td>';
+        		str += '<td>' + changeModalList[0].AUTODIVAMOUNT + ' 원</td>';
+        			str += '</tr> </table>';
+        				
+	  
+	  
+	  /* 
+	    <h4 style="font-size:20px; text-align:center;">자동 잔액 이동 설정 변경</h4><br>
+	       
+	       <table style="border : 3px solid #E0E0E0; width : 70%; height : 100px; margin-top : 15px;  margin : auto; text-align : center;">
+               <tr style="background: #E0E0E0">
+                   <td width="30%" style="border-right:2px solid white;"><b>이동 주머니</b></td>
+                   <td><b>자동 이동 날짜</b></td>
+                   <td><b>금액</b></td>
+               <tr>
+               
+               <tr>
+                   <td style="border-right:2px solid #E0E0E0;">changeModalList.POCKETNAME 주머니</td>
+                   <td style="border-right:2px solid #E0E0E0;">매달 changeModalList.AUTODIVDATE 일</td>
+                   <td>changeModalList.AUTODIVAMOUNT 원</td>
+               </tr>
+                                            
+          </table>
+	  
+	   */
+	  
+         
+         $('#modalbody').append(str);
+         
+         
+         $('#modalFooter').empty();
+         str2 = '';
+         str2 += '<button type="button" class="btn btn-primary" id="divBtn" onclick="doReBudgetSet()"'; 
+         str2 += 'data-bs-dismiss="modal" style="width:150px; margin-top:10px; margin-bottom:25px;">확인</button>';
+         
+         $('#modalFooter').append(str2);
+        
+ })
+	
+}
+
+
+</script>   
+
+
+
+<!-- 상세 파킹 내역 버튼 추가 -->
+<script>
+   function displayParkingDetail() { 
+       $('#parking').hide();
+       $('#parkingDetail').show();   
+   } 
+</script>   
+
+    
+<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+<script>
+    $(document).ready(function(){
+  
+         var accountNo = '<c:out value="${accountNo}"/>' ;
+         //let id ='${loginVO.id}';
+         //console.log("id  겟파킹데이터!!: " + id );
+         
+          
+         fetch('/getParkingData?accountNo='+accountNo)
+         .then(res=>res.json())
+         .then(res=>{
+              let parkingList = res
+               
+             //console.log(parkingList);
+                 
+             let str ='';
+             str += '<div style="font-size:23px; text-align:center; margin-bottom:30px;"> 이번달엔 총 "'+ (parkingList[0].PARKINGAMOUNT*1 + parkingList[1].PARKINGAMOUNT*1+parkingList[2].PARKINGAMOUNT*1) +'" 원 을 파킹했어요! </div><br>';
+            
+             
+             
+             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[0].FROMPOCKET + ' </p> 예산 &nbsp;' + parkingList[0].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[0].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
+                 str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
+                 /* str += '<div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%">'; */
+                 str += '<div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[0].AUTODIVAMOUNT*1 - parkingList[0].PARKINGAMOUNT*1)/(parkingList[0].AUTODIVAMOUNT*1)  + '%">';
+                 str += + (parkingList[0].AUTODIVAMOUNT*1 - parkingList[0].PARKINGAMOUNT*1) + ' 원 사용  </div></div><br>'
+             
+                 
+             
+             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[6].FROMPOCKET+'</p> 예산 &nbsp;' + parkingList[6].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[1].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
+                 str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
+                 str += '<div class="progress-bar bg-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[1].AUTODIVAMOUNT*1 - parkingList[1].PARKINGAMOUNT*1)/(parkingList[1].AUTODIVAMOUNT*1)  + '%">';
+                 str += + (parkingList[1].AUTODIVAMOUNT*1 - parkingList[1].PARKINGAMOUNT*1) + ' 원 사용  </div></div><br>'
+             
+                     
+             
+          /*    str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[2].FROMPOCKET+' </p> 예산 &nbsp;' + parkingList[2].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[2].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
+                 str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
+                 str += '<div class="progress-bar bg-info progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1)/(parkingList[2].AUTODIVAMOUNT*1)  + '%">';
+                 str += + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1) + ' 원 사용  </div></div>'
+             
+           */      
+             
+             $('#parkingAmount').append(str);
+        })
+       
+  })
+</script>
+    
+    
+ 
 
 </body>
 </html>

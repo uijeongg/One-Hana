@@ -67,8 +67,17 @@ ul li {
             <div class="col-lg-3">
                 <div class="d-flex align-items-center justify-content-start main-logo">
                 	<a href="${pageContext.request.contextPath}/">
-                    	<img src="${pageContext.request.contextPath}/resources/img/My_hana-logo.png"/>
+                    	<img src="${pageContext.request.contextPath}/resources/img/My_hana-logo.png"
+                    	     style="width:70px; height:60px;"/> 
+                    	     <%-- <img src="${pageContext.request.contextPath}/resources/img/My_logo.png"
+                             style="width:250px; height:80px;"/> --%>
+                    	
                 	</a>
+                	 <h2 style="color:#008485; display:inline;">M</h2>
+                         <h2 style="display:inline;">y&nbsp;</h2>
+                         <h2 style="color:#008485; display:inline;">O</h2>
+                         <h2 style="display:inline;">ne&nbsp;</h2>
+                         <h2 style="color:#008485; display:inline;"> HANA</h2> 
                 </div>
             </div>
             <div class="col-lg-6">

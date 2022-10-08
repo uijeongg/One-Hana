@@ -42,7 +42,7 @@ public class ParkingDAOImpl implements ParkingDAO {
 	
 	@Override
 	public List<HashMap<String, Object>> getParkingData(String accountNo) {
-		System.out.println("하이하이" + accountNo);
+		//System.out.println("하이하이" + accountNo);
 		List<HashMap<String, Object>> parkingList = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingData", accountNo);
 		
 		return parkingList;

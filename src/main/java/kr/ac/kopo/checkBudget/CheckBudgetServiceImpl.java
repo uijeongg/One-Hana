@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.budget.AutoDivideSettingVO;
+import kr.ac.kopo.budget.AutoDivideVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.myBank.PocketVO;
 
 @Service
 public class CheckBudgetServiceImpl implements CheckBudgetService{
@@ -40,4 +42,22 @@ public class CheckBudgetServiceImpl implements CheckBudgetService{
 		List<DayVO> consumeNameList = checkBudgetDAO.getConsumeNameList(id);
 		return consumeNameList;
 	}
+	
+	@Override
+	public List<PocketVO> getReBudgetPocketList(Map<String, Object> reBudgetMap) {
+		List<PocketVO> reBudgetList = checkBudgetDAO.getReBudgetPocketList(reBudgetMap);
+		return reBudgetList;
+	}
+	
+	@Override
+	public void updateReBudgetSet(Map<String, Object> reBudgetMap2) {
+		checkBudgetDAO.	updateReBudgetSet(reBudgetMap2);
+	}
+	
+	@Override
+	public List<AutoDivideVO> selectChangeModal(Map<String, Object> reBudgetMap3){
+		List<AutoDivideVO> changeModalList = checkBudgetDAO.selectChangeModal(reBudgetMap3);
+		return changeModalList;
+	}
+	
 }

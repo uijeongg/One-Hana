@@ -249,7 +249,7 @@ function dividePocket() {
 	        
 	      </div>
 	      <div class="modal-footer">
-  	        <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="dividePocket()">잔액이동</button>
+  	        <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="dividePocket()" data-bs-dismiss="modal">잔액이동</button>
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 	      </div>
 	    </div>

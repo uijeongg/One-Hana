@@ -40,5 +40,20 @@
     </select>
 
 
+    <select id="getReBudgetPocketList" resultType="map" parameterType="map">
+        SELECT POCKETCODE, POCKETNAME FROM T_MYONE_POCKET WHERE ID=#{id} AND ACCOUNTNO=#{accountNo}
+    </select>
+    
+    <update id="updateReBudgetSet" parameterType="map">
+        UPDATE T_AUTO_DIVIDE_SETTING SET AUTODIVAMOUNT=#{divAmount}, AUTODIVDATE=#{autoDivDate}
+        WHERE ACCOUNTNO=#{accountNo} AND TOPOCKETCODE=(SELECT POCKETCODE FROM T_MYONE_POCKET where pocketName=#{toPocket} and ACCOUNTNO=#{accountNo})
+    </update>
+    
+    <select id="selectChangeModal" resultType="map" parameterType="map">
+        SELECT B.pocketName AS POCKETNAME, A.autodivamount AS AUTODIVAMOUNT, A.autodivdate AS AUTODIVDATE
+        FROM T_AUTO_DIVIDE_SETTING A, (select pocketName from T_MYONE_POCKET where POCKETNAME = #{toPocket} and accountNo=#{accountNo}) B
+        where A.accountNo=#{accountNo}  
+              AND A.TOPOCKETCODE=(select POCKETCODE from T_MYONE_POCKET where POCKETNAME =#{toPocket} and accountNo=#{accountNo})
+    </select>
     
 </mapper>

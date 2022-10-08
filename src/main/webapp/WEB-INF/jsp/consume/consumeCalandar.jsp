@@ -84,9 +84,13 @@
 
     <!-- page title start -->
     <div style="margin-left:670px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_calendar.png" 
+        <img src="${pageContext.request.contextPath}/resources/img/My_calendar2.png" 
             style="width:70px; height:70px;"/>
-        <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 소비 달력 "</span>
+        <!-- <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 소비 달력 "</span> -->
+        
+        <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
+         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">소비 달력</span>
+         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
     </div>
     <hr style="width: 1060px; height: 5px; background-color:#066262;">
     <!-- page title end -->

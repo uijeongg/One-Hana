@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.budget.AutoDivideSettingVO;
+import kr.ac.kopo.budget.AutoDivideVO;
 import kr.ac.kopo.date.DayVO;
+import kr.ac.kopo.myBank.PocketVO;
 
 
 @Controller
@@ -51,4 +53,50 @@ public class CheckBudgetController {
 		
 		return budgetGraphMap;
 	}
+	
+	
+	@ResponseBody
+	@GetMapping("/intoReBudgetSet")
+	public List<PocketVO> intoReBudgetSet(@RequestParam("id") String id, @RequestParam("accountNo") String accountNo) {
+		
+		Map<String,Object> reBudgetMap = new HashMap<>();
+		reBudgetMap.put("id", id);
+		reBudgetMap.put("accountNo", accountNo);
+		
+		List<PocketVO> reBudgetSet = checkBudgetService.getReBudgetPocketList(reBudgetMap);
+		System.out.println(reBudgetSet + "reBudgetSet");
+		return reBudgetSet;
+	}
+	
+	@ResponseBody
+	@GetMapping("/doReBudgetSet")
+	public void doReBudgetSet(@RequestParam("accountNo") String accountNo,
+							  @RequestParam("toPocket") String toPocket,
+							  @RequestParam("autoDivDate") String autoDivDate,
+			                  @RequestParam("divAmount") String divAmount) {
+		
+		
+		Map<String,Object> reBudgetMap2 = new HashMap<>();
+		reBudgetMap2.put("accountNo", accountNo);
+		reBudgetMap2.put("toPocket", toPocket);
+		reBudgetMap2.put("autoDivDate", autoDivDate);
+		reBudgetMap2.put("divAmount", divAmount);
+		
+		checkBudgetService.updateReBudgetSet(reBudgetMap2);
+	}
+
+
+	@ResponseBody
+	@GetMapping("/changeModal")
+	public List<AutoDivideVO> changeModal(@RequestParam("accountNo") String accountNo, @RequestParam("toPocket") String toPocket) {
+		
+		Map<String,Object> reBudgetMap3 = new HashMap<>();
+		reBudgetMap3.put("accountNo", accountNo);
+		reBudgetMap3.put("toPocket", toPocket);
+		
+		List<AutoDivideVO> changeModalList = checkBudgetService.selectChangeModal(reBudgetMap3);
+		System.out.println("changeModalList :" + changeModalList);
+		return changeModalList;
+	}
+
 }

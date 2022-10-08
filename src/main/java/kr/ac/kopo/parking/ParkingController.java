@@ -56,7 +56,7 @@ public class ParkingController {
 		
 		
 		List<HashMap<String, Object>> parkingList = parkingService.getParkingData(accountNo);
-		System.out.println("parkingList 불러와? : " + parkingList);
+		//System.out.println("parkingList 불러와? : " + parkingList);
 		
 		return parkingList;
 	}
