@@ -2,6 +2,7 @@ package kr.ac.kopo.budget;
 
 import java.util.ArrayList;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ import kr.ac.kopo.member.MemberVO;
 import kr.ac.kopo.myBank.MyBankService;
 import kr.ac.kopo.myBank.MyBankVO;
 import kr.ac.kopo.myBank.PocketVO;
+import kr.ac.kopo.parking.ParkingService;
 
 
 @Controller
@@ -38,6 +40,9 @@ public class BudgetController {
 	
 	@Autowired
 	private MyBankService mybankService;
+	
+	@Autowired
+	private ParkingService parkingService;
 	
 	
 	
@@ -109,6 +114,13 @@ public class BudgetController {
 		parkingMap.put("parkingGoal", parkingGoal);
 		
 		budgetService.updateParkingGoal(parkingMap);
+		
+		
+		
+		//파킹셋팅에도 인서트해줘야지
+		parkingService.insertAutoParkingSet(parkingMap);
+		
+		
 		
 		System.out.println("파킹맵받아오나요 : " + parkingMap);
 		//추가

@@ -13,14 +13,36 @@
        SELECT BALANCE FROM T_MYONE_POCKET WHERE POCKETCODE=4 AND ACCOUNTNO=#{accountNo}
     </select>
     
+ 
     
+    
+    <insert id="insertAutoParkingSet" parameterType="map">
+        INSERT INTO T_AUTO_PARKING_SETTING VALUES(#{accountNo}, 
+                    (SELECT PARKINGDATE FROM T_MYONE WHERE ACCOUNTNO=#{accountNo}) )
+    
+    </insert>
+    
+    
+       
 
 
-    <select id="getParkingData" resultType="hashmap" parameterType="String">
-        SELECT A.ACCOUNTNO AS ACCOUNTNO, A.AUTODIVAMOUNT AS AUTODIVAMOUNT, B.FROMPOCKET AS FROMPOCKET, B.PARKINGAMOUNT AS PARKINGAMOUNT
+    <select id="getParkingData" resultType="kr.ac.kopo.parking.ParkingVO" parameterType="String">
+        <!-- SELECT A.ACCOUNTNO AS ACCOUNTNO, A.AUTODIVAMOUNT AS AUTODIVAMOUNT, B.FROMPOCKET AS FROMPOCKET, B.PARKINGAMOUNT AS PARKINGAMOUNT
         FROM T_AUTO_DIVIDE A, T_AUTO_PARKING B
-        WHERE A.TOPOCKET = B.FROMPOCKET AND A.ACCOUNTNO='${ACCOUNTNO}' 
+        WHERE A.TOPOCKET = B.FROMPOCKET AND A.ACCOUNTNO='${ACCOUNTNO}'  -->
+        SELECT A.FROMPOCKET AS FROMPOCKET, A.PARKINGAMOUNT AS PARKINGAMOUNT, B.PARKINGCODE
+        FROM T_AUTO_PARKING A,
+             (SELECT MAX(PARKINGCODE) AS PARKINGCODE FROM T_AUTO_PARKING WHERE FROMPOCKET='고정비') B
+        WHERE ACCOUNTNO=#{accountNo} AND FROMPOCKET='고정비'
         
+        
+    </select>
+    
+    <select id="getParkingData2" resultType="kr.ac.kopo.parking.ParkingVO" parameterType="String">
+        SELECT A.FROMPOCKET AS FROMPOCKET, A.PARKINGAMOUNT AS PARKINGAMOUNT, B.PARKINGCODE
+        FROM T_AUTO_PARKING A,
+             (SELECT MAX(PARKINGCODE) AS PARKINGCODE FROM T_AUTO_PARKING WHERE FROMPOCKET='생활비') B
+        WHERE ACCOUNTNO=#{accountNo} AND FROMPOCKET='생활비'
     </select>
 
 </mapper>

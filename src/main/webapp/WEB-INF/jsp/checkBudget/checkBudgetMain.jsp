@@ -553,7 +553,7 @@ $(document).ready(function(){
 /////////////////////////////////////////////////////////////////////////////////////         
             
             
-            
+     /*        
             fetch("/getParkingSum?accountNo="+accountNo)
             .then(res=>res.json())
             .then(data=>{
@@ -568,8 +568,7 @@ $(document).ready(function(){
                
                     str += '<div class="col-6 chartLcoation" style="justify-content : center; align-items : center; display : flex;">';
                         str += '<div id="chart"></div>';
-                        /* 프로그레스바 들어가는 자리 */          
-                        /* str += '<span>' + parkingPer + '% 달성 </span>'; */
+                
                     str += '</div>'
                 
                 
@@ -590,6 +589,7 @@ $(document).ready(function(){
                 
               
                 $('#parkingMap').append(str);
+                
                 return new Promise((resolve,reject)=>{
                     resolve(parkingPer);
                 })
@@ -642,7 +642,8 @@ $(document).ready(function(){
                       var chart = new ApexCharts(document.querySelector("#chart"), options);
                       chart.render();           
                  
-            }) 
+            })  */
+            
     }) 
 </script>
 

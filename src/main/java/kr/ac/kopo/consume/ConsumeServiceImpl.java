@@ -121,7 +121,7 @@ public class ConsumeServiceImpl implements ConsumeService {
 	
 	
 	@Override
-	public List<Map<String,Object>> getTop2Data(Map<String, String> memberMap) {
+	public List<Map<String,Object>> getTop2Data(Map<String, Object> memberMap) {
 		List<Map<String,Object>> top2List = consumeDAO.getTop2Data(memberMap);
 		return top2List;
 	}
@@ -131,5 +131,9 @@ public class ConsumeServiceImpl implements ConsumeService {
 		List<DayVO> sumMedList = consumeDAO.getSumMedianData(sumMedMap);
 		return sumMedList;
 	}
-	
+
+	@Override
+	public void insertNoticeSet(Map<String, Object> noticeMap) {
+		consumeDAO.insertNoticeSet(noticeMap);
+	}
 }

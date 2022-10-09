@@ -37,9 +37,11 @@ public interface ConsumeService {
 	
 	List<DayVO> getCountMedianData(Map<String, Object> countMedMap);
 
-	List<Map<String,Object>> getTop2Data(Map<String, String> memberMap);
+	List<Map<String,Object>> getTop2Data(Map<String, Object> memberMap);
 
 	List<DayVO> getSumMedianData(Map<String, Object> sumMedMap);
+
+	void insertNoticeSet(Map<String, Object> noticeMap);
 
 
 

@@ -41,10 +41,24 @@ public class ParkingDAOImpl implements ParkingDAO {
 	
 	
 	@Override
-	public List<HashMap<String, Object>> getParkingData(String accountNo) {
+	public List<ParkingVO> getParkingData(String accountNo) {
 		//System.out.println("하이하이" + accountNo);
-		List<HashMap<String, Object>> parkingList = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingData", accountNo);
+		List<ParkingVO> parkingList = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingData", accountNo);
 		
 		return parkingList;
+	}
+	
+	@Override
+	public List<ParkingVO> getParkingData2(String accountNo) {
+		List<ParkingVO> parkingList2 = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingData2", accountNo);
+		return parkingList2;
+	}
+	
+	
+	
+	@Override
+	public void insertAutoParkingSet(Map<String, Object> parkingMap) {
+		sqlSessionTemplate.insert("parking.ParkingDAO.insertAutoParkingSet", parkingMap);
+	
 	}
 }

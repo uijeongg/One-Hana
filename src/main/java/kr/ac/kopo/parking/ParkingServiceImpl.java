@@ -38,11 +38,23 @@ public class ParkingServiceImpl implements ParkingService {
 	
 	
 	@Override
-	public List<HashMap<String, Object>> getParkingData(String accountNo) {
-		
-		List<HashMap<String, Object>> parkingList = parkingDAO.getParkingData(accountNo);
-		
+	public List<ParkingVO> getParkingData(String accountNo) {
+		List<ParkingVO> parkingList = parkingDAO.getParkingData(accountNo);	
 		return parkingList;
+	}
+	
+	@Override
+	public List<ParkingVO> getParkingData2(String accountNo) {
+		List<ParkingVO> parkingList2 = parkingDAO.getParkingData2(accountNo);
+		return parkingList2;
+	}
+	
+	
+	
+	
+	@Override
+	public void insertAutoParkingSet(Map<String, Object> parkingMap) {
+		parkingDAO.insertAutoParkingSet(parkingMap);
 	}
 	
 	

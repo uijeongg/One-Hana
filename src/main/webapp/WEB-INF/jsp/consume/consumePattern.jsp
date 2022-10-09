@@ -307,6 +307,13 @@
         <div class="d-flex">
             <div style="width: 100%">
             <span> 6개월치 소분류 카테고리 </span>
+            
+             <select name="selectMonth_cate3" id="selectMonth_cate3"
+                         style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;" onchange="cate3AmountSelect(this.value);">                        
+                <option value="6">6개월</option>
+                <option value="3">3개월</option>  
+             </select>
+             
                <figure class="highcharts-figure">   
                     <div id="container5"></div>
                </figure>
@@ -324,6 +331,13 @@
         <div class="d-flex">
             <div style="width: 100%">
             <span> 6개월치 시간대별 소비 빈도수 </span>
+            
+              <select name="selectMonth_times" id="selectMonth_times"
+                         style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;" onchange="timesSelect(this.value)">                        
+                <option value="6">6개월</option>
+                <option value="3">3개월</option>
+             </select>
+            
                <figure class="highcharts-figure">   
                     <div id="container7"></div>
                </figure>
@@ -365,31 +379,33 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
             </p>   
             
-          <div class="modal-body" id="modalbody">
+          <div class="modal-body" id="modalbody" class="d-flex justify-content-center align-items-center mb-3"  style="text-align:center; font-size:120%">
           
           
+          
+             <h4 style="text-align:center; margin-bottom:40px;">주의 알림 문자 설정</h4>
+                       
             <div id="getModalTime">
             <!-- 알림모달 -->
-            가장 빈번한 소비가 발생하는 xx시가 되면
-            소비 주의 알림을 받겠습니까?
             </div>
           
             매주 <select name="noticeDate" id="noticeDate"
-	                     style="width:100px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">	                    
-	            <option>월요일</option>
-	            <option>화요일</option>
-	            <option>수요일</option>
-	            <option>목요일</option>
-	            <option>금요일</option>
-	            <option>토요일</option>
-	            <option>일요일</option>
-	        </select>
+	                     style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">	                    
+	            <option value="1">일요일</option>
+	            <option value="2">월요일</option>
+	            <option value="3">화요일</option>
+	            <option value="4">수요일</option>
+	            <option value="5">목요일</option>
+	            <option value="6">금요일</option>
+	            <option value="7">토요일</option>
+	            
+	        </select> 에 받기
 	          
           
           </div>
          
            <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="divBtn" onclick="doSetNotice()" style="width:150px; margin-top:10px; margin-bottom:25px;">문자 알림 받기</button>         
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="noticeBtn" onclick="doSetNotice()" style="width:150px; margin-top:10px; margin-bottom:25px;">문자 알림 받기</button>         
             </div>
         </div>
       </div>
@@ -445,14 +461,6 @@
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-
-<script>
-   function setNoticeSMS(input1,input2){
-	   console.log("귀여운 의정이:"+input1);
-	   console.log("잘꾸미는 의정이:"+input2);
-   }
-</script>
 
 
 <script>
@@ -1153,6 +1161,7 @@
 
      <script>
      function times() {
+    	 $('#setNoticeSMSParent').empty();
     	 let monthStart = -6;
          let monthEnd = -1;
          let id ='${loginVO.id}';
@@ -1446,26 +1455,638 @@
                  } 
                  
                  //let topCountData = [];
-                 console.log("의정이" + count + time);
+                 //console.log("의정이" + count + time);
                  topCountData.push(count);
                  topCountData.push(Number(time.substring(0,2)));
                  
-
-                 console.log(topCountData + "여기서 찍히나");
+                 //console.log(topCountData + "여기서 찍히나");
                  
-                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');
-                 
-
-                 
+                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');      
         })
-
-
- 
-     }
-     </script>
+    }
      
+     function timesSelect(input){
+         $('#setNoticeSMSParent').empty();
+         let monthStart = -input;
+         let monthEnd = -1;
+         let id ='${loginVO.id}';
+         
+         let topCountData = [];
+         let count = 0 ;
+         let time = '';
+         
+         
+         
+         timeListObject_1 = {};
+         timeListObject_1.name = '0~4시';
+         timeListObject_1.drilldown= '0~4시';
+         
+         timeListObject_2 = {};
+         timeListObject_2.name = '4~8시';
+         timeListObject_2.drilldown= '4~8시';
+         
+         timeListObject_3 = {};
+         timeListObject_3.name = '8~12시';
+         timeListObject_3.drilldown= '8~12시';
+         
+         timeListObject_4 = {};
+         timeListObject_4.name = '12~16시';
+         timeListObject_4.drilldown= '12~16시';
+         
+         timeListObject_5 = {};
+         timeListObject_5.name = '16~20시';
+         timeListObject_5.drilldown= '16~20시';
+         
+         timeListObject_6 = {};
+         timeListObject_6.name = '20~24시';
+         timeListObject_6.drilldown = '20~24시';
+         
+         let timeListArray_1 = [];
+         let timeListArray_2 = [];
+         let timeListArray_3 = [];
+         let timeListArray_4 = [];
+         let timeListArray_5 = [];
+         let timeListArray_6 = [];
+         
+         let timeListTimeBiggerArray = [];
+         
+         let detailTimeArray = [];
+         
+         let detailTimeObject_1 = {};
+         detailTimeObject_1.name = '0~4시';
+         detailTimeObject_1.id = '0~4시';
+         detailTimeObject_1.data=[];
+         detailTimeObject_1.data.push([0,0]);
+         
+         let detailTimeObject_2 = {};
+         detailTimeObject_2.name = '4~8시';
+         detailTimeObject_2.id = '4~8시';
+         detailTimeObject_2.data=[];
+         detailTimeObject_2.data.push([0,0]);
+           
+         let detailTimeObject_3 = {};
+         detailTimeObject_3.name = '8~12시';
+         detailTimeObject_3.id = '8~12시';
+         detailTimeObject_3.data=[];
+         detailTimeObject_3.data.push([0,0]);
+         
+         let detailTimeObject_4 = {};
+         detailTimeObject_4.name = '12~16시';
+         detailTimeObject_4.id = '12~16시';
+         detailTimeObject_4.data=[];
+         detailTimeObject_4.data.push([0,0]);
+           
+         let detailTimeObject_5 = {};
+         detailTimeObject_5.name = '16~20시';
+         detailTimeObject_5.id = '16~20시';
+         detailTimeObject_5.data=[];
+         detailTimeObject_5.data.push([0,0]);
+            
+         let detailTimeObject_6 = {};
+         detailTimeObject_6.name = '20~24시';
+         detailTimeObject_6.id = '20~24시';
+         detailTimeObject_6.data=[];
+         detailTimeObject_6.data.push([0,0]);      
+         
+         fetch("/getTimesData?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+         .then(res=>res.json())
+         .then(res=>{
+       
+                let timesList = res;
 
+                 for(let i=0;i<timesList.length;i++){
+                     let mod = parseInt(Number(timesList[i].CONDATE.substring(11,13).replace(':',''))/4); 
+                     let detailTimeOneArray = [];
+                     
+                     if(mod<1){
+                         timeListArray_1.push(mod);
+                         if(detailTimeObject_1.data[detailTimeObject_1.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_1.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                       
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_1.data.push(detailTimeOneArray);
+                         
+                     }else if(mod<2){
+                         timeListArray_2.push(mod);
+                         if(detailTimeObject_2.data[detailTimeObject_2.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_2.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                   
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_2.data.push(detailTimeOneArray);     
+                         
+                     }else if(mod<3){
+                         timeListArray_3.push(mod);
+                         if(detailTimeObject_3.data[detailTimeObject_3.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_3.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                       
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_3.data.push(detailTimeOneArray);
+                    
+                     }else if(mod<4){
+                         timeListArray_4.push(mod);
+                         if(detailTimeObject_4.data[detailTimeObject_4.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_4.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                   
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_4.data.push(detailTimeOneArray);
+                    
+                     }else if(mod<5){
+                         timeListArray_5.push(mod);
+                        if(detailTimeObject_5.data[detailTimeObject_5.data.length-1][0]===timesList[i].CATENAME3){
+                             
+                             let lastNumber = Number(detailTimeObject_5.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+              
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_5.data.push(detailTimeOneArray);
+                     }else{
+                         timeListArray_6.push(mod);
+                         if(detailTimeObject_6.data[detailTimeObject_6.data.length-1][0]===timesList[i].CATENAME3){                          
+                             let lastNumber = Number(detailTimeObject_6.data.pop()[1]);
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(lastNumber+1);
+                         }else{
+                
+                             detailTimeOneArray.push(timesList[i].CATENAME3);                             
+                             detailTimeOneArray.push(1);                                                  
+                         }
+                         detailTimeObject_6.data.push(detailTimeOneArray);                
+                     }         
+                 }
+               
+                 timeListObject_1.y = timeListArray_1.length; //소비횟수
+                 timeListObject_2.y = timeListArray_2.length;
+                 timeListObject_3.y = timeListArray_3.length;
+                 timeListObject_4.y = timeListArray_4.length;
+                 timeListObject_5.y = timeListArray_5.length;
+                 timeListObject_6.y = timeListArray_6.length; 
+                 
+                 timeListTimeBiggerArray.push(timeListObject_1); //를 timeListTimeBiggerArray 배열에 푸쉬
+                 timeListTimeBiggerArray.push(timeListObject_2);
+                 timeListTimeBiggerArray.push(timeListObject_3);
+                 timeListTimeBiggerArray.push(timeListObject_4);
+                 timeListTimeBiggerArray.push(timeListObject_5);
+                 timeListTimeBiggerArray.push(timeListObject_6);
+                 
+                 detailTimeObject_1.data.shift();
+                 detailTimeObject_2.data.shift();
+                 detailTimeObject_3.data.shift();
+                 detailTimeObject_4.data.shift();
+                 detailTimeObject_5.data.shift();
+                 detailTimeObject_6.data.shift();   
+                 
+                 detailTimeArray.push(detailTimeObject_1);
+                 detailTimeArray.push(detailTimeObject_2);
+                 detailTimeArray.push(detailTimeObject_3);
+                 detailTimeArray.push(detailTimeObject_4);
+                 detailTimeArray.push(detailTimeObject_5);
+                 detailTimeArray.push(detailTimeObject_6);
+                 //console.log(Number(detailTimeObject_6.data.pop()[1])+1);
+                 
+                 
+                 //detailTimeArray 뽑기
+                 console.log(" detailTimeArray " + detailTimeArray[0]);
+
+                 return new Promise((resolve,reject)=>{
+                     resolve('gogo');
+                 })
+                 
+         }) 
+         .then(res=>{
+                 
+                 Highcharts.chart('container7', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            align: 'left',
+                            text: '시간대별 소비 빈도 수 현황'
+                        },
+                        subtitle: {
+                            align: 'left',
+                            text: ''
+                        },
+                        accessibility: {
+                            announceNewData: {
+                                enabled: true
+                            }
+                        },
+                        xAxis: {
+                            type: 'category'
+                        },
+                        yAxis: {
+                            title: {
+                                text: '소비 횟수'
+                            }
+
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            series: {
+                                borderWidth: 0,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.y} 회'
+                                }
+                            }
+                        },
+
+                        tooltip: {
+                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y} 회</b><br/>'
+                        },
+
+                        series: [
+                            {
+                                name: "Browsers",
+                                colorByPoint: true,
+                                data: timeListTimeBiggerArray
+                            }
+                        ],
+                        drilldown: {
+                            breadcrumbs: {
+                                position: {
+                                    align: 'right'
+                                }
+                            },
+                            series: detailTimeArray
+                        }
+                    });
+                 
+                 
+      
+                 //let count = 0 ;
+                 //let time = '';
+                 for(let i=0;i<timeListTimeBiggerArray.length;i++){
+                     if(i==0){
+                         count=timeListTimeBiggerArray[i].y;
+                     }else{
+                         if(count<timeListTimeBiggerArray[i].y){
+                             count = timeListTimeBiggerArray[i].y;
+                             time = timeListTimeBiggerArray[i].name;
+                         }
+                     }
+                   
+                 } 
+                 
+                 //let topCountData = [];
+                 //console.log("의정이" + count + time);
+                 topCountData.push(count);
+                 topCountData.push(Number(time.substring(0,2)));
+                 
+                 //console.log(topCountData + "여기서 찍히나");
+                 
+                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');      
+        })
+        $('#topCountComment').empty();
+         $('#countMedianComment').empty();
+        
+         let cate3 = [];
+         let cate3count = [];
+         
+         fetch("/getTopCount?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+         .then(res=>res.json())
+         .then(res=>{
+             let topCountList = res;
+             
+             for(let i=0;i<2;i++){
+                 cate3.push(topCountList[i].CATE3);
+                 cate3count.push(topCountList[i].CATE3COUNT*1);      
+             }  
+               let str = '';
+               str += '<div> 소비 횟수가 가장 잦은 카테고리 1 위는 ' + cate3[0] + ' (' + cate3count[0] + ' 회) 입니다 <br>';
+                        str += '2 위는 ' + cate3[1] + ' (' + cate3count[1] + ' 회) 입니다 </div>';
+                        
+                        $('#topCountComment').append(str);    
+              
+                        let cate3name = cate3;                        
+                        fetch("/getTop2Data?id="+id+'&cate3name='+cate3name+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+                         .then(res=>res.json())
+                         .then(res=>{
+                             let bigArrayList = res;
+                              
+                             let result = bigArrayList.filter(function(item1,idx1){
+                                 return bigArrayList.findIndex(function(item2,idx){
+                                   return item1.CATENAME3 == item2.CATENAME3  
+                                 })==idx1;
+                             })
+
+                             let cateArray = [];
+                             
+                             
+                             for(let i=0;i<result.length;i++){
+                                 let cateObject = {};
+                                 cateObject.name = result[i].CATENAME3;
+                                 cateObject.data = [];
+                                 //console.log("22 "+cateObject);
+                                 for(let j=0;j<bigArrayList.length;j++){
+                                     if(result[i].CATENAME3===bigArrayList[j].CATENAME3){
+                                         let oneArray = [];
+                                         oneArray.push(bigArrayList[j].CATENAME3);
+                                         oneArray.push(bigArrayList[j].AMOUNT);
+                                         oneArray.push(bigArrayList[j].COUNT);
+                                         cateObject.data.push(oneArray);  
+                                      }              
+                                 }
+                                 cateArray.push(cateObject);          
+                             }
+                             
+                             //console.log("편의점 : "+cateArray[0].data);
+                             //console.log("편의점 이름 : "+cateArray[0].data[0][0]);
+                             //console.log("편의점 : "+cateArray[0].data.length); // length:6
+                             //console.log("편의점 : "+cateArray[0].data[2][2]); //COUNT값
+                             
+                             
+                             //편의점 빈도수 평균
+                             let firstCountSum = 0;
+                             for(let i=0;i<cateArray[0].data.length;i++) {
+                                 firstCountSum += cateArray[0].data[i][2];   
+                             }
+                             let firstCountAvg = Math.floor(firstCountSum/cateArray[0].data.length); //소비 빈도수 평균
+                             //  console.log("편의점 빈도수 평균 " + firstCountAvg);  // 소비를 17회로 줄이면
+                               
+                             //편의점 빈도수 맥스
+                             // let maxCount1 = 0;
+                              let arrCount1 = new Array()
+                              for(let i=0; i < (cateArray[0].data).length; i++){
+                                  arrCount1.push(cateArray[0].data[i][2])                  
+                              }  
+                              let firstCountMax = Math.max.apply(null,arrCount1); 
+                              //console.log('편의점 빈도수 맥스' + firstCountMax);
+                             
+                          
+                             //편의점 사용금액 
+                             let firstAmountSum = 0;
+                             for(let i=0;i<cateArray[0].data.length;i++) {
+                               firstAmountSum += cateArray[0].data[i][1];
+                             }
+                             let firstAmountAvg = Math.floor(firstAmountSum/cateArray[0].data.length); //사용 금액 평균
+                             //console.log("편의점  사용금액평균 " + firstAmountAvg); 
+                             
+                             let max = 0;
+                             let arr = new Array()
+                             for(let i=0; i < (cateArray[0].data).length; i++){
+                               arr.push(cateArray[0].data[i][1])                  
+                             }
+                              
+                             let firstAmountMax = Math.max.apply(null,arr); //사용 금액 맥스
+                             //console.log('firstAmountMax' + firstAmountMax);
+                               
+                             let firstSavingAmount = firstAmountMax - firstAmountAvg; //세이빙 금액
+                             //console.log('firstSavingAmount 세이빙금액' + firstSavingAmount);
+                               
+                                
+                             //커피전문점 빈도수  
+                             let secondCountSum = 0;
+                             for(let i=0;i<cateArray[1].data.length;i++) {
+                                 secondCountSum += cateArray[1].data[i][2];   
+                             }
+                             let secondCountAvg = Math.floor(secondCountSum/cateArray[1].data.length); //소비 빈도수 평균
+                             //  console.log("커피전문점 빈도수 평균 " + secondCountAvg);  // 소비를 17회로 줄이면
+                               
+                             //커피전문점 빈도수 맥스
+                             let arrCount2 = new Array()
+                             for(let i=0; i < (cateArray[1].data).length; i++){
+                                 arrCount2.push(cateArray[1].data[i][2])                  
+                             }  
+                             let secondCountMax = Math.max.apply(null,arrCount2); 
+                             
+                             //커피전문점 사용금액
+                             let secondAmountSum = 0;
+                             for(let i=0;i<cateArray[1].data.length;i++) {
+                              secondAmountSum += cateArray[1].data[i][1];
+                             }
+                             let secondAmountAvg = Math.floor(secondAmountSum/cateArray[1].data.length); //사용 금액 평균
+                            // console.log("커피전문점  사용금액평균 " + secondAmountAvg); 
+                               
+                             //커피전문점 사용금액 맥스
+                             let max2 = 0;
+                             let arr2 = new Array()
+                             for(let i=0; i < (cateArray[1].data).length; i++){
+                               arr2.push(cateArray[1].data[i][1])                  
+                             }
+                                
+                             let secondAmountMax = Math.max.apply(null,arr2); //사용 금액 맥스
+                             //console.log('secondAmountMax' + secondAmountMax);
+                               
+                             let secondSavingAmount = secondAmountMax - secondAmountAvg; //세이빙 금액
+                             //console.log('secondSavingAmount 세이빙금액' + secondSavingAmount);   
+
+                             let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
+                    
+                             let str = '';
+                             str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
+                             str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
+
+                             str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
+                             str += '최대 소비 횟수인 ' + secondCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + secondSavingAmount + '원을 세이빙 할 수 있습니다<br></div>';
+                             
+                          //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
+                             
+                             $('#countMedianComment').append(str);  
+                             
+                             $('input[name=countTopSavingAmount]').attr('value',countTopSavingAmount);
+                             
+                         })
+              })
+              
+              fetch("/getTop2Data?id="+id+'&cate3name='+cate3name+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+                      .then(res=>res.json())
+                      .then(res=>{
+                          let bigArrayList = res;
+                           
+                          let result = bigArrayList.filter(function(item1,idx1){
+                              return bigArrayList.findIndex(function(item2,idx){
+                                return item1.CATENAME3 == item2.CATENAME3  
+                              })==idx1;
+                          })
+
+                          let cateArray = [];
+                          
+                          
+                          for(let i=0;i<result.length;i++){
+                              let cateObject = {};
+                              cateObject.name = result[i].CATENAME3;
+                              cateObject.data = [];
+                              //console.log("22 "+cateObject);
+                              for(let j=0;j<bigArrayList.length;j++){
+                                  if(result[i].CATENAME3===bigArrayList[j].CATENAME3){
+                                      let oneArray = [];
+                                      oneArray.push(bigArrayList[j].CATENAME3);
+                                      oneArray.push(bigArrayList[j].AMOUNT);
+                                      oneArray.push(bigArrayList[j].COUNT);
+                                      cateObject.data.push(oneArray);  
+                                   }              
+                              }
+                              cateArray.push(cateObject);          
+                          }
+                          
+                          //console.log("편의점 : "+cateArray[0].data);
+                          //console.log("편의점 이름 : "+cateArray[0].data[0][0]);
+                          //console.log("편의점 : "+cateArray[0].data.length); // length:6
+                          //console.log("편의점 : "+cateArray[0].data[2][2]); //COUNT값
+                          
+                          
+                          //편의점 빈도수 평균
+                          let firstCountSum = 0;
+                          for(let i=0;i<cateArray[0].data.length;i++) {
+                              firstCountSum += cateArray[0].data[i][2];   
+                          }
+                          let firstCountAvg = Math.floor(firstCountSum/cateArray[0].data.length); //소비 빈도수 평균
+                          //  console.log("편의점 빈도수 평균 " + firstCountAvg);  // 소비를 17회로 줄이면
+                            
+                          //편의점 빈도수 맥스
+                          // let maxCount1 = 0;
+                           let arrCount1 = new Array()
+                           for(let i=0; i < (cateArray[0].data).length; i++){
+                               arrCount1.push(cateArray[0].data[i][2])                  
+                           }  
+                           let firstCountMax = Math.max.apply(null,arrCount1); 
+                           //console.log('편의점 빈도수 맥스' + firstCountMax);
+                          
+                       
+                          //편의점 사용금액 
+                          let firstAmountSum = 0;
+                          for(let i=0;i<cateArray[0].data.length;i++) {
+                            firstAmountSum += cateArray[0].data[i][1];
+                          }
+                          let firstAmountAvg = Math.floor(firstAmountSum/cateArray[0].data.length); //사용 금액 평균
+                          //console.log("편의점  사용금액평균 " + firstAmountAvg); 
+                          
+                          let max = 0;
+                          let arr = new Array()
+                          for(let i=0; i < (cateArray[0].data).length; i++){
+                            arr.push(cateArray[0].data[i][1])                  
+                          }
+                           
+                          let firstAmountMax = Math.max.apply(null,arr); //사용 금액 맥스
+                          //console.log('firstAmountMax' + firstAmountMax);
+                            
+                          let firstSavingAmount = firstAmountMax - firstAmountAvg; //세이빙 금액
+                          //console.log('firstSavingAmount 세이빙금액' + firstSavingAmount);
+                            
+                             
+                          //커피전문점 빈도수  
+                          let secondCountSum = 0;
+                          for(let i=0;i<cateArray[1].data.length;i++) {
+                              secondCountSum += cateArray[1].data[i][2];   
+                          }
+                          let secondCountAvg = Math.floor(secondCountSum/cateArray[1].data.length); //소비 빈도수 평균
+                          //  console.log("커피전문점 빈도수 평균 " + secondCountAvg);  // 소비를 17회로 줄이면
+                            
+                          //커피전문점 빈도수 맥스
+                          let arrCount2 = new Array()
+                          for(let i=0; i < (cateArray[1].data).length; i++){
+                              arrCount2.push(cateArray[1].data[i][2])                  
+                          }  
+                          let secondCountMax = Math.max.apply(null,arrCount2); 
+                          
+                          //커피전문점 사용금액
+                          let secondAmountSum = 0;
+                          for(let i=0;i<cateArray[1].data.length;i++) {
+                           secondAmountSum += cateArray[1].data[i][1];
+                          }
+                          let secondAmountAvg = Math.floor(secondAmountSum/cateArray[1].data.length); //사용 금액 평균
+                         // console.log("커피전문점  사용금액평균 " + secondAmountAvg); 
+                            
+                          //커피전문점 사용금액 맥스
+                          let max2 = 0;
+                          let arr2 = new Array()
+                          for(let i=0; i < (cateArray[1].data).length; i++){
+                            arr2.push(cateArray[1].data[i][1])                  
+                          }
+                             
+                          let secondAmountMax = Math.max.apply(null,arr2); //사용 금액 맥스
+                          //console.log('secondAmountMax' + secondAmountMax);
+                            
+                          let secondSavingAmount = secondAmountMax - secondAmountAvg; //세이빙 금액
+                          //console.log('secondSavingAmount 세이빙금액' + secondSavingAmount);   
+
+                          let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
+                 
+                          let str = '';
+                          str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
+                          str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
+
+                          str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
+                          str += '최대 소비 횟수인 ' + secondCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + secondSavingAmount + '원을 세이빙 할 수 있습니다<br></div>';
+                          
+                       //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
+                          
+                          $('#countMedianComment').append(str);  
+                          
+                          $('input[name=countTopSavingAmount]').attr('value',countTopSavingAmount);
+                          
+                      })
+              
+              
+              
+     }
+    </script>
+	     
+	<script>
+	   function setNoticeSMS(input1,input2){
+	       console.log(input1); //117회
+	       console.log(input2); //12시
+	       
+	       $('#getModalTime').empty();
+	       
+	       str = '';
+	       str += '가장 빈번한 소비가 발생하는 ' + input2 + '~' + (input2+4) + '시가 되면<br> 소비 주의 알림 문자를 받을 수 있습니다. <br>';
+	       str += '소비 주의 알림을 받겠습니까?';
+	       
+	      $('#getModalTime').append(str); 
+	   }
+	</script>
    
+   <script>
+   function doSetNotice() {
+	   let accountNo = '${accountNo}';
+	   let noticeDate = $('#noticeDate').val(); //string 안되면 *1
+	   console.log(noticeDate);
+	   
+	   fetch("/doSetNotice?accountNo="+accountNo+"&noticeDate="+noticeDate)
+
+            .then(res=>{
+                
+                 //$('#modalbody').empty();
+                //changeModal(toPocket);
+                
+          })
+	   
+	   
+   }
+   </script>
    
    <script>
    function cate3Amount() {	   
@@ -1564,6 +2185,154 @@
             	})
             })
    }
+   
+   function cate3AmountSelect(input){
+	   console.log("input : "+input);
+       let monthStart = -input;
+       let monthEnd = -1;
+       let id ='${loginVO.id}';
+       let sixMonthLargeCate = [];
+       let sixMonthsmallDrilldownArray = [];
+       
+       fetch("/getCate3Data?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+       .then(res=>{
+               let cate3List = res;
+               let largeConsumeList = cate3List.filter(function(item1,idx1){
+                   return cate3List.findIndex(function(item2,idx){
+                     return item1.CATE2 == item2.CATE2  
+                   })==idx1;
+               })
+               for(let i=0;i<largeConsumeList.length;i++){
+                  
+                   let sum = 0;
+                   let largeComponent = {};
+                   largeComponent.name = largeConsumeList[i].CATE2;
+                   largeComponent.drilldown = largeConsumeList[i].CATE2;
+                   let drilldownObject = {};
+                   drilldownObject.name = largeConsumeList[i].CATE2;
+                   drilldownObject.id = largeConsumeList[i].CATE2;
+                   drilldownObject.data = [];
+                   
+                   for(let j=0;j<cate3List.length;j++){
+                       if(largeConsumeList[i].CATE2==cate3List[j].CATE2){
+                           
+                           drilldownCate3Array = [];
+                           drilldownCate3Array.push(cate3List[j].CATE3);
+                           drilldownCate3Array.push(cate3List[j].AMOUNT);
+                           drilldownObject.data.push(drilldownCate3Array);
+                           
+                           sum += cate3List[j].AMOUNT;     
+                       }
+                   }
+                   largeComponent.y= sum;
+                   sixMonthLargeCate.push(largeComponent);
+                   sixMonthsmallDrilldownArray.push(drilldownObject);
+                   //console.log(drilldownObject.data.length);
+               }
+  
+                return new Promise((resolve,reject)=>{
+                    resolve('22');
+                })
+            })
+            .then(res=>{
+                Highcharts.chart('container5', {
+                    chart: {
+                        type: 'pie'
+                    },
+                    title: {
+                        text: '세부 소비 내역과 금액'
+                    },
+                   /*  subtitle: {
+                        text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+                    }, */
+
+                    accessibility: {
+                        announceNewData: {
+                            enabled: true
+                        },
+                        point: {
+                            valueSuffix: ' 원'
+                        }
+                    },
+
+                    plotOptions: {
+                        series: {
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.0f}원</b><br/>'
+                    },
+
+                    series: [
+                        {
+                            name: "금액",
+                            colorByPoint: true,
+                            data:sixMonthLargeCate 
+                        }
+                    ],
+                    drilldown: {
+                        series:sixMonthsmallDrilldownArray
+                            }                       
+                })
+            })
+                
+       
+       let count = [];
+       let month = [];
+       let sum = [];
+       $('#sumMedianComment').empty();
+       fetch("/getSumMedian?id="+id+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+       .then(res=>res.json())
+       .then(res=>{
+           let sumMedianList = res;
+           
+           for(let i=0;i<sumMedianList.length;i++){
+               count.push(sumMedianList[i].COUNT*1);
+               sum.push(sumMedianList[i].SUM*1);      
+           }  
+                  
+           let countSum = 0;
+           for(let i=0;i<count.length;i++) {
+               countSum += count[i];   
+           }
+           let countAvg = Math.floor(countSum/count.length); //소비 횟수 평균
+
+            
+            //소비금액평균
+           let amountSum = 0;
+           for(let i=0;i<sum.length;i++) {
+               amountSum += sum[i];   
+           }
+           let amountAvg = Math.floor(amountSum/sum.length); //소비 금액 평균
+           
+           let amountMax = Math.max.apply(null, sum);
+          
+           
+           let savingAmount = amountMax - amountAvg; 
+           //console.log('amountMax 교통' + amountMax);
+           //console.log('savingAmount 교통' + savingAmount);
+    
+           str = '';
+           str += '<div> 소비 금액이 가장 많은 카테고리의 각 달의 사용금액 평균은 ' + amountAvg + '원 입니다.<br>';
+           str += '소비를 평균만큼만 줄여도 최대? 최소? ' + savingAmount + '원을 세이빙 할 수 있습니다</div>';
+           
+          $('#sumMedianComment').append(str);    
+          
+          $('input[name=sumTopSavingAmount]').attr('value',savingAmount);
+       })
+            
+            
+	   
+   }
+   
+   
    </script>
 
    <script>
@@ -1630,6 +2399,8 @@
     
    <script>
    function topCount() {
+	   $('#topCountComment').empty();
+	   $('#countMedianComment').empty();
 	   let monthStart = -6;
        let monthEnd = -1;
        let id ='${loginVO.id}';
@@ -1652,147 +2423,147 @@
     	              
     	              $('#topCountComment').append(str); 	
             
-    	              top2cate(cate3);
+ 
+
+    	              
+    	              
+    	              let cate3name = cate3;
+    	              
+    	             fetch("/getTop2Data?id="+id+'&cate3name='+cate3name+'&monthEnd='+monthEnd+'&monthStart='+monthStart)
+    	              .then(res=>res.json())
+    	              .then(res=>{
+    	                  let bigArrayList = res;
+    	                   
+    	                  let result = bigArrayList.filter(function(item1,idx1){
+    	                      return bigArrayList.findIndex(function(item2,idx){
+    	                        return item1.CATENAME3 == item2.CATENAME3  
+    	                      })==idx1;
+    	                  })
+
+    	                  let cateArray = [];
+    	                  
+    	                  
+    	                  for(let i=0;i<result.length;i++){
+    	                      let cateObject = {};
+    	                      cateObject.name = result[i].CATENAME3;
+    	                      cateObject.data = [];
+    	                      //console.log("22 "+cateObject);
+    	                      for(let j=0;j<bigArrayList.length;j++){
+    	                          if(result[i].CATENAME3===bigArrayList[j].CATENAME3){
+    	                              let oneArray = [];
+    	                              oneArray.push(bigArrayList[j].CATENAME3);
+    	                              oneArray.push(bigArrayList[j].AMOUNT);
+    	                              oneArray.push(bigArrayList[j].COUNT);
+    	                              cateObject.data.push(oneArray);  
+    	                           }              
+    	                      }
+    	                      cateArray.push(cateObject);          
+    	                  }
+    	                  
+    	                  //console.log("편의점 : "+cateArray[0].data);
+    	                  //console.log("편의점 이름 : "+cateArray[0].data[0][0]);
+    	                  //console.log("편의점 : "+cateArray[0].data.length); // length:6
+    	                  //console.log("편의점 : "+cateArray[0].data[2][2]); //COUNT값
+    	                  
+    	                  
+    	                  //편의점 빈도수 평균
+    	                  let firstCountSum = 0;
+    	                  for(let i=0;i<cateArray[0].data.length;i++) {
+    	                      firstCountSum += cateArray[0].data[i][2];   
+    	                  }
+    	                  let firstCountAvg = Math.floor(firstCountSum/cateArray[0].data.length); //소비 빈도수 평균
+    	                  //  console.log("편의점 빈도수 평균 " + firstCountAvg);  // 소비를 17회로 줄이면
+    	                    
+    	                  //편의점 빈도수 맥스
+    	                  // let maxCount1 = 0;
+    	                   let arrCount1 = new Array()
+    	                   for(let i=0; i < (cateArray[0].data).length; i++){
+    	                       arrCount1.push(cateArray[0].data[i][2])                  
+    	                   }  
+    	                   let firstCountMax = Math.max.apply(null,arrCount1); 
+    	                   //console.log('편의점 빈도수 맥스' + firstCountMax);
+    	                  
+    	               
+    	                  //편의점 사용금액 
+    	                  let firstAmountSum = 0;
+    	                  for(let i=0;i<cateArray[0].data.length;i++) {
+    	                    firstAmountSum += cateArray[0].data[i][1];
+    	                  }
+    	                  let firstAmountAvg = Math.floor(firstAmountSum/cateArray[0].data.length); //사용 금액 평균
+    	                  //console.log("편의점  사용금액평균 " + firstAmountAvg); 
+    	                  
+    	                  let max = 0;
+    	                  let arr = new Array()
+    	                  for(let i=0; i < (cateArray[0].data).length; i++){
+    	                    arr.push(cateArray[0].data[i][1])                  
+    	                  }
+    	                   
+    	                  let firstAmountMax = Math.max.apply(null,arr); //사용 금액 맥스
+    	                  //console.log('firstAmountMax' + firstAmountMax);
+    	                    
+    	                  let firstSavingAmount = firstAmountMax - firstAmountAvg; //세이빙 금액
+    	                  //console.log('firstSavingAmount 세이빙금액' + firstSavingAmount);
+    	                    
+    	                     
+    	                  //커피전문점 빈도수  
+    	                  let secondCountSum = 0;
+    	                  for(let i=0;i<cateArray[1].data.length;i++) {
+    	                      secondCountSum += cateArray[1].data[i][2];   
+    	                  }
+    	                  let secondCountAvg = Math.floor(secondCountSum/cateArray[1].data.length); //소비 빈도수 평균
+    	                  //  console.log("커피전문점 빈도수 평균 " + secondCountAvg);  // 소비를 17회로 줄이면
+    	                    
+    	                  //커피전문점 빈도수 맥스
+    	                  let arrCount2 = new Array()
+    	                  for(let i=0; i < (cateArray[1].data).length; i++){
+    	                      arrCount2.push(cateArray[1].data[i][2])                  
+    	                  }  
+    	                  let secondCountMax = Math.max.apply(null,arrCount2); 
+    	                  
+    	                  //커피전문점 사용금액
+    	                  let secondAmountSum = 0;
+    	                  for(let i=0;i<cateArray[1].data.length;i++) {
+    	                   secondAmountSum += cateArray[1].data[i][1];
+    	                  }
+    	                  let secondAmountAvg = Math.floor(secondAmountSum/cateArray[1].data.length); //사용 금액 평균
+    	                 // console.log("커피전문점  사용금액평균 " + secondAmountAvg); 
+    	                    
+    	                  //커피전문점 사용금액 맥스
+    	                  let max2 = 0;
+    	                  let arr2 = new Array()
+    	                  for(let i=0; i < (cateArray[1].data).length; i++){
+    	                    arr2.push(cateArray[1].data[i][1])                  
+    	                  }
+    	                     
+    	                  let secondAmountMax = Math.max.apply(null,arr2); //사용 금액 맥스
+    	                  //console.log('secondAmountMax' + secondAmountMax);
+    	                    
+    	                  let secondSavingAmount = secondAmountMax - secondAmountAvg; //세이빙 금액
+    	                  //console.log('secondSavingAmount 세이빙금액' + secondSavingAmount);   
+
+    	                  let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
+    	         
+    	                  let str = '';
+    	                  str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
+    	                  str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
+
+    	                  str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
+    	                  str += '최대 소비 횟수인 ' + secondCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + secondSavingAmount + '원을 세이빙 할 수 있습니다<br></div>';
+    	                  
+    	               //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
+    	                  
+    	                  $('#countMedianComment').append(str);  
+    	                  
+    	                  $('input[name=countTopSavingAmount]').attr('value',countTopSavingAmount);
+    	                  
+    	              })
+    	        
     	    })         
    }
    </script> 
    
    <script type="text/javascript">
-   function top2cate(input){
 
-       let id ='${loginVO.id}';
-       let cate3name = input;
-       
-      fetch("/getTop2Data?id="+id+'&cate3name='+cate3name)
-       .then(res=>res.json())
-       .then(res=>{
-           let bigArrayList = res;
-            
-           let result = bigArrayList.filter(function(item1,idx1){
-               return bigArrayList.findIndex(function(item2,idx){
-                 return item1.CATENAME3 == item2.CATENAME3  
-               })==idx1;
-           })
-
-           let cateArray = [];
-           
-           
-           for(let i=0;i<result.length;i++){
-        	   let cateObject = {};
-        	   cateObject.name = result[i].CATENAME3;
-        	   cateObject.data = [];
-               //console.log("22 "+cateObject);
-        	   for(let j=0;j<bigArrayList.length;j++){
-        		   if(result[i].CATENAME3===bigArrayList[j].CATENAME3){
-        			   let oneArray = [];
-        			   oneArray.push(bigArrayList[j].CATENAME3);
-        			   oneArray.push(bigArrayList[j].AMOUNT);
-        			   oneArray.push(bigArrayList[j].COUNT);
-        			   cateObject.data.push(oneArray);	
-        		    }        	   
-        	   }
-               cateArray.push(cateObject);          
-           }
-           
-           console.log("편의점 : "+cateArray[0].data);
-           console.log("편의점 이름 : "+cateArray[0].data[0][0]);
-           //console.log("편의점 : "+cateArray[0].data.length); // length:6
-           //console.log("편의점 : "+cateArray[0].data[2][2]); //COUNT값
-           
-           
-           //편의점 빈도수 평균
-           let firstCountSum = 0;
-           for(let i=0;i<cateArray[0].data.length;i++) {
-        	   firstCountSum += cateArray[0].data[i][2];   
-           }
-           let firstCountAvg = Math.floor(firstCountSum/cateArray[0].data.length); //소비 빈도수 평균
-           //  console.log("편의점 빈도수 평균 " + firstCountAvg);  // 소비를 17회로 줄이면
-             
-           //편의점 빈도수 맥스
-           // let maxCount1 = 0;
-            let arrCount1 = new Array()
-            for(let i=0; i < (cateArray[0].data).length; i++){
-            	arrCount1.push(cateArray[0].data[i][2])                  
-            }  
-            let firstCountMax = Math.max.apply(null,arrCount1); 
-            //console.log('편의점 빈도수 맥스' + firstCountMax);
-           
-        
-           //편의점 사용금액 
-           let firstAmountSum = 0;
-           for(let i=0;i<cateArray[0].data.length;i++) {
-          	 firstAmountSum += cateArray[0].data[i][1];
-           }
-           let firstAmountAvg = Math.floor(firstAmountSum/cateArray[0].data.length); //사용 금액 평균
-           //console.log("편의점  사용금액평균 " + firstAmountAvg); 
-           
-           let max = 0;
-           let arr = new Array()
-           for(let i=0; i < (cateArray[0].data).length; i++){
-             arr.push(cateArray[0].data[i][1])	             	
-           }
-            
-           let firstAmountMax = Math.max.apply(null,arr); //사용 금액 맥스
-           //console.log('firstAmountMax' + firstAmountMax);
-             
-           let firstSavingAmount = firstAmountMax - firstAmountAvg; //세이빙 금액
-           //console.log('firstSavingAmount 세이빙금액' + firstSavingAmount);
-             
-              
-           //커피전문점 빈도수  
-           let secondCountSum = 0;
-           for(let i=0;i<cateArray[1].data.length;i++) {
-        	   secondCountSum += cateArray[1].data[i][2];   
-           }
-           let secondCountAvg = Math.floor(secondCountSum/cateArray[1].data.length); //소비 빈도수 평균
-           //  console.log("커피전문점 빈도수 평균 " + secondCountAvg);  // 소비를 17회로 줄이면
-             
-           //커피전문점 빈도수 맥스
-           let arrCount2 = new Array()
-           for(let i=0; i < (cateArray[1].data).length; i++){
-        	   arrCount2.push(cateArray[1].data[i][2])                  
-           }  
-           let secondCountMax = Math.max.apply(null,arrCount2); 
-           
-           //커피전문점 사용금액
-           let secondAmountSum = 0;
-           for(let i=0;i<cateArray[1].data.length;i++) {
-            secondAmountSum += cateArray[1].data[i][1];
-           }
-           let secondAmountAvg = Math.floor(secondAmountSum/cateArray[1].data.length); //사용 금액 평균
-          // console.log("커피전문점  사용금액평균 " + secondAmountAvg); 
-             
-           //커피전ㄴ문점 사용금액 맥스
-           let max2 = 0;
-           let arr2 = new Array()
-           for(let i=0; i < (cateArray[1].data).length; i++){
-             arr2.push(cateArray[1].data[i][1])                  
-           }
-              
-           let secondAmountMax = Math.max.apply(null,arr2); //사용 금액 맥스
-           //console.log('secondAmountMax' + secondAmountMax);
-             
-           let secondSavingAmount = secondAmountMax - secondAmountAvg; //세이빙 금액
-           //console.log('secondSavingAmount 세이빙금액' + secondSavingAmount);   
-
-           let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
-  
-           let str = '';
-           str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
-           str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
-
-           str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
-           str += '최대 소비 횟수인 ' + secondCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + secondSavingAmount + '원을 세이빙 할 수 있습니다<br></div>';
-           
-        //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
-           
-           $('#countMedianComment').append(str);  
-           
-           $('input[name=countTopSavingAmount]').attr('value',countTopSavingAmount);
-           
-       })
- 
-   }
    </script>
    
 
@@ -1830,6 +2601,7 @@
    
    <script>
    function sumMedian() {
+	   $('#sumMedianComment').empty();
 	   let monthStart = -6;
        let monthEnd = -1;
        let id ='${loginVO.id}';
@@ -1869,7 +2641,7 @@
            //console.log('amountMax 교통' + amountMax);
            //console.log('savingAmount 교통' + savingAmount);
     
-            str = '';
+           str = '';
            str += '<div> 소비 금액이 가장 많은 카테고리의 각 달의 사용금액 평균은 ' + amountAvg + '원 입니다.<br>';
            str += '소비를 평균만큼만 줄여도 최대? 최소? ' + savingAmount + '원을 세이빙 할 수 있습니다</div>';
            

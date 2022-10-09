@@ -55,6 +55,9 @@
     
     <!-- 프로그레스 로딩바 + 파킹 주머니 현황 텍스트 -->
     <div id="parkingMap" style="margin-right:21%;"></div>
+    
+    <!-- 100% 다 모였을 때 뜨는 적금추천문구 자리 -->
+    <div id="goSavings"></div>
    
     <!-- 이번달 예산 구성 파이차트, 금액 표 자리 -->
     
@@ -121,9 +124,35 @@
 		         str +='</div>'; 
              
              str += '</div>';
+                    
+             $('#parkingMap').append(str);
+             
+             
+             
              
            
-             $('#parkingMap').append(str);
+             str2 = '';
+             str2 += 
+            	 
+       //      if ((parkingBal >= parkingSum ) {  //다 모았다면
+                 
+                 str2 += '<br><div>※ 축하합니다! 파킹 주머니 목표 금액에 모두 도달했습니다.';
+                 str2 += ' 이제 파킹 주머니의 잔액을 출금할 수 있습니다.<br></div>';
+                 
+                 str2 += '<button><a href="${pageContext.request.contextPath}/productsMain">금융 상품 추천받기</a></button>';
+                 //<button><a href="${pageContext.request.contextPath}/productsMain">금융 상품 추천받기</a></button>
+            
+       
+     //        }
+             
+                 $('#goSavings').append(str2);
+             
+             
+          
+             
+             
+             
+             
              return new Promise((resolve,reject)=>{
             	 resolve(parkingPer);
              })
@@ -205,29 +234,21 @@
          fetch('/getParkingData?accountNo='+accountNo)
          .then(res=>res.json())
          .then(res=>{
-              let parkingList = res
-               
-             //console.log(parkingList);
+              let parkingHistoryMap = res;
+              
+              let secondList = parkingHistoryMap.parkingList;
+              let thirdList = parkingHistoryMap.parkingList2;
+              
+             //console.log(secondList[0].parkingAmount);
                  
              let str ='';
-             str += '<div style="font-size:23px; text-align:center; margin-bottom:30px;"> 이번달엔 총 "'+ (parkingList[0].PARKINGAMOUNT*1 + parkingList[1].PARKINGAMOUNT*1+parkingList[2].PARKINGAMOUNT*1) +'" 원 을 파킹했어요! </div><br>';
-            
+           
+             str += '이번달엔 총 ' + (secondList[0].parkingAmount*1 + thirdList[0].parkingAmount*1) + '원을 파킹했어요<br><br>';
+             
+             str += '<span>' + secondList[0].fromPocket + ' 주머니 에서는 "' + secondList[0].parkingAmount*1 + '"원을 파킹했고';
+             str += '<br> ' + thirdList[0].fromPocket + ' 주머니 에서는 "' + thirdList[0].parkingAmount*1 + '"원을 파킹했어요! </span>';
              
              
-             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[0].FROMPOCKET + ' </p> 예산 &nbsp;' + parkingList[0].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[0].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
-                 str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
-                 /* str += '<div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%">'; */
-                 str += '<div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[0].AUTODIVAMOUNT*1 - parkingList[0].PARKINGAMOUNT*1)/(parkingList[0].AUTODIVAMOUNT*1)  + '%">';
-                 str += + (parkingList[0].AUTODIVAMOUNT*1 - parkingList[0].PARKINGAMOUNT*1) + ' 원 사용  </div></div><br>'
-             
-                 
-             
-             str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[6].FROMPOCKET+'</p> 예산 &nbsp;' + parkingList[6].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[1].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
-	             str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
-	             str += '<div class="progress-bar bg-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[1].AUTODIVAMOUNT*1 - parkingList[1].PARKINGAMOUNT*1)/(parkingList[1].AUTODIVAMOUNT*1)  + '%">';
-	             str += + (parkingList[1].AUTODIVAMOUNT*1 - parkingList[1].PARKINGAMOUNT*1) + ' 원 사용  </div></div><br>'
-             
-	            	 
              
           /*    str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[2].FROMPOCKET+' </p> 예산 &nbsp;' + parkingList[2].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[2].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
 	             str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';

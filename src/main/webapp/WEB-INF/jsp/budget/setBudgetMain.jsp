@@ -788,7 +788,7 @@ $(document).ready(function(){
                    class="form-control" style="font-size:20px; display:inline; color:#008485; width:200px; text-align:center; margin:0 auto;">
             </div> 
             <div style="font-size:20px;">
-                파킹 주머니 이동 날짜 : 예산 사용 마지막날 ("매달 <p style="display:inline; color:#008485;">${incomeMap.incomeDate}</p>일")
+                파킹 주머니 이동 날짜 : 다음달 급여일 오전 ("매달 <p style="display:inline; color:#008485;">${incomeMap.incomeDate}</p>일")
             </div>
                 
             <br><br>

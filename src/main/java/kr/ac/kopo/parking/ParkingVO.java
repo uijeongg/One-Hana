@@ -2,30 +2,29 @@ package kr.ac.kopo.parking;
 
 public class ParkingVO {
 
+	//private String accountNo;
+	   //private String id;
+	//private String toPocket;
+	//private int    parkingAmount;
+	//private String parkingDate;
+	
+	
+	
 	private String accountNo;
-	private String id;
-	private String toPocket;
+	private String fromPocket;
 	private int    parkingAmount;
-	private String parkingDate;
-	
-	
+	private String parkingCode;
 	public String getAccountNo() {
 		return accountNo;
 	}
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
-	public String getId() {
-		return id;
+	public String getFromPocket() {
+		return fromPocket;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getToPocket() {
-		return toPocket;
-	}
-	public void setToPocket(String toPocket) {
-		this.toPocket = toPocket;
+	public void setFromPocket(String fromPocket) {
+		this.fromPocket = fromPocket;
 	}
 	public int getParkingAmount() {
 		return parkingAmount;
@@ -33,17 +32,19 @@ public class ParkingVO {
 	public void setParkingAmount(int parkingAmount) {
 		this.parkingAmount = parkingAmount;
 	}
-	public String getParkingDate() {
-		return parkingDate;
+	public String getParkingCode() {
+		return parkingCode;
 	}
-	public void setParkingDate(String parkingDate) {
-		this.parkingDate = parkingDate;
+	public void setParkingCode(String parkingCode) {
+		this.parkingCode = parkingCode;
 	}
 	@Override
 	public String toString() {
-		return "ParkingVO [accountNo=" + accountNo + ", id=" + id + ", toPocket=" + toPocket + ", parkingAmount="
-				+ parkingAmount + ", parkingDate=" + parkingDate + "]";
+		return "ParkingVO [accountNo=" + accountNo + ", fromPocket=" + fromPocket + ", parkingAmount=" + parkingAmount
+				+ ", parkingCode=" + parkingCode + "]";
 	}
+	
+	
 	
 	
 	

@@ -119,7 +119,7 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 	
 	
 	@Override
-	public List<Map<String, Object>> getTop2Data(Map<String, String> memberMap) {
+	public List<Map<String, Object>> getTop2Data(Map<String, Object> memberMap) {
 		List<Map<String, Object>> top2DataList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getTop2Data", memberMap);
 		return top2DataList;		
 	}
@@ -128,5 +128,10 @@ public class ConsumeDAOImpl implements ConsumeDAO {
 	public List<DayVO> getSumMedianData(Map<String, Object> sumMedMap){
 		List<DayVO> sumMedList = sqlSessionTemplate.selectList("consume.ConsumeDAO.getSumMedianData", sumMedMap);
 		return sumMedList;
+	}
+
+	@Override
+	public void insertNoticeSet(Map<String, Object> noticeMap) {
+		sqlSessionTemplate.insert("consume.ConsumeDAO.insertNoticeSet", noticeMap);
 	}
 }

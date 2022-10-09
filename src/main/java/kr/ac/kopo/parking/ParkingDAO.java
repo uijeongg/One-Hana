@@ -15,7 +15,11 @@ public interface ParkingDAO {
 	
 	
 	
-	List<HashMap<String, Object>> getParkingData(String String);
+	List<ParkingVO> getParkingData(String String);
+	List<ParkingVO> getParkingData2(String accountNo);
+	
+	void insertAutoParkingSet(Map<String, Object> parkingMap);
+	
 	
 
 

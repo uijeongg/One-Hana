@@ -1,6 +1,7 @@
 package kr.ac.kopo.consume;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -297,22 +298,27 @@ public class ConsumeController {
 	
 	@ResponseBody
 	@GetMapping("/getTop2Data")
-	public List<Map<String,Object>> getTop2Data(@RequestParam("id") String id, @RequestParam("cate3name") List<Object> cate3name) {
+	public List<Map<String,Object>> getTop2Data(@RequestParam("id") String id, @RequestParam("cate3name") List<Object> cate3name,
+												@RequestParam("monthStart") int monthStart,
+												@RequestParam("monthEnd") int monthEnd) {
 
 		List<Map<String,Object>> bigArrayList = new ArrayList<>();
 	
 		//System.out.println("size 확인 : "+ cate3name.size());
 	
 		for(int i=0; i<cate3name.size(); i++) {
-			Map<String,String> memberMap = new HashMap<>();
+			Map<String,Object> memberMap = new HashMap<>();
 			memberMap.put("id", id);
 			memberMap.put("cate3Name",(String)cate3name.get(i));
+			memberMap.put("monthStart", monthStart);
+			memberMap.put("monthEnd", monthEnd);
+			
 			//System.out.println("memberMap : "+memberMap);
 			List<Map<String,Object>> smallArrayList = consumeService.getTop2Data(memberMap);
 			bigArrayList.addAll(smallArrayList);
 		}
 		
-	//	System.out.println("bigArrayList 탑투 : " + bigArrayList);
+		System.out.println("bigArrayList 탑투 : " + bigArrayList);
 		return bigArrayList;
 	}
 	
@@ -333,5 +339,18 @@ public class ConsumeController {
 		return sumMedList;	
 
 }
+	
+	@ResponseBody
+	@GetMapping("/doSetNotice")
+	public void doSetNotice(@RequestParam("accountNo") String accountNo, @RequestParam("noticeDate") String noticeDate) {
+		
+		Map<String,Object> noticeMap = new HashMap<>();
+		noticeMap.put("accountNo", accountNo);
+		noticeMap.put("noticeDate", noticeDate);
+
+		consumeService.insertNoticeSet(noticeMap);
+		
+		
+	}
 } 
 

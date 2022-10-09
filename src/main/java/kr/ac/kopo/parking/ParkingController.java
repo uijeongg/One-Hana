@@ -49,15 +49,25 @@ public class ParkingController {
 	
 	@ResponseBody
 	@GetMapping("/getParkingData")
-	public List<HashMap<String, Object>> parkingMain(@RequestParam("accountNo") String accountNo) {
+	public Map<String,Object> parkingMain(@RequestParam("accountNo") String accountNo) {
 	//public List<HashMap<String, Object>> parkingMain(@RequestParam("id") String id) {
 			
 		//고정비 파킹 리스트
 		
+		//POCKETCODE=2
+		//List<HashMap<String, Object>> parkingList = parkingService.getParkingData(accountNo);
+		List<ParkingVO> parkingList = parkingService.getParkingData(accountNo);
+		//POCKETCODE=3
+		List<ParkingVO> parkingList2 = parkingService.getParkingData2(accountNo);
+		//System.out.println("parkingList2 생호ㅏㄹ비 : " + parkingList2);
 		
-		List<HashMap<String, Object>> parkingList = parkingService.getParkingData(accountNo);
-		//System.out.println("parkingList 불러와? : " + parkingList);
 		
-		return parkingList;
+		Map<String, Object> parkingHistoryMap = new HashMap<>();
+		parkingHistoryMap.put("parkingList", parkingList);
+		parkingHistoryMap.put("parkingList2", parkingList2);
+		System.out.println("parkingHistoryMap : " + parkingHistoryMap);
+		
+		
+		return parkingHistoryMap;
 	}
 }
