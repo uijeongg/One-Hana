@@ -169,7 +169,7 @@
 			         console.log(realNow);
 			         let year = realNow[0];
 			         let month = realNow[1].trim();
-			         let day = realNow[2];
+			         let day = realNow[2].trim();
 			         if(month.startsWith(' ')){
 			            month = '0'+month.trim();
 			         }

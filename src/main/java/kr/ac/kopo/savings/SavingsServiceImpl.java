@@ -17,4 +17,17 @@ public class SavingsServiceImpl implements SavingsService{
 		List<Map<String, Object>> savingList = savingsDAO.selectSavingsList(savingsList);
 		return savingList;
 	}
+	
+	@Override
+	public List<Map<String, Object>> selectCompareList(List<String> checkList) {
+		List<Map<String, Object>> compareSavingList = savingsDAO.selectCompareList(checkList);
+		return compareSavingList;
+	}
+	
+	
+	/*
+	 * @Override public List<Map<String, Object>> selectExpectedList(List<String>
+	 * checkList) { List<Map<String, Object>> compareExpectedList =
+	 * savingsDAO.selectExpectedList(checkList); return compareExpectedList; }
+	 */
 }

@@ -19,4 +19,20 @@ public class SavingsDAOImpl implements SavingsDAO {
 				
 		return savingList;
 	}
+	
+	@Override
+	public List<Map<String, Object>> selectCompareList(List<String> checkList) {
+		List<Map<String, Object>> compareList = sqlSessionTemplate.selectList("savings.SavingsDAO.selectCompareList", checkList);
+		
+		return compareList;
+	}
+	
+	/*
+	 * @Override public List<Map<String, Object>> selectExpectedList(List<String>
+	 * checkList) { List<Map<String, Object>> expectedList =
+	 * sqlSessionTemplate.selectList("savings.SavingsDAO.selectExpectedList",
+	 * checkList);
+	 * 
+	 * return expectedList; }
+	 */
 }

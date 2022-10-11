@@ -67,7 +67,7 @@
     
     <!-- side bar start -->
     <div class="container-fluid sidepanel-inner d-flex flex-column"
-      style="width:20%; float:left; margin-top:37px; margin-left:10px; margin-right:10px;">
+      style="width:20%; float:left; margin-top:37px; margin-left:10px; margin-right:10px; height:1500px;">
       <div style="padding-left: 30px;">
          <h3 style="margin-bottom: 10px;">
             <!-- <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 
@@ -111,6 +111,11 @@
    </div>
    <!-- side bar end -->
    
+
+
+<div id="compareBtn"></div>
+
+<div id="savingsMain" >
    
     <div>
     
@@ -150,36 +155,25 @@
     </div>
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
 
-<div>
-    <button type="button" class="selectSavings col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#selectSavings"
-     style="width:200px; font-size:18px; font-family:hanaBFont;" > <!-- onclick="intoSelectSavings()" -->
-        나만의 예적금 찾기
-    </button>  
-</div>   
-   
+	
+	<div>
+	    <button type="button" class="selectSavings col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#selectSavings"
+	     style="width:200px; font-size:18px; font-family:hanaBFont;" > <!-- onclick="intoSelectSavings()" -->
+	        나만의 예적금 찾기
+	    </button>  
+	</div>   
+	   
+
+
+
+
+
+</div>
 
     
 
-<!-- 모달 -->
+<!-- 나의 맞춤형 적금 찾기 모달 버튼  -->
 <div class="modal fade" id="selectSavings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -217,17 +211,17 @@
 	           
 	            <!-- 이자 지급방식 -->
                 <div style="margin-bottom:35px;">
-                   <span style="margin-left:10%; font-size:20px;">이자 지급방식</span>
-                       <div class="nav interestMethod" style="text-align:center; margin-top:5px;">
+                   <span style="margin-left:10%; font-size:20px;">적립방법ㅂ</span>
+                       <div class="nav accumulateMethod" style="text-align:center; margin-top:5px;">
                            
-                           <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="만기일지급식"
+                           <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="자유적립식"
                                    style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
-                            만기일지급식
+                            자유적립식
                             </button>
                      
-                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="월이자지급식"
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="정액적립식"
                                     style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
-                             월이자지급식
+                             정액적립식
                            </button> 
                            
                       <!--      <input type="button" class="button" id="interestMedtod1" value="만기일지급식" style="display:inline; width:40%; height:50px; border-radius:5px; background:none;">
@@ -394,6 +388,47 @@
    
    
    
+  
+   
+   
+   
+   
+   
+   
+<!-- 선택한 적금 두개 비교하기 모달 버튼  -->
+<div class="modal fade" id="compareSavings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+         <!--  <div class="modal-header"> -->
+            <!-- <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액 이동 재설정</h5> -->
+            <p style="align:right;">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            </p>   
+            
+          <!-- </div> -->
+          <div class="modal-body" id="comparemodalbody">
+     
+           </div>
+           <div id="comparemodalFooter" style="text-align:center; margin-bottom:20px;">
+            <!-- <button type="button" class="btn btn-primary" id="resolveBtn"  
+                    style="width:76%;  margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">만기 예상액 계산하기</button>         
+                    data-bs-dismiss="modal" -->
+            </div>
+        </div>
+      </div>
+    </div>
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 <script>
 function displayPrefer() {
@@ -426,7 +461,7 @@ function addActive() {
 function sortSavings() {
     
 	let productType = $('.productType').children('.active').val();
-	let interestMethod = $('.interestMethod').children('.active').val();
+	let accumulateMethod = $('.accumulateMethod').children('.active').val();
 	let minPeriod = $('.minPeriod').children('.active').val();
 	let preferCondition1 = $('.preferCondition1').children('.active').val();
 	let preferCondition2 = $('.preferCondition2').children('.active').val();
@@ -447,22 +482,185 @@ function sortSavings() {
               type : 'post',
               data : {
             	  productType  : productType,
-            	  interestMethod :interestMethod,
+            	  accumulateMethod :accumulateMethod,
                   minPeriod  : minPeriod,
                   firstAmount : firstAmount,
-                  preferCondition1 : preferCondition1
+                  preferCondition1 : preferCondition1,
                   preferCondition2 : preferCondition2
                   
               },
               success : function(data) {
-                  if(data == 'success'){
-
-                  }
+            	  console.log(data);
+            	  console.log(data[0].TARGET);
+            	  
+            	  
+            	  $('#savingsMain').empty();
+            	  
+            	  
+            	  str2 ='';
+            	  str2 += '<div>';
+            	  str2 += '<button type="button" class="compareSavings col-3 btn btn-primary" onclick="compareSavings();" data-bs-toggle="modal" data-bs-target="#compareSavings"';
+            	  str2 += 'style="width:200px; font-size:18px; font-family:hanaBFont;">';
+            	  str2 += '선택한 상품 비교하기';
+            	  str2 += '</button></div>';
+            	  $('#compareBtn').append(str2);
+            	  
+           
+              
+            	  
+            	  for(let i=0; i<data.length; i++) {
+            		  str ='';
+            		  str += '<div style="margin-bottom:20px; border:3px solid; padding:10px; width:60%; height:240px; border-radius:40px; display:flex; justify-content:space-between;" class= "row">';
+            		  str += '<div class="col-8">';
+            		  str += '<div class="d-flex flex-column">';
+            		  str += '<div class="d-flex" style="margin-top:20px;">';
+            		  str += '<input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">';
+            		  str += '<h4 style="margin-left:10px;">' + data[i].SAVINGSNAME + '</h4>';
+            		  str += '</div>';
+            		  str += '<small style="margin-left:50px; margin-top:7px; font-size:20px; color:black; font-weight:bold; white-space: nowrap;">' + data[i].PRODUCTDESC + '</small><br><br>';
+            		  str += '</div>';
+            		  str += '<button type="button" style="margin-left:20px; width:350px; height:60px; font-family:hanaBFont; border-radius:30px; ">';
+            		  str += '자세히보기 </button> </div>';
+            		  str += '<div class="col-3" style="text-align:right; margin-left:20px; color:black;  font-weight:bold; display: flex; justify-content: flex-end; align-items: center;">';
+            		  str += '<div style="font-size:20px; display:inline;"> 최대 연 <br><strong style="font-size:30px;">' + (data[i].BASICRATE + data[i].PREFERRATE) + '% </strong><br>  (세전, ' + data[i].MINPERIOD + ') </div>';
+            		  str += '</div><br></div>';
+            		  $('#savingsMain').append(str);
+            		  
+            	  }  
+            	  
+            	 
               }
           })
 }
 </script>   
+
+<script type="text/javascript">
+let test = new Array()
+function compareSavings() {
+	let checkVal = new Array();
+	$('input:checkbox[name=checkSavings]:checked').each(function() {
+		checkVal.push($(this).val());
+		
+		
+		//console.log(typeof checkVal);
+		
+	})
+	       console.log(checkVal);
+	       $.ajax({
+            url : '${ pageContext.request.contextPath }/compareSortSavings',
+            type : 'post',
+            data : {
+                "checkVal"  : checkVal
+                
+            },
+            success : function(data) {
+               // console.log(data);
+              //  console.log(data[1].SAVINGSNAME);
+                
+                
+                str = '';
+                str += '<h4 style="text-align:center; margin-bottom:40px;">선택한 상품 비교</h4>';
+                str += '<table border="1">';
+                str += '<th>' + data[0].SAVINGSNAME + '</th>';
+                str += '<th>' + data[1].SAVINGSNAME + '</th>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].PRODUCTDESC + '</td>';
+                str += '<td>' + data[1].PRODUCTDESC + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].TARGET + '</td>';
+                str += '<td>' + data[1].TARGET + '</td>';
+                str += '</tr>';
+                              
+                str += '<tr>';
+                str += '<td>' + data[0].MAXLIMIT + '</td>';
+                str += '<td>' + data[1].MAXLIMIT + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].MINPERIOD + '~' + data[0].MAXPERIOD + '</td>';
+                str += '<td>' + data[1].MINPERIOD + '~' + data[1].MAXPERIOD + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].MINAMOUNT + '~' + data[0].MAXAMOUNT + '</td>';
+                str += '<td>' + data[1].MINAMOUNT + '~' + data[1].MAXAMOUNT + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].BASICRATE + '</td>';
+                str += '<td>' + data[1].BASICRATE + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].MAXRATE + '</td>';
+                str += '<td>' + data[1].MAXRATE + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].PREFERRATE + '</td>';
+                str += '<td>' + data[1].PREFERRATE + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].CONDITION1 + ',' + data[0].CONDITION2 + '</td>';
+                str += '<td>' + data[1].CONDITION1 + ',' + data[1].CONDITION2 + '</td>';
+                str += '</tr>';
+                
+                
+                str += '</table>';
+                
+                
+                $('#comparemodalbody').append(str);
+               
+               // tes1(data);
+               
+               let str2 ='';
+              test = data
+               str2 += '<button type="button" class="btn btn-primary" style="width:76%; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;" onclick="expectedSavings()"> 만기 예상액 계산하기</button>';
+              
+               $('#comparemodalFooter').append(str2);
+               
+               //console.log(data[0]. + '가나다');
+             
+             }
+        })	
+}
+function expectedSavings() {
+    console.log('test = '+test[0].BASICRATE);
+  //console.log(typeof checkVal);  
+  
+  
+ 
+}
+</script>
+
+<script>
+
+
+
+
+</script>
+   
    
    
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
