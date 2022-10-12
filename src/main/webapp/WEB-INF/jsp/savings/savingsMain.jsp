@@ -163,6 +163,40 @@
 	        나만의 예적금 찾기
 	    </button>  
 	</div>   
+	
+	
+	
+	
+	
+	
+<!--  --><!--  --><!--  --><!--  --><!--  -->
+
+  <div style="text-align:center;">
+  <h4 style="margin-bottom:30px;">선택한 상품의 <strong style="color:#008485; margin-bottom:30px;">"만기예상액"</strong>을 알아볼 수 있어요!</h4>
+  
+  
+	  <div style="height:400px; border:2px solid; background-color:#f2f2f1; border-radius:20px;">
+	       
+	      <!-- 금액입력 -->
+		  <span style="font-size:26px; font-weight:700; color:#263A4F;">매월&nbsp;</span>
+		  <input type="text" id="savingsAmount" name="savingsAmount" style="font-size:30px; width:200px; text-align:right; font-weight:700; color:#008485; outline:none; background-color:#f2f2f1; border:none; border-bottom:2px solid #008485;">
+		  <span style="font-size:26px; font-weight:700; color:#263A4F;">원을&nbsp;&nbsp;</span>
+	  
+	      <!-- 기간선택 -->
+	      <select name="savingsTerm" id="savingsTerm"
+                     style="width:100px; font-size:26px; border:none; background-color:#f2f2f1; outline:none; color:#008485; text-align:center; height:30px;">              
+                     <option value="1">12개월</option>
+                     <option value="2">24개월</option>
+                     <option value="3">36개월</option>
+          </select> 
+          <span style="font-size:26px; font-weight:700; color:#263A4F;"> 동안&nbsp; 모으면? </span>
+	
+	  
+	  </div>
+  
+ </div>
+
+<!--  --><!--  --><!--  --><!--  --><!--  -->
 	   
 
 
@@ -195,12 +229,12 @@
 	                   <div class="nav productType" style="text-align:center; margin-top:5px;">
 	            
 		                   <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="적금"
-		                           style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+		                           style="font-family:hanaBFont; margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
 	                         적금
 	                       </button>
 	                     
 		                   <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="예금"
-	                                style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+	                                style="font-family:hanaBFont; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
 	                         예금
 	                       </button> 
       
@@ -211,16 +245,16 @@
 	           
 	            <!-- 이자 지급방식 -->
                 <div style="margin-bottom:35px;">
-                   <span style="margin-left:10%; font-size:20px;">적립방법ㅂ</span>
+                   <span style="margin-left:10%; font-size:20px;">적립방법</span>
                        <div class="nav accumulateMethod" style="text-align:center; margin-top:5px;">
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="자유적립식"
-                                   style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="font-family:hanaBFont; margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             자유적립식
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="정액적립식"
-                                    style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="font-family:hanaBFont; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              정액적립식
                            </button> 
                            
@@ -242,32 +276,32 @@
                        
                        
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3개월"
-                                   style="margin-left:9%; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="font-family:hanaBFont; margin-left:9%; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             3개월
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="6개월"
-                                    style="display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                              6개월
                            </button> 
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="1년"
-                                    style="display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              1년
                            </button> 
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="2년"
-                                   style="margin-left:9%; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="font-family:hanaBFont; margin-left:9%; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             2년
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3년"
-                                    style="display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                              3년
                            </button> 
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="5년"
-                                    style="display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              5년
                            </button> 
        
@@ -281,12 +315,12 @@
                 <div style="margin-bottom:35px;">
                    <span style="margin-left:10%; font-size:20px;">예정 신규금액</span>
                        <div style="text-align:center; margin-top:5px;">
-                           <input type="text" id="firstAmount" name="minAmount" value="" placeholder="예치금액 (원)" style="width:81%; height:60px; margin-bottom:5px; border-radius:5px;"><br>
+                           <input type="text" id="firstAmount" name="minAmount" value="" placeholder="예치금액 (원)" style="font-family:hanaBFont; width:81%; height:60px; margin-bottom:5px; border-radius:5px;"><br>
                            
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px;">+5만</button>
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px;">+10만</button>
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px;">+100만</button>
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px;">초기화</button>
+                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">+5만</button>
+                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">+10만</button>
+                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">+100만</button>
+                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">초기화</button>
                        </div>
                 </div>
                 
@@ -295,18 +329,18 @@
                 <!-- 우대금리항목 추가 -->
                 <div class="d-flex justify-content-between" style="text-align:center;">
                 
-                    <div style="margin-left:10%;">우대금리 항목 추가</div> 
-                    <div style="margin-right:10%;"><input type="button" id="displayPreferBtn" value="+" onclick="displayPrefer()"></div>
+                    <div style="font-family:hanaBFont; margin-left:10%;">우대금리 항목 추가</div> 
+                    <div style="font-family:hanaBFont; margin-right:10%;"><input type="button" id="displayPreferBtn" value="+" onclick="displayPrefer()"></div>
                 
                 </div>
                 
                
                <div id="preferList"  style="display:none; ">
                   
-                    <span style="margin-left:10%; margin-top:10px;">우대금리 항목 안내 △</span><br>
+                    <span style="font-family:hanaBFont; margin-left:10%; margin-top:10px;">우대금리 항목 안내 △</span><br>
                     
-                        <div style="width:80%; margin-left:10%;   margin-top:10px;">● 금액 밎 가입 기간은 필수 조건이며, 우대금리 항목은 선택 시 선택 사항입니다</div>
-                        <div style="width:80%; margin-left:10%;">● 같은 우대금리 항목이라도 상품별로 적용되는 상세요건(예, 적용우대 이율)은 다름을 안내드리오니,
+                        <div style="width:80%; margin-left:10%; font-family:hanaBFont;  margin-top:10px;">● 금액 밎 가입 기간은 필수 조건이며, 우대금리 항목은 선택 시 선택 사항입니다</div>
+                        <div style="width:80%; margin-left:10%; font-family:hanaBFont;">● 같은 우대금리 항목이라도 상품별로 적용되는 상세요건(예, 적용우대 이율)은 다름을 안내드리오니,
                           상품 가입 전 반드시 선택하신 상품의 적용 우대금리 상세 내용을 확인 후 가입을 진행하여 주시기 바랍니다.</div>
 
 
@@ -315,23 +349,23 @@
                            
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="카드실적"
-                                   style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="margin-left:9%; display:inline; width:40%; height:50px; font-family:hanaBFont; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             카드실적
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="아파트관리비 실적"
-                                    style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="display:inline; width:40%; height:50px; border-radius:5px; font-family:hanaBFont; margin-bottom:5px; background:none;">
                              아파트관리비 실적
                            </button> 
                            
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="주택청약종합저축"
-                                   style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="margin-left:9%; display:inline; width:40%; height:50px; font-family:hanaBFont; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             주택청약종합저축
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="첫거래"
-                                    style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="display:inline; width:40%; height:50px; border-radius:5px; font-family:hanaBFont; margin-bottom:5px; background:none;">
                              첫거래
                            </button> 
                            
@@ -342,31 +376,31 @@
                            <div class="nav preferCondition2" style="text-align:center;">
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="연금이체"
-                                   style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="margin-left:9%; display:inline; width:40%; height:50px; font-family:hanaBFont; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             연금이체
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="급여이체"
-                                    style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="display:inline; width:40%; height:50px; border-radius:5px; font-family:hanaBFont; margin-bottom:5px; background:none;">
                              급여이체
                            </button> 
                            
                            
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="온라인 신규"
-                                   style="margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="margin-left:9%; display:inline; width:40%; height:50px; font-family:hanaBFont; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             온라인 신규
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="하나머니"
-                                    style="display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="display:inline; width:40%; height:50px; border-radius:5px; font-family:hanaBFont; margin-bottom:5px; background:none;">
                              하나머니
                            </button> 
                           
                        </div> <br>
                
                
-                       <span style="margin-left:10%;">우대금리 항목이란? ▽</span>
+                       <span style="margin-left:10%; font-family:hanaBFont;">우대금리 항목이란? ▽</span>
                </div> 
                 
       
@@ -378,7 +412,7 @@
           
            <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
             <button type="button" class="btn btn-primary" id="divBtn" data-bs-dismiss="modal" onclick="sortSavings()" 
-                    style="width:76%;  margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">조회</button>         
+                    style="width:76%; font-family:hanaBFont; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">조회</button>         
             </div>
         </div>
       </div>
@@ -409,7 +443,7 @@
           <div class="modal-body" id="comparemodalbody">
      
            </div>
-           <div id="comparemodalFooter" style="text-align:center; margin-bottom:20px;">
+           <div id="comparemodalFooter" style="font-family:hanaBFont; text-align:center; margin-bottom:20px;">
             <!-- <button type="button" class="btn btn-primary" id="resolveBtn"  
                     style="width:76%;  margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">만기 예상액 계산하기</button>         
                     data-bs-dismiss="modal" -->
@@ -510,10 +544,10 @@ function sortSavings() {
             	  
             	  for(let i=0; i<data.length; i++) {
             		  str ='';
-            		  str += '<div style="margin-bottom:20px; border:3px solid; padding:10px; width:60%; height:240px; border-radius:40px; display:flex; justify-content:space-between;" class= "row">';
+            		  str += '<div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid; padding:10px; width:60%; height:240px; border-radius:40px; display:flex; justify-content:space-between;" class= "row">';
             		  str += '<div class="col-8">';
             		  str += '<div class="d-flex flex-column">';
-            		  str += '<div class="d-flex" style="margin-top:20px;">';
+            		  str += '<div class="d-flex" style="font-family:hanaBFont; margin-top:20px;">';
             		  str += '<input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">';
             		  str += '<h4 style="margin-left:10px;">' + data[i].SAVINGSNAME + '</h4>';
             		  str += '</div>';
@@ -535,7 +569,7 @@ function sortSavings() {
 </script>   
 
 <script type="text/javascript">
-let test = new Array()
+let compareArray = new Array()
 function compareSavings() {
 	let checkVal = new Array();
 	$('input:checkbox[name=checkSavings]:checked').each(function() {
@@ -559,7 +593,7 @@ function compareSavings() {
                 
                 
                 str = '';
-                str += '<h4 style="text-align:center; margin-bottom:40px;">선택한 상품 비교</h4>';
+                str += '<h4 style="font-family:hanaBFont; text-align:center; margin-bottom:40px;">선택한 상품 비교</h4>';
                 str += '<table border="1">';
                 str += '<th>' + data[0].SAVINGSNAME + '</th>';
                 str += '<th>' + data[1].SAVINGSNAME + '</th>';
@@ -618,8 +652,8 @@ function compareSavings() {
                // tes1(data);
                
                let str2 ='';
-              test = data
-               str2 += '<button type="button" class="btn btn-primary" style="width:76%; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;" onclick="expectedSavings()"> 만기 예상액 계산하기</button>';
+               compareArray = data
+               str2 += '<button type="button" class="btn btn-primary" style="font-family:hanaBFont; width:76%; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;" onclick="expectedSavings()"> 만기 예상액 계산하기</button>';
               
                $('#comparemodalFooter').append(str2);
                
@@ -629,11 +663,105 @@ function compareSavings() {
         })	
 }
 function expectedSavings() {
-    console.log('test = '+test[0].BASICRATE);
-  //console.log(typeof checkVal);  
+    console.log('compareArray = '+compareArray[0].BASICRATE);
+  //console.log(typeof checkVal); 
+  
+  $('#comparemodalbody').empty();
+  let str = '';
+  
+  str += '<div style="text-align:center; font-family:hanaBFont;">'; 
+  str += '<h4 style="margin-bottom:50px;">선택한 상품의 <strong style="color:#008485; margin-bottom:30px;">"만기예상액"</strong>을 알아볼 수 있어요!</h4>';
+  str += '<div style="margin-bottom:30px;">';
+  
+
+  str += '<span style="font-size:26px; font-weight:700; color:#263A4F;">매월&nbsp;</span>';
+  str += '<input type="text" id="savingsAmount" name="savingsAmount" style="font-size:30px; width:150px; text-align:right; font-weight:700; color:#008485; outline:none; border:none; border-bottom:2px solid #008485;">';
+  str += '<span style="font-size:26px; font-weight:700; color:#263A4F;">원을&nbsp;&nbsp;</span>';
+  
+
+  str += '<select name="savingsTerm" id="savingsTerm"';
+  str += 'style="width:100px; font-size:26px; border:none; outline:none; color:#008485; text-align:center; height:30px;">';
+  str += '<option value="1">12개월</option>';
+  str += '<option value="2">24개월</option>';
+  str += '<option value="3">36개월</option>';
+  str += '</select> ';
+  
+  str += '<span style="font-size:26px; font-weight:700; color:#263A4F;"> 동안&nbsp; 모으면? </span>';
+  str += '</div>';
+  str += '</div>'; 
+
+  /*  background-color:#f2f2f1; */
+  
+  $('#comparemodalbody').append(str);
   
   
+  
+  $('#comparemodalFooter').empty();
+  let str2 = '';
+  str2 += '<button type="button" class="btn btn-primary" style="font-family:hanaBFont; width:76%; margin-top:20px; margin-bottom:25px; height:50px;';
+  str2 += 'border-radius:10px;" onclick="goExpectedSavings()"> 만기예상액 비교하러 가기 </button>';
+  $('#comparemodalFooter').append(str2);
  
+}
+
+
+
+function goExpectedSavings() {
+	//console.log('goExpectedSavings() = ' + compareArray[0].BASICRATE);
+	
+	/* 공통조건 */
+	let savingsAmount = document.getElementById('savingsAmount').value*1; //원금
+	let savingsTerm = $('select[name=savingsTerm]').val()*12; //가입개월수
+
+	/*  */
+	let basicRate = 0.029;
+	let prefRate = 0.041;
+
+	
+	
+
+	let result = 0;
+	for(let i=1; i<savingsTerm+1; i++) {
+		result += savingsAmount * Math.pow(1+(prefRate/12),i);
+		//console.log(result);
+	}
+	console.log("세후이자" + ((result-(savingsAmount*savingsTerm)) - (result-(savingsAmount*savingsTerm)) * 0.154));
+	
+	let sehu = ((result-(savingsAmount*savingsTerm)) - (result-(savingsAmount*savingsTerm)) * 0.154); //세후이자
+	
+	
+	
+	/* 
+	   let basicRate = 0.029;
+	    let prefRate = 0.041;
+	    let term = 12;
+	    
+	    
+	    let a = 200000; //원금
+	    let result = 0;
+	    
+	    for(let i=1; i<term+1; i++) {
+	        result += a * Math.pow(1+(prefRate/12),i);
+	        console.log(result);
+	    }
+	    
+	    console.log("세후이자" + ((result-(a*term)) - (result-(a*term)) * 0.154));
+	
+	 */
+	
+	$('#comparemodalbody').empty();
+	//$('#comparemodalbody').append(str);
+	  
+	  
+	  
+	  $('#comparemodalFooter').empty();
+	/*   let str2 = '';
+	  str2 += '<button type="button" class="btn btn-primary" style="font-family:hanaBFont; width:60%; margin-top:20px; margin-bottom:25px; height:50px;';
+	  str2 += 'border-radius:10px;" onclick="goExpectedSavings()"> 만기예상액 비교하러 가기 </button>';
+	  str2 += '<button type="button" class="btn btn-primary" style="font-family:hanaBFont; width:30%; margin-top:20px; margin-bottom:25px; height:50px;';
+      str2 += 'border-radius:10px;" onclick="goExpectedSavings()"> 만기예상액 비교하러 가기 </button>';
+	  $('#comparemodalFooter').append(str2); */
+	
 }
 </script>
 
