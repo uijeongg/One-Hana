@@ -128,12 +128,12 @@ function dividePocket() {
 
 	<h3 style="text-align:left; margin-left:26px; display:inline-block; margin-bottom: 0px; margin-top: 30px;">나의</h3>
     <h3 style="text-align:left; margin-left:7px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;"> MO HANA</h3>
-    <hr style="width:779px; height:5px; background-color:#066262; position:relative; left:23px;">
+    <hr style="width:779px; height:7px; background-color:#066262; position:relative; left:23px;">
 
 	
 	<div id="pocket_div">
 	
-		<div style="margin-left:430px; border:1px solid black; width:785px; border:2px solid; border-radius:25px; position:relative;">	
+		<div style="margin-left:365px; border:1px solid black; width:785px; border:2px solid; border-radius:25px; position:relative;">	
 		
 			<h3 style="margin-left:20px; margin-top:10px;">MyOne HANA 통장</h3>	<br>
 	        <%-- <h5>통장이름 ${ MyAccount.accountName }</h5><br> --%>
@@ -147,8 +147,8 @@ function dividePocket() {
 	   <br>
 	  <%--  <h3 style="margin-left:320px;">내 주머니 현황</h3><br> ui 홍씨처럼 가로로 만들기 --%>
 		<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">내 주머니 현황</h3>
-		<hr style="width:779px; height:5px; background-color:#066262; position:relative; left:20px;">
-		<div id = "pocketList" style="margin-left:440px;">
+		<hr style="width:779px; height:7px; background-color:#066262; position:relative; left:20px;">
+		<div id = "pocketList" style="margin-left:370px;">
 			
 		</div>
 	</div>
@@ -259,8 +259,6 @@ function dividePocket() {
 
 </div>
    
-     <footer>
-        <jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
-    </footer>
+    
 </body>
 </html>

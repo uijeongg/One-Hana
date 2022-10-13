@@ -36,11 +36,12 @@
                             <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary" style="border-radius:15px; width:300px; height:100px;">
                             
                             
-                            이용하기
-                                <img src="${ pageContext.request.contextPath }/resources/myicon/orange1.png" alt="Image">
+                            이용하기<br>
+                                <img src="${ pageContext.request.contextPath }/resources/myicon/orange1.png" style="width:150px;">
                             
                             </a>
                             
+                       
                             
                             
                          <!--    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px;">가입하기</a> -->

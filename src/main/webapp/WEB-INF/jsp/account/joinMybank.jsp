@@ -91,26 +91,12 @@ function newJoin(){
 
 
 
- <%--    
-    <form action="${pageContext.request.contextPath}/accountList" method="get"> 
-        <div style="border:solid; width:200px;">
-            <input type="submit" value="통장 전환">         
-        </div>
-    </form>
-  
-    통장신규가입
-    <form action="${pageContext.request.contextPath}/newJoin" method="get"> 
-        <div style="border:solid; width:200px;">
-            <input type="submit" value="통장 신규 가입">          
-        </div>
-    </form>
- --%>
     
-    
+    <%-- 
      <footer>
         <jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
     </footer>
-    
+     --%>
     
 </body>
 

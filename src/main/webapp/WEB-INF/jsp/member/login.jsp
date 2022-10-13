@@ -8,6 +8,8 @@
 <head>
     <meta charset="utf-8">
     <title>One Hana</title>
+    
+
 </head>
 
 <body>
@@ -16,38 +18,56 @@
 	</header>   
 	
 	
-	<%-- 로그인폼을 spring form으로 만들어봄 --%>
+<div style="margin-left:auto; margin-right:auto; text-align:center; margin-top:40px;"> 
+    <img src="${pageContext.request.contextPath}/resources/img/My_hana-logo.png" style="width:70px; height:60px;"/> 
+    마이원하나
+</div>	
+	
+<div style="margin-left:auto; margin-right:auto; border:3px solid; border-color:#008485; border-radius:15px; width:500px; height:400px; text-align:center; margin-top:10px;">
+	
+
 	
 	<form:form action="${pageContext.request.contextPath}/login" method="post" modelAttribute="memberVO">
 						<%-- controller에서 request에 저장해준 memberVO를 modelAtt로 받아옴 --%>
-		<table>
+		<table style="margin-left:auto; margin-right:auto;">
 			<tr>
-				<th>ID</th>
+				<!-- <th>ID</th> -->
 				<td>
-					<form:input path="id" />
+					<form:input path="id" placeholder="아이디" class="form-control" style="margin-top:60px; color:#008485; font-size:20px; width:350px; height:55px; border-radius:10px;" />
 					<form:errors path="id"></form:errors>
 				</td>
 			</tr>
 		
 			<tr>
-				<th>PASSWORD</th>
+				<!-- <th>PASSWORD</th> -->
 				<td>
-					<form:input path="password" />
+					<form:input path="password" placeholder="비밀번호" class="form-control" style="color:#008485; font-size:20px; width:350px; height:55px; border-radius:10px;" />
 					<form:errors path="password"></form:errors>
 				</td>
 			</tr>
 		</table>	
+		
+		      <div style="font-size:17px; color:gray; text-align:left; padding-left:75px; margin-top:10px; margin-bottom:25px;"><input name="" id="" type="checkbox" value="" style="width:25px;">&nbsp;&nbsp;로그인 상태 유지</div>
 			
-			<input type="submit" value="로그인">
+			<input type="submit" value="로그인" 
+			style="color:white; font-size:22px; width:350px; height:50px; border-radius:10px; background-color:#008485; border:none;">
+	        
+	        <img src="${pageContext.request.contextPath}/resources/myicon/kakao.jpg" style="margin-top:10px; width:350px; height:50px;"/> 
+          
 	</form:form>	
 
 
-
  
+
+</div>
+ 
+   <div style="text-align:center; color:gray; font-size:20px; margin-top:20px; ">아이디 찾기 &nbsp; | &nbsp; 비밀번호 찾기 &nbsp; | &nbsp; 회원가입</div>
     
-    <footer>
-    			<jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
-    </footer>
+   <%--  
+   <footer>
+    	<jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
+   </footer> 
+   --%>
 </body>
 
 </html>
