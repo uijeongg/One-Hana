@@ -781,165 +781,60 @@ function goExpectedSavings() {
 	/* select1 금리 조건 */
 	let basicRate1 = compareArray[0].BASICRATE*0.01;
 	let prefRate1 = compareArray[0].PREFERRATE*0.01;
-	let maxRate1 = compareArray[0].MAXRATE*0.01;
 	//console.log('goExpectedSavings() = ' + compareArray[0].BASICRATE);
 	//console.log('goExpectedSavings() = ' + compareArray[0].PREFERRATE);
 	
 	/* select2 금리 조건 */
     let basicRate2 = compareArray[1].BASICRATE*0.01;
     let prefRate2 = compareArray[1].PREFERRATE*0.01;
-    let maxRate2 = compareArray[1].MAXRATE*0.01;
     
     
-    
-    
-    
-    
-    
-    
-    
-    /////////////////////////////////////////
-    
-    
-     //compareArray[0] 우대금리미포함(basicRate)
-    let result11sehu = 0; 
-    let sehu11 = 0;
-    if(compareArray[0].SAVINGSTYPE==='단리') {
-        console.log('단리');
-        sehu11 = savingsAmount*savingsTerm*basicRate1*0.154;
-        console.log(sehu11 + '단리' + compareArray[0].SAVINGSNAME);
-        
-        
-    } else if(compareArray[0].SAVINGSTYPE==='복리') {
-        
-        for(let i=1; i<savingsTerm+1; i++) {
-            result11sehu += savingsAmount * Math.pow(1+(basicRate1/12),i);
-            //console.log(result);
-        }
-        //console.log("세후이자" + ((result11sehu-(savingsAmount*savingsTerm)) - (result11sehu-(savingsAmount*savingsTerm)) * 0.154));
-        sehu11 = ((result11sehu-(savingsAmount*savingsTerm)) - (result11sehu-(savingsAmount*savingsTerm)) * 0.154); //세후이자
-        console.log(sehu11 + '복리' + compareArray[0].SAVINGSNAME);
-    }
-    
-   
-
-    
-    
-    
-    
-    //compareArray[1] 우대금리미포함(basicRate)
-    let result22sehu = 0; 
-    let sehu22 = 0;
-    if(compareArray[1].SAVINGSTYPE==='단리') {
-        //console.log('단리');
-        sehu22 = savingsAmount*savingsTerm*maxRate2*0.154;
-        
-    } else if(compareArray[1].SAVINGSTYPE==='복리') {
-        
-        for(let i=1; i<savingsTerm+1; i++) {
-            result22sehu += savingsAmount * Math.pow(1+(basicRate2/12),i);
-            //console.log(result);
-        }
-        //console.log("세후이자" + ((result22sehu-(savingsAmount*savingsTerm)) - (result22sehu-(savingsAmount*savingsTerm)) * 0.154));
-        sehu22 = ((result22sehu-(savingsAmount*savingsTerm)) - (result22sehu-(savingsAmount*savingsTerm)) * 0.154); //세후이자
-    }
-    
-    
-    //console.log("컴페어어레이2" + ((savingsAmount*savingsTerm)+sehu2));
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //우대금리포함
-    //우대금리포함
-    //우대금리포함
 
     /* 복리계산식 
        SAVINGSTYPE='복리' 라면 */
     let result02 = 0; 
     for(let i=1; i<savingsTerm+1; i++) {
-    	result02 += savingsAmount * Math.pow(1+(maxRate1/12),i);
+    	result02 += savingsAmount * Math.pow(1+(prefRate1/12),i);
         //console.log(result);
     }
-    //console.log("세후이자" + ((result02-(savingsAmount*savingsTerm)) - (result02-(savingsAmount*savingsTerm)) * 0.154));
+    console.log("세후이자" + ((result02-(savingsAmount*savingsTerm)) - (result02-(savingsAmount*savingsTerm)) * 0.154));
     
     let sehu = ((result02-(savingsAmount*savingsTerm)) - (result02-(savingsAmount*savingsTerm)) * 0.154); //세후이자
     
-    //console.log(compareArray[0].SAVINGSTYPE);
-    
-    
-    
-
     
     
     
     
-    
-    
-    
-    
-  //compareArray[0] 우대금리포함(maxRate)
+    //compareArray[0]
     let result1sehu = 0; 
     let sehu1 = 0;
     if(compareArray[0].SAVINGSTYPE==='단리') {
-        //console.log('단리');
-        sehu1 = savingsAmount*savingsTerm*maxRate1*0.154;
-        console.log(sehu1 + '단리우대포함');
-        
-        
-    } else if(compareArray[0].SAVINGSTYPE==='복리') {
-        
-        for(let i=1; i<savingsTerm+1; i++) {
-            result1sehu += savingsAmount * Math.pow(1+(maxRate1/12),i);
+    	console.log('단리');
+    } else(compareArray[0].SAVINGSTYPE==='복리') {
+    	
+    	for(let i=1; i<savingsTerm+1; i++) {
+    		result1sehu += savingsAmount * Math.pow(1+(prefRate1/12),i);
             //console.log(result);
         }
         console.log("세후이자" + ((result1sehu-(savingsAmount*savingsTerm)) - (result1sehu-(savingsAmount*savingsTerm)) * 0.154));
         sehu1 = ((result1sehu-(savingsAmount*savingsTerm)) - (result1sehu-(savingsAmount*savingsTerm)) * 0.154); //세후이자
     }
     
-    console.log('컴페어어레이1' + sehu1);
-
     
     
     
     
-    //compareArray[1] 우대금리포함(maxRate)
+    
+    
+    //compareArray[1]
     let result2sehu = 0; 
     let sehu2 = 0;
     if(compareArray[1].SAVINGSTYPE==='단리') {
-        //console.log('단리');
-    	sehu2 = savingsAmount*savingsTerm*maxRate2*0.154;
-    	
-    } else if(compareArray[1].SAVINGSTYPE==='복리') {
+        console.log('단리');
+    } else(compareArray[1].SAVINGSTYPE==='복리') {
         
         for(let i=1; i<savingsTerm+1; i++) {
-            result2sehu += savingsAmount * Math.pow(1+(maxRate2/12),i);
+            result2sehu += savingsAmount * Math.pow(1+(prefRate2/12),i);
             //console.log(result);
         }
         console.log("세후이자" + ((result2sehu-(savingsAmount*savingsTerm)) - (result2sehu-(savingsAmount*savingsTerm)) * 0.154));
@@ -947,8 +842,6 @@ function goExpectedSavings() {
     }
     
     
-    console.log("컴페어어레이2" + ((savingsAmount*savingsTerm)+sehu2));
-
     
     
     
@@ -981,103 +874,13 @@ function goExpectedSavings() {
 	 /*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  */
 	 
 	 
-    
-  let str = '';
-        str += '<div style="text-align:center;">';
-        str += '<h2 style="margin-bottom:30px;"><strong style="color:#008485; margin-bottom:40px;">만기수령금&nbsp;</strong>(예상)</h2>';
-        str += '<ul style="padding-right:2rem;">';
-        str += '<li style="display:inline-block;"><h3>' + compareArray[0].SAVINGSNAME + '</h3>';
-        str += '<div style="margin-top:10px; width:330px; height:400px; padding:15px; border-radius:20px; border:1px solid; background-color:#486A80; ">';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="font-size:23px; color:white;">우대금리 미포함</span>';
-            str += '<span style="font-size:25px; color:#FFDE00;">' + (Math.floor((savingsAmount*savingsTerm) + sehu11)).toLocaleString('ko-KR') + ' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="color:#E8E8E8;">만기원금</span>';
-        str += '<span style="color:#E8E8E8;">'+ (Math.floor(savingsAmount*savingsTerm)).toLocaleString('ko-KR') +' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between">';
-        str += '<span style="color:#E8E8E8;">만기이자(' + compareArray[0].SAVINGSTYPE + ', 세후)</span>';
-        str += '<span style="color:#E8E8E8;">'+ (Math.floor(sehu11)).toLocaleString('ko-KR') +' 원</span>';
-        str += '</div>';
-        
-        str += '<hr style="margin-top:20px; margin-bottom:20px; color:white;">';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="font-size:23px; color:white;">우대금리 포함</span>';
-        str += '<span style="font-size:25px; color:#FFDE00;">' + (Math.floor((savingsAmount*savingsTerm) + sehu1)).toLocaleString('ko-KR') + ' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="color:#E8E8E8;">만기원금</span>';
-        str += '<span style="color:#E8E8E8;">' + (Math.floor(savingsAmount*savingsTerm)).toLocaleString('ko-KR') + ' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between">';
-        str += '<span style="color:#E8E8E8;">만기이자(' + compareArray[0].SAVINGSTYPE + ', 세후)</span>';
-        str += '<span style="color:#E8E8E8;">'+ (Math.floor(sehu1)).toLocaleString('ko-KR') + ' 원</span>';
-        str += '</div>';
-        
-        str += '</div><button style="width:330px; height:50px; border-radius:10px; margin-top:30px; background-color:#008485; color:white; border:none;">가입진행</button>';
-        str += '</li>';
-        
-        
-        
-        
-        
-        
-        
-        str += '<li style="display:inline-block;"><h3>' + compareArray[1].SAVINGSNAME + '</h3>';
-        str += '<div style="margin-top:10px; width:330px; height:400px; padding:15px; border-radius:20px; border:1px solid; background-color:#486A80; ">';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="font-size:23px; color:white;">우대금리 미포함</span>';
-        str += '<span style="font-size:25px; color:#FFDE00;">'+ (Math.floor((savingsAmount*savingsTerm) + sehu22)).toLocaleString('ko-KR') +' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="color:#E8E8E8;">만기원금</span>';
-        str += '<span style="color:#E8E8E8;">'+ (Math.floor(savingsAmount*savingsTerm)).toLocaleString('ko-KR') +' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between">';
-        str += '<span style="color:#E8E8E8;">만기이자(' + compareArray[1].SAVINGSTYPE + ', 세후)</span>';
-        str += '<span style="color:#E8E8E8;">'+ (Math.floor(sehu22)).toLocaleString('ko-KR') +' 원</span>';
-        str += '</div>';
-        
-        str += '<hr style="margin-top:20px; margin-bottom:20px; color:white;">';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="font-size:23px; color:white;">우대금리 포함</span>';
-        str += '<span style="font-size:25px; color:#FFDE00;">' + (Math.floor((savingsAmount*savingsTerm) + sehu2)).toLocaleString('ko-KR') + ' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
-        str += '<span style="color:#E8E8E8;">만기원금</span>';
-        str += '<span style="color:#E8E8E8;">' + (Math.floor(savingsAmount*savingsTerm)).toLocaleString('ko-KR') + ' 원</span>';
-        str += '</div>';
-        
-        str += '<div class="d-flex justify-content-between">';
-        str += '<span style="color:#E8E8E8;">만기이자(' + compareArray[1].SAVINGSTYPE + ', 세후)</span>';
-        str += '<span style="color:#E8E8E8;">'+ (Math.floor(sehu2)).toLocaleString('ko-KR') +' 원</span>';
-        str += '</div>';
-        
-        str += '</div><button style="width:330px; height:50px; border-radius:10px; margin-top:30px; background-color:#008485; color:white; border:none;">가입진행</button>';
-        str += '</li>';
-        
-        str += '</ul>';
-        str += '<button style="width:180px; height:50px; border-radius:10px; margin-top:30px; background-color:#C3C1B4; color:white; border:none;">돌아가기</button>';
-        str += '</div>';
 
 	 
 	 
 	 /*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  */
 	 
 	 
-	 $('#comparemodalbody').append(str);
+	 //$('#comparemodalbody').append(str);
 	  
 	  
 	  

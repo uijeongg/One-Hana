@@ -30,7 +30,19 @@
                         <div class="text-start p-6" style="max-width: 900px;">
                             <h3 class="text-black">My One HANA</h3>
                             <h1 class="display-1 text-black mb-md-4">자산관리</h1>
-                            <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px; height:150px;">가입하기</a>
+                            <%-- <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px; width:300px; height:100px;">이용하기</a> --%>
+                            
+                            
+                            <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary" style="border-radius:15px; width:300px; height:100px;">
+                            
+                            
+                            이용하기
+                                <img src="${ pageContext.request.contextPath }/resources/myicon/orange1.png" alt="Image">
+                            
+                            </a>
+                            
+                            
+                            
                          <!--    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px;">가입하기</a> -->
                         </div>
                     </div>

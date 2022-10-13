@@ -9,7 +9,7 @@
                         <!-- 고정비 명 -->
                         <th scope="col" width="40%">
                         
-                            <p style="font-size:18px;"> ${insertList[0].fixedName}</p>
+                            <p style="font-size:18px; color:black;"> ${insertList[0].fixedName}</p>
                            
                         
                             <!-- <input id="expenseInfo" class="form-control" type="text"> -->
@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-9" >
                                 
-                                <p style="font-size:18px;">
+                                <p style="font-size:18px; color:black;">
                                     <fmt:formatNumber value="${insertList[0].fixedCost}" pattern="#,###"/>원
                                 </p>
                                     

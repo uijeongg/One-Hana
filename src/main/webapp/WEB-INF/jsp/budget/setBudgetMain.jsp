@@ -132,8 +132,10 @@ $(document).ready(function(){
                 //$('#fixedSet').empty();
                 //alert(data);
                 
-                $('#fixedTable').append(data);
+                $('#fixedTable').prepend(data);
                 //$('#updateList').html(data)
+                $('#fixedName').val("");
+                $('#fixedCost').val("");
                 
                 //총 월 고정 지출액 업데이트
                 plusFixedAll();          
@@ -189,7 +191,6 @@ $(document).ready(function(){
 //고정비 다 입력하고 최종 '설정 완료 누르면 fixedSum값이 자동 예산 분할 설정의 고정비 주머니 분할 금액으로 바로 뜨게 하고 싶음
 
 function allFixedSettings(){
-	console.log("밥은 잘 먹었니?");
 	let fixedAllMoney = $('#fixedAll').val();
 	console.log(fixedAllMoney);
 	$('input[name=autoDivAmount2]').attr('value',fixedAllMoney);
@@ -233,11 +234,11 @@ function autoDivSetting(input) {
 		                //console.log(divAmount + '원')
 		        	  
 		                let str = '';
-		                str += '<p style="font-size:20px;">' + divAmount + '원 </p>'
+		                str += '<p style="font-size:20px; color:black;">' + divAmount + '원 </p>'
 		               $('#autoAmount_'+pocketCode).append(str);  
 		                
 		                let str2 = '';
-                        str2 += '<p style="font-size:20px;">매달 ' + autoDivDate + '일 </p>'
+                        str2 += '<p style="font-size:20px; color:black;">매달 ' + autoDivDate + '일 </p>'
                         $('#autoDate_'+pocketCode).append(str2);  
 		                
                         let str3 = '';
@@ -544,10 +545,10 @@ $(document).ready(function(){
 			<table class="table" id="table">
 				<thead>
 					<tr>
-						<th scope="col" width="40%" style="color:black;">예산명</th>
+						<th scope="col" width="40%" style="color:gray;">예산명</th>
 						<!-- <th scope="col" width="20%">이체일</th> -->
 						<th scope="col">
-							<div class="col-md-9">금액</div>
+							<div class="col-md-9" style="color:gray;">금액</div>
 							<!-- <div class="col-md-3"></div> -->
 						</th>
 					</tr>
@@ -556,6 +557,7 @@ $(document).ready(function(){
             
 
 			<table class="table" id="table">
+	
 				<tbody id="fixedTable">
 					<!-- 이 tbody 부분을 고정비 테이블 ajax 넘김 -->
 					<tr>
@@ -568,7 +570,7 @@ $(document).ready(function(){
 						</th>
 
                 <!-- 고정비 이체일 -->
-                <!--  	
+                  <%-- 	
 						<th scope="col" width="20%">
 							<h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;
 							<select name="fixedDate" id="fixedDate"
@@ -582,8 +584,9 @@ $(document).ready(function(){
 						</select>
 							<h4 style="font-size: 20px; display: inline;">일</h4>
 						</th>
-                 -->
-
+                 --%>
+                 
+                 
 						<!-- 고정비 금액 -->
 						<th scope="col">
 							<div class="row">
@@ -661,9 +664,9 @@ $(document).ready(function(){
                 
                 <tr style="border-bottom: 40px solid #fff;"></tr>                 
                 <tr style="margin-top:20px;">
-                     <th scope="col" width="30%" >분할 주머니</th>
-                     <th scope="col" width="30%" >분할 금액</th>
-                     <th scope="col" width="25%">분할 날짜</th>
+                     <th scope="col" width="30%" style="color:gray;">분할 주머니</th>
+                     <th scope="col" width="30%" style="color:gray;">분할 금액</th>
+                     <th scope="col" width="25%" style="color:gray;">분할 날짜</th>
                      <th scope="col" width="25%"></th>
                      <!-- <th><input type="button" value="설정"></th> -->
                 </tr>
