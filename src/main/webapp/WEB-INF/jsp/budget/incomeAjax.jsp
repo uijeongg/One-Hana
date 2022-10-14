@@ -8,7 +8,7 @@
         <h3 style="margin-top:20px; margin-bottom:30px;">월 급여 설정</h3>
         <!-- <p style="margin-bottom:30px;">한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p> -->
     
-          <span style="font-size:22px; display:inline; color:#008485;">매달 ${updateList.incomeDate} 일</span>
+          <span id="inDate" style="font-size:22px; display:inline; color:#008485;">매달 ${updateList.incomeDate} 일</span>
           <div style="font-size:22px; display:inline;">에 급여 "</div>
           
           <div id="updateIncome" style="display:inline; font-size:24px; display:inline; color:#008485; font-weight:bold;">

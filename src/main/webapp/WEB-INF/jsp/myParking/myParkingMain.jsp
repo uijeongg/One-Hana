@@ -39,16 +39,18 @@
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header>
-    <jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/jsp/include/sidebar3.jsp"></jsp:include>
 
 
     <!-- page title start -->
     <div style="margin-left:670px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_calendar.png" 
-            style="width:70px; height:70px;"/>
-        <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 파킹 내역 "</span>
+        <img src="${pageContext.request.contextPath}/resources/myicon/park.PNG" 
+            style="width:70px; height:60px;"/>
+        <span style="font-size:30px; margin-top:80px;">&nbsp; 나의 </span> 
+        <span style="color:#008485; font-size:30px; margin-top:80px;"> 파킹 </span>
+        <span style="font-size:30px; margin-top:80px;">현황 </span>
     </div>
-    <hr style="width:920px; height: 5px; background-color:#066262;">
+    <hr style="width:920px; height:7px; background-color:#066262;">
     <!-- page title end -->
     
     
@@ -97,7 +99,7 @@
         	 console.log(data);
         	 let parkingSum = data.parkingSum*1; 
         	 let parkingBal = data.parkingBal*1; 
-        	 let parkingPer = parkingBal/parkingSum*100;
+        	 let parkingPer = Math.floor(parkingBal/parkingSum*100);
              let str ='';
              
              
@@ -112,7 +114,7 @@
              
 	             str += '<div class="col-6 chartLocation2" style="justify-content:center; align-items:center;">';
 		             str += '<div style="font-size:22px; margin-top:80px; justify-content:center;"> 지금까지 <br>파킹 주머니 목표금액 <p style="color:#008485; display:inline;"><br>'+ parkingSum + '&nbsp;원</p> 중';
-		             str += '<br> 총 <p style="color:#008485; display:inline; font-size:30px;">"' + parkingBal + ' 원"</p>을 모았어요';
+		             str += '<br> 총 <p style="color:#ff4747; display:inline; font-size:30px;">"' + parkingBal + ' 원"</p>을 모았어요';
 		             
 		             str += '<div style="margin-top:10px;">';
 		             str += '<input type="button" id="parking" value="상세 파킹 내역" onclick="displayParkingDetail()" class="btn"';
@@ -162,18 +164,18 @@
              var options = {
                      series: [parkingPer],
                      chart: {
-                     height: 350,
+                     height: 400,
                      type: 'radialBar',
                    },
                    plotOptions: {
                      radialBar: {
                        hollow: {
                          margin: 15,
-                         size: '70%',
-                         image: '/resources/img/My_!green2.png',
+                         size: '60%',
+                         image: '/resources/myicon/parking10.png',
                          
-                         imageWidth: 64,
-                         imageHeight: 64,
+                         imageWidth: 165,
+                         imageHeight: 165,
                          imageClipped: false
                        },
                        dataLabels: {
@@ -181,12 +183,13 @@
                            show: false,
                            color: '#fff'
                          },
-                         value: {
+                         /* value: {
                            show: true,
-                           color: '#333',
-                           offsetY: 70,
-                           fontSize: '22px'
-                         }
+                           color: '#008485',
+                           offsetY: -160,
+                           fontSize: '30px'
+                           
+                         } */
                        }
                      }
                    },

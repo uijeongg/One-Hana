@@ -23,11 +23,18 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 
-<style>
-    .doDivide:hover{
-        background-color:#008485;
-        color:#FFF;
-    }
+<style> 
+.doDivide:hover {
+background:none !important;
+color:black !important;
+border:none !important;
+} 
+
+.doDivide:focus {
+background:none !important;
+color:black !important;
+border:none !important;
+}   
 </style>
 
 <script>
@@ -234,7 +241,7 @@ function autoDivSetting(input) {
 		                //console.log(divAmount + '원')
 		        	  
 		                let str = '';
-		                str += '<p style="font-size:20px; color:black;">' + divAmount + '원 </p>'
+		                str += '<p style="font-size:20px; color:black; ">' + divAmount + '원 </p>'
 		               $('#autoAmount_'+pocketCode).append(str);  
 		                
 		                let str2 = '';
@@ -297,12 +304,12 @@ $(document).ready(function(){
                 let name = this.pocketName            
                 let pocketCode = this.pocketCode 
                 let str ='';
-                str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 <p style="color:black">➜</p> '+name+' 주머니</td>'
+                str += '<tr><td style="font-size:20px; color:#008485; font-weight:bold;">기본 주머니 <p style="color:black; display:inline;">➜</p> '+name+' 주머니</td>'
                 str += '<td id="autoAmount_'+pocketCode+'"><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" '
-                str += 'class="form-control" style="color: #008485; text-align:center; width:200px;"></td>'
+                str += 'class="form-control" style="font-size:17px; color:#008485; text-align:center; width:230px;"></td>'
                 
                 str += '<td id="autoDate_'+pocketCode+'"><h4 style="font-size: 20px; display: inline;">매달</h4>&nbsp;&nbsp;'
-                str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" style="width:50px; background:white; color:#008485; text-align:center; border-radius:10px; height:30px;">'
+                str += '<select name="autoDivDate'+pocketCode+'" id="autoDivDate'+pocketCode+'" class="autoDivDateForSelect" style="font-size:17px; width:50px; background:white; color:#008485; text-align:center; border-radius:10px; height:30px;">'
                 str += '<c:forEach begin="1" end="31" var="x"> <option> <c:out value="${x}" /> </option> <br></c:forEach></select>'
                 str += '<h4 style="font-size: 20px; display: inline;">&nbsp;일</h4></td>'
               	str += '<td id="autoBtn_'+pocketCode+'"><button type="button" id="deposit_'+pocketCode+'" onClick ="autoDivSetting(this.id)"'
@@ -356,14 +363,11 @@ $(document).on('click','#checkAllDate',function(){
 <script>
 $(document).ready(function(){
 	$('#parkingSetBtn').click(function(){
-	    
-		
+	
 		var parkingGoal = $('#parkingGoal').val()*1;
 	    //let parkingGoal = document.parkingSet.parkingGoal.value*1;
-	    console.log(parkingGoal)
-	    console.log(typeof parkingGoal)
-	   //let id = '${loginVO.id}';
-	        
+	    //console.log(parkingGoal)
+	    //console.log(typeof parkingGoal)       
 	    
 	   $.ajax({
 	        url : '${pageContext.request.contextPath}/parkingSettings' 
@@ -423,16 +427,16 @@ $(document).ready(function(){
     
     
      <!-- page title start -->
-    <div style="margin-left:670px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_budget1.png" 
-            style="width:110px; height:80px;"/>
+    <div style="margin-left:610px;" class="animate__animated animate__bounce" >
+        <img src="${pageContext.request.contextPath}/resources/myicon/budget.png" 
+            style="width:10.3%; "/>
         <!-- <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 관리 "</span> -->
         
         <span style="font-size:30px; font-weight:bold; margin-top: 30px; display:inline;">&nbsp; 나의 </span>
          <span style="color:#008485; font-weight:bold; font-size:30px; margin-top: 30px; display:inline;">예산 관리</span>
          
     </div>
-    <hr style="width:900px; height:6px; background-color:#066262;">
+    <hr style="width:900px; height:7px; background-color:#066262;">
     <!-- page title end -->
     
 
@@ -444,8 +448,8 @@ $(document).ready(function(){
    <form name="incomeSet"> 
     <div class="border-box" id="incomeSet" 
          style="margin-left:24.9%; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px; height:230px; margin-top:25px;">
-        <h3 style="margin-top:20px;">월 급여 설정</h3>
-        <p>한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p>
+        <h3 style="margin-top:20px;">월 <strong style="color:#008485">급여</strong> 설정</h3>
+        <p style="font-size:17px;">한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p>
         
         
         <div class="row">
@@ -473,8 +477,14 @@ $(document).ready(function(){
             <!-- MyBankVO - income에 update -->
 	        <div class="col-md-4" style="margin-top:12px;">
 	             <input type="text" id="income" name="income"
-	                    style="border:none; border-bottom:2px solid #008485;">
-	                <span style="font-size:26px; font-weight:700; color:#263A4F;">원</span>      
+	                    style="font-size:20px; display:inline; color:#008485; width:150px; text-align:right; margin:0 auto; border:none; outline:none; border-bottom:3px solid #008485;">
+	                <span style="font-size:26px; font-weight:700; color:#263A4F;">원</span> 
+	                
+	                
+	            
+	                
+	                
+	                     
 	        </div>
 	        
 	        <div class="col-md-2" style="margin-top:10px;">
@@ -486,15 +496,14 @@ $(document).ready(function(){
             <div style="margin-top:18px;">
 	           <select name="fixedDate" id="fixedDate"
 	                 style="width:100px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">
-	                 <!-- <option>급여일</option>
-	                 <option>급여일 다음날</option> -->
+	                 <option>급여일</option>
+	                 <option>급여일 다음날</option>
 	                 <c:forEach begin="1" end="31" var="x">
 	                    <option>
 	                        매달&nbsp;<c:out value="${x}" />일
 	                    </option>
 	                 </c:forEach>
-	                 <option>급여일</option>
-                     <option>급여일 다음날</option>
+	                 
 	           </select>
 	           을 예산사용 시작일로 설정
 	       </div>
@@ -516,8 +525,8 @@ $(document).ready(function(){
 	<form name="fixedSet">
 		<div class="border-box" id="fixedSet"
 			style="margin-left:24.9%; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
-			<h3 style="margin-top:20px;">고정 지출 현황 확인</h3>
-			<p>고정적으로 빠져나가는 돈이 얼마인지 한눈에 확인할 수 있습니다</p>
+			<h3 style="margin-top:20px;"><strong style="color:#008485">고정 지출</strong> 현황 확인</h3>
+			<p style="font-size:17px;">고정적으로 빠져나가는 돈이 얼마인지 한눈에 확인할 수 있습니다</p>
 
 
 			<!-- 고정비 SUM -->
@@ -540,15 +549,15 @@ $(document).ready(function(){
 			<div style="margin-left:3px; margin-bottom:25px;">
 			 <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
             style="width:40px; height:40px; display:inline;"/>
-			<p style=" display:inline;">&nbsp;금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요</p><br>
+			<p style="display:inline; font-size:17px;">&nbsp;금액이 정해지지 않은 준고정비용은 평균보다 여유롭게 입력해 주세요</p><br>
 			</div>
 			<table class="table" id="table">
 				<thead>
 					<tr>
-						<th scope="col" width="40%" style="color:gray;">예산명</th>
+						<th scope="col" width="40%" style="color:gray; font-size:17px;">예산명</th>
 						<!-- <th scope="col" width="20%">이체일</th> -->
 						<th scope="col">
-							<div class="col-md-9" style="color:gray;">금액</div>
+							<div class="col-md-9" style="color:gray; font-size:17px;">금액</div>
 							<!-- <div class="col-md-3"></div> -->
 						</th>
 					</tr>
@@ -565,8 +574,7 @@ $(document).ready(function(){
 						<!-- 고정비 명 -->
 						<th scope="col" width="40%">
 							<!-- <input id="expenseInfo" class="form-control" type="text"> -->
-							<input type="text" id="fixedName" name="fixedName"
-							class="form-control">
+							<input type="text" id="fixedName" name="fixedName" class="form-control" style="color:#008485; font-size:20px;">
 						</th>
 
                 <!-- 고정비 이체일 -->
@@ -591,9 +599,8 @@ $(document).ready(function(){
 						<th scope="col">
 							<div class="row">
 								<div class="col-md-9">
-									<input type="text" id="fixedCost" name="fixedCost"
-										placeholder="(원)" class="form-control"
-										style="color: #008485; text-align: center;">
+									<input type="text" id="fixedCost" name="fixedCost" placeholder="(원)" class="form-control"
+										style="color:#008485; text-align:center; font-size:20px;">
 								</div>
 
 								<div class="col-md-2" id="btn-add-div">
@@ -628,12 +635,12 @@ $(document).ready(function(){
      <div class="border-box" id="autoSet" 
           style="margin-left:24.9%; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
     <!-- <div class="border-box"  id="product fixed_transfer_list">     -->
-        <h3 style="margin-top:20px;">자동 예산 분할 설정</h3>
+        <h3 style="margin-top:20px;"><strong style="color:#008485">자동 예산 분할</strong> 설정</h3>
         <!-- <p>더하기빼기 더하기빼기</p> -->
         
        
         <table class="table" id="table" style="margin-left:auto; margin-right:auto; margin-top:40px;">
-            <thead>
+            <thead class="text-center" >
                 <tr>
                     <th colspan="5" style="color:black; text-align:center; font-size:21px;">
                        
@@ -664,9 +671,9 @@ $(document).ready(function(){
                 
                 <tr style="border-bottom: 40px solid #fff;"></tr>                 
                 <tr style="margin-top:20px;">
-                     <th scope="col" width="30%" style="color:gray;">분할 주머니</th>
-                     <th scope="col" width="30%" style="color:gray;">분할 금액</th>
-                     <th scope="col" width="25%" style="color:gray;">분할 날짜</th>
+                     <th scope="col" width="40%" style="color:gray; font-size:18px;">분할 주머니</th>
+                     <th scope="col" width="30%" style="color:gray; font-size:18px;">분할 금액</th>
+                     <th scope="col" width="25%" style="color:gray; font-size:18px;">분할 날짜</th>
                      <th scope="col" width="25%"></th>
                      <!-- <th><input type="button" value="설정"></th> -->
                 </tr>
@@ -674,7 +681,7 @@ $(document).ready(function(){
              </thead>  
              
              
-             <tbody id="pocketAjaxGOGOGOGOGOGO"> 
+             <tbody id="pocketAjaxGOGOGOGOGOGO" class="text-center" > 
                
              <%--   
                <tr>
@@ -707,7 +714,7 @@ $(document).ready(function(){
         
             <!-- 급여일로 설정 checkbox -->       
             <div class="checkTerms service-checkbox" style="float:right;">
-                <input name="checkAllDate" id="checkAllDate" type="checkbox" value="agree">급여일로 설정&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="checkAllDate" id="checkAllDate" type="checkbox" value="agree" onchange="fixDivideDate();"><p style="display:inline; font-size:20px;">&nbsp;&nbsp;급여일로 설정&nbsp;&nbsp;</p>
             </div>       
         
         <br><br>
@@ -723,11 +730,14 @@ $(document).ready(function(){
      </form>
      
      <div style="margin-top:20px; margin-left:24.9%;">
-      <button type="button" class="doDivide col-3 btn btn-white" data-bs-toggle="modal" id="divideDo" data-bs-target="#setFromParking" style="margin-left:0px; width:310px; font-size:16px; font-family:hanaBFont;">
-              <img src="${pageContext.request.contextPath}/resources/img/My_star_yellow.png" 
+      <button type="button" class="doDivide col-3 btn" data-bs-toggle="modal" id="divideDo" data-bs-target="#setFromParking" 
+       style="display:flex; align-items:left; width:310px; font-size:18px; font-family:hanaBFont;">
+             <%--  <img src="${pageContext.request.contextPath}/resources/img/My_star_yellow.png" 
             class="animate__animated animate__swing"
-            style="width:30px; height:30px;"/>
-              &nbsp;내 자산 영혼까지 끌어모으는 방법
+            style="width:30px; height:30px;"/> --%>
+            <img class="animate__animated animate__swing" src="${pageContext.request.contextPath}/resources/myicon/star.gif" 
+                 style="width:15%; margin-top:-10px; text-align:center;"/>
+              &nbsp;새는 돈 꽉 잡는 방법 
       </button>
      </div>
      
@@ -736,22 +746,22 @@ $(document).ready(function(){
      <!-- 모달 -->
       <div class="modal fade" id="setFromParking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="">
           <p style="align:right;">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float:right;"></button>
          </p>   
          
           <div class="modal-body">     
                 
-                 <h4 class="animate__animated animate__fadeInDownBig" style="font-size:20px; text-align:center;">내 자산 영혼까지 끌어모아 저축하기</h4><br>
+                 <h4 class="animate__animated animate__fadeInDownBig" style="font-size:25px; text-align:center; color:#008485;">내 자산 영혼까지 끌어모아 저축하기!</h4><br>
           
                  <h4 style="text-align:center; font-size:19px;">
-	                매달 예산 사용 마지막 날, <br> 모든 주머니에서 남은 잔액을 <br> 파킹 주머니로 자동 이동 설정을 해보세요! <br><br>
-	                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 <br> 모이기 전까지 출금이 불가합니다. <br><br>
+	                매달 예산 사용 마지막 날, <br> 모든 주머니에서 <p style="color:red; font-weight:bold; font-size:20px; display:inline;"> 남은 잔액 </p>을 <br> 파킹 주머니로 자동 이동 설정을 해보세요! <br><br>
+	                 <br>
+	                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 <br> 모이기 전까지 
+	                <p style="color:red; font-weight:bold; font-size:20px; display:inline;"> " 출금이 불가 " </p>합니다. <br><br>
 	             </h4>
-	             <h4 style="text-align:center; font-size:17px; color:#FA6400">
-	                설정하러 가볼까요?
-	             </h4>
+	             
             
           </div>
           
@@ -763,7 +773,7 @@ $(document).ready(function(){
           --> 
           
           <div style="text-align:center; margin-bottom:20px;">
-            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()" data-bs-dismiss="modal" style="font-family:hanaBFont; width:150px; margin-bottom: 25px;">확인</button>         
+            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()" data-bs-dismiss="modal" style="font-size:20px; font-family:hanaBFont; width:180px; height:50px; margin-bottom:25px;">설정하러 가기</button>         
            <!--  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width:150px; background-color:#808080;">취소</button> -->
           </div>
           
@@ -771,24 +781,42 @@ $(document).ready(function(){
         </div>
       </div>
     </div>
+      <%-- <img src="${pageContext.request.contextPath}/resources/myicon/parking8.png" 
+                     style="width:40%; display:inline;"/> --%>
     
-    
-    <br><br>
+ 
     
     
     <!-- 자동 파킹 주머니 설정 모달 확인 클릭 후 div 생성 -->
     <form id="parkingSet">
-    <div class="border-box" id="autoFromParkingSet" 
-    style="margin-left:24.9%; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
-        <h3 style="margin-top:20px; margin-bottom:10px;">파킹 주머니 자동 이동 설정</h3>
+
+   
+   <div class="border-box d-flex justify-content-between" id="autoFromParkingSet" 
+    style="margin-left:24.9%; text-align:center; border:4px solid; border-color:#ff4747; border-radius:20px; width:900px;">
+    
+    <div>
+        <img src="${pageContext.request.contextPath}/resources/myicon/parking9.png" 
+                     style="margin-top:85px; margin-left:30px; width:80%; display:inline;"/>
+    </div>
+    
+    
+    <div>
+       
+        <h3 style="margin-top:20px; margin-bottom:10px;"><strong style="color:#008485">파킹 주머니</strong> 목표 금액 설정</h3>
         <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다</p>
+        <!-- <p>예산 사용 마지막 날, 남은 잔액을</p> -->
+        
+        
+         <%-- <img src="${pageContext.request.contextPath}/resources/myicon/parking8.png" 
+                     style="width:40%; display:inline;"/> --%>
+                     
         
         <br>
         <div class="row" style="margin:0 auto;">
             <!-- <div class="col-4">파킹 주머니 목표금액 : </div> -->
             <div style="font-size:20px; margin:0 auto; display:inline; margin-bottom:10px;">파킹 주머니 목표 금액 : 
             <input type="text" name="parkingGoal" id="parkingGoal" placeholder="(원)" 
-                   style="font-size:20px; display:inline; color:#008485; width:150px; text-align:right; margin:0 auto; border:none; outline:none; border-bottom:3px solid #008485;">
+                   style="font-size:20px; display:inline; color:#008485; width:150px; text-align:right; margin:0 auto; border:none; outline:none; border-bottom:3px solid #ff4747;">
                    <!-- input에 에러나면 class="form-control" 넣기 -->
                    
                   
@@ -804,18 +832,42 @@ $(document).ready(function(){
                 
                  
             <div style="margin-left:3px; margin-bottom:20px; margin-top:20px;">
-	            <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
+	            <img src="${pageContext.request.contextPath}/resources/img/My_!green2.png" 
 	                 style="width:40px; height:40px; display:inline;"/>
 	            <p style=" display:inline; font-size:17px; color:#606060;">&nbsp;목표 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다</p>
             </div>  
          
                 <input type="button" id="parkingSetBtn" value="확인"
-                       style="background-color:#008485; margin-bottom:20px; color:white; border:none; border-radius:10px; width:150px; height:45px;">
+                       style="background-color:#ff4747; font-size:19px; margin-bottom:20px; color:white; border:none; border-radius:10px; width:150px; height:45px;">
             </div>
             
-        </div>  
+        </div> 
+        
+     </div>   
+        
+        
+        
+         
     </div>
+    
+    
+    
+
     </form><br><br>
+    
+    <script>
+    function fixDivideDate(){
+    	let result = document.getElementById('inDate').innerText;
+    	console.log("result:"+result);
+    	//console.log("fixDivideDate"+$('#autoDivDate2').val());
+        //let fixedDate = $('#incomeDate').val()
+        let result1 = result.split(' ');
+        console.log("result1 : "+result1);
+    	$('.autoDivDateForSelect').val(result1[1]).prop("selected", true);
+   
+    }
+    
+    </script>
  
 </body>
 </html>

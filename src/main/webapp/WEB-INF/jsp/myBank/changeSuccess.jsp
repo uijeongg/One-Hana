@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +63,7 @@
                 
                 <div class="d-flex justify-content-between" style="font-size:30px;">
                 <h4>잔액</h4>
-                <h4 style="font-size:25px;">${ MyBank.balance } 원</h4>
+                <h4 style="font-size:25px;"><fmt:formatNumber value="${ MyBank.balance }" pattern="#,###"/> 원</h4>
                 </div>
 				
 				

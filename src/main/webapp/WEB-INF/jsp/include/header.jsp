@@ -67,8 +67,8 @@ ul li {
             <div class="col-lg-3">
                 <div class="d-flex align-items-center justify-content-start main-logo">
                 	<a href="${pageContext.request.contextPath}/">
-                    	<img src="${pageContext.request.contextPath}/resources/myicon/logo2.png"
-                    	     style="width:240px; height:60px;"/> 
+                    	<img src="${pageContext.request.contextPath}/resources/myicon/mylogo1.png"
+                    	     style="width:60%;"/> 
                     	     <%-- <img src="${pageContext.request.contextPath}/resources/img/My_logo.png"
                              style="width:250px; height:80px;"/> --%>
                     	

@@ -18,12 +18,14 @@
 	</header>   
 	
 	
-<div style="margin-left:auto; margin-right:auto; text-align:center; margin-top:40px;"> 
-    <img src="${pageContext.request.contextPath}/resources/img/My_hana-logo.png" style="width:70px; height:60px;"/> 
-    마이원하나
+<div style="margin-left:auto; margin-right:auto; text-align:center; margin-top:40px; margin-bottom:20px;"> 
+    <img src="${pageContext.request.contextPath}/resources/myicon/loginlogo.png" style="width:20%;"/>
+    
+
 </div>	
 	
-<div style="margin-left:auto; margin-right:auto; border:3px solid; border-color:#008485; border-radius:15px; width:500px; height:400px; text-align:center; margin-top:10px;">
+<div style="margin-left:auto; margin-right:auto; border:4px solid; border-color:#008485; border-radius:15px; 
+     width:500px; height:400px; text-align:center; margin-top:10px;">
 	
 
 	

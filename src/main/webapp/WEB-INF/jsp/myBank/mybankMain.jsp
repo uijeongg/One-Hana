@@ -247,37 +247,62 @@ function dividePocket() {
 	<%-- Modal 안에서 진짜 잔액이동 실행하는 버튼 --%>
 	<div class="modal fade" id="divideGo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액이동</h5>
+	    <div class="modal-content" style="border:5px solid; border-radius:10px; border-color:#008485;">
+	    
+	      <!-- <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel" style="margin-left:190px;">주머니 잔액이동</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
+	      </div> -->
+	      
+	      
+	      
+	      <p style="align:right;">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"></button>
+          </p>  
+	      
+	      
 	      <div class="modal-body">
+	      
+	      <h4 style="font-size:25px; text-align:center; margin-bottom:20px;">
+	           주머니&nbsp;<strong style="color:#008485;">잔액 이동</strong></h4><br>
+               
 	        
-	           <table style="text-align:center;">
+	           <table style="margin-left:auto; margin-right:auto; text-align:center; font-size:20px;">
 	               <tr>
 	                   <%-- 보내는 통장 --%>
-	                   <th ><p id="fromPocket"></p></th>
+	                   <th><p id="fromPocket"></p></th>
 	                  <%--  <input type="hidden" id="divFrom" name="divFrom" value="${ pocket.pocketCode }" /> --%>
 	                   
 	                   <td>
-	                       <select id="toPocket" name="toPocket" class="form-select mb-3 form-control" aria-label="Default select example">
-	                           <option selected></option>
+	                       <select id="toPocket" name="toPocket" class="form-select mb-3 form-control" aria-label="Default select example" style="background-color:white; font-size:17px;">
+	                           <option selected style="font-size:17px; font-family:hanaBFont;"></option>
                                <!-- -->
 	                       </select>
 	                   </td>
 	               </tr>
 	               <tr>
 	                   <th>이동금액</th>
-	                       <td><input value="" class="form-control" placeholder="보낼 금액(원)" type="text" id="divAmount" name="divAmount"></td>	               
+	                       <td><input value="" class="form-control" placeholder="보낼 금액 (원)" type="text" id="divAmount" name="divAmount" style="font-size:19px; font-family:hanaBFont;"></td>	               
 	               </tr>  
 	           </table>
 	        
 	      </div>
-	      <div class="modal-footer">
-  	        <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="dividePocket()" data-bs-dismiss="modal">잔액이동</button>
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	      </div>
+	      
+	      
+	      <div style="text-align:center; margin-top:30px; margin-bottom:40px;">
+  	        <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="dividePocket()" data-bs-dismiss="modal"
+  	                style="background-color:#008485; font-size:20px; width:200px; height:40px; font-family:hanaBFont; border-radius: 5px; color:white; border:none;">
+  	                잔액이동</button>
+	        <!-- <button type="button" class="btn" data-bs-dismiss="modal" style="background-color:gray; font-family:hanaBFont;">취소</button> -->
+	         <button type="button" class="btn" data-bs-dismiss="modal"
+                        style="background-color:#808080; font-size:20px; width:100px; height:40px; font-family:hanaBFont; border-radius: 5px; color:white; border:none;">취소</button> 
+	        
+	        
+	    
+	        
+	        
+          </div>
+
 	    </div>
 	  </div>
 	</div>

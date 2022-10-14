@@ -6,7 +6,7 @@
 
 
 <div class="border-box" id="autoFromParkingSet" 
-    style="margin-left:410px; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
+    style="margin-left:360px; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
         <h3 style="margin-top:20px; margin-bottom:10px;">파킹 주머니 자동 이동 설정</h3>
         <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다</p>
         

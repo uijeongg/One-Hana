@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,7 +115,10 @@ border-color:#008485 !important;
 			
 			<h5 style="margin-left:40px; padding-top:20px; font-size:26px; margin-bottom:15px;">${ accountOne.accountName }</h5>
 			<h5 style="margin-left:40px; font-size:24px;">${ accountOne.accountNo }</h5><br>
-			<h5 style="text-align:right; margin-bottom:40px; padding-right:60px; font-size:23px;">잔액 <strong style="margin-bottom:40px; font-size:30px; color:#008485;">${ accountOne.balance }&nbsp;</strong>원</h5>
+			<h5 style="text-align:right; margin-bottom:40px; padding-right:60px; font-size:23px;">잔액 
+			    <strong style="margin-bottom:40px; font-size:30px; color:#008485;">
+			    <fmt:formatNumber value="${ accountOne.balance }" pattern="#,###"/>&nbsp;</strong>
+			원</h5>
 			<%-- <h5 style="text-align:right;"> ${ accountOne.balance }원&nbsp;&nbsp;&nbsp;&nbsp;</h5> --%>
 				  
 		 </div>
@@ -146,9 +150,7 @@ border-color:#008485 !important;
                     </td>
 	      		</tr>
 	      		
-	      		
-	      		
-	      		
+	      	
 	      		
 	      		<tr>
                     <!-- <td><b> 통장 상품 설명서 </b></td> -->
@@ -165,8 +167,6 @@ border-color:#008485 !important;
                 </tr>
 	      		
 	      		
-	      		
-	      		
 	      		<tr>
 	      			<td><button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm2"
 	      			            style="width:600px; height:40px; font-size:20px; font-family:hanaBFont; color:white;">금리 안내 </button> 
@@ -181,12 +181,6 @@ border-color:#008485 !important;
 	      		</tr>
 			</table>
 	</div>
-	
-	
-	
-	
-	
-	
 	
 	
 	
