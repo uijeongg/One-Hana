@@ -16,7 +16,8 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
  
- 
+
+
 <script>
 
 //상품 안내 확인 후 자동 check
@@ -70,7 +71,19 @@ $(document).on('click','#checkAll',function(){
 
 
 </script>
+<style type="text/css">
+.btn-primary:hover {
+background-color: #e90061 !important;
+color: white !important;
+border-color:#e90061 !important;
+}
 
+.btn-primary:focus {
+background-color: #008485 !important;
+color: white !important;
+border-color:#008485 !important;
+}
+</style>
 
 </head>
 <body>
@@ -97,7 +110,7 @@ $(document).on('click','#checkAll',function(){
     
     
     
-		<div style="height:180px; background-color:#FFFFBF; width:900px; margin-left:353px; border:4px solid; border-color:#008485; border-radius:20px; ">
+		<div style="height:180px; background-color:#e6f3f3; width:900px; margin-left:353px; border:4px solid; border-color:#008485; border-radius:20px; ">
 			
 			<h5 style="margin-left:40px; padding-top:20px; font-size:26px; margin-bottom:15px;">${ accountOne.accountName }</h5>
 			<h5 style="margin-left:40px; font-size:24px;">${ accountOne.accountNo }</h5><br>
@@ -123,7 +136,7 @@ $(document).on('click','#checkAll',function(){
 	      			<!-- <td><b> 통장 상품 설명서 </b></td> -->
 	      			<td>
 	      			    <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm3"
-	      			            style="width:600px; height:40px; font-size:20px; font-family:hanaBFont;">고객 권리 안내문 </button> 
+	      			            style="width:600px; height:40px; font-size:20px; font-family:hanaBFont; color:white;">고객 권리 안내문 </button> 
                     </td>
                     <td>
 	                    <div class="checkTerms service-checkbox">
@@ -141,7 +154,7 @@ $(document).on('click','#checkAll',function(){
                     <!-- <td><b> 통장 상품 설명서 </b></td> -->
                     <td>
                         <button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm1"
-                                style="width:600px; height:40px; font-size:20px; font-family:hanaBFont;">통장 상품 설명서 </button> 
+                                style="width:600px; height:40px; font-size:20px; font-family:hanaBFont; color:white;">통장 상품 설명서 </button> 
                     </td>
                     <td>
                         <div class="checkTerms service-checkbox">
@@ -156,7 +169,7 @@ $(document).on('click','#checkAll',function(){
 	      		
 	      		<tr>
 	      			<td><button type="button" class="doDivide col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirm2"
-	      			            style="width:600px; height:40px; font-size:20px; font-family:hanaBFont;">금리 안내 </button> 
+	      			            style="width:600px; height:40px; font-size:20px; font-family:hanaBFont; color:white;">금리 안내 </button> 
                     </td>
                     <td>
                         <div class="checkTerms service-checkbox">
@@ -251,13 +264,13 @@ $(document).on('click','#checkAll',function(){
           
           <div class="modal-body">
                <h4 style="font-size:27px; text-align:center; margin-bottom:20px;"><strong style="color:#008485;">마이원하나</strong> 통장 금리</h4><br>
-                   <table style="border:3px solid #FFFF99; width:80%; height:120px; margin-top:15px;  margin:auto; text-align:center;">
-                         <tr style="background: #FFFF99">
+                   <table style="border:3px solid #cce6e7; width:80%; height:120px; margin-top:15px;  margin:auto; text-align:center;">
+                         <tr style="background: #cce6e7;">
                              <td width="50%" style="border-right:3px solid white;"><b style="font-size:20px;">분류</b></td>
                              <td><b style="font-size:20px;">금리(연율, 세전)</b></td>
                          </tr>
                          <tr>
-                             <td style="border-right:2px solid #FFFF99; font-size:20px;">예금</td>
+                             <td style="border-right:2px solid #cce6e7; font-size:20px;">예금</td>
                              <td style="font-size:20px;">0.6%</td>
                          </tr>
                                             

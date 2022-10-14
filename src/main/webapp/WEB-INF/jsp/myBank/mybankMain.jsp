@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,19 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
+<style type="text/css">
+.doDivide:hover {
+background:none !important;
+color:black !important;
+border:none !important;
+} 
+
+.doDivide:focus {
+background:none !important;
+color:black !important;
+border:none !important;
+}   
+</style>
 
 <script type="text/javascript">
 	$(function(){
@@ -127,29 +141,39 @@ function dividePocket() {
 	<jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
 
 	<h3 style="text-align:left; margin-left:26px; display:inline-block; margin-bottom: 0px; margin-top: 30px;">나의</h3>
-    <h3 style="text-align:left; margin-left:7px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;"> MO HANA</h3>
+    <h3 style="text-align:left; margin-left:7px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;"> MOHANA</h3>
     <hr style="width:779px; height:7px; background-color:#066262; position:relative; left:23px;">
 
 	
 	<div id="pocket_div">
 	
-		<div style="margin-left:365px; border:1px solid black; width:785px; border:2px solid; border-radius:25px; position:relative;">	
+		<div style="margin-left:365px; border:none; width:785px; background-color:#ececec; height:160px; border-radius:25px; position:relative;">	
 		
-			<h3 style="margin-left:20px; margin-top:10px;">MyOne HANA 통장</h3>	<br>
+			<h3 style="margin-left:30px; padding-top:20px;">
+			    <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 
+                <strong style="color:#008485;"> HANA </strong>통장
+			
+			</h3>	
 	        <%-- <h5>통장이름 ${ MyAccount.accountName }</h5><br> --%>
-			<h5 style="margin-left:20px;">${ MyAccount.accountNo }</h5><br>
-			<h5 style="text-align:right; margin-right:30px;">잔액 &nbsp; <strong style="font-size:25px;">${ MyAccount.balance }&nbsp;</strong>원</h5><br>
+			<h4 style="margin-left:30px; font-size:26px;">${ MyAccount.accountNo }</h4>
+			<h4 style="margin-top:13px; text-align:right; margin-right:40px;">잔액 &nbsp; <strong style="font-size:30px; color:#008485;"><fmt:formatNumber value="${ MyAccount.balance }" pattern="#,###"/></strong>  원</h4><br>
+		
+		
+		
+		  
+		<!-- background-color: #d9d9d9; border:4px solid; border-color:#a0a0a0; -->
+		
+		
 		
 			<!-- 조회, 이체 버튼 만들기 -> 여기서 jsp 넘어가기 거래내역 나오는! -->
 		</div>
 	   
 	   
 	   <br>
-	  <%--  <h3 style="margin-left:320px;">내 주머니 현황</h3><br> ui 홍씨처럼 가로로 만들기 --%>
-		<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 30px;">내 주머니 현황</h3>
+		<h3 style="text-align:left; margin-left:20px; color:#008485; display:inline-block; margin-bottom: 0px; margin-top: 20px;">내 주머니 현황</h3>
 		<hr style="width:779px; height:7px; background-color:#066262; position:relative; left:20px;">
 		<div id = "pocketList" style="margin-left:370px;">
-			
+			<!-- 주머니 붙는 ajax -->
 		</div>
 	</div>
 	
@@ -168,28 +192,30 @@ function dividePocket() {
 		
 		
 		<%-- 주머니 추가 버튼 --%>
-		<div style="margin-left:430px;">
+		<div style="margin-left:360px;">
 			<input type="button" id="pocket" value="주머니 추가" onclick="displayPocket1()"
 				   class="btn" 
-			       style="font-family:hanaBFont; background-color:#FA6400; font-size:18px; width:788px; height:53px; border-radius:10px; color:white; border:none;">
+			       style="font-family:hanaBFont; background-color:#c6c6c6; font-size:20px; width:788px; height:53px; border-radius:10px; color:white; border:none;">
 			
 			
-			<div id ="addPocket" style="text-align:center; width:788px; display:none; border:solid 5px; border-radius:20px; border-color:#FA6400;">
-				<div class="row" style="text-align:center; display:inline; margin-top:20px;">
+			<div id ="addPocket" style="width:788px; display:none; border:solid 5px; border-radius:20px; border-color:#c6c6c6;">
+				<div class="row" style="padding-left:80px; display:inline; margin-top:20px;">
 					<!-- <div class="col-4"> 추가 주머니 이름 : </div> -->
-					<div style="display:inline; font-size:18px; margin-top:30px;"> 추가 주머니 이름 : </div>
-					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" style="font-size:20px; width:300px; margin-top:30px; border:none; border-bottom:2px solid #008485;">
+					<div style="display:inline; text-align:left; font-size:18px; margin-top:30px;"> 추가 주머니 이름 : </div>
+					<input type="text" name="pocketName" id="pocketName" placeholder="주머니 이름을 입력하세요" style="font-size:20px; width:300px; margin-top:30px; border:none; outline:none; border-bottom:2px solid #008485;">
 				</div>
 				<br>
-				<div class="row" style="text-align:center; display:inline; margin-top:5px;">
-					<div style="display:inline; font-size:18px;"> 주머니 용도 : </div>
-					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" style="border:none; border-bottom:2px solid #008485; font-size:20px; width:500px;  margin-top:10px;">
+				<div class="row" style="display:inline; padding-left:80px; margin-top:5px;">
+					<div style="display:inline; text-align:left; font-size:18px;"> 주머니 용도 : </div>
+					<input type="text" name="pocketPurpose" id="pocketPurpose" placeholder="최대 30자까지 입력 가능합니다" style="border:none; border-bottom:2px solid #008485; outline:none; font-size:20px; width:500px;  margin-top:10px;">
 				</div>
 				<br>
 				
+				<div style="text-align:center;">
 				<input type="button" value="추가하기" id="pocketAddBtn" 
-				       style="background-color:#FA6400; color:white; border:none; border-radius:10px; margin-top:20px; margin-bottom:20px;
-				              width:130px; height:50px;">
+				       style="font-size:20px; background-color:#c6c6c6; color:white; border:none; border-radius:10px; margin-top:20px; margin-bottom:20px;
+				              width:200px; height:50px;">
+			    </div>
 			</div>			
 		</div><br>
 	

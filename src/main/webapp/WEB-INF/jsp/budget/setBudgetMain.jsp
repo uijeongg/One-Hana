@@ -297,7 +297,7 @@ $(document).ready(function(){
                 let name = this.pocketName            
                 let pocketCode = this.pocketCode 
                 let str ='';
-                str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 ➜ '+name+' 주머니</td>'
+                str += '<tr><td style="color: #008485; font-weight:bold;">기본 주머니 <p style="color:black">➜</p> '+name+' 주머니</td>'
                 str += '<td id="autoAmount_'+pocketCode+'"><input type="text" id="autoDivAmount'+pocketCode+'" name="autoDivAmount'+pocketCode+'" placeholder="(원)" '
                 str += 'class="form-control" style="color: #008485; text-align:center; width:200px;"></td>'
                 
@@ -418,7 +418,7 @@ $(document).ready(function(){
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header>
-    <jsp:include page="/WEB-INF/jsp/include/sidebar.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/jsp/include/sidebar2.jsp"></jsp:include>
     
     
     
@@ -428,11 +428,11 @@ $(document).ready(function(){
             style="width:110px; height:80px;"/>
         <!-- <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 관리 "</span> -->
         
-        <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
-         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">예산 관리</span>
-         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
+        <span style="font-size:30px; font-weight:bold; margin-top: 30px; display:inline;">&nbsp; 나의 </span>
+         <span style="color:#008485; font-weight:bold; font-size:30px; margin-top: 30px; display:inline;">예산 관리</span>
+         
     </div>
-    <hr style="width:900px; height: 5px; background-color:#066262;">
+    <hr style="width:900px; height:6px; background-color:#066262;">
     <!-- page title end -->
     
 
@@ -443,7 +443,7 @@ $(document).ready(function(){
    <%-- <form action="${pageContext.request.contextPath}/incomeSettings" method="post">   --%> 
    <form name="incomeSet"> 
     <div class="border-box" id="incomeSet" 
-         style="margin-left:410px; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px; height:230px; margin-top:25px;">
+         style="margin-left:24.9%; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px; height:230px; margin-top:25px;">
         <h3 style="margin-top:20px;">월 급여 설정</h3>
         <p>한달 급여를 입력하면 정확한 예산 관리가 가능합니다</p>
         
@@ -515,7 +515,7 @@ $(document).ready(function(){
     <%-- <form action="${pageContext.request.contextPath}/fixedSettings" method="post">  --%>
 	<form name="fixedSet">
 		<div class="border-box" id="fixedSet"
-			style="margin-left:410px; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
+			style="margin-left:24.9%; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
 			<h3 style="margin-top:20px;">고정 지출 현황 확인</h3>
 			<p>고정적으로 빠져나가는 돈이 얼마인지 한눈에 확인할 수 있습니다</p>
 
@@ -626,7 +626,7 @@ $(document).ready(function(){
     <!-- 자동 예산 분할 설정 -->
     <form name="autoSet">
      <div class="border-box" id="autoSet" 
-          style="margin-left:410px; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
+          style="margin-left:24.9%; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
     <!-- <div class="border-box"  id="product fixed_transfer_list">     -->
         <h3 style="margin-top:20px;">자동 예산 분할 설정</h3>
         <!-- <p>더하기빼기 더하기빼기</p> -->
@@ -722,7 +722,7 @@ $(document).ready(function(){
      </div>
      </form>
      
-     <div style="margin-top:20px; margin-left:410px;">
+     <div style="margin-top:20px; margin-left:24.9%;">
       <button type="button" class="doDivide col-3 btn btn-white" data-bs-toggle="modal" id="divideDo" data-bs-target="#setFromParking" style="margin-left:0px; width:310px; font-size:16px; font-family:hanaBFont;">
               <img src="${pageContext.request.contextPath}/resources/img/My_star_yellow.png" 
             class="animate__animated animate__swing"
@@ -745,7 +745,7 @@ $(document).ready(function(){
                 
                  <h4 class="animate__animated animate__fadeInDownBig" style="font-size:20px; text-align:center;">내 자산 영혼까지 끌어모아 저축하기</h4><br>
           
-                 <h4 style="text-align:center; font-size:17px;">
+                 <h4 style="text-align:center; font-size:19px;">
 	                매달 예산 사용 마지막 날, <br> 모든 주머니에서 남은 잔액을 <br> 파킹 주머니로 자동 이동 설정을 해보세요! <br><br>
 	                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 <br> 모이기 전까지 출금이 불가합니다. <br><br>
 	             </h4>
@@ -779,16 +779,21 @@ $(document).ready(function(){
     <!-- 자동 파킹 주머니 설정 모달 확인 클릭 후 div 생성 -->
     <form id="parkingSet">
     <div class="border-box" id="autoFromParkingSet" 
-    style="margin-left:410px; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
+    style="margin-left:24.9%; text-align:center;  border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
         <h3 style="margin-top:20px; margin-bottom:10px;">파킹 주머니 자동 이동 설정</h3>
         <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다</p>
         
         <br>
         <div class="row" style="margin:0 auto;">
             <!-- <div class="col-4">파킹 주머니 목표금액 : </div> -->
-            <div style="font-size:20px; margin:0 auto; display:inline;">파킹 주머니 목표 금액 : 
+            <div style="font-size:20px; margin:0 auto; display:inline; margin-bottom:10px;">파킹 주머니 목표 금액 : 
             <input type="text" name="parkingGoal" id="parkingGoal" placeholder="(원)" 
-                   class="form-control" style="font-size:20px; display:inline; color:#008485; width:200px; text-align:center; margin:0 auto;">
+                   style="font-size:20px; display:inline; color:#008485; width:150px; text-align:right; margin:0 auto; border:none; outline:none; border-bottom:3px solid #008485;">
+                   <!-- input에 에러나면 class="form-control" 넣기 -->
+                   
+                  
+                   
+                   
             </div> 
             <div style="font-size:20px;">
                 파킹 주머니 이동 날짜 : 다음달 급여일 오전 ("매달 <p style="display:inline; color:#008485;">${incomeMap.incomeDate}</p>일")
@@ -801,11 +806,11 @@ $(document).ready(function(){
             <div style="margin-left:3px; margin-bottom:20px; margin-top:20px;">
 	            <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
 	                 style="width:40px; height:40px; display:inline;"/>
-	            <p style=" display:inline;">&nbsp;목표 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다</p>
+	            <p style=" display:inline; font-size:17px; color:#606060;">&nbsp;목표 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다</p>
             </div>  
          
                 <input type="button" id="parkingSetBtn" value="확인"
-                       style="background-color:#008485; margin-bottom:20px; color:white; border:none; border-radius:10px; width:120px; height:45px;">
+                       style="background-color:#008485; margin-bottom:20px; color:white; border:none; border-radius:10px; width:150px; height:45px;">
             </div>
             
         </div>  

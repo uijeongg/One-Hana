@@ -73,7 +73,7 @@
             </button> -->
         </div>
     </div>
-    <!-- Carousel End -->
+
 
 
   
@@ -152,10 +152,6 @@
   
 
 
-
-     <footer>
-        <jsp:include page="/WEB-INF/jsp/include/footer.jsp"/>
-    </footer>
 </body>
 
 </html>
