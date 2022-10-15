@@ -39,16 +39,16 @@
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header>
-    <jsp:include page="/WEB-INF/jsp/include/sidebar3.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/jsp/include/sidebar2.jsp"></jsp:include>
 
 
     <!-- page title start -->
-    <div style="margin-left:670px;" class="animate__animated animate__bounce" >
+    <div style="margin-left:670px; margin-top:9px;" class="animate__animated animate__bounce" >
         <img src="${pageContext.request.contextPath}/resources/myicon/park.PNG" 
-            style="width:70px; height:60px;"/>
-        <span style="font-size:30px; margin-top:80px;">&nbsp; 나의 </span> 
-        <span style="color:#008485; font-size:30px; margin-top:80px;"> 파킹 </span>
-        <span style="font-size:30px; margin-top:80px;">현황 </span>
+            style="width:80px; height:70px;"/>
+        <span style="font-size:30px; font-weight:bold; margin-top:80px;">&nbsp; 나의 </span> 
+        <span style="color:#008485; font-weight:bold; font-size:30px; margin-top:80px;"> 파킹 </span>
+        <!-- <span style="font-size:30px; font-weight:bold; margin-top:80px;">현황 </span> -->
     </div>
     <hr style="width:920px; height:7px; background-color:#066262;">
     <!-- page title end -->
@@ -56,33 +56,29 @@
     
     
     <!-- 프로그레스 로딩바 + 파킹 주머니 현황 텍스트 -->
-    <div id="parkingMap" style="margin-right:21%;"></div>
-    
-    <!-- 100% 다 모였을 때 뜨는 적금추천문구 자리 -->
-    <div id="goSavings"></div>
-   
-    <!-- 이번달 예산 구성 파이차트, 금액 표 자리 -->
-    
+    <div id="parkingMap" style="margin-left:30%; margin-right:15%;"></div>
+       
     <!-- 정의정 님의 9월 파킹 내역 -->
     <!-- 정의정 님의 9월 파킹 내역 -->
-    <div id="parkingDetail" style="border:1px solid; display:none; margin-top:30px; width:60%; margin-left:27%;">
+    <div id="parkingDetail" style="border:2px solid; border-radius:10px; border-color:#e0e0e0; display:none; margin-top:30px; margin-left:25%; width:900px; height:400px; margin-bottom:30px;">
        <!--  <span style="font-size:23px; margin-left:350px;">파킹 현황</span> -->
 
-        <div id="parkingAmount">
-            <!--   이번달의 총 파킹 금액은    parkingList[0].autoDivAmount   원 입니다 -->
-        </div>
+
+    <span style="font-size:23px; margin-left:350px;">월말 주머니 잔여액 자동 파킹</span>
+    <div id="chart"></div>
+
+
+       <!--  <div id="parkingAmount">
+              이번달의 총 파킹 금액은    parkingList[0].autoDivAmount   원 입니다
+        </div> -->
   
         <!-- 주머니 추가 버튼 누르면 뜨는 파킹디테일 div -->
         <div></div> 
 
     </div>   
     
-    
-    
-    
-    
-    
-  
+       <!-- 100% 다 모였을 때 뜨는 적금추천문구 자리 -->
+    <div id="goSavings"></div>
    
     
 
@@ -223,17 +219,118 @@
 </script>   
 
 
-
-    
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 <script>
-    $(document).ready(function(){
+$(document).ready(function(){
+	  
+    var accountNo = '<c:out value="${accountNo}"/>' ;
+    //let id ='${loginVO.id}';
+     
+    let parkingSum = [];
+    let parkingMonth = [];
+    
+    fetch('/getParkingArea?accountNo='+accountNo)
+    .then(res=>res.json())
+    .then(res=>{
+         let parkingAreaList = res;
+         console.log(parkingAreaList);
+         
+         for(i=0; i<parkingAreaList.length; i++) {
+        	 parkingSum.push(parkingAreaList[i].PARKINGMONTHSUM*1);
+        	 parkingMonth.push(parkingAreaList[i].PARKINGCODE);
+         }
+         
+         let object = {};
+         object.parkingSum = parkingSum;
+         object.parkingMonth = parkingMonth;
+         
+         return new Promise((resolve,reject)=>{
+             resolve(object);
+       })
+   })
+   .then(res=>{
+              let object = res;
+              
+              var options = {
+                      series: [{
+                        name: "파킹 금액",
+                        data: parkingSum
+                    }],
+                      chart: {
+                      height: 350,
+                      type: 'line',
+                      zoom: {
+                        enabled: false
+                      }
+                    },
+                    dataLabels: {
+                      enabled: false
+                    },
+                    stroke: {
+                      curve: 'straight'
+                    },
+                    title: {
+                      text: '',
+                      align: 'left'
+                    },
+                    grid: {
+                      row: {
+                        colors: ['#b3dada', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                      },
+                    },
+                    xaxis: {
+                      categories: /* parkingMonth */['4월','5월','6월','7월','8월','9월'],
+                    }
+                    };
+
+                    var chart = new ApexCharts(document.querySelector("#chart"), options);
+                    chart.render();
+                    
+             //let str ='';
+             //$('#parkingArea').append(str);    
+            })
+        
+        
+   })
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+   /*  $(document).ready(function(){
   
          var accountNo = '<c:out value="${accountNo}"/>' ;
-         //let id ='${loginVO.id}';
-         //console.log("id  겟파킹데이터!!: " + id );
-         
-          
+
          fetch('/getParkingData?accountNo='+accountNo)
          .then(res=>res.json())
          .then(res=>{
@@ -241,9 +338,7 @@
               
               let secondList = parkingHistoryMap.parkingList;
               let thirdList = parkingHistoryMap.parkingList2;
-              
-             //console.log(secondList[0].parkingAmount);
-                 
+
              let str ='';
            
              str += '이번달엔 총 ' + (secondList[0].parkingAmount*1 + thirdList[0].parkingAmount*1) + '원을 파킹했어요<br><br>';
@@ -253,17 +348,15 @@
              
              
              
-          /*    str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[2].FROMPOCKET+' </p> 예산 &nbsp;' + parkingList[2].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[2].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
-	             str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
-	             str += '<div class="progress-bar bg-info progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1)/(parkingList[2].AUTODIVAMOUNT*1)  + '%">';
-	             str += + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1) + ' 원 사용  </div></div>'
-             
-	       */      
-             
+            //str += '<div style="margin-left:30px;"><p style="color:#008485; display:inline; margin-left:270px;">'+ parkingList[2].FROMPOCKET+' </p> 예산 &nbsp;' + parkingList[2].AUTODIVAMOUNT*1 + '원 중 <p style="color:#008485; display:inline;">"'+ parkingList[2].PARKINGAMOUNT*1 +'원"</p> 파킹 </div>';
+	        //str += '<div class="progress" style="width:70%; height:3rem; margin-left:140px;">';
+	        //str += '<div class="progress-bar bg-info progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:' + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1)/(parkingList[2].AUTODIVAMOUNT*1)  + '%">';
+	        //str += + (parkingList[2].AUTODIVAMOUNT*1 - parkingList[2].PARKINGAMOUNT*1) + ' 원 사용  </div></div>'
+    
              $('#parkingAmount').append(str);
         })
        
-  })
+  }) */
 </script>
     
 

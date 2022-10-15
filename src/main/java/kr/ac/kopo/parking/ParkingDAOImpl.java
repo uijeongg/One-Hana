@@ -61,4 +61,11 @@ public class ParkingDAOImpl implements ParkingDAO {
 		sqlSessionTemplate.insert("parking.ParkingDAO.insertAutoParkingSet", parkingMap);
 	
 	}
+	
+	
+	@Override
+	public List<Map<String,Object>> getParkingArea(String accountNo) {
+		List<Map<String,Object>> parkingAreaList = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingArea", accountNo);
+		return parkingAreaList;
+	}
 }

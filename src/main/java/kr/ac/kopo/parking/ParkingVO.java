@@ -14,6 +14,8 @@ public class ParkingVO {
 	private String fromPocket;
 	private int    parkingAmount;
 	private String parkingCode;
+	
+	
 	public String getAccountNo() {
 		return accountNo;
 	}

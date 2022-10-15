@@ -70,4 +70,25 @@ public class ParkingController {
 		
 		return parkingHistoryMap;
 	}
+	
+	
+	@ResponseBody
+	@GetMapping("/getParkingArea")
+	public List<Map<String,Object>> getParkingArea(@RequestParam("accountNo") String accountNo) {
+		
+		List<Map<String,Object>> parkingAreaList = parkingService.getParkingArea(accountNo);
+		
+		System.out.println("parkingAreaList : " + parkingAreaList);
+		
+		/*
+		 * Map<String, Object> parkingAreaMap = new HashMap<>();
+		 * parkingAreaMap.put("PARKINGMONTHSUM", PARKINGMONTHSUM);
+		 * parkingAreaMap.put("PARKINGCODE", PARKINGCODE);
+		 * System.out.println("parkingAreaMap : " + parkingAreaMap);
+		 */
+		return parkingAreaList;
+	}
+
+
+
 }

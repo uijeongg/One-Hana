@@ -43,70 +43,21 @@
 	<header>
 		<jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
 	</header>
-
-	<!-- side bar start -->
-	<div class="container-fluid sidepanel-inner d-flex flex-column"
-		style="width: 20%; float: left; margin-top: 37px; margin-left: 10px; margin-right: 10px;">
-		<div style="padding-left: 30px;">
-			<h3 style="margin-bottom: 10px;">
-				<strong style="color: #008485;"> M</strong>y <strong
-					style="color: #008485;"> O</strong>ne <strong
-					style="color: #008485;"> HANA </strong>
-			</h3>
-			<hr style="width: 200px; height: 5px; background-color: #066262;">
-			<div>
-				<a href="${pageContext.request.contextPath}/mybankMain"
-					style="color: #808080;">나의 주머니</a>
-			</div>
-			<hr style="width: 200px;">
-			<div>
-				<a href="${pageContext.request.contextPath}/setBudgetMain"
-					style="color: #808080;">나의 예산 관리</a>
-			</div>
-			<hr style="width: 200px;">
-			<div>
-				<a href="${pageContext.request.contextPath}/checkBudgetMain"
-					style="color: #808080;">나의 예산 확인</a>
-			</div>
-			<hr style="width: 200px;">
-			<div>
-				<a href="${pageContext.request.contextPath }/myParkingMain"
-					style="color: #808080;">나의 파킹 관리</a>
-			</div>
-			<hr style="width: 200px;">
-			<div>
-				<a href="${pageContext.request.contextPath}/consumeMain"
-					style="color: #808080;">나의 소비 달력</a>
-			</div>
-			<hr style="width: 200px;">
-			<div>
-				<a href="${pageContext.request.contextPath }/consumePattern"
-					style="color: #808080;">나의 소비 패턴</a>
-			</div>
-			<hr style="width: 200px;">
-			<div>
-				<a href="${pageContext.request.contextPath }/"
-					style="color: #808080;">나의 투자 성향</a>
-			</div>
-			<hr style="width: 200px;">
-		</div>
-	</div>
-	<!-- side bar end -->
-
+   <jsp:include page="/WEB-INF/jsp/include/sidebar2.jsp"></jsp:include>
+    
 
  
    <!-- page title start -->
-   <div style="margin-left:670px; margin-top:11px;" class="animate__animated animate__bounce" >
+   <div style="margin-left:610px; margin-top:11px;" class="animate__animated animate__bounce" >
         <img src="${pageContext.request.contextPath}/resources/img/My_sobi.png" 
-            style="width:130px; height:70px;"/>
+            style="width:17%; height:68px;"/>
     <!--     <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 예산 확인 "</span> -->
         
-        <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
-         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">예산 확인</span>
-         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
+        <span style="font-size:30px; margin-top:30px; font-weight:bold; display:inline;">&nbsp; 나의 </span>
+         <span style="color:#008485; font-size:30px; font-weight:bold; margin-top: 30px; display:inline;">예산 확인</span>
         
    </div>
-   <hr style="width: 1060px; height: 5px; background-color:#066262; margin-bottom:30px;">
+     <hr style="width:920px; height:7px; background-color:#066262;">
    <!-- page title end -->
    
    
@@ -143,51 +94,107 @@
    
    
    
-   
 
-	<div class="d-flex flex-column" style="width: 60%;">
-		<div class="d-flex">
-			<div style="width: 70%">
-				<span>고정비 예산 사용 추이</span>
-				<!-- <div id="chart1" style="margin-bottom: 40px;"></div> -->
+
+<div class="d-flex flex-column" style="width: 60%;">
+        
+        
+     <!-- 고정비 예산 사용 stack bar --> 
+     <div style="width:920px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
+        
+        <h4 style="text-align:center; margin-bottom:10px;">고정비 예산 사용 추이</h4>
+        <p style="text-align:center; margin-bottom:40px; font-size:18px; color:#5a5a5a;">현재까지의 고정비 지출 추이를 보여드립니다</p>
+        
+        <div class="d-flex justify-content-between">
+        
+            <!-- 그래프 -->
+		    <div style="width:65%">
 				 <figure class="highcharts-figure">   
                     <div id="container1"></div>
                  </figure>
 			</div>
-			<div style="width:30%; background-color:;" class="d-flex justify-content-center align-items-center">
-				<div id="container1comment" style="background-color:#E90061; height:300px; width:250px">
-				
-					<!-- <h2>코멘트</h2>
-					<h5>6개월간 고정비 예산은 1,200,000원이고, 평균 사용 금액은 xx입니다. <br> 고정비 예산을 약 xx% 줄여도 충분합니다! </h5> -->
-				</div>
+			
+			<!-- 코멘트 start -->
+			<div  class="main_image" style="width:40%;">
+			<img src="${pageContext.request.contextPath}/resources/myicon/memoBlue.png" 
+                 style="width:120%; position: relative;"/>
+		     
+		         <div id="container1comment" class="main_image_text" style="position:absolute; top:500px; left:960px;"></div>
 				 
 			</div>
-		</div>
+			<!-- 코멘트 end -->
+			
+		  </div>
+      </div>
 		
 		
 		
-		
-		 <div class="d-flex">
-            <div style="width: 70%">
-                <span>생활비 예산 사용 추이</span>
+      <!-- 생활비 예산 사용 bar --> 
+	  <div style="width:920px; border: 2px solid; border-radius:10px; border-color:#e0e0e0; padding:30px;">   
+	  
+	     <h4 style="text-align:center; margin-bottom:10px;">생활비 예산 사용 추이</h4>
+         <p style="text-align:center; margin-bottom:40px; font-size:18px; color:#5a5a5a;">현재까지의 생활비 지출 추이를 보여드립니다</p>
+        
+        	
+		 <div class="d-flex justify-content-between">
+		 
+		    <!-- 그래프 --> 
+            <div style="width:67%">
                 <figure class="highcharts-figure">   
                     <div id="container2"></div>
                  </figure>
             </div>
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div id="container2comment" style="background-color:#E90061; height:300px; width:250px">
+            
+            <!-- 코멘트 시작 -->
+           <%--  <div style="width:30%; height:330px; background-color:#E90061;" class="d-flex justify-content-center align-items-center">
+                <div id="container2comment">
                    
                    <!--  <h2>코멘트</h2>
                     <h5>6개월간 생활비 예산은 1,200,000원이고, 평균 사용 금액은 xx원입니다. <br> 자세한 사용 내역을 확인할 수 있습니다. </h5> -->
                     
-                    <%-- <div>
+                    <div>
                          <a href="${pageContext.request.contextPath }/consumePattern"
                             style="border:2px solid; border-color:none; background-color:#008485; color:white;">소비 패턴 확인하러 가기 </a>
-                    </div> --%>
+                    </div>
                 </div>
 
+            </div> --%>
+            <!-- 코멘트 끝 -->
+            
+            
+            <!-- 코멘트 start -->
+            <div  class="main_image" style="width:40%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoBlue.png" 
+            style="width:120%; position: relative;"/>
+            
+            
+            <!-- <div style="width:30%; height:362px; background-color:#E90061;" 
+                      class="d-flex justify-content-center align-items-center">
+            -->
+              
+                <!-- <div id="container1comment"></div> -->
+                 
+                 <div id="container2comment" class="main_image_text" style="position:absolute; top:1110px; left:960px;"></div>
+                 
+                 
             </div>
+            <!-- 코멘트 end -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         </div>
+        </div>
+        
+        
+        
+        
         
 	</div>
 	
@@ -210,7 +217,7 @@
 <!-- 모달 -->
 <div class="modal fade" id="reBudget" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="border:4px solid; border-color:#008485;">
          <!--  <div class="modal-header"> -->
             <!-- <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액 이동 재설정</h5> -->
             <p style="align:right;">
@@ -509,18 +516,28 @@ $(document).ready(function(){
                             
       
                        let str1 ='';
-                       str1 += '<div>' + settingAmountList[0].POCKETNAME + ' 주머니 예산은 ' + settingAmountList[0].AUTODIVAMOUNT + '원이고, ' + thirdConsumeList.length + '개월 간 ' + ' 평균 사용 금액은 ' + sumAvg1 + ' 원 입니다. <br></div>';
+                       str1 += '<div style="font-size:16px;">' + settingAmountList[0].POCKETNAME + ' 주머니 예산 : ' + settingAmountList[0].AUTODIVAMOUNT + '원 ' ;
+                       str1 += '<br>' + thirdConsumeList.length + '개월 간 ' + ' 평균 사용 금액 : ' + sumAvg1 + ' 원 <br></div>';
                        
                  
                        
                        if ((settingAmountList[0].AUTODIVAMOUNT)*0.8 > sumAvg1 ) {  //고정비 예산에 비해 평균금액이 80%가 넘지 않는다면
                            
-                           str1 += '<br><br><div>※ ' + sumAvg1 + '원은 예산 대비 20% 이하의 금액입니다. <br>';
-                           str1 += ' 그러므로 ' + settingAmountList[0].POCKETNAME + ' 주머니 예산을 약 ' + sumAvg1 + '원 이하로 줄여도 충분합니다 </div>';
+                           str1 += '<br><div>';
+                           
+                           str1 += '<div><img src="${pageContext.request.contextPath}/resources/myicon/comment1.png" style="width:10%"/>';
+                           str1 += '<div style="padding-top:30px; color:red; font-size:18px; font-weight:bold; display:inline;">&nbsp;COMMENT</div></div>';
+                           
+                           
+                           str1 += '<div style="font-size:16px;">'+ sumAvg1 + '원은 예산 대비 <br><p style="font-size:18px; color:red; display:inline;">20% 이하</p>의 금액입니다 <br>';
+                           str1 += '' + settingAmountList[0].POCKETNAME + ' 주머니 예산을 평균금액 이하로 줄여도 충분!! </div>';
+                           
+                           
+                           str1 += '</div>';
                  
                        }
                     	  
-                       str1 += '<div><button type="button" class="intoReBudget col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
+                       str1 += '<div><br><button type="button" class="intoReBudget col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
                        str1 += 'style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="intoReBudgetSet(this.class)">재설정하기</button>  </div>';
                        
                        $('#container1comment').append(str1); 
@@ -532,13 +549,15 @@ $(document).ready(function(){
                        //<h2>코멘트</h2>
                        //<h5>6개월간 생활비 예산은 1,200,000원이고, 평균 사용 금액은 xx원입니다. <br> 자세한 사용 내역을 확인할 수 있습니다. </h5>
                        let str2 ='';
-                       str2 += '<div>' + thirdConsumeList.length + '개월간 ' + settingAmountList[1].POCKETNAME + ' 주머니 예산은 ' + settingAmountList[1].AUTODIVAMOUNT + '원이고, ';
-                       str2 += '평균 사용 금액은 ' +  sumAvg2  + '원 입니다. <br> 자세한 사용 내역을 확인할 수 있습니다. </div>';
+                       str2 += '<div>' + settingAmountList[1].POCKETNAME + ' 주머니 예산 : ' + settingAmountList[1].AUTODIVAMOUNT + ' 원<br>';
+                       str2 += '' + secondConsumeList.length + '개월 간 평균 사용 금액 : ' +  sumAvg2  + ' 원 <br><br>';
+                       str2 += '자세한 ' + settingAmountList[1].POCKETNAME + ' 사용 내역을 확인할 수 있습니다. </div>';
                        
-                       str2 += '<div><button type="button" class="intoReBudgetSet2 col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
-                       str2 += 'style="width:200px; font-size:18px; onclick="intoReBudgetSet(this.class)" font-family:hanaBFont;">재설정하기</button>  </div>';
+                       //str2 += '<div><button type="button" class="intoReBudgetSet2 col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
+                       //str2 += 'style="width:200px; font-size:18px; onclick="intoReBudgetSet(this.class)" font-family:hanaBFont;">재설정하기</button>  </div>';
+                       
                        str2 += '<div> <a href="${pageContext.request.contextPath }/consumePattern" style="border:2px solid;';
-                       str2 += 'border-color:none; background-color:#008485; color:white;">소비 패턴 확인하러 가기 </a></div>';
+                       str2 += 'border-color:none; background-color:#008485; color:white;">확인하러 가기</a></div>';
                        
                   
                        

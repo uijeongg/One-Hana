@@ -19,6 +19,8 @@ public interface ParkingService {
 	
 	void insertAutoParkingSet(Map<String, Object> parkingMap);
 	
+	List<Map<String,Object>> getParkingArea(String accountNo);
+	
 	
 
 

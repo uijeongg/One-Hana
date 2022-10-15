@@ -44,5 +44,12 @@
              (SELECT MAX(PARKINGCODE) AS PARKINGCODE FROM T_AUTO_PARKING WHERE FROMPOCKET='생활비') B
         WHERE ACCOUNTNO=#{accountNo} AND FROMPOCKET='생활비'
     </select>
+    
+    
+    <select id="getParkingArea" resultType="map" parameterType="String">
+        SELECT PARKINGCODE, SUM(PARKINGAMOUNT) AS PARKINGMONTHSUM
+        FROM T_AUTO_PARKING WHERE ACCOUNTNO=#{accountNo}
+        GROUP BY PARKINGCODE ORDER BY PARKINGCODE
+    </select>
 
 </mapper>

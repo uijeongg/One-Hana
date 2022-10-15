@@ -40,19 +40,26 @@
 .button-active {
     border-color: #008485;
     font-color: #008485;
-    
-
 }
 
 .button:hover {
     border-color: #008485;
     color: #008485;
-
 }
 
 .active {
-    border-color: red;
-    color: red;
+    border-color: #e90061;
+    border-width: thick;
+}
+
+.button {
+    background-color:#cacaca; 
+    border:none; 
+    height:32px; 
+    width:19.5%; 
+    border-radius:5px; 
+    font-family:hanaBFont;
+    color:white;
 }
 </style>
 
@@ -64,53 +71,8 @@
      <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header> 
+        <jsp:include page="/WEB-INF/jsp/include/sidebar4.jsp"></jsp:include>
     
-    <!-- side bar start -->
-    <div class="container-fluid sidepanel-inner d-flex flex-column"
-      style="width:20%; float:left; margin-top:37px; margin-left:10px; margin-right:10px; height:1500px;">
-      <div style="padding-left: 30px;">
-         <h3 style="margin-bottom: 10px;">
-            <!-- <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 
-            <strong style="color:#008485;"> HANA </strong>    -->
-            <strong style="color:#008485;">상품 추천</strong>
-            
-         </h3>
-         <hr style="width: 200px; height: 5px; background-color:#066262;">
-         <div>
-            <a href="${pageContext.request.contextPath}/mybankMain"
-               style="color:#808080;">예적금</a>
-         </div>     
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath}/"
-               style="color:#808080;">입출금</a>
-         </div>
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath}/"
-               style="color:#808080;">펀드</a>
-         </div>
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath }/"
-               style="color:#808080;">대출</a>
-         </div>
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath}/"
-               style="color:#808080;">외화</a>
-         </div>
-         <hr style="width: 200px;">  
-         <div>
-            <a href="${pageContext.request.contextPath }/"
-               style="color:#808080;">퇴직연금</a>
-         </div>
-         <hr style="width: 200px;">
-          
-      </div>
-   </div>
-   <!-- side bar end -->
-   
 
 
 <div id="compareBtn"></div>
@@ -165,12 +127,12 @@
 	</div>   
 	
 	
-	
+</div>	
 	
 	
 	
 <!--  --><!--  --><!--  --><!--  --><!--  -->
-
+<!-- 
   <div style="text-align:center;">
   <h4 style="margin-bottom:30px;"><strong style="color:#008485; margin-bottom:30px;">만기수령금&nbsp;</strong>(예상)</h4>
   
@@ -256,22 +218,63 @@
   
     <button style="width:300px; border-radius:20px; margin-top:20px; ">취소</button>
  </div>
-
+ -->
 <!--  --><!--  --><!--  --><!--  --><!--  -->
-	   
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->	   
 
 
-
-
+<div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid; padding:10px; width:60%; height:240px; 
+     border-radius:40px; display:flex; justify-content:space-between;" class= "row">
+     
+	<div class="col-8">
+		<div class="d-flex flex-column">
+		<div class="d-flex" style="font-family:hanaBFont; margin-top:20px;">
+			 <input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">
+			 <h4 style="margin-left:10px;"> 급여하나 월복리 적금 </h4>
+		</div>
+		<small style="margin-left:50px; margin-top:7px; font-size:20px; color:black; 
+		       font-weight:bold; white-space: nowrap;"> 상품설명상품설명상품설명상품설명 </small><br><br>
+		</div>
+			  <button type="button" style="margin-left:20px; width:350px; height:60px; font-family:hanaBFont; border-radius:30px; ">
+			        자세히보기
+			  </button> 
+	</div>
+	
+	<div class="col-3" style="text-align:right; margin-left:20px; color:black;  font-weight:bold; display: flex; 
+	     justify-content: flex-end; align-items: center;">
+	     <div style="font-size:20px; display:inline;"> 최대 연 <br>
+	          <strong style="font-size:30px;"> + 100% </strong><br>
+	          (세전, 1년) 
+	     </div>
+	</div><br>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+
+
+
+
 
     
 
 <!-- 나의 맞춤형 적금 찾기 모달 버튼  -->
 <div class="modal fade" id="selectSavings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="border:5px solid; border-color:#008485;">
          <!--  <div class="modal-header"> -->
             <!-- <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액 이동 재설정</h5> -->
             <p style="align:right;">
@@ -281,7 +284,9 @@
           <!-- </div> -->
           <div class="modal-body" id="modalbody">
             
-            <h4 style="text-align:center; margin-bottom:40px;">나만의 예적금 찾기</h4>
+            <h3 style="text-align:center; margin-bottom:40px;">나만의 
+            <strong style="color:#008485; display:inline;">예적금</strong> 
+            찾기</h3>
             
             
                 <!-- 상품유형 -->
@@ -290,12 +295,12 @@
 	                   <div class="nav productType" style="text-align:center; margin-top:5px;">
 	            
 		                   <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="적금"
-		                           style="font-family:hanaBFont; margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+		                           style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
 	                         적금
 	                       </button>
 	                     
 		                   <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="예금"
-	                                style="font-family:hanaBFont; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+	                                style="font-size:18px; font-family:hanaBFont; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
 	                         예금
 	                       </button> 
       
@@ -310,12 +315,12 @@
                        <div class="nav accumulateMethod" style="text-align:center; margin-top:5px;">
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="자유적립식"
-                                   style="font-family:hanaBFont; margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             자유적립식
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="정액적립식"
-                                    style="font-family:hanaBFont; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:40%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              정액적립식
                            </button> 
                            
@@ -337,32 +342,32 @@
                        
                        
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3개월"
-                                   style="font-family:hanaBFont; margin-left:9%; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             3개월
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="6개월"
-                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                              6개월
                            </button> 
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="1년"
-                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              1년
                            </button> 
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="2년"
-                                   style="font-family:hanaBFont; margin-left:9%; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                   style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             2년
                             </button>
                      
                             <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3년"
-                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                              3년
                            </button> 
                            
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="5년"
-                                    style="font-family:hanaBFont; display:inline; width:26.4%;; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              5년
                            </button> 
        
@@ -375,23 +380,35 @@
                 <!-- minAmount보다 크고 maxAmount보다 작으면 됨 -->
                 <div style="margin-bottom:35px;">
                    <span style="margin-left:10%; font-size:20px;">예정 신규금액</span>
-                       <div style="text-align:center; margin-top:5px;">
-                           <input type="text" id="firstAmount" name="minAmount" value="" placeholder="예치금액 (원)" style="font-family:hanaBFont; width:81%; height:60px; margin-bottom:5px; border-radius:5px;"><br>
+                       <div style="margin-left:auto; margin-right:auto; text-align:center; margin-top:5px;">
                            
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">+5만</button>
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">+10만</button>
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">+100만</button>
-                              <button type="button" class="button" style="width:19.5%; border-radius:5px; font-family:hanaBFont;">초기화</button>
+                           <input type="text" id="firstAmount" name="firstAmount" value="" placeholder="예치금액 (원)" class="form-control" 
+                           style="font-size:20px; color:black; text-align:right; font-family:hanaBFont; margin-left:42px; width:81%; height:50px; border-radius:5px;"><br>
+                           
+                              <button class="button" id="50000" onClick="amountClick(this.id)">+5만</button>
+                              <button class="button" id="100000" onClick="amountClick(this.id)">+10만</button>
+                              <button class="button" id="1000000" onClick="amountClick(this.id)" >+100만</button>
+                              <button class="button">초기화</button>
                        </div>
                 </div>
                 
                 
+               
                 
                 <!-- 우대금리항목 추가 -->
                 <div class="d-flex justify-content-between" style="text-align:center;">
-                
-                    <div style="font-family:hanaBFont; margin-left:10%;">우대금리 항목 추가</div> 
-                    <div style="font-family:hanaBFont; margin-right:10%;"><input type="button" id="displayPreferBtn" value="+" onclick="displayPrefer()"></div>
+                    <div style="font-family:hanaBFont; color:#008485; font-size:20px; margin-left:10%;">우대금리 항목 추가</div> 
+                    <div style="font-family:hanaBFont; margin-right:6%;">
+	                    <!-- <input type="button" onclick="displayPrefer()" id="displayPreferBtn" 
+	                    value="+" > -->
+	                    
+	                    <input type="image" onclick="displayPrefer()" id="displayPreferBtn" 
+                        src="${pageContext.request.contextPath}/resources/myicon/My_plus.png"
+                        style="width:40%;" > 
+	                     
+	                  
+	                    
+                    </div>
                 
                 </div>
                 
@@ -473,7 +490,7 @@
           
            <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
             <button type="button" class="btn btn-primary" id="divBtn" data-bs-dismiss="modal" onclick="sortSavings()" 
-                    style="width:76%; font-family:hanaBFont; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">조회</button>         
+                    style="width:76%; font-size:20px; font-family:hanaBFont; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">조회</button>         
             </div>
         </div>
       </div>
@@ -528,7 +545,7 @@
 <script>
 function displayPrefer() {
 	
-	//$('#displayPreferBtn').hide();
+	$('#displayPreferBtn').hide();
     $('#preferList').show();
 }
 
@@ -593,6 +610,7 @@ function sortSavings() {
             	  
             	  
             	  str2 ='';
+            	  str2 += '정의정 님이 선택하신 조건에 딱 맞는 상품을 추천해드려요';
             	  str2 += '<div>';
             	  str2 += '<button type="button" class="compareSavings col-3 btn btn-primary" onclick="compareSavings();" data-bs-toggle="modal" data-bs-target="#compareSavings"';
             	  str2 += 'style="width:200px; font-size:18px; font-family:hanaBFont;">';
@@ -600,8 +618,7 @@ function sortSavings() {
             	  str2 += '</button></div>';
             	  $('#compareBtn').append(str2);
             	  
-           
-              
+            	 
             	  
             	  for(let i=0; i<data.length; i++) {
             		  str ='';
@@ -1093,7 +1110,11 @@ function goExpectedSavings() {
 </script>
 
 <script>
+function amountClick(input){
+	console.log(input);
 
+	$('input[name=firstAmount]').attr('value',input);
+}
 
 
 

@@ -42,8 +42,8 @@
         <img src="${pageContext.request.contextPath}/resources/myicon/cal.png" 
             style="width:70px; height:60px;"/>
        
-        <span style="font-size:30px; margin-top: 20px; display:inline;">&nbsp; 나의 </span>
-         <span style="color:#008485; font-size:30px; margin-top: 20px; display:inline;">소비 달력</span>
+        <span style="font-size:30px; margin-top: 20px; font-weight:bold; display:inline;">&nbsp; 나의 </span>
+         <span style="color:#008485; font-size:30px; font-weight:bold; margin-top: 20px; display:inline;">소비 달력</span>
          <span style="font-size:30px; margin-top: 20px; display:inline;"></span>
     </div>
     <hr style="width:900px; height:7px; background-color:#066262;">

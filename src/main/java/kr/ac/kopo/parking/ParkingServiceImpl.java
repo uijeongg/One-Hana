@@ -33,6 +33,12 @@ public class ParkingServiceImpl implements ParkingService {
 		return parkingBal;
 	}
 	
+	
+	@Override
+	public List<Map<String,Object>> getParkingArea(String accountNo) {
+		List<Map<String,Object>> parkingAreaList = parkingDAO.getParkingArea(accountNo);
+		return parkingAreaList;
+	}
 
 	
 	

@@ -28,8 +28,8 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
 .nav-tabs {
-    border-bottom: 3px solid #008485;
-    width: 1060px;
+    border-bottom:3px solid #008485;
+    width:900px;
 }
 </style>
 
@@ -38,70 +38,20 @@
 
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
-    </header> 
+    </header>
+    <jsp:include page="/WEB-INF/jsp/include/sidebar2.jsp"></jsp:include>
     
-    <!-- side bar start -->
-    <div class="container-fluid sidepanel-inner d-flex flex-column"
-      style="width:20%; float:left; margin-top:37px; margin-left:10px; margin-right:10px;">
-      <div style="padding-left: 30px;">
-         <h3 style="margin-bottom: 10px;">
-            <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 
-            <strong style="color:#008485;"> HANA </strong>   
-         </h3>
-         <hr style="width: 200px; height: 5px; background-color:#066262;">
-         <div>
-            <a href="${pageContext.request.contextPath}/mybankMain"
-               style="color:#808080;">나의 주머니</a>
-         </div>     
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath}/setBudgetMain"
-               style="color:#808080;">나의 예산 관리</a>
-         </div>
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath}/checkBudgetMain"
-               style="color:#808080;">나의 예산 확인</a>
-         </div>
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath }/myParkingMain"
-               style="color:#808080;">나의 파킹 관리</a>
-         </div>
-         <hr style="width: 200px;">
-         <div>
-            <a href="${pageContext.request.contextPath}/consumeMain"
-               style="color:#808080;">나의 소비 달력</a>
-         </div>
-         <hr style="width: 200px;">  
-         <div>
-            <a href="${pageContext.request.contextPath }/consumePattern"
-               style="color:#808080;">나의 소비 패턴</a>
-         </div>
-         <hr style="width: 200px;">
-          <div>
-            <a href="${pageContext.request.contextPath }/productsMain"
-               style="color:#808080;">MO HANA 상품</a>
-         </div>
-         <hr style="width:200px;">
-      </div>
-   </div>
-   <!-- side bar end -->
-   
-   
-   
    
    <!-- page title start -->
-   <div style="margin-left:670px; margin-top:11px;" class="animate__animated animate__bounce" >
-        <img src="${pageContext.request.contextPath}/resources/img/My_pattern.png" 
-            style="width:110px; height:70px;"/>
+   <div style="margin-left:610px; margin-top:6px;" class="animate__animated animate__bounce" >
+        <img src="${pageContext.request.contextPath}/resources/myicon/graph.png" 
+            style="width:10%;"/>
         <!-- <span style="color:#008485; font-size:30px; margin-top: 30px;">&nbsp;" 나의 소비 패턴 "</span> -->
         
-         <span style="font-size:30px; margin-top: 30px; display:inline;">&nbsp;" 나의 </span>
-         <span style="color:#008485; font-size:30px; margin-top: 30px; display:inline;">소비 패턴</span>
-         <span style="font-size:30px; margin-top: 30px; display:inline;"> "</span>
+         <span style="font-size:30px; font-weight:bold; margin-top:30px; display:inline;">&nbsp;나의 </span>
+         <span style="color:#008485; font-weight:bold; font-size:30px; margin-top: 30px; display:inline;">소비 패턴</span>
    </div>
-   <hr style="width: 1060px; height: 5px; background-color:#066262;">
+   <hr style="width:900px; height:7px; background-color:#066262;">
    <!-- page title end -->
    
    
@@ -135,80 +85,151 @@
 <div class="tab-pane fade show active" id="datePage" role="tabpanel">
 
    <!-- 월 총 이용 금액 -->
-   <div style="margin-left:620px; margin-top:50px; margin-bottom:40px;">
-	    <div id="month" style="font-size:25px;">
-	        <!-- fetch로 불러옴 -->
-	    </div>
+    <div style="margin-left:620px; margin-top:50px; margin-bottom:40px;">
+	    <div id="month" style="font-size:25px;"></div>
    </div>
+
+ 
+ 
+<%--  <div style="text-align:center;">
+  <!-- 코멘트 start -->
+            <div  class="main_image" style="width:50%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/bigmemo84.png" 
+                 style="width:700px; height:100px; position: relative;"/>
+             
+                <div  id="month" class="main_image_text" style="position:absolute; top:300px; left:600px;"></div>   
+            </div>
+  <!-- 코멘트 end -->
+ </div>
+  --%>
  
  
  
-    <div class="d-flex flex-column" style="width: 60%;">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   <div class="d-flex flex-column" style="width: 60%;">
+    
     
         <!-- 주차별 -->
-        <div class="d-flex">
-        <span>주차별 소비 추이</span>
-            <div style="width: 70%"> 
-                <div id="chart" style="margin-bottom: 40px;"></div>
+        <!-- 주차별 -->
+        <!-- 주차별 -->
+        <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
+        <!-- <h4>주차별</h4> -->
+        <div class="d-flex justify-content-between">
+        
+            <!-- 그래프 -->
+            <div style="width:65% "> 
+                <div id="chart"></div>
             </div>
-            
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div style="background-color:#E90061; height:300px; width:250px">
-                    <h2>코멘트</h2>
-                    <div id="chartcomment"></div> <!-- 소비가 가장 많은 주는 x주차 입니다 -->
-                </div>
-            </div>    
+          
+            <!-- 코멘트 start -->
+            <div class="main_image" style="width:30%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoYello.png" 
+                 style="width:100%; position: relative;"/>
+             
+                 <div  id="chartcomment" class="main_image_text" style="position:absolute; top:500px; left:960px;"></div>    
+            </div>
+            <!-- 코멘트 end -->
+        
+        </div>
         </div>
         
         
-         <!-- 요일별 -->
-        <div class="d-flex">
-         <span>요일별 소비 추이</span>
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div style="background-color:#E90061; height:300px; width:250px">
-                    <h2>코멘트</h2>
-                    <div id="chart2comment"></div> <!-- 소비가 가장 많은 주는 x주차 입니다 -->
-                </div>
-            </div>  
+        
+        
+        
+        <!-- 요일별 -->
+        <!-- 요일별 -->
+        <!-- 요일별 -->
+        <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
+        <!-- <h4>요일별</h4> -->
+        <div class="d-flex justify-content-between">
 
-             <div style="width: 70%">
-                <div id="chart2" style="margin-bottom: 40px;"></div>
+            <!-- 코멘트 start -->
+            <div  class="main_image" style="width:30%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoPink.png" 
+                 style="width:100%; position: relative;"/>
+             
+                 <div  id="chart2comment" class="main_image_text" style="position:absolute; top:1000px; left:400px;"></div>    
+            </div>
+            <!-- 코멘트 end -->
+
+             <!-- 요일별 그래프 -->
+             <div style="width:65%">
+                <div id="chart2"></div>
             </div>
         </div>
+        </div>
         
-
+        
+        
+        
+        
         <!-- 일별  -->
-        <div class="d-flex">
-        <span>일별 소비 추이</span>
-            <div style="width: 70%"> 
-                <div id="chart3" style="margin-bottom: 40px;"></div>
+        <!-- 일별  -->
+        <!-- 일별  -->
+        <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
+        <!-- <h4>일별</h4> -->
+        <div class="d-flex justify-content-between">
+        
+            <!-- 그래프 -->
+            <div style="width:65%"> 
+                <div id="chart3"></div>
             </div>
             
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div style="background-color:#E90061; height:300px; width:250px">
-                    <h2>코멘트</h2>
-                    <div id="chart3comment"></div> <!-- 소비 top3 입니다 -->
-                    <div id="dateTopHisto"></div>
-                </div>
-            </div>    
+           
+            <!-- 코멘트 start -->
+            <div  class="main_image" style="width:30%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoGreen.png" 
+                 style="width:100%; position: relative;"/>
+             
+                 <div id="chart3comment" class="main_image_text" style="position:absolute; top:1370px; left:960px;"></div>
+                 <div id="dateTopHisto" class="main_image_text" style="position:absolute; top:1420px; left:960px;"></div>        
+            </div>
+            <!-- 코멘트 end -->
+              
+        </div>
         </div>
         
         
         
-         <!-- 잦은 거래 수  -->
-        <div class="d-flex">
-         <span>카테고리별 소비 추이</span>
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div style="background-color:#E90061; height:300px; width:250px">
-                    <h2>코멘트</h2>
-                    <div id="chart4comment"></div> <!-- 소비가 가장 많은 주는 x주차 입니다 -->
-                </div>
-            </div>  
-
-             <div style="width: 70%">
-                <div id="chart4" style="margin-bottom: 40px;"></div>
+        <!-- 카테고리별 -->
+        <!-- 카테고리별 -->
+        <!-- 카테고리별 -->
+        <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
+        <!-- <h4>카테고리별</h4> -->
+        <div class="d-flex justify-content-between">
+        
+            <!-- 코멘트 start -->
+            <div  class="main_image" style="width:30%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoBl.png" 
+                 style="width:100%; height:340px; position:relative;"/>
+             
+                 <div  id="chart4comment" class="main_image_text" style="position:absolute; top:2000px; left:400px;"></div>    
+            </div>
+            <!-- 코멘트 end -->
+            
+            
+            <!-- 그래프 -->
+             <div style="width:65%">
+                <div id="chart4"></div>
             </div>
         </div>
+        </div>
+        
+        
+        
+        
+        
         
         
      </div>
@@ -281,7 +302,6 @@
     <!-- 중분류 파이 그래프 -->
          <div class="d-flex">
             <div style="width: 100%">
-            <span> 6개월치 중분류 카테고리 </span>
                 <figure class="highcharts-figure">   
                     <div id="container3"></div>
                 </figure>
@@ -474,7 +494,7 @@
     <script>
        $(function(){
     	    $('#displayDetailChart').click(function(){
-    	    	cateAmount();
+    	    	//cateAmount();
     	    	cate3Amount();
     	    	sixMonthLine();
     	       
@@ -502,8 +522,9 @@
                 for(let i=0;i<consumeList.length;i++){
 	        		
 	        		let str ='';
-	                str += '<div style="display:inline; ">'+consumeList[i].CURRENT_MONTH+'</div> <div style="display:inline;">월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
-	        	
+	                /* str += '<div style="display:inline; ">'+consumeList[i].CURRENT_MONTH+'</div> <div style="display:inline;">월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
+	        	 */
+	        	 str += '<div style="display:inline;">당 월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
 	                $('#month').append(str);                
 	        	}
 	        }) 
@@ -662,7 +683,7 @@
                           data: weeklyConsumeData
                         }],
                           chart: {                    
-                          height: 400,
+                          height: 300,
                           type: 'bar',
                           events: {
                             click: function(chart, w, e) {
@@ -673,12 +694,12 @@
                         
                         plotOptions: {
                           bar: {
-                            columnWidth: '40%',
+                            columnWidth: '60%',
                             distributed: true,
                           }
                         },
                         dataLabels: {
-                          enabled: true                           
+                          enabled: false                           
                         },
                         legend: {
                           show: false
@@ -797,22 +818,22 @@
                   radar: {
                     size: 140,
                     polygons: {
-                      strokeColors: '#e9e9e9',
+                      strokeColors: '#fead96',
                       fill: {
-                        colors: ['#f8f8f8', '#fff']
+                        colors: ['#e6f3f3', '#fff']
                       }
                     }
                   }
                 },
                 title: {
-                  text: '요일별 소비 금액 추이'
+                  text: ''
                 },
-                colors: ['#FF4560'],
+                colors: ['#008485'],
                 markers: {
                   size: 4,
                   colors: ['#fff'],
-                  strokeColor: '#FF4560',
-                  strokeWidth: 2,
+                  strokeColor: '#008485',
+                  strokeWidth: 5,
                 },
                 tooltip: {
                   y: {
@@ -897,7 +918,7 @@
           data: receivedObject.dateSumList
         }],
           chart: {
-          height: 350,
+          height: 330,
           type: 'bar',
           events: {
             click: function(chart, w, e) {
@@ -908,12 +929,12 @@
        
         plotOptions: {
           bar: {
-            columnWidth: '45%',
+            columnWidth: '80%',
             distributed: true,
           }
         },
         dataLabels: {
-          enabled: true
+          enabled: false
         },
         legend: {
           show: false
@@ -935,7 +956,7 @@
         
         //console.log(receivedObject.dateList[1] + ' 입니다');
         let str = '';
-        str += '<div> 한달 간 소비가 가장 많았던 날은 "'+receivedObject.dateList[1]+'" 입니다 <br> 충동 구매가 있진 않았는지 확인해볼까요?</div>';
+        str += '<div> 한달 간 소비가 가장 많았던 날은 "'+receivedObject.dateList[1]+'" 입니다 <br> 충동 구매가 있진 않았는지 확인해보아요!</div>';
 
         $('#chart3comment').append(str);     
         
@@ -1018,13 +1039,13 @@
         	   var options = {
         		          series: cate3count,
         		          chart: {
-        		          width: 380,
+        		          width: 510,
         		          type: 'donut',
         		          dropShadow: {
         		            enabled: true,
         		            color: '#111',
         		            top: -1,
-        		            left: 3,
+        		            left: 7,
         		            blur: 3,
         		            opacity: 0.2
         		          }
@@ -1057,7 +1078,7 @@
         		          opacity: 1,
         		          pattern: {
         		            enabled: true,
-        		            style: ['verticalLines', 'squares', 'horizontalLines', 'circles','slantedLines'],
+        		            style: [],    /* 'verticalLines', 'squares', 'horizontalLines', 'circles','slantedLines' */
         		          },
         		        },
         		        states: {
@@ -1066,17 +1087,17 @@
         		          }
         		        },
         		        theme: {
-        		          palette: 'palette2'
+        		          palette: 'palette4'
         		        },
         		        title: {
-        		          text: "카테고리별 소비 횟수"
+        		          text: ""
         		        },
         		        responsive: [{
-        		          breakpoint: 480,
+        		          breakpoint: 450,
         		          options: {
         		            chart: {
-        		              width: 600,
-        		              height: 600
+        		              width: 300,
+        		              height: 300
         		            },
         		            legend: {
         		              position: 'bottom'
