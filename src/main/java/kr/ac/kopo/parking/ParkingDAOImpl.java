@@ -68,4 +68,16 @@ public class ParkingDAOImpl implements ParkingDAO {
 		List<Map<String,Object>> parkingAreaList = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingArea", accountNo);
 		return parkingAreaList;
 	}
+	
+	@Override
+	public List<Map<String, Object>> getParkingArea2(String accountNo) {
+		List<Map<String,Object>> parkingAreaList2 = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingArea2", accountNo);
+		return parkingAreaList2;
+	}
+	
+	@Override
+	public List<Map<String, Object>> getParkingArea3(String accountNo) {
+		List<Map<String,Object>> parkingAreaList3 = sqlSessionTemplate.selectList("parking.ParkingDAO.getParkingArea3", accountNo);
+		return parkingAreaList3;
+	}
 }

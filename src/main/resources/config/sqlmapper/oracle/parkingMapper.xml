@@ -51,5 +51,19 @@
         FROM T_AUTO_PARKING WHERE ACCOUNTNO=#{accountNo}
         GROUP BY PARKINGCODE ORDER BY PARKINGCODE
     </select>
+    
+    <select id="getParkingArea2" resultType="map" parameterType="String">
+        SELECT PARKINGCODE, FROMPOCKET, SUM(PARKINGAMOUNT) AS POCKET2SUM
+        FROM T_AUTO_PARKING
+        WHERE ACCOUNTNO=#{accountNo} AND FROMPOCKET='고정비'
+        GROUP BY PARKINGCODE, FROMPOCKET ORDER BY PARKINGCODE
+    </select>
+    
+    <select id="getParkingArea3" resultType="map" parameterType="String">
+        SELECT PARKINGCODE, FROMPOCKET, SUM(PARKINGAMOUNT) AS POCKET2SUM
+        FROM T_AUTO_PARKING
+        WHERE ACCOUNTNO=#{accountNo} AND FROMPOCKET='생활비'
+        GROUP BY PARKINGCODE, FROMPOCKET ORDER BY PARKINGCODE
+    </select>
 
 </mapper>

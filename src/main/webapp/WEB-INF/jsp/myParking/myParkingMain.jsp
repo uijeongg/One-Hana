@@ -60,13 +60,18 @@
        
    
     <!-- 정의정 님의 9월 파킹 내역 -->
-    <div id="parkingDetail" style="border:2px solid; border-radius:10px; border-color:#e0e0e0; display:none; margin-top:30px; margin-left:25%; width:900px; height:400px; margin-bottom:30px;">
-       <!--  <span style="font-size:23px; margin-left:350px;">파킹 현황</span> -->
-
-
-    <span style="font-size:23px; margin-left:350px;">월말 주머니 잔여액 자동 파킹</span>
-    <div id="chart"></div>
-
+    <div id="parkingDetail" style="text-align:center; border:2px solid; border-radius:10px; border-color:#e0e0e0; display:none; padding:25px; margin-top:10px; margin-left:25%; width:900px; height:500px; margin-bottom:30px;">
+     
+    <h4>나의 <strong style="color:#008485">파킹</strong> 상세 내역</h4>
+    
+    <div class="d-flex justify-content-between" style="margin-top:30px;">
+    <div id="chart" style="display:inline;"></div>
+    <div id="chart2" style="display:inline;"></div>
+    </div>
+    <span style="font-size:17px;margin-left:5px; ">월말 주머니 잔여액 자동 파킹 추이</span>
+    <span style="font-size:17px; margin-left:290px;">주머니 별 파킹 금액</span>
+    
+    
        <!--  <div id="parkingAmount">
               이번달의 총 파킹 금액은  parkingList[0].autoDivAmount   원 입니다
         </div> -->
@@ -257,6 +262,7 @@ $(document).ready(function(){
                         data: parkingSum
                     }],
                       chart: {
+                    	  width: 400,
                       height: 350,
                       type: 'line',
                       zoom: {
@@ -290,25 +296,123 @@ $(document).ready(function(){
              //let str ='';
              //$('#parkingArea').append(str);    
             })
-        
-        
+            
+            
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+  //let list
+
+  fetch('/getParkingArea2?accountNo='+accountNo)
+    .then(res=>res.json())
+    .then(res=>{
+         let parkingAreaMap = res;
+         console.log(parkingAreaMap);
+         console.log(parkingAreaMap.parkingAreaList2);
+         
+         let pocket2parking = parkingAreaMap.parkingAreaList2;
+         let pocket3parking = parkingAreaMap.parkingAreaList3;
+         parking2Sum = [];
+         parking3Sum = [];
+         parkingMonth = [];
+         
+         for(i=0; i<pocket2parking.length; i++) {
+             parking2Sum.push(pocket2parking[i].POCKET2SUM*1);
+             parkingMonth.push(pocket2parking[i].PARKINGCODE);
+         }
+         for(i=0; i<pocket3parking.length; i++) {
+        	 parking3Sum.push(pocket3parking[i].POCKET2SUM*1);           
+         }
+         
+         
+         
+         let object = {};
+         object.parking2Sum = parking2Sum;
+         object.parking3Sum = parking3Sum;
+         object.parkingMonth = parkingMonth;
+       
+        return new Promise((resolve,reject)=>{
+             resolve(object);
+       })
    })
-  
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-  
+   .then(res=>{
+         let object = res;
+              
+         var options = {
+                 series: [{
+                 name: '고정비',
+                 type: 'column',
+                 data: parking2Sum
+               }, {
+                 name: '생활비',
+                 type: 'column',
+                 data: parking3Sum
+               }
+               /* , {
+                 name: 'Revenue',
+                 type: 'line',
+                 data: [20, 29, 37, 36, 44, 45, 50, 58]
+               } */
+               ],
+                 chart: {
+                	width:400,
+                 height: 350,
+                 type: 'line',
+                 stacked: false
+               },
+               dataLabels: {
+                 enabled: false
+               },
+               stroke: {
+                 width: [1, 1, 4]
+               },
+               title: {
+                 text: '',
+                 align: 'left',
+                 offsetX: 110
+               },
+               xaxis: {
+                 categories: /* parkingMonth */ ['4월','5월','6월','7월','8월','9월'],
+               },
+               yaxis: [
+                 {
+                   axisTicks: {
+                     show: true,
+                   },
+                   axisBorder: {
+                     show: true,
+                     color: '#008FFB'
+                   },
+                  
+                   
+                 },
+                
+               
+               ],
+               tooltip: {
+                 fixed: {
+                   enabled: true,
+                   position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
+                   offsetY: 30,
+                   offsetX: 60
+                 },
+               },
+               legend: {
+                 horizontalAlign: 'left',
+                 offsetX: 40
+               }
+               };
 
-
-
+               var chart = new ApexCharts(document.querySelector("#chart2"), options);
+               chart.render();
+             
+                    
+             //let str ='';
+             //$('#parkingArea').append(str);    
+            })
+            
+            
+   })
 </script>
 
 

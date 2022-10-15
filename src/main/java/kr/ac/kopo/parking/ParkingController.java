@@ -1,6 +1,7 @@
 package kr.ac.kopo.parking;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,18 +78,29 @@ public class ParkingController {
 	public List<Map<String,Object>> getParkingArea(@RequestParam("accountNo") String accountNo) {
 		
 		List<Map<String,Object>> parkingAreaList = parkingService.getParkingArea(accountNo);
-		
-		System.out.println("parkingAreaList : " + parkingAreaList);
-		
-		/*
-		 * Map<String, Object> parkingAreaMap = new HashMap<>();
-		 * parkingAreaMap.put("PARKINGMONTHSUM", PARKINGMONTHSUM);
-		 * parkingAreaMap.put("PARKINGCODE", PARKINGCODE);
-		 * System.out.println("parkingAreaMap : " + parkingAreaMap);
-		 */
+		//System.out.println("parkingAreaList : " + parkingAreaList);
 		return parkingAreaList;
 	}
 
+	
+	@ResponseBody
+	@GetMapping("/getParkingArea2")
+	public Map<String,Object> getParkingArea2(@RequestParam("accountNo") String accountNo) {
+		
+		List<Map<String,Object>> parkingAreaList2 = parkingService.getParkingArea2(accountNo);
+		//System.out.println("parkingAreaList2 : " + parkingAreaList2);
+		
+		List<Map<String,Object>> parkingAreaList3 = parkingService.getParkingArea3(accountNo);
+		//System.out.println("parkingAreaList3 : " + parkingAreaList3);
+		
+		Map<String, Object> parkingAreaMap = new HashMap<>();
+		parkingAreaMap.put("parkingAreaList2", parkingAreaList2);
+		parkingAreaMap.put("parkingAreaList3", parkingAreaList3);
+		//System.out.println("parkingAreaMap : " + parkingAreaMap);
+		
+		
+		return parkingAreaMap;
+	}
 
 
 }

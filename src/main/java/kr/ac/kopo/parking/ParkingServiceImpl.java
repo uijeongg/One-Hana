@@ -63,5 +63,17 @@ public class ParkingServiceImpl implements ParkingService {
 		parkingDAO.insertAutoParkingSet(parkingMap);
 	}
 	
+	@Override
+	public List<Map<String,Object>> getParkingArea2(String accountNo) {
+		List<Map<String,Object>> parkingAreaList2 = parkingDAO.getParkingArea2(accountNo);
+		return parkingAreaList2;
+	}
+	
+	@Override
+	public List<Map<String, Object>> getParkingArea3(String accountNo) {
+		List<Map<String,Object>> parkingAreaList3 = parkingDAO.getParkingArea3(accountNo);
+		return parkingAreaList3;
+	}
+
 	
 }
