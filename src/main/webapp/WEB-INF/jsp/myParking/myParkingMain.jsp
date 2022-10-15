@@ -58,7 +58,7 @@
     <!-- 프로그레스 로딩바 + 파킹 주머니 현황 텍스트 -->
     <div id="parkingMap" style="margin-left:30%; margin-right:15%;"></div>
        
-    <!-- 정의정 님의 9월 파킹 내역 -->
+   
     <!-- 정의정 님의 9월 파킹 내역 -->
     <div id="parkingDetail" style="border:2px solid; border-radius:10px; border-color:#e0e0e0; display:none; margin-top:30px; margin-left:25%; width:900px; height:400px; margin-bottom:30px;">
        <!--  <span style="font-size:23px; margin-left:350px;">파킹 현황</span> -->
@@ -67,11 +67,10 @@
     <span style="font-size:23px; margin-left:350px;">월말 주머니 잔여액 자동 파킹</span>
     <div id="chart"></div>
 
-
        <!--  <div id="parkingAmount">
-              이번달의 총 파킹 금액은    parkingList[0].autoDivAmount   원 입니다
+              이번달의 총 파킹 금액은  parkingList[0].autoDivAmount   원 입니다
         </div> -->
-  
+    
         <!-- 주머니 추가 버튼 누르면 뜨는 파킹디테일 div -->
         <div></div> 
 
