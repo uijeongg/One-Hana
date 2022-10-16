@@ -85,7 +85,7 @@
 <div class="tab-pane fade show active" id="datePage" role="tabpanel">
 
    <!-- 월 총 이용 금액 -->
-    <div style="margin-left:620px; margin-top:50px; margin-bottom:40px;">
+    <div style="margin-left:570px; margin-top:50px; margin-bottom:40px;">
 	    <div id="month" style="font-size:25px;"></div>
    </div>
 
@@ -123,7 +123,7 @@
         <!-- 주차별 -->
         <!-- 주차별 -->
         <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
-        <!-- <h4>주차별</h4> -->
+        <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">주차</strong> 별</h4>
         <div class="d-flex justify-content-between">
         
             <!-- 그래프 -->
@@ -133,10 +133,10 @@
           
             <!-- 코멘트 start -->
             <div class="main_image" style="width:30%;">
-            <img src="${pageContext.request.contextPath}/resources/myicon/memoYello.png" 
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoGreen.png" 
                  style="width:100%; position: relative;"/>
              
-                 <div  id="chartcomment" class="main_image_text" style="position:absolute; top:500px; left:960px;"></div>    
+                 <div  id="chartcomment" class="main_image_text" style="position:absolute; top:575px; left:800px;"></div>    
             </div>
             <!-- 코멘트 end -->
         
@@ -151,15 +151,16 @@
         <!-- 요일별 -->
         <!-- 요일별 -->
         <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
-        <!-- <h4>요일별</h4> -->
+        <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">요일</strong> 별</h4>
         <div class="d-flex justify-content-between">
 
             <!-- 코멘트 start -->
             <div  class="main_image" style="width:30%;">
-            <img src="${pageContext.request.contextPath}/resources/myicon/memoPink.png" 
-                 style="width:100%; position: relative;"/>
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoP.png" 
+                 style="width:105%; position: relative;" />
              
-                 <div  id="chart2comment" class="main_image_text" style="position:absolute; top:1000px; left:400px;"></div>    
+                 <div id="chart2comment" class="main_image_text" 
+                       style="font-size:18px; fontWeight:bold; position:absolute; top:1050px; left:160px;"></div>    
             </div>
             <!-- 코멘트 end -->
 
@@ -178,22 +179,34 @@
         <!-- 일별  -->
         <!-- 일별  -->
         <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
-        <!-- <h4>일별</h4> -->
+        <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">일</strong> 별</h4>
         <div class="d-flex justify-content-between">
         
             <!-- 그래프 -->
-            <div style="width:65%"> 
-                <div id="chart3"></div>
+            <div style="width:60%"> 
+            
+                <div>
+                    <div id="chart3" style="position: relative;"></div>
+                    <img src="${pageContext.request.contextPath}/resources/myicon/silver2.png" 
+                         style="position:absolute; width:7%; top:1538px; left:432px;"/>
+                    
+                    <img src="${pageContext.request.contextPath}/resources/myicon/gold1.png" 
+                         style="position:absolute; width:7%; top:1528px; left:575px;"/>
+                         
+                         <img src="${pageContext.request.contextPath}/resources/myicon/third2.png" 
+                         style="position:absolute; width:7%; top:1681px; left:710px;"/>
+                </div>
+                
             </div>
             
            
             <!-- 코멘트 start -->
-            <div  class="main_image" style="width:30%;">
-            <img src="${pageContext.request.contextPath}/resources/myicon/memoGreen.png" 
-                 style="width:100%; position: relative;"/>
+            <div  class="main_image" style="width:35%;">
+            <img src="${pageContext.request.contextPath}/resources/myicon/memoYello.png" 
+                 style="width:100%; height:330px; position: relative;"/>
              
-                 <div id="chart3comment" class="main_image_text" style="position:absolute; top:1370px; left:960px;"></div>
-                 <div id="dateTopHisto" class="main_image_text" style="position:absolute; top:1420px; left:960px;"></div>        
+                 <div id="chart3comment" class="main_image_text" style="position:absolute; top:1545px; left:915px;"></div>
+                 <div id="dateTopHisto" class="main_image_text" style="position:absolute; top:1650px; left:915px;"></div>        
             </div>
             <!-- 코멘트 end -->
               
@@ -206,7 +219,7 @@
         <!-- 카테고리별 -->
         <!-- 카테고리별 -->
         <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
-        <!-- <h4>카테고리별</h4> -->
+        <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">카테고리</strong> 별</h4>
         <div class="d-flex justify-content-between">
         
             <!-- 코멘트 start -->
@@ -214,7 +227,7 @@
             <img src="${pageContext.request.contextPath}/resources/myicon/memoBl.png" 
                  style="width:100%; height:340px; position:relative;"/>
              
-                 <div  id="chart4comment" class="main_image_text" style="position:absolute; top:2000px; left:400px;"></div>    
+                 <div  id="chart4comment" class="main_image_text" style="position:absolute; top:2070px; left:165px;"></div>    
             </div>
             <!-- 코멘트 end -->
             
@@ -276,10 +289,14 @@
     <div class="d-flex flex-column" style="width: 60%;">
     
     
-       
+       <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-top:30px; margin-bottom:20px;">   
+         
+        <h4 style=" margin-bottom:30px;">생활비 지출 금액 <strong style="color:#008485"> 전체보기 </strong> <small style="font-size:19px;">(최근 6개월)</small></h4>
+        
+        
         <div class="d-flex">
             <div style="width: 100%">
-            <span> 6개월치 소비 추이 라인그래프 </span>
+            
                  <figure class="highcharts-figure">   
                     <div id="container6"></div>
                  </figure>
@@ -293,7 +310,7 @@
             </div>
              -->
         </div>
-        
+      </div>  
         
         
         
@@ -324,57 +341,95 @@
     <input type="hidden" name="countTopSavingAmount" value="">
         
         
-        <div class="d-flex">
-            <div style="width: 100%">
-            <span> 6개월치 소분류 카테고리 </span>
+        
+      <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">   
+        <div class="d-flex justify-content-between" style="width:370px; text-align:center;">
+<!--         <div style="display:inline; font-size:22px;"><strong style="color:#008485; display:inline;">카테고리 별</strong> 소비 빈도 수 </div> -->
+        <div>
+            <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">카테고리</strong> 별 소비 빈도 수</h4> 
+        </div>
+        
+        
+            <div style="display:inline;">
+            <!-- <div style="width: 100%"> -->
             
              <select name="selectMonth_cate3" id="selectMonth_cate3"
                          style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;" onchange="cate3AmountSelect(this.value);">                        
                 <option value="6">6개월</option>
                 <option value="3">3개월</option>  
              </select>
+             </div>
+            </div> 
              
-               <figure class="highcharts-figure">   
-                    <div id="container5"></div>
-               </figure>
-            </div>
-        
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div style="background-color:#E90061; height:300px; width:250px">
-                    <div id="sumMedianComment"></div>
-                </div>
-            </div>
-        
-        </div>
-        
-        
-        <div class="d-flex">
-            <div style="width: 100%">
-            <span> 6개월치 시간대별 소비 빈도수 </span>
+             
+            <div class="d-flex justify-content-between">   
             
+	             <div class="main_image" style="width:37%;">
+	                <img src="${pageContext.request.contextPath}/resources/myicon/memo11.png" 
+	                     style="width:115%; height:380px; position: relative;"/>
+	               
+	                    <div id="sumMedianComment" class="main_image_text" style="position:absolute; top:1070px; left:400px;"></div>
+	             </div>
+	                
+                             
+	             <div style="width:60% ">  
+	               <figure class="highcharts-figure">   
+	                    <div id="container5"></div>
+	               </figure>
+	             </div>
+     
+        </div>
+      </div>
+        
+        
+        
+        
+        
+      <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">  
+         
+      
+        <div class="d-flex justify-content-between" style="width:340px; text-align:center;">
+      
+            <div>
+                <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">시간대 </strong> 별 소비 빈도 수</h4> 
+            </div>
+         
+         
+            <div style="display:inline;">
+              <!-- <div style="width: 100%"> -->
               <select name="selectMonth_times" id="selectMonth_times"
                          style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;" onchange="timesSelect(this.value)">                        
                 <option value="6">6개월</option>
                 <option value="3">3개월</option>
              </select>
+            </div>
             
-               <figure class="highcharts-figure">   
-                    <div id="container7"></div>
-               </figure>
+        </div>     
+            
+            
+            
+         <div class="d-flex justify-content-between">
+                
+            <div style="width:60% ">  
+	             <figure class="highcharts-figure">   
+	                  <div id="container7"></div>
+	             </figure>
             </div>
         
-            <div style="width: 30%; background-color:;" class="d-flex justify-content-center align-items-center">
-                <div style="background-color:#E90061; height:300px; width:250px">
-                     <div id="topCountComment"></div>
-                     <div id="countMedianComment"></div>
-                     
-                     <div id="setNoticeSMSParent">
-                          
-                     </div>
-                </div>              
+		    <!-- 코멘트 start -->
+            <div class="main_image" style="width:37%;">
+                 <img src="${pageContext.request.contextPath}/resources/myicon/memo11.png" 
+                      style="width:115%; height:380px; position: relative;"/>
+             
+                 <div id="topCountComment" class="main_image_text" style="position:absolute; top:1685px; left:930px;"></div>
+                 <div id="countMedianComment" class="main_image_text" style="position:absolute; top:1775px; left:930px;"></div> 
+                 <div id="setNoticeSMSParent" class="main_image_text" style="position:absolute; top:1975px; left:930px;"></div>     
             </div>
+            <!-- 코멘트 end -->
+		        
+	  
         </div>        
-        
+      </div>  
       <!--  <input type="submit" id="reBudget" value="재설정하기"
                style="width:475px; height:50px; border-radius:5px; background-color:#008485; color:white; border:none; font-size:20px;">  -->
 </form>    
@@ -524,7 +579,8 @@
 	        		let str ='';
 	                /* str += '<div style="display:inline; ">'+consumeList[i].CURRENT_MONTH+'</div> <div style="display:inline;">월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
 	        	 */
-	        	 str += '<div style="display:inline;">당 월 총 소비액은 </div><div style="display:inline;">' +consumeList[i].MONTHSUM+ ' 원 입니다</div>';
+	        	 str += '<div style="font-size:25px; fontWeight:bold;">" 당 월 총 소비액은';
+	        	 str += '<strong style="font-size:30px; color:#008485"> ' +(Math.floor(consumeList[i].MONTHSUM)).toLocaleString('ko-KR')+ ' </strong> 원 입니다 "</div>';
 	                $('#month').append(str);                
 	        	}
 	        }) 
@@ -722,8 +778,11 @@
                         chart.render();   
                         
                         str = '';
-                        str += '<div>소비가 가장 많은 주는 "' + weekComment + '" 입니다</div>';
+                        str += '<div style="font-size:19px; text-align:center;"><strong style="font-size:21px;">' + weekComment + '</strong> 소비에 후하네요!<br><br>';
+                        str += '한달 간,<br>소비가 가장 많았던 주는<br>';
+                        str += '<strong style="font-size:21px; color:#008485;">" ' + weekComment + ' "</strong> 입니다</div>';
                         
+                        str += '<br><div style="text-align:center; font-size:21px;"><img src="${pageContext.request.contextPath}/resources/myicon/notice2.png" class="animate__animated animate__bounce" style="width:10%;"/> 근 검 절 약 !</div>';
                         $('#chartcomment').append(str);     
             })       
     }
@@ -862,7 +921,9 @@
              chart.render();   
              
              let str = '';
-             str += '<div> 일주일 중 소비가 가장 많았던 요일은 "'+arrayComment+'" 입니다 <br>' + arrayComment + ' 소비를 주의하세요</div>';
+             str += '<div style="text-align:center;">'+ arrayComment +'에 무슨 일이 있었나요?';
+             str += '<br><br>일주일 중, <br> 소비가 가장 많았던 요일은 <br><strong style="font-size:22px; color:#027596;">" '+arrayComment+' "</strong> 입니다 <br><br>';
+             str += '<img src="${pageContext.request.contextPath}/resources/myicon/notice2.png" class="animate__animated animate__bounce" style="width:7%;"/> '+ arrayComment + ' 소비 주의 요망 !!</div>';
  
              $('#chart2comment').append(str);     
             })
@@ -918,6 +979,7 @@
           data: receivedObject.dateSumList
         }],
           chart: {
+          width:500,
           height: 330,
           type: 'bar',
           events: {
@@ -956,7 +1018,9 @@
         
         //console.log(receivedObject.dateList[1] + ' 입니다');
         let str = '';
-        str += '<div> 한달 간 소비가 가장 많았던 날은 "'+receivedObject.dateList[1]+'" 입니다 <br> 충동 구매가 있진 않았는지 확인해보아요!</div>';
+        str += '<div style="text-align:center; font-size:18px;"> 한달 간,<br>소비가 가장 많았던 날은<br>';
+        str += '<strong style="font-size:20px; color:#f56991;">" '+receivedObject.dateList[1]+' "</strong> 입니다<br>';
+        str += '<p style=" font-size:16px;">&nbsp;충동 구매가 있진 않았는지 확인해볼까요?</p></div>';
 
         $('#chart3comment').append(str);     
         
@@ -979,7 +1043,7 @@
          let dateTopHistoryList = res;
             
 	            for(let i=0;i<dateTopHistoryList.length;i++){
-	            	if(dateTopHistoryList[0].DAY == dateTopHistoryList[i].DAY){
+	            	if(dateTopHistoryList[4].DAY == dateTopHistoryList[i].DAY){
 	            		  let list22 = {};
 	            	     
 	            		  list22.name=dateTopHistoryList[i].CONNAME;
@@ -992,15 +1056,21 @@
           //  console.log("안녕하세요"+object[1]); 
           
             let str = '';
-            str += '<br>세부 거래내역<br>';
+            str += '<div style="color:gray; font-size:18px; margin-bottom:7px;"><br>';
+            str += '&nbsp;<img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:9%;"/>소비 TOP 1 DAY 의 거래내역</div>';
+            
+            
+            str += '<div style="font-size:18px; color:#5a5a5a; margin-left:50px;">';
             for(let i=0;i<object.length;i++) {           	
-                str += '  ' + object[i].name + '  ' + object[i].amount + ' 원 ' + object[i].time + '<br>';                              
+                str += '' + object[i].name + '  ' +  (Math.floor(object[i].amount)).toLocaleString('ko-KR') + ' 원 <br>'; 
+                // + object[i].time +
             }
+            str += '</div>';
             $('#dateTopHisto').append(str);
       })
      }
      </script>
-     
+    
   
   <!-- 잦은 거래 -->
   <script>
@@ -1111,9 +1181,11 @@
      
         		      //가장 잦은 소비는 편의점 (~회)과 커피전문점(~회) 입니다. 습관적 소비가 아닌지 되돌아보아요
         		        let str = '';
-        		        str += '<div> 한달 간 가장 잦았던 소비 카테고리는 "'+countObject.cate3name[0]+ '   ('+countObject.cate3count[0]+'회)" 입니다';
+        		        str += '<div style="text-align:center; font-size:18px;"> 당신은 혹시..  <strong style="font-size:20px;">' + countObject.cate3name[0] + '</strong> 러버? <br><br>';
+        		        str += '한달 간, <br> 가장 잦았던 소비 카테고리는<br>';
+        		        str += '<strong style="font-size:20px; color:#008485">" '+countObject.cate3name[0]+ '   ('+countObject.cate3count[0]+'회) "</strong> 입니다';
         		        /* str =+ ' 두번째 카테고리는 "'+ countObject.cate3name[1]+ '(' + countObject.cate3count[1] + '회)" 입니다';  */
-        		        str += '<br> 습관적 소비가 아닌지 되돌아보아요</div>';
+        		        str += '<br><br><img src="${pageContext.request.contextPath}/resources/myicon/notice2.png" style="width:7%;"/> 습관적 소비가 아닌지<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;되돌아보아요</div>';
         		        $('#chart4comment').append(str);     	   
            })
   }
@@ -1404,7 +1476,7 @@
                 	    },
                 	    title: {
                 	        align: 'left',
-                	        text: '시간대별 소비 빈도 수 현황'
+                	        text: ''
                 	    },
                 	    subtitle: {
                 	        align: 'left',
@@ -1444,7 +1516,7 @@
 
                 	    series: [
                 	        {
-                	            name: "Browsers",
+                	            name: "세부 소비 횟수",
                 	            colorByPoint: true,
                 	            data: timeListTimeBiggerArray
                 	        }
@@ -1709,7 +1781,7 @@
                         },
                         title: {
                             align: 'left',
-                            text: '시간대별 소비 빈도 수 현황'
+                            text: ''
                         },
                         subtitle: {
                             align: 'left',
@@ -1749,7 +1821,7 @@
 
                         series: [
                             {
-                                name: "Browsers",
+                                name: "전체보기",
                                 colorByPoint: true,
                                 data: timeListTimeBiggerArray
                             }
@@ -2164,7 +2236,7 @@
             	        type: 'pie'
             	    },
             	    title: {
-            	        text: '세부 소비 내역과 금액'
+            	        text: ''
             	    },
             	   /*  subtitle: {
             	        text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -2388,7 +2460,7 @@
 	    		        type: 'line'
 	    		    },
 	    		    title: {
-	    		        text: '6개월 간 소비 금액 추이'
+	    		        text: ''
 	    		    },
 	    		    subtitle: {
 	    		        text: ''
