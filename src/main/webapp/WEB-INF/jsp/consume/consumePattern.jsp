@@ -368,7 +368,7 @@
 	                <img src="${pageContext.request.contextPath}/resources/myicon/memo11.png" 
 	                     style="width:115%; height:380px; position: relative;"/>
 	               
-	                    <div id="sumMedianComment" class="main_image_text" style="position:absolute; top:1070px; left:400px;"></div>
+	                    <div id="sumMedianComment" class="main_image_text" style="position:absolute; top:1070px; left:205px;"></div>
 	             </div>
 	                
                              
@@ -2334,7 +2334,7 @@
                         type: 'pie'
                     },
                     title: {
-                        text: '세부 소비 내역과 금액'
+                        text: ''
                     },
                    /*  subtitle: {
                         text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -2413,8 +2413,13 @@
            //console.log('savingAmount 교통' + savingAmount);
     
            str = '';
-           str += '<div> 소비 금액이 가장 많은 카테고리의 각 달의 사용금액 평균은 ' + amountAvg + '원 입니다.<br>';
-           str += '소비를 평균만큼만 줄여도 최대? 최소? ' + savingAmount + '원을 세이빙 할 수 있습니다</div>';
+           str += '<div style="text-align:center; font-size:18px;"> 소비 금액이 가장 많은 카테고리는<br>';
+           str += '<strong style="color:#008485; font-size:20px;">[ 요식: 커피전문점 ]</strong> 이며, <br>';
+           str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:20px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
+           
+           str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
+           str += ' <br>소비를 평균 만큼만 줄여도<br>';
+           str += '최소 <strong style="font-size:20px; color:red;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 가능</div>';
            
           $('#sumMedianComment').append(str);    
           
@@ -2735,8 +2740,13 @@
            //console.log('savingAmount 교통' + savingAmount);
     
            str = '';
-           str += '<div> 소비 금액이 가장 많은 카테고리의 각 달의 사용금액 평균은 ' + amountAvg + '원 입니다.<br>';
-           str += '소비를 평균만큼만 줄여도 최대? 최소? ' + savingAmount + '원을 세이빙 할 수 있습니다</div>';
+           str += '<div style="text-align:center; font-size:18px;"> 소비 금액이 가장 많은 카테고리는<br>';
+           str += '<strong style="color:#008485; font-size:20px;">[ 요식: 커피전문점 ]</strong> 이며, <br>';
+           str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:20px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
+           
+           str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
+           str += ' <br>소비를 평균 만큼만 줄여도<br>';
+           str += '최소 <strong style="font-size:20px; color:red;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 가능</div>';
            
           $('#sumMedianComment').append(str);    
           
