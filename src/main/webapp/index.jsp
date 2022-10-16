@@ -24,15 +24,17 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="${ pageContext.request.contextPath }/resources/img/main.jpg" alt="Image">
+                    <img src="${ pageContext.request.contextPath }/resources/img/main.jpg" style="width:80%; position: relative;" alt="Image">
+                    <img src="${ pageContext.request.contextPath }/resources/myicon/mainpage.jpg" 
+                         style="width:50%; position:absolute; left:650px; top:250px;" />
                     
                     <div class="carousel-caption top-0 bottom-0 start-50 end-0 d-flex flex-column align-items-center justify-content-center">
                         <div class="text-start p-6" style="max-width: 900px;">
-                            <h3 class="text-black">My One HANA</h3>
-                            <h1 class="display-1 text-black mb-md-4">자산관리</h1>
-                            <%-- <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary py-md-3 px-md-5 me-3" style="border-radius:15px; width:300px; height:100px;">이용하기</a> --%>
-                            
-                            
+                           
+                           
+                            <!-- <h3 class="text-black">My One HANA</h3> -->
+                           <!--  <h1 class="display-1 text-black mb-md-4">자산관리</h1> -->
+                           
                             <a href="${pageContext.request.contextPath}/joinMybank" class="btn btn-primary" style="border-radius:15px; width:300px; height:100px;">
                             
                             

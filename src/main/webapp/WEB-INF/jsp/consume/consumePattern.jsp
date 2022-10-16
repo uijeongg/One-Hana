@@ -346,7 +346,7 @@
         <div class="d-flex justify-content-between" style="width:370px; text-align:center;">
 <!--         <div style="display:inline; font-size:22px;"><strong style="color:#008485; display:inline;">카테고리 별</strong> 소비 빈도 수 </div> -->
         <div>
-            <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">카테고리</strong> 별 소비 빈도 수</h4> 
+            <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">카테고리</strong> 별 소비 <strong style="color:#008485">금액</strong></h4> 
         </div>
         
         
@@ -391,7 +391,7 @@
         <div class="d-flex justify-content-between" style="width:340px; text-align:center;">
       
             <div>
-                <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">시간대 </strong> 별 소비 빈도 수</h4> 
+                <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">시간대 </strong> 별 소비 <strong style="color:#008485">빈도</strong></h4> 
             </div>
          
          
@@ -410,20 +410,20 @@
             
          <div class="d-flex justify-content-between">
                 
-            <div style="width:60% ">  
+            <div style="width:58% ">  
 	             <figure class="highcharts-figure">   
-	                  <div id="container7"></div>
+	                  <div id="container7" style="height:500px;"></div>
 	             </figure>
             </div>
         
 		    <!-- 코멘트 start -->
-            <div class="main_image" style="width:37%;">
+            <div class="main_image" style="width:40%;">
                  <img src="${pageContext.request.contextPath}/resources/myicon/memo11.png" 
-                      style="width:115%; height:380px; position: relative;"/>
+                      style="width:115%; height:500px; position: relative;"/>
              
-                 <div id="topCountComment" class="main_image_text" style="position:absolute; top:1685px; left:930px;"></div>
-                 <div id="countMedianComment" class="main_image_text" style="position:absolute; top:1775px; left:930px;"></div> 
-                 <div id="setNoticeSMSParent" class="main_image_text" style="position:absolute; top:1975px; left:930px;"></div>     
+                 <div id="topCountComment" class="main_image_text" style="position:absolute; top:1642px; left:940px;"></div>
+                 <div id="countMedianComment" class="main_image_text" style="position:absolute; top:1750px; left:895px;"></div> 
+                 <div id="setNoticeSMSParent" class="main_image_text" style="position:absolute; top:2050px; left:895px;"></div>     
             </div>
             <!-- 코멘트 end -->
 		        
@@ -1554,7 +1554,7 @@
                  
                  //console.log(topCountData + "여기서 찍히나");
                  
-                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');      
+                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:205px; height:33px; font-size:16px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');      
         })
     }
      
@@ -1853,7 +1853,7 @@
                  } 
                  
                  //let topCountData = [];
-                 //console.log("의정이" + count + time);
+                
                  topCountData.push(count);
                  topCountData.push(Number(time.substring(0,2)));
                  
@@ -1877,9 +1877,10 @@
                  cate3count.push(topCountList[i].CATE3COUNT*1);      
              }  
                let str = '';
-               str += '<div> 소비 횟수가 가장 잦은 카테고리 1 위는 ' + cate3[0] + ' (' + cate3count[0] + ' 회) 입니다 <br>';
-                        str += '2 위는 ' + cate3[1] + ' (' + cate3count[1] + ' 회) 입니다 </div>';
-                        
+               str += '<div style="text-align:center; font-size:18px; margin-bottom:10px;"> [ 소비 빈도 TOP ]</div>';
+               str += '<div style="text-align:center;"><h6 style="font-size:16px; display:inline;">1 위&nbsp; </h6> <h6 style="font-size:19px; color:#ff4d4d; display:inline;">' + cate3[0] + ' (' + cate3count[0] + ' 회) <h6>';
+               str += '<h6 style="font-size:16px; display:inline;">2 위&nbsp; </h6> <h6 style="font-size:19px; color:#ff7f00; display:inline;">' + cate3[1] + ' (' + cate3count[1] + ' 회) <h6></div>';
+                    
                         $('#topCountComment').append(str);    
               
                         let cate3name = cate3;                        
@@ -1998,11 +1999,21 @@
                              let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
                     
                              let str = '';
-                             str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
-                             str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
+                             
+                             str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
+                             str += '<h5 style="font-size:17px; color:#ff4d4d; display:inline;"> ' + cateArray[0].data[0][0] + ' </h5></div>';
+                             str += '<div style="font-size:17px; margin-bottom:10px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(firstAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
+                             str += '최대 소비 횟수인 ' + firstCountMax + '회에서 <br>평균 횟수인 ' + firstCountAvg + '회로 줄이면<br>';
+                             str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(firstSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
 
-                             str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
-                             str += '최대 소비 횟수인 ' + secondCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + secondSavingAmount + '원을 세이빙 할 수 있습니다<br></div>';
+                             
+                          
+                             str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
+                             str += '<h5 style="font-size:17px; color:#ff7f00; display:inline;"> ' + cateArray[1].data[0][0] + ' </h5></div>';
+                             str += '<div style="font-size:17px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(secondAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
+                             str += '최대 소비 횟수인 ' + secondCountMax + '회에서 <br>평균 횟수인 ' + secondCountAvg + '회로 줄이면<br>';
+                             str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(secondSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
+
                              
                           //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
                              
@@ -2419,7 +2430,7 @@
            
            str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
            str += ' <br>소비를 평균 만큼만 줄여도<br>';
-           str += '최소 <strong style="font-size:20px; color:red;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 가능</div>';
+           str += '최소 <strong style="font-size:20px; color:#ff3333;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 !!</div>';
            
           $('#sumMedianComment').append(str);    
           
@@ -2515,9 +2526,10 @@
                cate3.push(topCountList[i].CATE3);
                cate3count.push(topCountList[i].CATE3COUNT*1);      
            }  
-    	     let str = '';
-    	     str += '<div> 소비 횟수가 가장 잦은 카테고리 1 위는 ' + cate3[0] + ' (' + cate3count[0] + ' 회) 입니다 <br>';
-    	              str += '2 위는 ' + cate3[1] + ' (' + cate3count[1] + ' 회) 입니다 </div>';
+    	       let str = '';
+               str += '<div style="text-align:center; font-size:18px; margin-bottom:10px;"> [ 소비 빈도 TOP ]</div>';
+               str += '<div style="text-align:center;"><h6 style="font-size:16px; display:inline;">1 위 &nbsp;</h6> <h6 style="font-size:19px; color:#ff4d4d; display:inline;">' + cate3[0] + ' (' + cate3count[0] + ' 회) <h6>';
+               str += '<h6 style="font-size:16px; display:inline;">2 위&nbsp; </h6> <h6 style="font-size:19px; color:#ff7f00; display:inline;">' + cate3[1] + ' (' + cate3count[1] + ' 회) <h6></div>';
     	              
     	              $('#topCountComment').append(str); 	
             
@@ -2642,11 +2654,22 @@
     	                  let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
     	         
     	                  let str = '';
-    	                  str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
-    	                  str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
+    	                  
+    	                  
+    	                  str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
+    	                  str += '<h5 style="font-size:17px; color:#ff4d4d; display:inline;"> ' + cateArray[0].data[0][0] + ' </h5></div>';
+    	                  str += '<div style="font-size:17px; margin-bottom:10px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(firstAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
+    	                  str += '최대 소비 횟수인 ' + firstCountMax + '회에서 <br>평균 횟수인 ' + firstCountAvg + '회로 줄이면<br>';
+    	                  str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(firstSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
 
-    	                  str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
-    	                  str += '최대 소비 횟수인 ' + secondCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + secondSavingAmount + '원을 세이빙 할 수 있습니다<br></div>';
+    	                  
+    	               
+                          str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
+                          str += '<h5 style="font-size:17px; color:#ff7f00; display:inline;"> ' + cateArray[1].data[0][0] + ' </h5></div>';
+                          str += '<div style="font-size:17px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(secondAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
+                          str += '최대 소비 횟수인 ' + secondCountMax + '회에서 <br>평균 횟수인 ' + secondCountAvg + '회로 줄이면<br>';
+                          str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(secondSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
+
     	                  
     	               //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
     	                  
@@ -2746,7 +2769,7 @@
            
            str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
            str += ' <br>소비를 평균 만큼만 줄여도<br>';
-           str += '최소 <strong style="font-size:20px; color:red;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 가능</div>';
+           str += '최소 <strong style="font-size:20px; color:#ff3333;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 !!</div>';
            
           $('#sumMedianComment').append(str);    
           
