@@ -35,6 +35,11 @@ background:none !important;
 color:black !important;
 border:none !important;
 }   
+
+.btn:focus {
+    outline: 0;
+    box-shadow:none !important; 
+}
 </style>
 
 <script>
@@ -746,31 +751,26 @@ $(document).ready(function(){
      <!-- 모달 -->
       <div class="modal fade" id="setFromParking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content" style="">
+        <div class="modal-content" style="border:4px solid; border-color:#008485;">
           <p style="align:right;">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float:right;"></button>
          </p>   
          
           <div class="modal-body">     
                 
-                 <h4 class="animate__animated animate__fadeInDownBig" style="font-size:25px; text-align:center; color:#008485;">내 자산 영혼까지 끌어모아 저축하기!</h4><br>
+                 <h4 class="animate__animated animate__fadeInDownBig" style="font-size:25px; text-align:center; color:#333333;">내 자산 영혼까지 끌어모아 저축하기!</h4><br>
           
                  <h4 style="text-align:center; font-size:19px;">
-	                매달 예산 사용 마지막 날, <br> 모든 주머니에서 <p style="color:red; font-weight:bold; font-size:20px; display:inline;"> 남은 잔액 </p>을 <br> 파킹 주머니로 자동 이동 설정을 해보세요! <br><br>
+	                매달 예산 사용 마지막 날, <br> 모든 주머니에서 <p style="color:#ff4d4d; font-weight:bold; font-size:20px; display:inline;"> 남은 잔액 </p>을 <br> 파킹 주머니로 자동 이동 설정을 해보세요! <br><br>
 	                 <br>
 	                ※ 파킹 주머니는 고객님이 설정한 목표 금액이 <br> 모이기 전까지 
-	                <p style="color:red; font-weight:bold; font-size:20px; display:inline;"> " 출금이 불가 " </p>합니다. <br><br>
+	                <p style="color:#ff1a1a; font-weight:bold; font-size:20px; display:inline;"> " 출금이 불가 " </p>합니다. <br><br>
 	             </h4>
 	             
             
           </div>
           
-         <!--  
-          <div class="modal-footer">
-            <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()">확인</button> 
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-          </div>
-          --> 
+         
           
           <div style="text-align:center; margin-bottom:20px;">
             <button type="button" class="divBtn btn btn-primary" id="divBtn" onclick="autoFromParking()" data-bs-dismiss="modal" style="font-size:20px; font-family:hanaBFont; width:180px; height:50px; margin-bottom:25px;">설정하러 가기</button>         
@@ -792,7 +792,7 @@ $(document).ready(function(){
 
    
    <div class="border-box d-flex justify-content-between" id="autoFromParkingSet" 
-    style="margin-left:24.9%; text-align:center; border:4px solid; border-color:#ff4747; border-radius:20px; width:900px;">
+    style="margin-left:24.9%; display:none !important; text-align:center; border:4px solid; border-color:#ff4747; border-radius:20px; width:900px;">
     
     <div>
         <img src="${pageContext.request.contextPath}/resources/myicon/parking9.png" 

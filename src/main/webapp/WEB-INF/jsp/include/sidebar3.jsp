@@ -13,45 +13,38 @@
          
          
          
-         
-         
-         
        <div>
             <a href="${pageContext.request.contextPath}/mybankMain"
                style="color:#808080; font-size:18px;">나의 주머니</a>
          </div>     
          <hr style="width: 200px;">
          <div>
-            <a href="${pageContext.request.contextPath}/setBudgetMain"
-               style="color:#808080; font-size:18px;">나의 예산 관리</a>
+            <a href="${pageContext.request.contextPath}/checkBudgetMain"
+               style="color:#808080; font-size:18px;">나의 예산</a>
          </div>
          <hr style="width: 200px;">
          
          <div>
-            <a href="${pageContext.request.contextPath}/checkBudgetMain"
-               style="color:#808080; font-size:18px;">나의 예산 확인</a>
-         </div>
-         <hr style="width:200px;">
-         
-         <div>
             <a href="${pageContext.request.contextPath }/myParkingMain"
-               style="color:#808080; font-size:18px;">나의 파킹 관리</a>
+               style="color:#808080; font-size:18px;">나의 파킹</a>
          </div>
          <hr style="width: 200px;">
          <div>
             <a href="${pageContext.request.contextPath}/consumeMain"
-               style="color:#808080; font-size:18px;">나의 소비 달력</a>
+               style="color:#808080; font-size:18px;">나의 달력</a>
          </div>
          <hr style="width: 200px;">  
          <div>
             <a href="${pageContext.request.contextPath }/consumePattern"
-               style="color:#808080; font-size:18px;">나의 소비 패턴</a>
+               style="color:#808080; font-size:18px;">나의 소비</a>
          </div>
          <hr style="width: 200px;">
-          <div>
+         <%--  <div>
             <a href="${pageContext.request.contextPath }/"
                style="color:#808080; font-size:18px;"></a>
          </div>
-         <hr style="width:200px;">
+         <hr style="width:200px;"> --%>
+         
+         
       </div>
    </div>

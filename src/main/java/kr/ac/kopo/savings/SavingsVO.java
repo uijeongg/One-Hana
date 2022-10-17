@@ -4,18 +4,16 @@ public class SavingsVO {
 
 	private String savingsName;
 	private String type;                 //적금/예금
-	private String interestMedtod;		 //이자지급방식
 	private String target;				 //가입대상
 	private String maxLimit;			 //적립한도
 	private String minPeriod;			 //최소 계약기간
 	private String maxPeriod;			 //최대 계약기간
 	private int minAmount;			     //최소 가입금액
 	private int maxAmount; 				 //최대 가입금액
-	private String accumulateMedtod;     //적립방법
+	private String accumulateMethod;     //적립방법
 	private String productDesc;          //상품설명
 	private String registDate;           //상품등록일
-	
-	
+	private String savingsType;
 	public String getSavingsName() {
 		return savingsName;
 	}
@@ -27,12 +25,6 @@ public class SavingsVO {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public String getInterestMedtod() {
-		return interestMedtod;
-	}
-	public void setInterestMedtod(String interestMedtod) {
-		this.interestMedtod = interestMedtod;
 	}
 	public String getTarget() {
 		return target;
@@ -70,11 +62,11 @@ public class SavingsVO {
 	public void setMaxAmount(int maxAmount) {
 		this.maxAmount = maxAmount;
 	}
-	public String getAccumulateMedtod() {
-		return accumulateMedtod;
+	public String getAccumulateMethod() {
+		return accumulateMethod;
 	}
-	public void setAccumulateMedtod(String accumulateMedtod) {
-		this.accumulateMedtod = accumulateMedtod;
+	public void setAccumulateMethod(String accumulateMethod) {
+		this.accumulateMethod = accumulateMethod;
 	}
 	public String getProductDesc() {
 		return productDesc;
@@ -88,12 +80,18 @@ public class SavingsVO {
 	public void setRegistDate(String registDate) {
 		this.registDate = registDate;
 	}
+	public String getSavingsType() {
+		return savingsType;
+	}
+	public void setSavingsType(String savingsType) {
+		this.savingsType = savingsType;
+	}
 	@Override
 	public String toString() {
-		return "SavingsVO [savingsName=" + savingsName + ", type=" + type + ", interestMedtod=" + interestMedtod
-				+ ", target=" + target + ", maxLimit=" + maxLimit + ", minPeriod=" + minPeriod + ", maxPeriod="
-				+ maxPeriod + ", minAmount=" + minAmount + ", maxAmount=" + maxAmount + ", accumulateMedtod="
-				+ accumulateMedtod + ", productDesc=" + productDesc + ", registDate=" + registDate + "]";
+		return "SavingsVO [savingsName=" + savingsName + ", type=" + type + ", target=" + target + ", maxLimit="
+				+ maxLimit + ", minPeriod=" + minPeriod + ", maxPeriod=" + maxPeriod + ", minAmount=" + minAmount
+				+ ", maxAmount=" + maxAmount + ", accumulateMethod=" + accumulateMethod + ", productDesc=" + productDesc
+				+ ", registDate=" + registDate + ", savingsType=" + savingsType + "]";
 	}
 	
 	

@@ -55,9 +55,20 @@ ul li {
 	display: inline; 
 	padding: 0px 10px 0px 10px; 
 	font-size: 20px;
-
 }
 
+.nav-item {
+    padding: 0px !important;
+}
+
+.dropdown-item{
+    font-size: 18px;
+    /* color:#008485; */
+}
+
+.dropdown-toggle {
+    color:#333333 !important;
+}
 
 </style>
 
@@ -83,42 +94,65 @@ ul li {
             <div class="col-lg-6">
             <div class="d-flex justify-content-center">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/"> HOME </a></li>
+						<li><a href="${pageContext.request.contextPath}/">HOME &nbsp;</a></li>
 						<%-- <li><a href="${pageContext.request.contextPath}/joinMybank"> 통장개설</a></li>
 						 <li><a href="${pageContext.request.contextPath}/mybankMain"> 마이원하나 </a></li>  --%>
 						<%--<li><a href="${pageContext.request.contextPath}/setBudgetMain"> 한달예산관리 </a></li> --%>
 		                <%-- <li><a href="${pageContext.request.contextPath}/mailform"> 메뉴 4 </a></li> --%>
 
 
-                    <li class="nav-item dropdown" style="display: inline-block;"><a
-                        class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            마이원하나</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li class="nav-item dropdown" style="display:inline-block;"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        MyOne</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border:3px solid; border-color:#008485;">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/whatis">마이원하나란?</a></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/joinMybank">통장개설</a></li>
+                            <%-- <li><a class="dropdown-item" href="${pageContext.request.contextPath}/joinMybank">통장개설</a></li> --%>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mybankMain">MOHANA주머니</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/setBudgetMain">나의예산설정</a></li>
                         </ul>
                     </li>
                     
+                    
+                    <li class="nav-item dropdown" style="display:inline-block;"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        My자산</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border:3px solid; border-color:#008485;">
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/checkBudgetMain">나의예산현황</a></li>                            
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/myParkingMain">나의파킹현황</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li class="nav-item dropdown" style="display: inline-block;"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        My소비</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="border:3px solid; border-color:#008485;">
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumeMain">소비달력</a></li>                            
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumePattern">요약소비패턴</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumePattern">세부소비패턴</a></li>
+                        </ul>
+                    </li>
+                    
+                <%--     <li class="nav-item dropdown" style="display: inline-block;"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        MyPage</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/checkBudgetMain">소비달력</a></li>                            
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/myParkingMain">요약소비패턴</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/myParkingMain">세부소비패턴</a></li>
+                        </ul>
+                    </li> --%>
 
 
-
+<%-- 
 					<li class="nav-item dropdown" style="display: inline-block;">
-					   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">나의예산 </a>
+					   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">My소비</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<%-- <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mybankMain">마이원하나메인</a></li> --%>
-							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/setBudgetMain">한달예산관리</a></li>
-							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumeMain">소비내역</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumeMain">소비달력</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumeMain">요약소비패턴</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/consumeMain">세부소비패턴</a></li>
 						</ul>
 					</li>
-
-
-
-
-
-
-
-
+ --%>
+ 
+ 
+                    <%-- <li><a href="${pageContext.request.contextPath}/"> MyPage </a></li> --%>
 
 
 

@@ -119,7 +119,7 @@
 			<img src="${pageContext.request.contextPath}/resources/myicon/memoBlue.png" 
                  style="width:120%; position: relative;"/>
 		     
-		         <div id="container1comment" class="main_image_text" style="position:absolute; top:500px; left:960px;"></div>
+		         <div id="container1comment" class="main_image_text" style="position:absolute; top:460px; left:970px;"></div>
 				 
 			</div>
 			<!-- 코멘트 end -->
@@ -174,7 +174,7 @@
               
                 <!-- <div id="container1comment"></div> -->
                  
-                 <div id="container2comment" class="main_image_text" style="position:absolute; top:1110px; left:960px;"></div>
+                 <div id="container2comment" class="main_image_text" style="position:absolute; top:1120px; left:980px;"></div>
                  
                  
             </div>
@@ -516,29 +516,32 @@ $(document).ready(function(){
                             
       
                        let str1 ='';
-                       str1 += '<div style="font-size:16px;">' + settingAmountList[0].POCKETNAME + ' 주머니 예산 : ' + settingAmountList[0].AUTODIVAMOUNT + '원 ' ;
-                       str1 += '<br>' + thirdConsumeList.length + '개월 간 ' + ' 평균 사용 금액 : ' + sumAvg1 + ' 원 <br></div>';
+                       str1 += '<div style="text-align:center;"><h6 style="font-size:17px;">' + settingAmountList[0].POCKETNAME + ' 주머니 예산은<br></h6>';
+                       str1 += '<h5 style="font-size:20px; display:inline;">"' + (Math.floor(settingAmountList[0].AUTODIVAMOUNT)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:17px; display:inline;"> 이며,' ;
+                       str1 += '<br>' + thirdConsumeList.length + '개월 간' + ' 평균 사용 금액은</h6><br>';
+                       str1 += '<h5 style="font-size:20px; display:inline;">"' + (Math.floor(sumAvg1)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:17px; display:inline;"> 입니다</h6><br></div>';
                        
                  
                        
                        if ((settingAmountList[0].AUTODIVAMOUNT)*0.8 > sumAvg1 ) {  //고정비 예산에 비해 평균금액이 80%가 넘지 않는다면
                            
-                           str1 += '<br><div>';
+                           str1 += '<div style="margin-top:10px;" class="d-flex flex-column">';
                            
-                           str1 += '<div><img src="${pageContext.request.contextPath}/resources/myicon/comment1.png" style="width:10%"/>';
-                           str1 += '<div style="padding-top:30px; color:red; font-size:18px; font-weight:bold; display:inline;">&nbsp;COMMENT</div></div>';
+                           str1 += '<div class="d-flex justify-content-start align-items-center" style=" padding-left:0px; width:200px;"><img src="${pageContext.request.contextPath}/resources/myicon/comment1.png" style="width:26%;"/>';
+                           str1 += '<h5 style="padding-top:30px; color:red; font-size:18px; font-weight:bold; display:inline;">&nbsp;COMMENT</h5></div>';
                            
                            
-                           str1 += '<div style="font-size:16px;">'+ sumAvg1 + '원은 예산 대비 <br><p style="font-size:18px; color:red; display:inline;">20% 이하</p>의 금액입니다 <br>';
-                           str1 += '' + settingAmountList[0].POCKETNAME + ' 주머니 예산을 평균금액 이하로 줄여도 충분!! </div>';
+                           str1 += '<div style="text-align:center;"><h5 style="font-size:17px; display:inline;">'+ (Math.floor(sumAvg1)).toLocaleString('ko-KR') + '원</h5><h5 style="font-size:17px; display:inline;">은 예산 대비</h5><br>';
+                           str1 += '<h5 style="font-size:20px; color:red; display:inline;">" 20% 이하 "</h5><h5 style="font-size:17px; display:inline;">의 금액입니다</h5><br>';
+                           str1 += '<h5 style="font-size:17px; display:inline;">' + settingAmountList[0].POCKETNAME + ' 주머니 예산을<br>평균금액 이하로 줄여도 충분!! </h5></div>';
                            
                            
                            str1 += '</div>';
                  
                        }
                     	  
-                       str1 += '<div><br><button type="button" class="intoReBudget col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
-                       str1 += 'style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="intoReBudgetSet(this.class)">재설정하기</button>  </div>';
+                       str1 += '<div style="margin-top:5px; text-align:center;"><button type="button" class="intoReBudget btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
+                       str1 += 'style="text-align:center; width:180px; height:30px; font-size:16px; font-family:hanaBFont;" onclick="intoReBudgetSet(this.class)">재설정하기</button>  </div>';
                        
                        $('#container1comment').append(str1); 
                        
@@ -549,17 +552,24 @@ $(document).ready(function(){
                        //<h2>코멘트</h2>
                        //<h5>6개월간 생활비 예산은 1,200,000원이고, 평균 사용 금액은 xx원입니다. <br> 자세한 사용 내역을 확인할 수 있습니다. </h5>
                        let str2 ='';
-                       str2 += '<div>' + settingAmountList[1].POCKETNAME + ' 주머니 예산 : ' + settingAmountList[1].AUTODIVAMOUNT + ' 원<br>';
+                      /*  str2 += '<div>' + settingAmountList[1].POCKETNAME + ' 주머니 예산 : ' + settingAmountList[1].AUTODIVAMOUNT + ' 원<br>';
                        str2 += '' + secondConsumeList.length + '개월 간 평균 사용 금액 : ' +  sumAvg2  + ' 원 <br><br>';
-                       str2 += '자세한 ' + settingAmountList[1].POCKETNAME + ' 사용 내역을 확인할 수 있습니다. </div>';
+                        */
+                       str2 += '<div style="text-align:center;"><h6 style="font-size:18px;">' + settingAmountList[1].POCKETNAME + ' 주머니 예산은<br></h6>';
+                       str2 += '<h5 style="font-size:21px; display:inline;">"' + (Math.floor(settingAmountList[1].AUTODIVAMOUNT)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:18px; display:inline;"> 이며,' ;
+                       str2 += '<br>' + secondConsumeList.length + '개월 간' + ' 평균 사용 금액은</h6><br>';
+                       str2 += '<h5 style="font-size:21px; color:#ff4d4d; display:inline;"> "' + (Math.floor(sumAvg2)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:18px; display:inline;"> 입니다</h6><br></div>';
                        
-                       //str2 += '<div><button type="button" class="intoReBudgetSet2 col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#reBudget"';
-                       //str2 += 'style="width:200px; font-size:18px; onclick="intoReBudgetSet(this.class)" font-family:hanaBFont;">재설정하기</button>  </div>';
                        
-                       str2 += '<div> <a href="${pageContext.request.contextPath }/consumePattern" style="border:2px solid;';
-                       str2 += 'border-color:none; background-color:#008485; color:white;">확인하러 가기</a></div>';
                        
-                  
+                       
+                       
+                       str2 += '<h5 style="margin-top:20px; font-size:17px; text-align:center;">자세한 ' + settingAmountList[1].POCKETNAME + ' 사용 내역을<br>확인할 수 있습니다.</h5>';
+                       str2 += '</div>';
+                       
+                       str2 += '<div style="text-align:center; margin-top:20px; border:2px solid; background-color:#008485; border:none; border-radius:5px;">';
+                       str2 += '<a href="${pageContext.request.contextPath }/consumePattern" style="';
+                       str2 += 'background-color:#008485; color:white; font-size:17px;">확인하러 가기</a></div>';
                        
                        $('#container2comment').append(str2); 
                        
@@ -859,8 +869,7 @@ function changeModal(toPocket) {
   })
 </script>
     
-    
- 
+   
 
 </body>
 </html>

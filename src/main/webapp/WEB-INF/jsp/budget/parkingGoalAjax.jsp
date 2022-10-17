@@ -4,10 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-
-<div class="border-box" id="autoFromParkingSet" 
-    style="margin-left:360px; text-align:center; border:3px solid; border-color:#008485; border-radius:20px; width:900px;">
-        <h3 style="margin-top:20px; margin-bottom:10px;">파킹 주머니 자동 이동 설정</h3>
+<div class="border-box d-flex justify-content-between" id="autoFromParkingSet" 
+    style="margin-left:24.9%; text-align:center; border:4px solid; border-color:#ff4747; border-radius:20px; width:900px;">
+    
+        <div>
+        <img src="${pageContext.request.contextPath}/resources/myicon/parking9.png" 
+                     style="margin-top:85px; margin-left:30px; width:80%; display:inline;"/>
+    </div>
+        
+        
+        <div>
+        
+        <h3 style="margin-top:20px; margin-bottom:10px;"><strong style="color:#008485">파킹 주머니</strong> 목표 금액 설정</h3>
         <p>남은 잔액을 모두 끌어모아 새는 돈 없이 종잣돈 만들기가 가능합니다</p>
         
         <br>
@@ -44,14 +52,14 @@
                 
                  
             <div style="margin-left:3px; margin-bottom:20px; margin-top:20px;">
-                <img src="${pageContext.request.contextPath}/resources/img/My_!orange2.png" 
+                <img src="${pageContext.request.contextPath}/resources/img/My_!green2.png" 
                      style="width:40px; height:40px; display:inline;"/>
                 <p style=" display:inline;">&nbsp;목표 금액이 모일 때까지 파킹 주머니는 입금만 가능, 출금은 불가합니다</p>
             </div>  
          
                 <input type="button" id="parkingSetBtn" value="수정"
-                       style="background-color:#FA6400; margin-bottom:20px; color:white; border:none; border-radius:10px; width:120px; height:45px;">
+                       style="background-color:#ff4747; margin-bottom:20px; color:white; border:none; border-radius:10px; width:120px; height:45px;">
             </div>
-            
+              </div> 
         </div>  
     </div>
