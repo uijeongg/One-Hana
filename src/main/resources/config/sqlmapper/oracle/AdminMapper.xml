@@ -5,7 +5,16 @@
 <mapper namespace="admin.AdminDAO">
 
    <select id="selectProductList" resultType="kr.ac.kopo.savings.SavingsVO">
-        SELECT * FROM T_SAVINGS_LIST
+        SELECT SAVINGSNAME, TYPE, TARGET, MAXLIMIT, MINPERIOD, MAXPERIOD, MINAMOUNT, MAXAMOUNT, 
+               ACCUMULATEMETHOD, PRODUCTDESC, TO_CHAR(REGISTDATE,'YYYY/MM/DD') AS REGISTDATE, SAVINGSTYPE, PRODUCTCODE, STATUS    
+        FROM T_SAVINGS_LIST ORDER BY REGISTDATE DESC
    </select>
+
+    
+   <insert id="insertProduct" parameterType="kr.ac.kopo.savings.SavingsVO">
+       INSERT INTO T_SAVINGS_LIST(SAVINGSNAME, TYPE, TARGET, MAXLIMIT, MINPERIOD, MAXPERIOD, MINAMOUNT, MAXAMOUNT, ACCUMULATEMETHOD, PRODUCTDESC, SAVINGSTYPE) 
+       VALUES(#{savingsName}, #{type}, #{target}, #{maxLimit}, #{minPeriod}, #{maxPeriod}, #{minAmount}, #{maxAmount}, #{accumulateMethod}, #{productDesc}, #{savingsType})
+   
+   </insert>
 
 </mapper>

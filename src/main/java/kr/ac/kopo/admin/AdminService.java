@@ -8,4 +8,6 @@ public interface AdminService {
 
 	List<SavingsVO> selectProductList();
 
+	void insertProduct(SavingsVO savingsVO);
+
 }

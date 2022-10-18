@@ -37,29 +37,114 @@
     flex: 1;
 }
 
-.button-active {
-    border-color: #008485;
-    font-color: #008485;
-}
-
 .button:hover {
     border-color: #008485;
     color: #008485;
 }
 
 .active {
-    border-color: #e90061;
-    border-width: thick;
+    /* border-color: #e90061; */
+    border : 5px solid #fca474;
+    box-shadow: none !important;
 }
 
 .button {
-    background-color:#cacaca; 
+    background-color:#9d9d9d; 
     border:none; 
     height:32px; 
     width:19.5%; 
     border-radius:5px; 
     font-family:hanaBFont;
     color:white;
+}
+
+
+.selectSavings:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
+}
+
+.selectSavings:focus {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}  
+
+.calculAmount:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
+}
+
+.calculAmount:hover {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}  
+
+.compareSavings:focus {
+    outline: 0;
+    box-shadow:none !important; 
+    /* color: white !important; */
+}
+
+.versusAmount:hover {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important;
+    color: white !important; 
+}  
+
+.versusAmount:focus {
+    outline: 0;
+    box-shadow:none !important; 
+    color: white !important;
+}
+
+.selProduct:hover {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important;
+    color: white !important; 
+}
+
+.selProduct:focus {
+    outline: 0;
+    box-shadow:none !important; 
+    color: white !important;
+}
+
+/* .doDivide:hover {
+background:none !important;
+color:black !important;
+border:none !important;
+} 
+
+.doDivide:focus {
+background:none !important;
+color:black !important;
+border:none !important;
+}   
+
+.btn:focus {
+    outline: 0;
+    box-shadow:none !important; 
+}
+
+ */
+
+
+tr {
+   padding: 15px; 
+}
+
+th {
+    border-right:1px solid;
+}
+
+td, th {
+    padding: 15px; 
 }
 </style>
 
@@ -75,7 +160,7 @@
     
 
 
-<div id="compareBtn"></div>
+<div id="savingsHeader"></div>
 
 <div id="savingsMain" >
    
@@ -127,144 +212,145 @@
 	</div>   
 	
 	
+	
 </div>	
 	
-	
+
+
+<div id="compareBtn"></div>
 	
 <!--  --><!--  --><!--  --><!--  --><!--  -->
-<!-- 
-  <div style="text-align:center;">
-  <h4 style="margin-bottom:30px;"><strong style="color:#008485; margin-bottom:30px;">만기수령금&nbsp;</strong>(예상)</h4>
-  
-  
-    <ul>
-	    <li style="display:inline-block;">적금이름
-	        <div style="margin-top:10px; width:300px; height:400px; border-radius:20px; border:1px solid; background-color:#486A80; ">
-                
-                <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="font-size:23px; color:white;">우대금리 미포함</span>
-                    <span style="font-size:25px; color:#FFDE00;">xxxx 원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="color:#E8E8E8;">만기원금</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between">
-                    <span style="color:#E8E8E8;">만기이자(단리!!, 세후)</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
 
-                <hr style="margin-top:20px; margin-bottom:20px; color:white;">
-                
-                     <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="font-size:23px; color:white;">우대금리 포함</span>
-                    <span style="font-size:25px; color:#FFDE00;">xxxx 원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="color:#E8E8E8;">만기원금</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between">
-                    <span style="color:#E8E8E8;">만기이자(단리!!, 세후)</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-                
-            </div><button style="width:300px; border-radius:10px; margin-top:30px; background-color:#008485; color:white; border:none;">가입진행</button>
-	    </li>
-	    
-	    <li style="display:inline-block;">적금이름
-	        <div style="margin-top:10px; width:300px; height:400px; border-radius:20px; border:1px solid; background-color:#486A80; ">
-                
-                <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="font-size:23px; color:white;">우대금리 미포함</span>
-                    <span style="font-size:25px; color:#FFDE00;">xxxx 원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="color:#E8E8E8;">만기원금</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between">
-                    <span style="color:#E8E8E8;">만기이자(복리!!, 세후)</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-
-                <hr style="margin-top:20px; margin-bottom:20px; color:white;">
-                
-                     <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="font-size:23px; color:white;">우대금리 포함</span>
-                    <span style="font-size:25px; color:#FFDE00;">xxxx 원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between" style="margin-top:30px;">
-                    <span style="color:#E8E8E8;">만기원금</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-                
-                <div class="d-flex justify-content-between">
-                    <span style="color:#E8E8E8;">만기이자(복리!!, 세후)</span>
-                    <span style="color:#E8E8E8;">xxxx원</span>
-                </div>
-                
-            </div><button style="width:300px; border-radius:10px; margin-top:30px; background-color:#008485; color:white; border:none;">가입진행</button>
-	    </li>
+ <table style="border-collapse:collapse;">
+    <thead style="border-bottom:3px double; font-size:20px;">
+        <tr align="center" bgcolor="white">
+            <td style="border-right:3px double;"></td>
+            <td style="border-right:3px double; color:#008485;"> + data[0].SAVINGSNAME + </td>
+            <td style="color:red;"> data[1].SAVINGSNAME </td>
+        </tr>
+    </thead>
     
-    </ul>
-  
-    <button style="width:300px; border-radius:20px; margin-top:20px; ">취소</button>
- </div>
- -->
+    <tbody>
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">상품설명</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].PRODUCTDESC </td>
+            <td style="border-bottom:2px solid;"> data[1].PRODUCTDESC </td>
+        </tr>
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">가입 대상</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].TARGET </td>
+            <td style="border-bottom:2px solid;"> data[1].TARGET </td>
+        </tr>
+        
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">적립 방법</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].ACCUMULATEMETHOD </td>
+            <td style="border-bottom:2px solid;"> data[1].ACCUMULATEMETHOD </td>
+        </tr>
+        
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">적립 한도</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MAXLIMIT </td>
+            <td style="border-bottom:2px solid;"> data[1].MAXLIMIT </td>
+        </tr>
+                
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">가입 기간</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MINPERIOD + '~' + data[0].MAXPERIOD </td>
+            <td style="border-bottom:2px solid;"> data[1].MINPERIOD + '~' + data[1].MAXPERIOD </td>
+        </tr>
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">가입 금액</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MINAMOUNT + '~' + data[0].MAXAMOUNT </td>
+            <td style="border-bottom:2px solid;"> data[1].MINAMOUNT + '~' + data[1].MAXAMOUNT </td>
+        </tr>
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">기본 금리</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].BASICRATE </td>
+            <td style="border-bottom:2px solid;"> data[1].BASICRATE </td>
+        </tr>
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;"> 최대 금리</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MAXRATE </td>
+            <td style="border-bottom:2px solid;"> data[1].MAXRATE </td>
+        </tr>
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double; border-bottom:2px solid;">우대 금리</th>
+            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].PREFERRATE </td>
+            <td style="border-bottom:2px solid;"> data[1].PREFERRATE </td>
+        </tr>
+        
+        <tr align="center" bgcolor="white">
+            <th style="border-right:3px double;">우대금리 항목</th>
+            <td style="border-right:3px double;"> data[0].CONDITION1 + ',' + data[0].CONDITION2 </td>
+            <td> data[1].CONDITION1 + ',' + data[1].CONDITION2 </td>
+        </tr>
+    </tbody>
+
+</table> 
+ 
+
+               <!--  str += '<table border="1">';
+                str += '<th>' + data[0].SAVINGSNAME + '</th>';
+                str += '<th>' + data[1].SAVINGSNAME + '</th>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].PRODUCTDESC + '</td>';
+                str += '<td>' + data[1].PRODUCTDESC + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].TARGET + '</td>';
+                str += '<td>' + data[1].TARGET + '</td>';
+                str += '</tr>';
+                              
+                str += '<tr>';
+                str += '<td>' + data[0].MAXLIMIT + '</td>';
+                str += '<td>' + data[1].MAXLIMIT + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].MINPERIOD + '~' + data[0].MAXPERIOD + '</td>';
+                str += '<td>' + data[1].MINPERIOD + '~' + data[1].MAXPERIOD + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].MINAMOUNT + '~' + data[0].MAXAMOUNT + '</td>';
+                str += '<td>' + data[1].MINAMOUNT + '~' + data[1].MAXAMOUNT + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].BASICRATE + '</td>';
+                str += '<td>' + data[1].BASICRATE + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].MAXRATE + '</td>';
+                str += '<td>' + data[1].MAXRATE + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].PREFERRATE + '</td>';
+                str += '<td>' + data[1].PREFERRATE + '</td>';
+                str += '</tr>';
+                
+                str += '<tr>';
+                str += '<td>' + data[0].CONDITION1 + ',' + data[0].CONDITION2 + '</td>';
+                str += '<td>' + data[1].CONDITION1 + ',' + data[1].CONDITION2 + '</td>';
+                str += '</tr>';
+                
+                
+                str += '</table>';
+                         -->
 <!--  --><!--  --><!--  --><!--  --><!--  -->
 <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->	   
-
-
-<div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid; padding:10px; width:60%; height:240px; 
-     border-radius:40px; display:flex; justify-content:space-between;" class= "row">
-     
-	<div class="col-8">
-		<div class="d-flex flex-column">
-		<div class="d-flex" style="font-family:hanaBFont; margin-top:20px;">
-			 <input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">
-			 <h4 style="margin-left:10px;"> 급여하나 월복리 적금 </h4>
-		</div>
-		<small style="margin-left:50px; margin-top:7px; font-size:20px; color:black; 
-		       font-weight:bold; white-space: nowrap;"> 상품설명상품설명상품설명상품설명 </small><br><br>
-		</div>
-			  <button type="button" style="margin-left:20px; width:350px; height:60px; font-family:hanaBFont; border-radius:30px; ">
-			        자세히보기
-			  </button> 
-	</div>
-	
-	<div class="col-3" style="text-align:right; margin-left:20px; color:black;  font-weight:bold; display: flex; 
-	     justify-content: flex-end; align-items: center;">
-	     <div style="font-size:20px; display:inline;"> 최대 연 <br>
-	          <strong style="font-size:30px;"> + 100% </strong><br>
-	          (세전, 1년) 
-	     </div>
-	</div><br>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-
 
 
 
@@ -341,7 +427,7 @@
                        
                        
                        
-                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3개월"
+                         <!--    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3개월"
                                    style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
                             3개월
                             </button>
@@ -369,7 +455,44 @@
                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="5년"
                                     style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
                              5년
+                           </button>  -->
+                           
+                           
+                           
+                           
+                           
+                              <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="3"
+                                   style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                            3개월
+                            </button>
+                     
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="6"
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                             6개월
                            </button> 
+                           
+                           <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="12"
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                             1년
+                           </button> 
+                           
+                           <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="24"
+                                   style="font-size:18px; font-family:hanaBFont; margin-left:9%; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                            2년
+                            </button>
+                     
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="36"
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none; margin-right:2%;">
+                             3년
+                           </button> 
+                           
+                           <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="true" value="60"
+                                    style="font-size:18px; font-family:hanaBFont; display:inline; width:26%; height:50px; border-radius:5px; margin-bottom:5px; background:none;">
+                             5년
+                           </button> 
+                           
+                           
+                         
        
                        </div>
                 </div>
@@ -489,7 +612,7 @@
           </div>
           
            <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
-            <button type="button" class="btn btn-primary" id="divBtn" data-bs-dismiss="modal" onclick="sortSavings()" 
+            <button type="button" class="btn btn-primary selProduct" id="divBtn" data-bs-dismiss="modal" onclick="sortSavings()" 
                     style="width:76%; font-size:20px; font-family:hanaBFont; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">조회</button>         
             </div>
         </div>
@@ -510,7 +633,7 @@
 <!-- 선택한 적금 두개 비교하기 모달 버튼  -->
 <div class="modal fade" id="compareSavings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content" style="border: 4px solid #008485;">
          <!--  <div class="modal-header"> -->
             <!-- <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 190px;">잔액 이동 재설정</h5> -->
             <p style="align:right;">
@@ -523,7 +646,7 @@
            </div>
            <div id="comparemodalFooter" style="font-family:hanaBFont; text-align:center; margin-bottom:20px;">
             <!-- <button type="button" class="btn btn-primary" id="resolveBtn"  
-                    style="width:76%;  margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">만기 예상액 계산하기</button>         
+                    style="width:76%; font-size:22px; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;">만기 예상액 계산하기</button>         
                     data-bs-dismiss="modal" -->
             </div>
         </div>
@@ -609,38 +732,74 @@ function sortSavings() {
             	  $('#savingsMain').empty();
             	  
             	  
-            	  str2 ='';
-            	  str2 += '정의정 님이 선택하신 조건에 딱 맞는 상품을 추천해드려요';
-            	  str2 += '<div>';
-            	  str2 += '<button type="button" class="compareSavings col-3 btn btn-primary" onclick="compareSavings();" data-bs-toggle="modal" data-bs-target="#compareSavings"';
-            	  str2 += 'style="width:200px; font-size:18px; font-family:hanaBFont;">';
-            	  str2 += '선택한 상품 비교하기';
-            	  str2 += '</button></div>';
-            	  $('#compareBtn').append(str2);
+            	  str3 ='';
             	  
+            	  str3 += '<div style="margin-left:470px; margin-top:32px;">';
             	 
+            	  str3 += '<h5 style="font-size:23px;">" <strong style="font-size:23px; color:#008485; display:inline;">정의정</strong> 님이 선택하신 조건에 딱 맞는 상품을 추천해드려요! "</h5>';
+            	  str3 += '</div>';            	  
+            	  str3 += '<hr style="width:800px; margin-bottom:30px; height:7px; background-color:#066262;">';
             	  
+            	  $('#savingsHeader').append(str3);
+            	 
+            	  /*   <div style="margin-left:670px; margin-top:9px;" class="animate__animated animate__bounce" >
+            	        <img src="${pageContext.request.contextPath}/resources/myicon/park.PNG" 
+            	            style="width:80px; height:70px;"/>
+            	        <span style="font-size:30px; font-weight:bold; margin-top:80px;">&nbsp; 나의 </span> 
+            	        <span style="color:#008485; font-weight:bold; font-size:30px; margin-top:80px;"> 파킹 </span>
+    */
+            	    
+            	    
+            	  
+            	  
+            	  
+            	  
+            	  
+            	  
+            	
+                      
             	  for(let i=0; i<data.length; i++) {
             		  str ='';
-            		  str += '<div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid; padding:10px; width:60%; height:240px; border-radius:40px; display:flex; justify-content:space-between;" class= "row">';
+            		  str += '<div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid #9d9d9d; padding:10px; width:60%; border-radius:40px; display:flex; justify-content:space-between;" class= "row">';
             		  str += '<div class="col-8">';
             		  str += '<div class="d-flex flex-column">';
-            		  str += '<div class="d-flex" style="font-family:hanaBFont; margin-top:20px;">';
+            		  str += '<div class="d-flex" style="font-family:hanaBFont; margin-top:17px;">';
             		  str += '<input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">';
             		  str += '<h4 style="margin-left:10px;">' + data[i].SAVINGSNAME + '</h4>';
             		  str += '</div>';
-            		  str += '<small style="margin-left:50px; margin-top:7px; font-size:20px; color:black; font-weight:bold; white-space: nowrap;">' + data[i].PRODUCTDESC + '</small><br><br>';
+            		  
+            		  
+            		  str += '<div style="margin-left:20px;">';
+                      str += '<pre style="word-wrap:break-word; white-space:pre-wrap; white-space:-moz-pre-wrap; white-space:-pre-wrap; ';
+                      str += 'white-space:-o-pre-wrap; word-break:break-all;';
+                      str += 'font-weight:bold; font-size:18px; font-family:hanaBFont; fontWeight:bold; margin-top:7px;">' + data[i].PRODUCTDESC + '</pre>';
+                      str += '</div>';
+                    
+            		  
+            		  
+            		  
             		  str += '</div>';
-            		  str += '<button type="button" style="margin-left:20px; width:350px; height:60px; font-family:hanaBFont; border-radius:30px; ">';
+            		  str += '<button type="button" style="margin-left:20px; background-color:#fca474; border:none; color:white;  width:300px; height:42px; font-family:hanaBFont; border-radius:30px;">';
             		  str += '자세히보기 </button> </div>';
-            		  str += '<div class="col-3" style="text-align:right; margin-left:20px; color:black;  font-weight:bold; display: flex; justify-content: flex-end; align-items: center;">';
-            		  str += '<div style="font-size:20px; display:inline;"> 최대 연 <br><strong style="font-size:30px;">' + (data[i].BASICRATE + data[i].PREFERRATE) + '% </strong><br>  (세전, ' + data[i].MINPERIOD + ') </div>';
+            		  
+            		  
+            		  str += '<div class="col-3" style="text-align:right; margin-left:20px; font-weight:bold; display: flex; justify-content: flex-end; align-items: center;">';
+            		  str += '<div style="font-size:20px; display:inline;"> 최대 연 <br><strong style="font-size:30px; color:#008485;">' + (data[i].BASICRATE + data[i].PREFERRATE) + '% </strong><br>  (세전, ' + data[i].MINPERIOD + '개월) </div>';
             		  str += '</div><br></div>';
             		  $('#savingsMain').append(str);
             		  
             	  }  
             	  
-            	 
+            	  
+                  str2 = '';
+                  str2 += '<div style="margin-left:550px;">';
+                  str2 += '<button type="button" class="compareSavings col-3 btn btn-primary" onclick="compareSavings();" data-bs-toggle="modal" data-bs-target="#compareSavings"';
+                  str2 += 'style="width:400px; height:50px; font-size:20px; color:#434343; background-color:#66b5b6; border:none; border-radius:30px; font-family:hanaBFont;">';
+                  str2 += '선택한 상품 비교하기';
+                  str2 += '</button></div>';
+                  $('#compareBtn').append(str2);
+                  
+                  
               }
           })
 }
@@ -671,8 +830,13 @@ function compareSavings() {
                 
                 
                 str = '';
-                str += '<h4 style="font-family:hanaBFont; text-align:center; margin-bottom:40px;">선택한 상품 비교</h4>';
+                str += '<h4 style="font-family:hanaBFont; text-align:center; margin-bottom:40px;">선택한 <strong style="color:#008485">상품 비교</strong></h4>';
+                
+                
                 str += '<table border="1">';
+                
+                
+                
                 str += '<th>' + data[0].SAVINGSNAME + '</th>';
                 str += '<th>' + data[1].SAVINGSNAME + '</th>';
                 
@@ -731,7 +895,7 @@ function compareSavings() {
                
                let str2 ='';
                compareArray = data
-               str2 += '<button type="button" class="btn btn-primary" style="font-family:hanaBFont; width:76%; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;" onclick="expectedSavings()"> 만기 예상액 계산하기</button>';
+               str2 += '<button type="button" class="btn btn-primary calculAmount" style="font-family:hanaBFont; font-size:17px; width:76%; margin-top:20px; margin-bottom:25px; height:50px; border-radius:10px;" onclick="expectedSavings()"> 만기 예상액 계산하기</button>';
               
                $('#comparemodalFooter').append(str2);
                
@@ -778,7 +942,7 @@ function expectedSavings() {
   
   $('#comparemodalFooter').empty();
   let str2 = '';
-  str2 += '<button type="button" class="btn btn-primary" style="font-family:hanaBFont; width:76%; margin-top:20px; margin-bottom:25px; height:50px;';
+  str2 += '<button type="button" class="btn btn-primary versusAmount" style="font-family:hanaBFont; width:76%; font-size:17px; margin-top:20px; margin-bottom:25px; height:50px;';
   str2 += 'border-radius:10px;" onclick="goExpectedSavings()"> 만기예상액 비교하러 가기 </button>';
   $('#comparemodalFooter').append(str2);
  
@@ -1086,7 +1250,7 @@ function goExpectedSavings() {
         str += '</li>';
         
         str += '</ul>';
-        str += '<button style="width:180px; height:50px; border-radius:10px; margin-top:30px; background-color:#C3C1B4; color:white; border:none;">돌아가기</button>';
+        str += '<button style="width:180px; height:50px; border-radius:10px; margin-top:30px; background-color:#868686; color:white; border:none;">돌아가기</button>';
         str += '</div>';
 
 	 

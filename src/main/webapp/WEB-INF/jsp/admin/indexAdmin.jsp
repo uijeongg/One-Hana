@@ -25,6 +25,12 @@
         <link href="/resources/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
 <style>
+
+@font-face{
+    src : url("/resources/font/HanaB.ttf");
+    font-family:"hanaBFont";
+}
+
 body {
     font-family: hanaBFont !important;
 }

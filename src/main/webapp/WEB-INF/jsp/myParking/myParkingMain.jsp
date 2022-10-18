@@ -141,7 +141,7 @@
                  str2 += '<br><div>※ 축하합니다! 파킹 주머니 목표 금액에 모두 도달했습니다.';
                  str2 += ' 이제 파킹 주머니의 잔액을 출금할 수 있습니다.<br></div>';
                  
-                 str2 += '<button><a href="${pageContext.request.contextPath}/productsMain">금융 상품 추천받기</a></button>';
+                 str2 += '<button><a href="${pageContext.request.contextPath}/savingsMain">금융 상품 추천받기</a></button>';
                  //<button><a href="${pageContext.request.contextPath}/productsMain">금융 상품 추천받기</a></button>
             
        

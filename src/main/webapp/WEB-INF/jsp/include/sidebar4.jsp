@@ -5,7 +5,7 @@
          
     <!-- side bar start -->
     <div class="container-fluid sidepanel-inner d-flex flex-column"
-         style="width:20%; float:left; margin-top:37px; margin-left:10px; margin-right:10px; height:1500px;">
+         style="width:22%; height:90%; float:left; margin-top:27px; margin-left:50px; margin-right:10px; height:1500px;">
       <div style="padding-left:30px;">
          <h3 style="margin-bottom:10px;">
             <!-- <strong style="color:#008485;"> M</strong>y <strong style="color:#008485;"> O</strong>ne 

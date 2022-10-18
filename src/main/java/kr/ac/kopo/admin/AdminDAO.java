@@ -8,4 +8,6 @@ public interface AdminDAO {
 
 	List<SavingsVO> selectProductList();
 
+	void insertProduct(SavingsVO savingsVO);
+
 }

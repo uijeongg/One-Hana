@@ -19,4 +19,9 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSessionTemplate.selectList("admin.AdminDAO.selectProductList");
 
 	}
+	
+	@Override
+	public void insertProduct(SavingsVO savingsVO) {
+		sqlSessionTemplate.insert("admin.AdminDAO.insertProduct", savingsVO);
+	}
 }

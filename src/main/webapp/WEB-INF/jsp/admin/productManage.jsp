@@ -25,11 +25,14 @@
         <link href="/resources/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="/resources/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        
 
 <style>
 body {
     font-family: hanaBFont !important;
-    fontWeight: bold;
+  
 }
 
 .menu-item{
@@ -41,6 +44,43 @@ body {
     /* background-color:#008485; */
 }
 
+@font-face{
+    src : url("/resources/font/HanaB.ttf");
+    font-family:"hanaBFont";
+}
+
+th {
+    font-size: 18px;
+}
+
+td {
+    font-size: 17px;
+}
+
+#name {
+    color: #008485;
+    font-size:18px;
+}
+
+.btn1 {
+    width:400px; 
+    font-size:18px; 
+    border:6px solid; 
+    border-color:#008485; 
+    background-color:#008485; 
+    border-radius:10px; 
+    display:inline;
+}
+
+.btn2 {
+    width:400px; 
+    font-size:18px; 
+    border:6px solid; 
+    border-color:#9d9d9d; 
+    background-color:#9d9d9d; 
+    border-radius:10px; 
+    display:inline;
+}
 </style>
     
 </head>
@@ -68,7 +108,7 @@ body {
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0">Dashboard</h4>
+                                <h4 class="mb-0" style="font-size:25px; font-family:hanaBFont;">&nbsp;<strong style="font-size:26px; color:#008485;">My One HANA</strong> &nbsp;적금상품 리스트</h4>
 
                                
                             </div>
@@ -85,7 +125,7 @@ body {
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
-                                        <h3 class="card-title mb-4">적금상품리스트</h3>
+                                       <!--  <h3 class="card-title mb-4">적금상품리스트</h3> -->
 
                                         <div>
 
@@ -93,7 +133,7 @@ body {
                                         </div>
                                     </div>
 
-                                    <div class="table-responsive">
+                                <!--     <div class="table-responsive"> -->
                                         <table class="table table-hover table-nowrap mb-0 align-middle table-check">
                                             <thead class="bg-light">
                                                 <tr>
@@ -105,12 +145,13 @@ body {
                                                         </div>
                                                     </th>
 	                                                     <th>상품명</th>
+	                                                     <th>상품코드</th>
 	                                                     <th>적립방식</th>
-	                                                     <th>타입</th>
+	                                                     <th>금리</th>
 	                                                     <!-- <th>가입기간</th> -->
 	                                                     <th>상품설명</th>
-	                                                    <th>상품등록일</th>
-	                                                     <th colspan="3" class="rounded-end">관리</th>
+	                                                    <th>등록일</th>
+	                                                     <th>관리</th>
                                                     </tr>
                                                 <!-- end tr -->
                                             </thead>
@@ -135,8 +176,24 @@ body {
                                      
                                           
                                                     <!-- 상품명 --> 
-                                                    <td class="fw-medium">
+                                                    <td id="name">
+                                                    
+                                                    <c:if test="${product.status eq 'new'}">
+                                                            <img src="${pageContext.request.contextPath}/resources/myicon/new4.png" 
+                                                            class="animate__animated animate__heartBeat" 
+                                                            style="width:17%; height:33px;"/>
+                                                       </c:if> 
+                 
                                                        ${product.savingsName}
+                                                       
+                                                       
+                                                       
+                                                    </td>
+                                                    
+                                                    
+                                                    <!-- 상품코드 -->
+                                                    <td>
+                                                       ${product.productCode}
                                                     </td>
                                                     
                                                     <!-- 적립방식 -->
@@ -167,14 +224,16 @@ body {
                                                     
                                                     <!-- 상품설명 -->
                                                     <td>
-                                                        <div class="d-flex align-items-center">
+                                                       <%--  <div class="d-flex align-items-center">
                                                             <div class="me-2">
                                                                 <!-- <img src=> -->
                                                             </div>
                                                             <div>
                                                                 <h5 class="font-size-14 text-truncate mb-0">${product.productDesc}</h5>
                                                             </div>
-                                                        </div>
+                                                        </div> --%>
+                                                        
+                                                        ${product.productDesc}
                                                     </td>
                                                    
                                                     <!-- 상품등록일 -->
@@ -186,7 +245,7 @@ body {
                                                     <!-- ...드롭다운 -->
                                                     <!-- ...드롭다운 -->
                                                     <td>
-                                                        <div class="dropdown">
+                                                        <!-- <div class="dropdown">
                                                             <a href="#" class="dropdown-toggle card-drop"
                                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <i
@@ -200,7 +259,13 @@ body {
                                                                             class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
                                                                         삭제</a></li>
                                                             </ul>
-                                                        </div>
+                                                        </div> -->
+                                                        
+                                                       
+                                                            <a href="#" style="margin-left:10px;">
+                                                                <i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                                            </a>
+                                                    
                                                     </td>
                                             
                                                     
@@ -208,12 +273,19 @@ body {
                                                 </tr>
                                                  </c:forEach>    
                                                 <!-- end /tr -->
-                                                <div style="width:200px; border:2px solid;"><a href="${pageContext.request.contextPath }/newProduct">상품관리</a></div>
                                                  
 
                                             </tbody><!-- end tbody -->
                                         </table><!-- end table -->
-                                    </div>
+                                        
+                                        
+                                        <div style="float:right; padding-right:14px; padding-top:15px;">
+                                            <div class="btn1"><a href="${pageContext.request.contextPath }/newProduct" style="padding:15px; color:white;">상품추가</a></div>
+                                            <div class="btn2"><a href="${pageContext.request.contextPath }/delProduct" style="padding:15px; color:white;">선택삭제</a></div>
+                                       </div>
+                                             
+                                                
+                                  <!--   </div> -->
                                 </div>
                             </div>
                         </div>

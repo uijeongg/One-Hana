@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.myBank.PocketVO;
@@ -32,7 +33,7 @@ public class AdminController {
 		
 		productList = adminService.selectProductList();
 		
-		System.out.println("productList : " + productList);
+		//System.out.println("productList : " + productList);
 		
 		mav.addObject("productList", productList); //모델에 저장 (근데 모델앤뷰가 리퀘스트영역)
 		mav.setViewName("/admin/productManage");
@@ -42,5 +43,15 @@ public class AdminController {
 	@GetMapping("/newProduct")
 	public String newProduct() {
 		return "/admin/newProduct";
+	}
+	
+	
+	@PostMapping("/insertPro")
+	public String insertPro(SavingsVO savingsVO) {
+		
+		adminService.insertProduct(savingsVO);
+		System.out.println("insert 성공");
+		
+		return "redirect:/productManage";
 	}
 }

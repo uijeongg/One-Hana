@@ -13,7 +13,9 @@ public class SavingsVO {
 	private String accumulateMethod;     //적립방법
 	private String productDesc;          //상품설명
 	private String registDate;           //상품등록일
-	private String savingsType;
+	private String savingsType;			 //단리복리
+	private String productCode;          //상품코드
+	private String status;
 	public String getSavingsName() {
 		return savingsName;
 	}
@@ -86,14 +88,27 @@ public class SavingsVO {
 	public void setSavingsType(String savingsType) {
 		this.savingsType = savingsType;
 	}
+	public String getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	@Override
 	public String toString() {
 		return "SavingsVO [savingsName=" + savingsName + ", type=" + type + ", target=" + target + ", maxLimit="
 				+ maxLimit + ", minPeriod=" + minPeriod + ", maxPeriod=" + maxPeriod + ", minAmount=" + minAmount
 				+ ", maxAmount=" + maxAmount + ", accumulateMethod=" + accumulateMethod + ", productDesc=" + productDesc
-				+ ", registDate=" + registDate + ", savingsType=" + savingsType + "]";
+				+ ", registDate=" + registDate + ", savingsType=" + savingsType + ", productCode=" + productCode
+				+ ", status=" + status + "]";
 	}
-	
 	
 	
 	

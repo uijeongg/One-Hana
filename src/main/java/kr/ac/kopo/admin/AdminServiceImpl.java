@@ -18,4 +18,10 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.selectProductList();
 		
 	}
+	
+	@Override
+	public void insertProduct(SavingsVO savingsVO) {
+		
+		adminDAO.insertProduct(savingsVO);
+	}
 }

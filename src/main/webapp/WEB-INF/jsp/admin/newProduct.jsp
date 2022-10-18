@@ -27,6 +27,11 @@
         <link href="/resources/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
 <style>
+@font-face{
+    src : url("/resources/font/HanaB.ttf");
+    font-family:"hanaBFont";
+}
+
 body {
     font-family: hanaBFont !important;
     fontWeight: bold;
@@ -41,6 +46,18 @@ body {
     /* background-color:#008485; */
 }
 
+label {
+    font-size: 20px;
+}
+
+select {
+    width:230px;
+    height: 33px;
+}
+
+option {
+    font-size: 18px;
+}
 </style>
     
 </head>
@@ -68,7 +85,7 @@ body {
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0">Dashboard</h4>
+                                 <h4 class="mb-0" style="font-size:25px; font-family:hanaBFont;">&nbsp;<strong style="font-size:26px; color:#008485;">My One HANA</strong> &nbsp;신규상품 추가</h4>
 
                                
                             </div>
@@ -78,28 +95,103 @@ body {
 
                    
 
-              
+   <form action="${pageContext.request.contextPath}/insertPro" method="post">               
 
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
+                                   
                                     <div class="d-flex justify-content-between">
-                                        <h3 class="card-title mb-4">적금상품추가</h3>
-
-                                        <div>
-
-                                            
-                                        </div>
+                                        <h3 class="card-title mb-4">신규 상품 추가</h3>
+  
                                     </div>
 
-                                    <div class="table-responsive">
+                                    <div class="table-responsive">                                   
                                         <!-- 테이블있던자리 -->
+                                       
+                                       
+                                      <div class="d-flex justify-content-start"> 
+	                                      <div style="margin-bottom:20px; margin-right:20px;">
+	                                        <label>상품 종류</label><br>
+	                                        <select name="type" id="type">
+	                                                    <option value="적금">적금 상품</option>
+	                                                    <option value="예금">예금 상품</option>
+	                                        </select>  
+	                                      </div>
+	                                            
+	                                            
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>상품명</label><br>    
+	                                         <input type="text" name="savingsName" id="savingsName" style="width:300px; height:33px;" />
+	                                      </div>
+                                      </div>
+                                      
+                                      
+                                      <div style="margin-bottom:20px;">
+                                         <label>가입 대상</label><br>    
+                                         <input type="text" name="target" id="target" style="width:600px; height:30px;"  />
+                                      </div>
+                                      
+                                      
+                
+                                      <div class="d-flex justify-content-start"> 
+	                                      <div style="margin-bottom:20px; margin-right:20px;">
+	                                         <label>이자 지급 방식</label><br>    
+	                                         <select name="savingsType" id="savingsType">
+	                                                 <option value="단리">단리 상품</option>
+	                                                 <option value="복리">복리 상품</option>                                    
+	                                         </select>
+	                                      </div>
+	                                      
+	                                      
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>적립 방법</label><br>  
+	                                         <select name="accumulateMethod" id="accumulateMethod">
+	                                                     <option value="정액적립식">정액적립식</option>
+	                                                     <option value="자유적립식">자유적립식</option>                                          
+	                                          </select>
+	                                      </div>
+                                      </div>
+                                      
+
+                                      <div style="margin-bottom:20px;">
+                                         <label>적립 한도 금액</label><br>     
+                                         <input type="text" name="maxLimit" id="maxLimit"/> 원
+                                      </div>
+                                      
+                                      
+                                      <div style="margin-bottom:20px;">
+                                         <label>계약 기간</label><br>  
+                                         <input type="text" name="minPeriod" id="minPeriod" style="width:50px;" /> 개월 ~ <input type="text"  style="width:50px;" name="maxPeriod" id="maxPeriod"/> 개월
+                                      </div>
+                                      
+                                      
+                                      <div style="margin-bottom:20px;">
+                                         <label>가입 금액</label><br>  
+                                         <input type="text" name="minAmount" id="minAmount"  style="width:100px;" /> 원 ~ <input type="text" name="maxAmount"  style="width:100px;" id="maxAmount" /> 원
+                                      </div>
+                                      
+                                      
+                                      <div style="margin-bottom:20px;">
+                                         <label>상품 설명</label><br>  
+                                         <input type="text" name="productDesc" id="productDesc"  style="width:200px; hegiht:300px;" />
+                                      </div>
+                                      
+                                      
+                                      <!-- 코드 -->
+                                        
                                     </div>
+                                    
+                                    
+                                     <input type="submit" id="gogo" value="추가하기"
+                                            style="width:150px; height:40px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold; font-size:15px;"> <%-- post버튼 --%>
+                  
                                 </div>
                             </div>
                         </div>
                     </div>
+     </form>
                     <!-- end row -->
 
                 </div>
