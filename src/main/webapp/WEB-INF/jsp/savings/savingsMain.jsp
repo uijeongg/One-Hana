@@ -135,7 +135,7 @@ border:none !important;
  */
 
 
-tr {
+/* tr {
    padding: 15px; 
 }
 
@@ -145,6 +145,16 @@ th {
 
 td, th {
     padding: 15px; 
+}
+ */
+
+
+
+.accordion-button:not(.collapsed) {
+    color: #008485 !important;
+    background-color: #ebf7ee;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+    font-size: 18px !important;
 }
 </style>
 
@@ -219,8 +229,11 @@ td, th {
 
 <div id="compareBtn"></div>
 	
-<!--  --><!--  --><!--  --><!--  --><!--  -->
-
+	
+	
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+<!-- 
  <table style="border-collapse:collapse;">
     <thead style="border-bottom:3px double; font-size:20px;">
         <tr align="center" bgcolor="white">
@@ -296,63 +309,10 @@ td, th {
 
 </table> 
  
+ -->        
 
-               <!--  str += '<table border="1">';
-                str += '<th>' + data[0].SAVINGSNAME + '</th>';
-                str += '<th>' + data[1].SAVINGSNAME + '</th>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].PRODUCTDESC + '</td>';
-                str += '<td>' + data[1].PRODUCTDESC + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].TARGET + '</td>';
-                str += '<td>' + data[1].TARGET + '</td>';
-                str += '</tr>';
-                              
-                str += '<tr>';
-                str += '<td>' + data[0].MAXLIMIT + '</td>';
-                str += '<td>' + data[1].MAXLIMIT + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].MINPERIOD + '~' + data[0].MAXPERIOD + '</td>';
-                str += '<td>' + data[1].MINPERIOD + '~' + data[1].MAXPERIOD + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].MINAMOUNT + '~' + data[0].MAXAMOUNT + '</td>';
-                str += '<td>' + data[1].MINAMOUNT + '~' + data[1].MAXAMOUNT + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].BASICRATE + '</td>';
-                str += '<td>' + data[1].BASICRATE + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].MAXRATE + '</td>';
-                str += '<td>' + data[1].MAXRATE + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].PREFERRATE + '</td>';
-                str += '<td>' + data[1].PREFERRATE + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].CONDITION1 + ',' + data[0].CONDITION2 + '</td>';
-                str += '<td>' + data[1].CONDITION1 + ',' + data[1].CONDITION2 + '</td>';
-                str += '</tr>';
-                
-                
-                str += '</table>';
-                         -->
-<!--  --><!--  --><!--  --><!--  --><!--  -->
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->	   
-
-
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
 
 
     
@@ -830,63 +790,156 @@ function compareSavings() {
                 
                 
                 str = '';
-                str += '<h4 style="font-family:hanaBFont; text-align:center; margin-bottom:40px;">선택한 <strong style="color:#008485">상품 비교</strong></h4>';
+                str += '<h3 style="font-family:hanaBFont; text-align:center; margin-bottom:40px;">선택한 <strong style="color:#008485">상품 비교</strong></h3>';
                 
                 
-                str += '<table border="1">';
+     
+                /* str += '<div class="d-flex justify-content-between" style="margin-left:25px; width:700px; margin-bottom:30px;">'; */
+                str += '<div class="d-flex justify-content-start" style="margin-left:130px; width:700px; margin-top:50px; margin-bottom:15px;">';
+                str += '<strong style="font-size:23px; margin-right:70px;">' + data[0].SAVINGSNAME + '</strong>';
+                str += '<strong style="font-size:23px; margin-right:70px;">VS</strong>';
+                str += '<strong style="font-size:23px;">' + data[1].SAVINGSNAME + '</strong>';
+                str += '</div>';
+                str += '<hr style="width:700px; height:6px; color:#008485; margin-left:25px; margin-bottom:15px;">';
+                
+                str += '<div style="margin-left: 25px;">';
+                
+                str += '<div class="accordion" id="accordionExample" style="width:700px;">';
+
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingOne">';
+                str += '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">';
+                str += '상품설명 </button></h2>';
+                str += '<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].PRODUCTDESC + '</strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].PRODUCTDESC + '</strong>';
+                str += '</div></div></div>';
+
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingTwo">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">';
+                str += '가입 대상</button></h2>';
+                str += '<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].TARGET + '</strong> ';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].TARGET + '</strong> ';
+                str += '</div></div></div>';
+
+                  
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingThree">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">';
+                str += '적립 방법 </button></h2>';
+                str += '<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].ACCUMULATEMETHOD + '</strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].ACCUMULATEMETHOD + '</strong>';
+                str += '</div></div></div>';
+
+
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingFour">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">';
+                str += '적립 한도 </button></h2>';
+                str += '<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].MAXLIMIT + ' 원</strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].MAXLIMIT + ' 원</strong>';
+                str += '</div></div></div>';
+
+
+                  
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingFive">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">';
+                str += '가입 기간</button></h2>';
+                str += '<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].MINPERIOD + ' 개월 ~ ' + data[0].MAXPERIOD + ' 개월 </strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].MINPERIOD + ' 개월 ~ ' + data[1].MAXPERIOD + ' 개월 </strong>';
+                str += '</div></div></div>';
+                  
+                  
+                  
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingSix">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">';
+                str += '가입 금액</button></h2>';
+                str += '<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].MINAMOUNT + ' 원 ~ ' + data[0].MAXAMOUNT + ' 원</strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].MINAMOUNT + ' 원 ~ ' + data[1].MAXAMOUNT + ' 원</strong>';
+                str += '</div></div></div>';
+
+                  
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingSeven">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">';
+                str += '기본 금리</button></h2>';
+                str += '<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].BASICRATE + ' % </strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].BASICRATE + ' % </strong>';
+                str += '</div></div></div>';
+                  
+
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingEight">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">';
+                str += '최대 금리</button></h2>';
+                str += '<div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].MAXRATE + ' % </strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].MAXRATE + ' % </strong>';
+                str += '</div></div></div>';
+                  
+
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingNine">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">';
+                str += '우대 금리</button></h2>';
+                str += '<div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].PREFERRATE + ' % </strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].PREFERRATE + ' % </strong>';
+                str += '</div></div></div>';
+
+
+                 
+                str += '<div class="accordion-item">';
+                str += '<h2 class="accordion-header" id="headingTen">';
+                str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">';
+                str += '우대 금리 항목</button></h2>';
+                str += '<div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionExample">';
+                str += '<div class="accordion-body d-flex justify-content-between">';
+                str += '<strong>' + data[0].CONDITION1 + ',' + data[0].CONDITION2 + '</strong>';
+                str += '<strong style="color:#008485;"> | </strong>';
+                str += '<strong>' + data[1].CONDITION1 + ',' + data[1].CONDITION2 + '</strong>';
+                str += '</div></div></div>';
+                str += '</div>';
                 
                 
                 
-                str += '<th>' + data[0].SAVINGSNAME + '</th>';
-                str += '<th>' + data[1].SAVINGSNAME + '</th>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].PRODUCTDESC + '</td>';
-                str += '<td>' + data[1].PRODUCTDESC + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].TARGET + '</td>';
-                str += '<td>' + data[1].TARGET + '</td>';
-                str += '</tr>';
-                              
-                str += '<tr>';
-                str += '<td>' + data[0].MAXLIMIT + '</td>';
-                str += '<td>' + data[1].MAXLIMIT + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].MINPERIOD + '~' + data[0].MAXPERIOD + '</td>';
-                str += '<td>' + data[1].MINPERIOD + '~' + data[1].MAXPERIOD + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].MINAMOUNT + '~' + data[0].MAXAMOUNT + '</td>';
-                str += '<td>' + data[1].MINAMOUNT + '~' + data[1].MAXAMOUNT + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].BASICRATE + '</td>';
-                str += '<td>' + data[1].BASICRATE + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].MAXRATE + '</td>';
-                str += '<td>' + data[1].MAXRATE + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].PREFERRATE + '</td>';
-                str += '<td>' + data[1].PREFERRATE + '</td>';
-                str += '</tr>';
-                
-                str += '<tr>';
-                str += '<td>' + data[0].CONDITION1 + ',' + data[0].CONDITION2 + '</td>';
-                str += '<td>' + data[1].CONDITION1 + ',' + data[1].CONDITION2 + '</td>';
-                str += '</tr>';
+                str += '</div>';
                 
                 
-                str += '</table>';
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 $('#comparemodalbody').append(str);
@@ -1165,9 +1218,11 @@ function goExpectedSavings() {
     
   let str = '';
         str += '<div style="text-align:center;">';
-        str += '<h2 style="margin-bottom:30px;"><strong style="color:#008485; margin-bottom:40px;">만기수령금&nbsp;</strong>(예상)</h2>';
-        str += '<ul style="padding-right:2rem;">';
-        str += '<li style="display:inline-block;"><h3>' + compareArray[0].SAVINGSNAME + '</h3>';
+        str += '<h3 style="margin-bottom:30px;"><strong style="color:#008485; margin-bottom:40px;">만기수령금&nbsp;</strong>(예상)</h3>';
+        
+        str += '<ul style="">';
+        str += '<li style="display:inline-block;"><h4>' + compareArray[0].SAVINGSNAME + '</h4>';
+        
         str += '<div style="margin-top:10px; width:330px; height:400px; padding:15px; border-radius:20px; border:1px solid; background-color:#486A80; ">';
         
         str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
@@ -1211,7 +1266,7 @@ function goExpectedSavings() {
         
         
         
-        str += '<li style="display:inline-block;"><h3>' + compareArray[1].SAVINGSNAME + '</h3>';
+        str += '<li style="display:inline-block;"><h4>' + compareArray[1].SAVINGSNAME + '</h4>';
         str += '<div style="margin-top:10px; width:330px; height:400px; padding:15px; border-radius:20px; border:1px solid; background-color:#486A80; ">';
         
         str += '<div class="d-flex justify-content-between" style="margin-top:30px;">';
