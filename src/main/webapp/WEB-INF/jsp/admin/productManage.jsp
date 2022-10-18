@@ -64,7 +64,7 @@ td {
 
 .btn1 {
     width:400px; 
-    font-size:18px; 
+    font-size:20px; 
     border:6px solid; 
     border-color:#008485; 
     background-color:#008485; 
@@ -74,7 +74,7 @@ td {
 
 .btn2 {
     width:400px; 
-    font-size:18px; 
+    font-size:20px; 
     border:6px solid; 
     border-color:#9d9d9d; 
     background-color:#9d9d9d; 
@@ -132,6 +132,11 @@ td {
                                             
                                         </div>
                                     </div>
+                                    
+                                     <div style="float:right; margin-bottom:20px;">
+                                            <div class="btn1"><a href="${pageContext.request.contextPath }/newProduct" style="padding:15px; color:white;">상품추가</a></div>
+                                            <div class="btn2"><a href="${pageContext.request.contextPath }/delProduct" style="padding:15px; color:white;">선택삭제</a></div>
+                                       </div>
 
                                 <!--     <div class="table-responsive"> -->
                                         <table class="table table-hover table-nowrap mb-0 align-middle table-check">
@@ -223,7 +228,7 @@ td {
                                                      --%>
                                                     
                                                     <!-- 상품설명 -->
-                                                    <td>
+                                                    <td style="font-size:15px;">
                                                        <%--  <div class="d-flex align-items-center">
                                                             <div class="me-2">
                                                                 <!-- <img src=> -->
@@ -279,10 +284,10 @@ td {
                                         </table><!-- end table -->
                                         
                                         
-                                        <div style="float:right; padding-right:14px; padding-top:15px;">
+                                       <%--  <div style="float:right; padding-right:14px; padding-top:15px;">
                                             <div class="btn1"><a href="${pageContext.request.contextPath }/newProduct" style="padding:15px; color:white;">상품추가</a></div>
                                             <div class="btn2"><a href="${pageContext.request.contextPath }/delProduct" style="padding:15px; color:white;">선택삭제</a></div>
-                                       </div>
+                                       </div> --%>
                                              
                                                 
                                   <!--   </div> -->

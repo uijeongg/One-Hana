@@ -174,6 +174,49 @@ option {
                                       
                                       
                                       <div style="margin-bottom:20px;">
+                                         <label>기본 금리</label><br>  
+                                         <input type="text" name="rate" id="rate"  style="width:100px;" /> %
+                                      </div>
+                                      
+                                      
+                                      <div style="margin-bottom:20px;">
+                                             <label>우대 금리 항목</label><br>  
+                                             <select name="preferType" id="preferType">
+                                                         <option value="카드실적" selected="selected">카드실적</option>
+                                                         <option value="아파트관리비 실적">아파트관리비 실적</option>
+                                                         <option value="주택청약종합저축">주택청약종합저축</option>
+                                                         <option value="첫거래">첫거래</option>
+                                                         <option value="연금이체">연금이체</option>
+                                                         <option value="급여이체" selected="selected">급여이체</option>
+                                                         <option value="온라인 신규">온라인 신규</option>
+                                                         <option value="하나머니">하나머니</option>
+                                                         <option value="기타">기타</option>                                              
+                                              </select>
+                                              
+                                              <select name="preferType" id="preferType">
+                                                         <option value="하나머니" selected="selected">하나머니</option>
+                                                         <option value="카드실적">카드실적</option>
+                                                         <option value="아파트관리비 실적">아파트관리비 실적</option>
+                                                         <option value="주택청약종합저축">주택청약종합저축</option>
+                                                         <option value="첫거래">첫거래</option>
+                                                         <option value="연금이체">연금이체</option>
+                                                         <option value="급여이체">급여이체</option>
+                                                         <option value="온라인 신규">온라인 신규</option>
+                                                         <option value="기타">기타</option>                                              
+                                              </select>
+                                          </div>
+                                      </div>
+                                      
+                                      <div style="margin-bottom:20px;">
+                                         <label>우대 금리</label><br>  
+                                         <input type="text" name="prefer" id="prefer"  style="width:100px;" /> %
+                                       </div>
+                                       
+                                       
+                                      
+                                      
+                                      
+                                      <div style="margin-bottom:20px;">
                                          <label>상품 설명</label><br>  
                                          <input type="text" name="productDesc" id="productDesc"  style="width:200px; hegiht:300px;" />
                                       </div>
