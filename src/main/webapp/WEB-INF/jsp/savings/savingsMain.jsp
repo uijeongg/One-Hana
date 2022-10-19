@@ -176,51 +176,74 @@ td, th {
    
     <div>
     
-        <h3>손님들이 선택하신, 이 상품 어떠세요?</h3>
-        
-    <!--    <div class="parent" style="width: 300px; height: 100px; background: #585858;">
-            <div class="child" style="background-color:yellow; border-radius:20px;">
-            </div>
-    
-            <div class="child" style="background-color:#008485; border-radius:20px;">		
+       <!--  <h3>손님들이 선택하신, 이 상품 어떠세요?</h3> -->
+
+
+<div style="text-align:center; margin-top:50px; margin-right:70px;">
+<h1 style="margin-bottom:50px;">손님들이 선택하신, <span style="color:#f7570b;">이 상품 어떠세요?</span></h1>
+	<ul>
+		<li style="display:inline-block;">
+		    <div style="text-align:center; width:250px; height:250px; border-radius:40px; border:1px solid; border-color:#ffd400; background-color:#ffd400;">
+		      <div style="font-size:27px; margin-top:35px;">하나의<br>정기예금</div>
+		      <div style="font-size:20px; margin-top:20px; margin-bottom:26px;">오늘의 금리는?</div>
+		      <div style="font-size:15px; color:#707070;">(1백만원 이상, <br>1개월 이상 ~ 5년 이내)</div>
 		    </div>
-		    
-            <div class="child" style="background-color:pink; border-radius:20px;">
-            </div>
-      </div>
-        
-         -->
+		</li>
+		
+		<li style="display:inline-block;">
+		    <div style="width:250px; height:250px; border-radius:40px; border:1px solid; border-color:#99cece; background-color:#99cece;">
+		      
+		      <div style="font-size:27px; margin-top:35px;">내집마련 더블업<br>(Double-Up) 적금</div>
+		      <div style="font-size:20px; margin-top:7px;">최저 연 1.75% ~<br>최고 연 5.50%</div>
+		      <div style="font-size:15px; margin-top:8px; color:#707070;">(세전, 1년, 이벤트금리포함,<br>2022.09.16기준)</div>
+		    </div>
+		</li>
+		
+		<li style="display:inline-block;">
+		    <div style="width:250px; height:250px; border-radius:40px; border:1px solid; border-color:#ffc0cb; background-color:#ffc0cb;">
+		      <div style="font-size:27px; margin-top:35px;">일달러<br>외화적금</div>
+		      <div style="font-size:20px; margin-top:7px;">최저 연 2.51% ~<br>최고 연 3.01%</div>
+		      <div style="font-size:15px; margin-top:8px; color:#707070;">(세전, 이벤트금리포함,<br>2022.09.23기준)</div>
+		    </div>
+		</li>
+	</ul>
 
-<ul>
-	<li style="display:inline-block;">
-	    <div style="width:100px; height:100px; border-radius:20px; border:1px solid;">하나</div>
-	</li>
-	
-	<li style="display:inline-block;">
-	    <div style="width:100px; height:100px; border-radius:20px; border:1px solid;">둘</div>
-	</li>
-	
-	<li style="display:inline-block;">
-	    <div style="width:100px; height:100px; border-radius:20px; border:1px solid;">셋</div>
-	</li>
-</ul>
 
+    <div style="text-align:center; margin-top:50px;">
+        <h3 style="font-size:25px; color:#707070; margin-bottom:40px;">원하시는 상품을 직접 찾아볼까요?</h3>
         
+        <div class="d-flex justify-content-start">
+        <button style="width:90px; height:90px; border:1px solid; border-radius:40px; margin-left:160px; background-color:#f3f3f3; border-color:#f3f3f3; font-size:20px; color:#868686; display:flex; align-items:center; justify-content:center"
+         type="button" class="selectSavings col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#selectSavings">예적금</button>
+        <!-- <div style="width:87px; height:87px; border:1px solid; border-radius:40px; margin-left:25px; background-color:#f3f3f3; border-color:#f3f3f3;  font-size:22px; color:#868686; display:flex; align-items:center; justify-content:center">적금</div> -->
+        <div style="width:90px; height:90px; border:1px solid; border-radius:40px; margin-left:25px; background-color:#f3f3f3; border-color:#f3f3f3;  font-size:20px; color:#868686; display:flex; align-items:center; justify-content:center">자유<br>입출금</div>
+        <div style="width:90px; height:90px; border:1px solid; border-radius:40px; margin-left:25px; background-color:#f3f3f3; border-color:#f3f3f3;  font-size:20px; color:#868686; display:flex; align-items:center; justify-content:center">외화<br>상품</div>
+        <div style="width:90px; height:90px; border:1px solid; border-radius:40px; margin-left:25px; background-color:#f3f3f3; border-color:#f3f3f3;  font-size:20px; color:#868686; display:flex; align-items:center; justify-content:center">신탁</div>
+        <div style="width:90px; height:90px; border:1px solid; border-radius:40px; margin-left:25px; background-color:#f3f3f3; border-color:#f3f3f3;  font-size:20px; color:#868686; display:flex; align-items:center; justify-content:center">한시상품<br>ELD</div>
+        </div>
         
-        
-          
     </div>
+
+<!-- 
+ <button type="button" class="selectSavings col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#selectSavings"
+         style="width:400px; font-size:20px; font-family:hanaBFont; margin-top:40px;" >
+            나만의 예적금 찾기
+        </button>  -->   
+        
+
+</div>
+</div>
    
    
 
-	
+<!-- 	
 	<div>
 	    <button type="button" class="selectSavings col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#selectSavings"
-	     style="width:200px; font-size:18px; font-family:hanaBFont;" > <!-- onclick="intoSelectSavings()" -->
+	     style="width:200px; font-size:18px; font-family:hanaBFont;" > onclick="intoSelectSavings()"
 	        나만의 예적금 찾기
 	    </button>  
 	</div>   
-	
+	 -->
 	
 	
 </div>	
@@ -228,94 +251,6 @@ td, th {
 
 
 <div id="compareBtn"></div>
-	
-	
-	
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-<!-- 
- <table style="border-collapse:collapse;">
-    <thead style="border-bottom:3px double; font-size:20px;">
-        <tr align="center" bgcolor="white">
-            <td style="border-right:3px double;"></td>
-            <td style="border-right:3px double; color:#008485;"> + data[0].SAVINGSNAME + </td>
-            <td style="color:red;"> data[1].SAVINGSNAME </td>
-        </tr>
-    </thead>
-    
-    <tbody>
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">상품설명</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].PRODUCTDESC </td>
-            <td style="border-bottom:2px solid;"> data[1].PRODUCTDESC </td>
-        </tr>
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">가입 대상</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].TARGET </td>
-            <td style="border-bottom:2px solid;"> data[1].TARGET </td>
-        </tr>
-        
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">적립 방법</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].ACCUMULATEMETHOD </td>
-            <td style="border-bottom:2px solid;"> data[1].ACCUMULATEMETHOD </td>
-        </tr>
-        
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">적립 한도</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MAXLIMIT </td>
-            <td style="border-bottom:2px solid;"> data[1].MAXLIMIT </td>
-        </tr>
-                
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">가입 기간</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MINPERIOD + '~' + data[0].MAXPERIOD </td>
-            <td style="border-bottom:2px solid;"> data[1].MINPERIOD + '~' + data[1].MAXPERIOD </td>
-        </tr>
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">가입 금액</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MINAMOUNT + '~' + data[0].MAXAMOUNT </td>
-            <td style="border-bottom:2px solid;"> data[1].MINAMOUNT + '~' + data[1].MAXAMOUNT </td>
-        </tr>
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">기본 금리</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].BASICRATE </td>
-            <td style="border-bottom:2px solid;"> data[1].BASICRATE </td>
-        </tr>
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;"> 최대 금리</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].MAXRATE </td>
-            <td style="border-bottom:2px solid;"> data[1].MAXRATE </td>
-        </tr>
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double; border-bottom:2px solid;">우대 금리</th>
-            <td style="border-right:3px double; border-bottom:2px solid;"> data[0].PREFERRATE </td>
-            <td style="border-bottom:2px solid;"> data[1].PREFERRATE </td>
-        </tr>
-        
-        <tr align="center" bgcolor="white">
-            <th style="border-right:3px double;">우대금리 항목</th>
-            <td style="border-right:3px double;"> data[0].CONDITION1 + ',' + data[0].CONDITION2 </td>
-            <td> data[1].CONDITION1 + ',' + data[1].CONDITION2 </td>
-        </tr>
-    </tbody>
-
-</table> 
- 
- -->        
-
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-
-
-    
 
 <!-- 나의 맞춤형 적금 찾기 모달 버튼  -->
 <div class="modal fade" id="selectSavings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -796,9 +731,9 @@ function compareSavings() {
      
                 /* str += '<div class="d-flex justify-content-between" style="margin-left:25px; width:700px; margin-bottom:30px;">'; */
                 str += '<div class="d-flex justify-content-start" style="margin-left:130px; width:700px; margin-top:50px; margin-bottom:15px;">';
-                str += '<strong style="font-size:23px; margin-right:70px;">' + data[0].SAVINGSNAME + '</strong>';
-                str += '<strong style="font-size:23px; margin-right:70px;">VS</strong>';
-                str += '<strong style="font-size:23px;">' + data[1].SAVINGSNAME + '</strong>';
+                str += '<strong style="font-size:24px; margin-right:70px;">' + data[0].SAVINGSNAME + '</strong>';
+                str += '<strong style="font-size:25px; margin-right:70px;">VS</strong>';
+                str += '<strong style="font-size:24px;">' + data[1].SAVINGSNAME + '</strong>';
                 str += '</div>';
                 str += '<hr style="width:700px; height:6px; color:#008485; margin-left:25px; margin-bottom:15px;">';
                 
@@ -812,20 +747,31 @@ function compareSavings() {
                 str += '상품설명 </button></h2>';
                 str += '<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
+                
+                str += '<div style="width:50%; padding-right:3px;">';
                 str += '<strong>' + data[0].PRODUCTDESC + '</strong>';
-                str += '<strong style="color:#008485;"> | </strong>';
+                str += '</div>';
+                str += '<div style="width:50%; border-left:3px solid #008485; padding-left:10px;" >';
                 str += '<strong>' + data[1].PRODUCTDESC + '</strong>';
+                str += '</div>';
+                
                 str += '</div></div></div>';
 
+                
                 str += '<div class="accordion-item">';
                 str += '<h2 class="accordion-header" id="headingTwo">';
                 str += '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">';
                 str += '가입 대상</button></h2>';
                 str += '<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
+                
+                str += '<div style="width:50%; padding-right:3px;">';
                 str += '<strong>' + data[0].TARGET + '</strong> ';
-                str += '<strong style="color:#008485;"> | </strong>';
+                str += '</div>';
+                str += '<div style="width:50%; border-left:3px solid #008485; padding-left:10px;" >';
                 str += '<strong>' + data[1].TARGET + '</strong> ';
+                str += '</div>';
+                
                 str += '</div></div></div>';
 
                   
@@ -835,9 +781,9 @@ function compareSavings() {
                 str += '적립 방법 </button></h2>';
                 str += '<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].ACCUMULATEMETHOD + '</strong>';
+                str += '<strong style="font-size:17px;">' + data[0].ACCUMULATEMETHOD + '</strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].ACCUMULATEMETHOD + '</strong>';
+                str += '<strong style="font-size:17px;">' + data[1].ACCUMULATEMETHOD + '</strong>';
                 str += '</div></div></div>';
 
 
@@ -847,9 +793,9 @@ function compareSavings() {
                 str += '적립 한도 </button></h2>';
                 str += '<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].MAXLIMIT + ' 원</strong>';
+                str += '<strong style="font-size:17px;">' + (Math.floor(data[0].MAXLIMIT)).toLocaleString('ko-KR') + ' 원</strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].MAXLIMIT + ' 원</strong>';
+                str += '<strong style="font-size:17px;">' + (Math.floor(data[1].MAXLIMIT)).toLocaleString('ko-KR') + ' 원</strong>';
                 str += '</div></div></div>';
 
 
@@ -860,9 +806,9 @@ function compareSavings() {
                 str += '가입 기간</button></h2>';
                 str += '<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].MINPERIOD + ' 개월 ~ ' + data[0].MAXPERIOD + ' 개월 </strong>';
+                str += '<strong style="font-size:17px;">' + data[0].MINPERIOD + ' 개월 ~ ' + data[0].MAXPERIOD + ' 개월 </strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].MINPERIOD + ' 개월 ~ ' + data[1].MAXPERIOD + ' 개월 </strong>';
+                str += '<strong style="font-size:17px;">' + data[1].MINPERIOD + ' 개월 ~ ' + data[1].MAXPERIOD + ' 개월 </strong>';
                 str += '</div></div></div>';
                   
                   
@@ -873,9 +819,9 @@ function compareSavings() {
                 str += '가입 금액</button></h2>';
                 str += '<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].MINAMOUNT + ' 원 ~ ' + data[0].MAXAMOUNT + ' 원</strong>';
+                str += '<strong style="font-size:17px;">' + (Math.floor(data[0].MINAMOUNT)).toLocaleString('ko-KR') + ' 원 ~ ' + (Math.floor(data[0].MAXAMOUNT)).toLocaleString('ko-KR') + ' 원</strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].MINAMOUNT + ' 원 ~ ' + data[1].MAXAMOUNT + ' 원</strong>';
+                str += '<strong style="font-size:17px;">' + (Math.floor(data[1].MINAMOUNT)).toLocaleString('ko-KR') + ' 원 ~ ' + (Math.floor(data[1].MAXAMOUNT)).toLocaleString('ko-KR') + ' 원</strong>';
                 str += '</div></div></div>';
 
                   
@@ -885,9 +831,9 @@ function compareSavings() {
                 str += '기본 금리</button></h2>';
                 str += '<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].BASICRATE + ' % </strong>';
+                str += '<strong style="font-size:17px;">' + data[0].BASICRATE + ' % </strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].BASICRATE + ' % </strong>';
+                str += '<strong style="font-size:17px;">' + data[1].BASICRATE + ' % </strong>';
                 str += '</div></div></div>';
                   
 
@@ -897,9 +843,9 @@ function compareSavings() {
                 str += '최대 금리</button></h2>';
                 str += '<div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].MAXRATE + ' % </strong>';
+                str += '<strong style="font-size:17px;">' + data[0].MAXRATE + ' % </strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].MAXRATE + ' % </strong>';
+                str += '<strong style="font-size:17px;">' + data[1].MAXRATE + ' % </strong>';
                 str += '</div></div></div>';
                   
 
@@ -909,9 +855,9 @@ function compareSavings() {
                 str += '우대 금리</button></h2>';
                 str += '<div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].PREFERRATE + ' % </strong>';
+                str += '<strong style="font-size:17px;">' + data[0].PREFERRATE + ' % </strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].PREFERRATE + ' % </strong>';
+                str += '<strong style="font-size:17px;">' + data[1].PREFERRATE + ' % </strong>';
                 str += '</div></div></div>';
 
 
@@ -922,9 +868,9 @@ function compareSavings() {
                 str += '우대 금리 항목</button></h2>';
                 str += '<div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionExample">';
                 str += '<div class="accordion-body d-flex justify-content-between">';
-                str += '<strong>' + data[0].CONDITION1 + ',' + data[0].CONDITION2 + '</strong>';
+                str += '<strong style="font-size:17px;">' + data[0].CONDITION1 + ' / ' + data[0].CONDITION2 + '</strong>';
                 str += '<strong style="color:#008485;"> | </strong>';
-                str += '<strong>' + data[1].CONDITION1 + ',' + data[1].CONDITION2 + '</strong>';
+                str += '<strong style="font-size:17px;">' + data[1].CONDITION1 + ' / ' + data[1].CONDITION2 + '</strong>';
                 str += '</div></div></div>';
                 str += '</div>';
                 
@@ -1220,7 +1166,7 @@ function goExpectedSavings() {
         str += '<div style="text-align:center;">';
         str += '<h3 style="margin-bottom:30px;"><strong style="color:#008485; margin-bottom:40px;">만기수령금&nbsp;</strong>(예상)</h3>';
         
-        str += '<ul style="">';
+        str += '<ul style="margin-left:-30px">';
         str += '<li style="display:inline-block;"><h4>' + compareArray[0].SAVINGSNAME + '</h4>';
         
         str += '<div style="margin-top:10px; width:330px; height:400px; padding:15px; border-radius:20px; border:1px solid; background-color:#486A80; ">';

@@ -39,7 +39,15 @@
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header>
+    
+       <!--  --><!--  -->
+    <div id="allPage" style="display:none;">
+    
+    
     <jsp:include page="/WEB-INF/jsp/include/sidebar2.jsp"></jsp:include>
+    
+    
+ 
     
    
    <!-- page title start -->
@@ -524,7 +532,15 @@
     
 </div>  <!-- 탭 가장 상단 div -->  
 
- 
+
+</div>
+<!--  --><!-- justify-content:center; align-items:center; -->
+
+<div id="loadingBar" style="display:flex; flex-direction:column; justify-content:center; align-items:center; ">
+<img src="${ pageContext.request.contextPath }/resources/myicon/analysis.gif" style="width:32%;" />
+<div style="font-family:hanaBFont; font-size:32px;"><strong style="font-size:37px; color:#008485">소비 데이터</strong> 를 분석 중입니다</div>
+</div>
+
    
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
@@ -545,8 +561,44 @@
      }         
    })
 </script>
+<!--    
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+      
+<script type="text/javascript">
+
+   async function LoadingProcess() {
+         $.LoadingOverlay("show", {
+            image :"${ pageContext.request.contextPath }/resources/myicon/analysis.gif",
+            text : "고객님의 소비를 분석 중입니다",
+            /* imageAutoResize : false, */
+            maxSize : 100
+         });
+         
+         setTimeout(function(){
+            $.LoadingOverlay("text", "잠시만 기다려 주십시오");
     
-    <script>
+            clearTimeout(LoadingProcess); 
+         }, 2000);
+         
+         
+       // setTimeout(function(){
+           // location.href = "/user/chat";
+        // }, 4000);
+      }
+   
+
+
+</script>   
+    -->
+<script>
+    setTimeout(function(){
+    	$('#loadingBar').fadeOut(300,function(){
+    		$('#allPage').fadeIn(300)
+    	})
+    },1500)
+</script>
+    
+<script>
        $(function(){
     	    $('#displayDetailChart').click(function(){
     	    	//cateAmount();
@@ -564,7 +616,12 @@
     
     <!-- 맨 윗단 이번달 총 소비 금액 -->
 	<script>
-	$(document).ready(function(){	 
+	$(document).ready(function(){
+		
+		//LoadingProcess();
+		
+		
+		
 	        let month = -1; //9월
 	        let id = '${loginVO.id}';
 	       
@@ -1002,7 +1059,7 @@
           show: false
         },
         xaxis: {
-          categories: receivedObject.dateList,
+          categories: receivedObject.dateList, 
           labels: {
             style: {
             	 fontSize: '20px',

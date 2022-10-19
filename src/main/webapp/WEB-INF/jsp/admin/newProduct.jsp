@@ -47,12 +47,12 @@ body {
 }
 
 label {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 select {
-    width:230px;
-    height: 33px;
+    width:350px;
+    height: 42px;
 }
 
 option {
@@ -103,7 +103,7 @@ option {
                                 <div class="card-body">
                                    
                                     <div class="d-flex justify-content-between">
-                                        <h3 class="card-title mb-4">신규 상품 추가</h3>
+                                        <!-- <h3 class="card-title mb-4">신규 상품 추가</h3> -->
   
                                     </div>
 
@@ -114,7 +114,7 @@ option {
                                       <div class="d-flex justify-content-start"> 
 	                                      <div style="margin-bottom:20px; margin-right:20px;">
 	                                        <label>상품 종류</label><br>
-	                                        <select name="type" id="type">
+	                                        <select name="type" id="type" class="form-control" style="color:#008485; font-size:18px; width:347px; height:42px">
 	                                                    <option value="적금">적금 상품</option>
 	                                                    <option value="예금">예금 상품</option>
 	                                        </select>  
@@ -123,14 +123,20 @@ option {
 	                                            
 	                                      <div style="margin-bottom:20px;">
 	                                         <label>상품명</label><br>    
-	                                         <input type="text" name="savingsName" id="savingsName" style="width:300px; height:33px;" />
+	                                         <input type="text" class="form-control" name="savingsName" id="savingsName" style="width:630px; height:42px; color:#008485; font-size:20px;" />
 	                                      </div>
                                       </div>
                                       
                                       
                                       <div style="margin-bottom:20px;">
                                          <label>가입 대상</label><br>    
-                                         <input type="text" name="target" id="target" style="width:600px; height:30px;"  />
+                                         <input type="text" name="target" id="target" class="form-control" style="color:#008485; font-size:20px; width:1000px; height:42px"  />
+                                      </div>
+                                      
+                                       
+                                      <div style="margin-bottom:20px;">
+                                         <label>상품 설명</label><br>  
+                                         <input type="text" name="productDesc" id="productDesc" class="form-control" style="color:#008485; font-size:20px; width:1000px; height:42px" />
                                       </div>
                                       
                                       
@@ -138,7 +144,7 @@ option {
                                       <div class="d-flex justify-content-start"> 
 	                                      <div style="margin-bottom:20px; margin-right:20px;">
 	                                         <label>이자 지급 방식</label><br>    
-	                                         <select name="savingsType" id="savingsType">
+	                                         <select name="savingsType" id="savingsType" class="form-control" style="color:#008485; font-size:18px; width:490px; height:42px">
 	                                                 <option value="단리">단리 상품</option>
 	                                                 <option value="복리">복리 상품</option>                                    
 	                                         </select>
@@ -147,7 +153,7 @@ option {
 	                                      
 	                                      <div style="margin-bottom:20px;">
 	                                         <label>적립 방법</label><br>  
-	                                         <select name="accumulateMethod" id="accumulateMethod">
+	                                         <select name="accumulateMethod" id="accumulateMethod" class="form-control" style="color:#008485; font-size:18px; width:490px; height:42px">
 	                                                     <option value="정액적립식">정액적립식</option>
 	                                                     <option value="자유적립식">자유적립식</option>                                          
 	                                          </select>
@@ -155,33 +161,57 @@ option {
                                       </div>
                                       
 
-                                      <div style="margin-bottom:20px;">
-                                         <label>적립 한도 금액</label><br>     
-                                         <input type="text" name="maxLimit" id="maxLimit"/> 원
+                                      <div class="d-flex justify-content-start"> 
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>적립 한도 금액</label><br>     
+	                                         <input type="text" name="maxLimit" id="maxLimit" class="form-control" style="text-align:right; color:#008485; font-size:20px; width:200px; height:42px; display:inline;"/>
+	                                           <strong style="font-size:20px;">&nbsp;원</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                      </div>
+	                                      
+	                                      
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>계약 기간</label><br>  
+	                                         <input type="text" name="minPeriod" id="minPeriod" class="form-control" style="text-align:right; color:#008485; font-size:20px; width:100px; height:42px; display:inline;"/> 
+	                                           <strong style="font-size:20px;">&nbsp;개월 ~ </strong>
+	                                         <input type="text" name="maxPeriod" id="maxPeriod" class="form-control" style="text-align:right; color:#008485; font-size:20px; width:100px; height:42px; display:inline;"/> 
+	                                           <strong style="font-size:20px;">&nbsp;개월 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                      </div>
+	                                      
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>가입 금액</label><br>  
+	                                         <input type="text" name="minAmount" id="minAmount" class="form-control" style="text-align:right; color:#008485; font-size:20px; width:100px; height:42px; display:inline;" /> 
+	                                         <strong style="font-size:20px;">&nbsp;원 ~ </strong>
+	                                         <input type="text" name="maxAmount" id="maxAmount" class="form-control" style="text-align:right; color:#008485; font-size:20px; width:100px; height:42px; display:inline;"/>
+	                                         <strong style="font-size:20px;">&nbsp;원 </strong>
+	                                      </div>
+	                                      
                                       </div>
-                                      
-                                      
-                                      <div style="margin-bottom:20px;">
-                                         <label>계약 기간</label><br>  
-                                         <input type="text" name="minPeriod" id="minPeriod" style="width:50px;" /> 개월 ~ <input type="text"  style="width:50px;" name="maxPeriod" id="maxPeriod"/> 개월
-                                      </div>
-                                      
-                                      
+                                  <!--     
                                       <div style="margin-bottom:20px;">
                                          <label>가입 금액</label><br>  
                                          <input type="text" name="minAmount" id="minAmount"  style="width:100px;" /> 원 ~ <input type="text" name="maxAmount"  style="width:100px;" id="maxAmount" /> 원
-                                      </div>
+                                      </div> -->
+                                      
+                                      
+                                      <div class="d-flex justify-content-start"> 
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>기본 금리</label><br>  
+	                                         <input type="text" name="rate" id="rate" class="form-control" style="text-align:right; color:#008485; font-size:18px; width:460px; height:42px; display:inline;" />
+	                                         <strong style="font-size:20px;">% </strong>
+	                                      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                      
+	                                      <div style="margin-bottom:20px;">
+	                                         <label>우대 금리</label><br>  
+	                                         <input type="text" name="prefer" id="prefer" class="form-control" style="text-align:right; color:#008485; font-size:18px; width:460px; height:42px; display:inline;" />
+	                                         <strong style="font-size:20px;">% </strong>
+	                                       </div>
+                                     </div>
                                       
                                       
                                       <div style="margin-bottom:20px;">
-                                         <label>기본 금리</label><br>  
-                                         <input type="text" name="rate" id="rate"  style="width:100px;" /> %
-                                      </div>
-                                      
-                                      
-                                      <div style="margin-bottom:20px;">
-                                             <label>우대 금리 항목</label><br>  
-                                             <select name="preferType" id="preferType">
+                                             <label>우대 금리 항목</label><br>
+                                             <div class="d-flex justify-content-start">   
+                                             <select name="preferType" id="preferType" class="form-control" style="color:#008485; font-size:18px; width:490px; height:42px;">
                                                          <option value="카드실적" selected="selected">카드실적</option>
                                                          <option value="아파트관리비 실적">아파트관리비 실적</option>
                                                          <option value="주택청약종합저축">주택청약종합저축</option>
@@ -191,9 +221,9 @@ option {
                                                          <option value="온라인 신규">온라인 신규</option>
                                                          <option value="하나머니">하나머니</option>
                                                          <option value="기타">기타</option>                                              
-                                              </select>
+                                              </select>&nbsp;&nbsp;&nbsp;&nbsp;
                                               
-                                              <select name="preferType" id="preferType">
+                                              <select name="preferType" id="preferType" class="form-control" style="color:#008485; font-size:18px; width:490px; height:42px">
                                                          <option value="하나머니" selected="selected">하나머니</option>
                                                          <option value="카드실적">카드실적</option>
                                                          <option value="아파트관리비 실적">아파트관리비 실적</option>
@@ -204,23 +234,16 @@ option {
                                                          <option value="온라인 신규">온라인 신규</option>
                                                          <option value="기타">기타</option>                                              
                                               </select>
+                                              </div>
                                           </div>
                                       </div>
                                       
-                                      <div style="margin-bottom:20px;">
-                                         <label>우대 금리</label><br>  
-                                         <input type="text" name="prefer" id="prefer"  style="width:100px;" /> %
-                                       </div>
+                                      
                                        
                                        
                                       
                                       
-                                      
-                                      <div style="margin-bottom:20px;">
-                                         <label>상품 설명</label><br>  
-                                         <input type="text" name="productDesc" id="productDesc"  style="width:200px; hegiht:300px;" />
-                                      </div>
-                                      
+                                     
                                       
                                       <!-- 코드 -->
                                         
@@ -228,7 +251,7 @@ option {
                                     
                                     
                                      <input type="submit" id="gogo" value="추가하기"
-                                            style="width:150px; height:40px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold; font-size:15px;"> <%-- post버튼 --%>
+                                            style="font-size:20px; width:400px; height:42px; border-radius:5px; margin-left:300px; background-color:#008485; color:white; border:none;"> <%-- post버튼 --%>
                   
                                 </div>
                             </div>

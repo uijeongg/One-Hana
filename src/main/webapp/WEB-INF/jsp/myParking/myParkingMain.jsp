@@ -29,7 +29,21 @@
     overflow: hidden;
     font-size: .75rem;
     background-color: #e9ecef;
-    }  
+}  
+    
+.btn1 {
+    width:400px; 
+    font-size:20px; 
+   /*  border:6px solid; 
+    border-color:#008485; 
+    background-color:#008485; 
+    */ 
+    border:none; 
+    background-color:none; 
+    
+    border-radius:10px; 
+    display:inline;
+}    
 </style> 
 </head>
 
@@ -39,8 +53,15 @@
     <header>
         <jsp:include page="/WEB-INF/jsp/include/header.jsp"></jsp:include>
     </header>
+    
+<!--  --><!--  -->
+<div id="allPage" style="display:none;">
+<!--  --><!--  -->
+
     <jsp:include page="/WEB-INF/jsp/include/sidebar2.jsp"></jsp:include>
 
+
+    
 
     <!-- page title start -->
     <div style="margin-left:670px; margin-top:9px;" class="animate__animated animate__bounce" >
@@ -53,6 +74,10 @@
     <hr style="width:920px; height:7px; background-color:#066262;">
     <!-- page title end -->
     
+
+
+
+
     
     
     <!-- 프로그레스 로딩바 + 파킹 주머니 현황 텍스트 -->
@@ -82,9 +107,37 @@
     </div>   
     
        <!-- 100% 다 모였을 때 뜨는 적금추천문구 자리 -->
-    <div id="goSavings"></div>
+   <!--  <div id="goSavings"></div> -->
    
-    
+
+
+    <div style="text-align:center; margin-top:20px; margin-left:130px;">
+    <img src="${pageContext.request.contextPath}/resources/myicon/cong2.gif" style="width:80px; height:70px;"/>
+        <h5 style="font-size:20px; margin-bottom:20px;">파킹 주머니 목표금액에 도달했습니다 <br>이제 파킹 주머니의 잔액을 <strong style="color:#f86823">출금</strong>할 수 있습니다!<br></h5>
+        <%-- <button><a href="${pageContext.request.contextPath}/savingsMain">금융 상품 추천받기</a></button> --%>
+        <div class="btn1"><a href="${pageContext.request.contextPath }/savingsMain" style="padding:15px; color:#008485;">금융상품 보러가기</a></div>
+                                            
+                                            
+    </div>
+
+
+
+<!--  --><!--  -->
+</div>
+<!--  --><!--  -->
+
+<div id="loadingBar" style="display:flex; flex-direction:column; justify-content:center; align-items:center; ">
+<img src="${ pageContext.request.contextPath }/resources/myicon/cong.gif" style="width:32%;" />
+<div style="text-align:center; font-family:hanaBFont; font-size:32px;"><strong style="font-size:37px; color:#008485">축하합니다</strong><br>파킹 주머니 목표액에 도달했습니다!</div>
+</div>
+
+<script>
+    setTimeout(function(){
+        $('#loadingBar').fadeOut(300,function(){
+            $('#allPage').fadeIn(300)
+        })
+    },2000)
+</script>  
 
 <script>
      $(document).ready(function(){
@@ -113,8 +166,8 @@
              
              
 	             str += '<div class="col-6 chartLocation2" style="justify-content:center; align-items:center;">';
-		             str += '<div style="font-size:22px; margin-top:80px; justify-content:center;"> 지금까지 <br>파킹 주머니 목표금액 <p style="color:#008485; display:inline;"><br>'+ parkingSum + '&nbsp;원</p> 중';
-		             str += '<br> 총 <p style="color:#ff4747; display:inline; font-size:30px;">"' + parkingBal + ' 원"</p>을 모았어요';
+		             str += '<div style="font-size:22px; margin-top:80px; justify-content:center;"> 지금까지 <br>파킹 주머니 목표금액 <p style="color:#008485; display:inline;"><br>'+ (Math.floor(parkingSum)).toLocaleString('ko-KR') + '&nbsp;원</p> 중';
+		             str += '<br> 총 <p style="color:#ff4747; display:inline; font-size:30px;">"' + (Math.floor(parkingBal)).toLocaleString('ko-KR') + ' 원"</p>을 모았어요';
 		             
 		             str += '<div style="margin-top:10px;">';
 		             str += '<input type="button" id="parking" value="상세 파킹 내역" onclick="displayParkingDetail()" class="btn"';

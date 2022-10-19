@@ -35,6 +35,32 @@
     font-size: .75rem;
     background-color: #e9ecef;
     }  
+    
+
+.intoReBudget:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
+}
+
+.intoReBudget:focus {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}  
+
+.rebudgetGo:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important; 
+}
+
+.rebudgetGo:focus {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}  
+
 </style> 
 
 </head>
@@ -267,7 +293,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
           </div> -->
            <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
-            <button type="button" class="btn btn-primary" id="divBtn" onclick="doReBudgetSet()" style="width:150px; margin-top:10px; margin-bottom:25px;">변경</button>         
+            <button type="button" class="btn btn-primary rebudgetGo" id="divBtn" onclick="doReBudgetSet()" style="width:150px; margin-top:10px; margin-bottom:25px;">변경</button>         
             </div>
         </div>
       </div>
@@ -756,17 +782,17 @@ function changeModal(toPocket) {
       //  changeModalList.POCKETNAME 주머니
         $('#modalbody').empty();
         str ='';
-        str += '<h4 style="font-size:20px; text-align:center;">잔액 이동 변경 내역</h4><br>';
-        str += '<table style="border : 3px solid #E0E0E0; width : 70%; height : 100px; margin-top : 15px;  margin : auto; text-align : center;">';
+        str += '<h4 style="font-size:23px; text-align:center;">잔액 이동 변경 내역</h4><br>';
+        str += '<table style="border:3px solid #E0E0E0; width:85%; height:100px; margin-top:15px; margin:auto; text-align:center;">';
         str += '<tr style="background: #E0E0E0">';
-        str += '<td width="30%" style="border-right:2px solid white;"><b>이동 주머니</b></td>';
-        str += '<td><b>자동 이동 날짜</b></td>';
-        str += '<td><b>금액</b></td>';
+        str += '<td width="30%" style="border-right:2px solid white; font-size:18px;"><b>이동 주머니</b></td>';
+        str += '<td style="border-right:2px solid white; font-size:18px;"><b>자동 이동 날짜</b></td>';
+        str += '<td style="font-size:18px;"><b>금액</b></td>';
         str += '</tr>';
         str += '<tr>';
-        str += '<td style="border-right:2px solid #E0E0E0;">' + changeModalList[0].POCKETNAME + ' 주머니</td>';
-        	str += '<td style="border-right:2px solid #E0E0E0;">매달 ' + changeModalList[0].AUTODIVDATE + ' 일</td>';
-        		str += '<td>' + changeModalList[0].AUTODIVAMOUNT + ' 원</td>';
+        str += '<td style="border-right:2px solid #E0E0E0; font-size:19px;">' + changeModalList[0].POCKETNAME + ' 주머니</td>';
+        	str += '<td style="border-right:2px solid #E0E0E0; font-size:20px;">매달 ' + changeModalList[0].AUTODIVDATE + ' 일</td>';
+        		str += '<td style="font-size:20px;">' + (Math.floor(changeModalList[0].AUTODIVAMOUNT)).toLocaleString('ko-KR') + ' 원</td>';
         			str += '</tr> </table>';
         				
 	  
