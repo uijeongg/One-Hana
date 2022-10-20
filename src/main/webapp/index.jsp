@@ -35,7 +35,7 @@
 		            <button onclick="location.href='${pageContext.request.contextPath}/joinMybank'" style="background:none; border:none;">
 		              <img src="${ pageContext.request.contextPath }/resources/myicon/orange1.png" style="width:300px;"/>
 		            <%-- <a href="${pageContext.request.contextPath}/joinMybank"> 이용하기</a> --%>
-		            <h4 style="transform: translateY(-300%); font-size:40px; margin-right:50px;">이용하기</h4>
+		            <h4 style="transform: translateY(-300%); font-size:40px; margin-right:50px; color:white;">이용하기</h4>
 		                </button>
 	                </div>
                 </div>

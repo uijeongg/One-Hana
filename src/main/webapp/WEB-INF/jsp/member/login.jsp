@@ -43,7 +43,7 @@
 			<tr>
 				<!-- <th>PASSWORD</th> -->
 				<td>
-					<form:input path="password" placeholder="비밀번호" class="form-control" style="color:#008485; font-size:20px; width:350px; height:55px; border-radius:10px;" />
+					<form:input type="password" path="password" placeholder="비밀번호" class="form-control" style="color:#008485; font-size:20px; width:350px; height:55px; border-radius:10px;" />
 					<form:errors path="password"></form:errors>
 				</td>
 			</tr>

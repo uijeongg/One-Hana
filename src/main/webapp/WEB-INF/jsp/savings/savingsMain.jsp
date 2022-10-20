@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,6 +234,52 @@ td, th {
 
 </div>
 </div>
+   
+   
+   
+   
+   
+   <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->   
+   
+   
+     <div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid #9d9d9d; padding:10px; width:60%; border-radius:40px; display:flex; justify-content:space-between;" class= "row">
+     <div class="col-8">
+     <div class="d-flex flex-column">
+     <div class="d-flex" style="font-family:hanaBFont; margin-top:17px;">
+     <input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">
+     
+     <h4 style="margin-left:10px; margin-right:20px;">마이원하나 적금</h4>
+      margin-right:20px;
+<%--    <c:if test="${product.status eq 'new'}"> 
+           <img src="${pageContext.request.contextPath}/resources/myicon/newest3.png" 
+           class="animate__animated animate__heartBeat" style="width:16%; margin-top:-20px;"/>
+     </c:if> --%>
+     
+     </div>
+                     
+                      
+     <div style="margin-left:20px;">
+     <pre style="word-wrap:break-word; white-space:pre-wrap; white-space:-moz-pre-wrap; white-space:-pre-wrap; 
+     white-space:-o-pre-wrap; word-break:break-all;
+     font-weight:bold; font-size:18px; font-family:hanaBFont; fontWeight:bold; margin-top:7px;">어쩌고저쩌고어쩌고저쩌고</pre>
+     </div>
+                   
+                      
+                      
+                      
+     </div>
+     <button type="button" style="margin-left:20px; background-color:#fca474; border:none; color:white;  width:300px; height:42px; font-family:hanaBFont; border-radius:30px;">
+     자세히보기 </button> </div>
+                      
+                      
+     <div class="col-3" style="text-align:right; margin-left:20px; font-weight:bold; display: flex; justify-content: flex-end; align-items: center;">
+     <div style="font-size:20px; display:inline;"> 최대 연 <br><strong style="font-size:30px; color:#008485;"> 5.5 % </strong><br>  (세전, 6 개월) </div>
+     </div><br></div>
+   
+   
+   
+   <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+   
    
    
 
@@ -660,9 +707,18 @@ function sortSavings() {
             		  str += '<div class="d-flex flex-column">';
             		  str += '<div class="d-flex" style="font-family:hanaBFont; margin-top:17px;">';
             		  str += '<input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">';
-            		  str += '<h4 style="margin-left:10px;">' + data[i].SAVINGSNAME + '</h4>';
-            		  str += '</div>';
+            		  str += '<h4 style="margin-left:10px; margin-right:20px;">' + data[i].SAVINGSNAME + '</h4>';
             		  
+            	
+            		  
+            		  if( data[i].STATUS == 'new') {
+            			  str += '<img src="${pageContext.request.contextPath}/resources/myicon/newest3.png"'; 
+                          str += 'class="animate__animated animate__heartBeat" style="width:16%; margin-top:-20px;"/>';
+            		  }
+            		  
+            		  
+            		  str += '</div>';
+            		
             		  
             		  str += '<div style="margin-left:20px;">';
                       str += '<pre style="word-wrap:break-word; white-space:pre-wrap; white-space:-moz-pre-wrap; white-space:-pre-wrap; ';

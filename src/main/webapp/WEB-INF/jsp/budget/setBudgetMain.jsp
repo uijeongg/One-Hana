@@ -167,7 +167,7 @@ $(document).ready(function(){
     	).then(response=>{
     		if(response != null){
 	    		console.log(response[0].FIXEDSUM)
-    			$('#fixedAll').val(response[0].FIXEDSUM);
+    			$('#fixedAll').val((response[0].FIXEDSUM).toLocaleString('ko-KR'));
 	    		
 	    		calculateBudget();
     		}
@@ -188,7 +188,7 @@ $(document).ready(function(){
          ).then(response=>{
         	 if(response != null){
         	     console.log(response[0].MYASSET) //픽스드썸은 as값
-        	     $('#calcul').val(response[0].MYASSET);
+        	     $('#calcul').val((response[0].MYASSET).toLocaleString('ko-KR'));
         	     
         	 }
          })	
@@ -203,10 +203,13 @@ $(document).ready(function(){
 //고정비 다 입력하고 최종 '설정 완료 누르면 fixedSum값이 자동 예산 분할 설정의 고정비 주머니 분할 금액으로 바로 뜨게 하고 싶음
 
 function allFixedSettings(){
-	let fixedAllMoney = $('#fixedAll').val();
+	let fixedAllMoney = ($('#fixedAll').val()).replace(/,/g, "")*1;
 	console.log(fixedAllMoney);
 	$('input[name=autoDivAmount2]').attr('value',fixedAllMoney);
 }
+
+
+
 
 
 function autoDivSetting(input) {
@@ -246,7 +249,7 @@ function autoDivSetting(input) {
 		                //console.log(divAmount + '원')
 		        	  
 		                let str = '';
-		                str += '<p style="font-size:20px; color:black; ">' + divAmount + '원 </p>'
+		                str += '<p style="font-size:20px; color:black; ">' + (divAmount).toLocaleString('ko-KR') + '원 </p>'
 		               $('#autoAmount_'+pocketCode).append(str);  
 		                
 		                let str2 = '';
@@ -284,7 +287,7 @@ function autoDivSetting(input) {
 	    calcul2 = calcul2 - divAmount       
        // console.log("calcul2의 값은? : "+ calcul2);
 	    
-        $('#calcul').val(calcul2);
+        $('#calcul').val((calcul2*1).toLocaleString('ko-KR'));
         
         
         
