@@ -93,8 +93,8 @@
     <div id="chart" style="display:inline;"></div>
     <div id="chart2" style="display:inline;"></div>
     </div>
-    <span style="font-size:17px;margin-left:5px; ">월말 주머니 잔여액 자동 파킹 추이</span>
-    <span style="font-size:17px; margin-left:290px;">주머니 별 파킹 금액</span>
+    <span style="font-size:20px;margin-left:45px; ">파킹 주머니 증가 추이</span>
+    <span style="font-size:20px; margin-left:290px;">주머니 별 파킹 금액</span>
     
     
        <!--  <div id="parkingAmount">
@@ -107,7 +107,7 @@
     </div>   
     
        <!-- 100% 다 모였을 때 뜨는 적금추천문구 자리 -->
-   <!--  <div id="goSavings"></div> -->
+   <div id="goSavings"></div> 
    
 
 
@@ -117,13 +117,12 @@
         <div style="font-size:20px; ">파킹 주머니 목표금액에 도달했습니다 <br>이제 파킹 주머니의 잔액을 <strong style="color:#f86823">출금</strong>할 수 있습니다!</div>
         <img class="main_image" src="${pageContext.request.contextPath}/resources/myicon/orange1.png" style="width:37%; height:100px; position: relative;"/>
         <div class="main_image_text" style="position:absolute; top:843px; left:730px; color:white; fontWeight:bold; font-size:18px;">
-             <a href="${pageContext.request.contextPath }/savingsMain" style="color:white;">금융상품 보러가기</a></div> 
+             <a href="${pageContext.request.contextPath }/savingsMain" style="color:white;">금융상품 보러가기</a>
+        </div>                   
     </div>       
-
-    <%-- <div class="btn1 "><a href="${pageContext.request.contextPath }/savingsMain" style="padding:15px; color:#008485;">금융상품 보러가기</a></div> --%>
  </div>
 
-            
+       
 
 <!--  --><!--  -->
 </div>
@@ -169,7 +168,7 @@
              
              
 	             str += '<div class="col-6 chartLocation2" style="justify-content:center; align-items:center;">';
-		             str += '<div style="font-size:22px; margin-top:80px; justify-content:center;"> 지금까지 <br>파킹 주머니 목표금액 <p style="color:#008485; display:inline;"><br>'+ (Math.floor(parkingSum)).toLocaleString('ko-KR') + '&nbsp;원</p> 중';
+		             str += '<div style="font-size:22px; margin-top:100px; justify-content:center;"> 지금까지 <br>파킹 주머니 목표금액 <p style="color:#008485; display:inline;"><br>'+ (Math.floor(parkingSum)).toLocaleString('ko-KR') + '&nbsp;원</p> 중';
 		             str += '<br> 총 <p style="color:#ff4747; display:inline; font-size:30px;">"' + (Math.floor(parkingBal)).toLocaleString('ko-KR') + ' 원"</p>을 모았어요';
 		             
 		             str += '<div style="margin-top:10px;">';
@@ -189,20 +188,19 @@
              
              
            
-             str2 = '';
-             str2 += 
-            	 
-       //      if ((parkingBal >= parkingSum ) {  //다 모았다면
-                 
-                 str2 += '<br><div>※ 축하합니다! 파킹 주머니 목표 금액에 모두 도달했습니다.';
-                 str2 += ' 이제 파킹 주머니의 잔액을 출금할 수 있습니다.<br></div>';
-                 
-                 str2 += '<button><a href="${pageContext.request.contextPath}/savingsMain">금융 상품 추천받기</a></button>';
-                 //<button><a href="${pageContext.request.contextPath}/productsMain">금융 상품 추천받기</a></button>
-            
-       
-     //        }
+             str2 = '<div style="border:3px solid #008485; border-radius:120px; width:500px; margin-left:560px; margin-top:30px; margin-bottom:30px;">';
+             str2 += '<div style="text-align:center; margin-top:20px; margin-left:0px;">';
+             str2 += '<img src="${pageContext.request.contextPath}/resources/myicon/cong2.gif" style="width:80px; height:60px; display:inline"/><strong style="display:inline; font-size:26px; color:#008485;">&nbsp;&nbsp;축하합니다</strong>';
+             str2 += '<div style="font-size:20px; ">파킹 주머니 목표금액에 도달했습니다 <br>이제 파킹 주머니의 잔액을 <strong style="color:#f86823">출금</strong>할 수 있습니다!</div>';
+             str2 += '<img class="main_image" src="${pageContext.request.contextPath}/resources/myicon/orange1.png" style="width:37%; height:100px; position: relative;"/>';
+             str2 += '<div class="main_image_text" style="position:absolute; top:1352px; left:730px; color:white; fontWeight:bold; font-size:18px;">';
+             str2 += '<a href="${pageContext.request.contextPath }/savingsMain" style="color:white;">금융상품 보러가기</a>';
+             str2 += '</div>';
+             str2 += '</div> ';
+             str2 += ' </div> ';
              
+                    	 
+    
                  $('#goSavings').append(str2);
              
              
@@ -315,7 +313,7 @@ $(document).ready(function(){
               var options = {
                       series: [{
                         name: "파킹 금액",
-                        data: /* parkingSum */ [ 2400000, 2700000 ,3700000 ,4000000 ,4300000 , 5000000]
+                        data: /* parkingSum */ [ 2354200, 2790500 ,3756820 ,4035780 ,4304520 , 5000000]
                     }],
                       chart: {
                     	  width: 400,
