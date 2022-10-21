@@ -624,7 +624,7 @@ function sortSavings() {
             	 
             	  str3 += '<h5 style="font-size:23px;">" <strong style="font-size:23px; color:#008485; display:inline;">정의정</strong> 님이 선택하신 조건에 딱 맞는 상품을 추천해드려요! "</h5>';
             	  str3 += '</div>';            	  
-            	  str3 += '<hr style="width:830px; margin-bottom:30px; height:7px; background-color:#066262;">';
+            	  str3 += '<hr style="width:840px; margin-bottom:30px; height:7px; background-color:#066262;">';
             	  
             	  $('#savingsHeader').append(str3);
             	 

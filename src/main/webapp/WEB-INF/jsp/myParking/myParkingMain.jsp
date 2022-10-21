@@ -400,12 +400,12 @@ $(document).ready(function(){
                }, {
                  name: '생활비',
                  type: 'column',
-                 data: parking3Sum
+                 data: /* parking3Sum */ [ 54200, 79050 , 116820 ,152380 ,204520 , 260000]
                }
                /* , {
                  name: 'Revenue',
                  type: 'line',
-                 data: [20, 29, 37, 36, 44, 45, 50, 58]
+                 data: [20, 29, 37, 36, 44, 45, 50, 58] [ 2354200, 2790500 ,3756820 ,4035780 ,4304520 , 5000000]
                } */
                ],
                  chart: {

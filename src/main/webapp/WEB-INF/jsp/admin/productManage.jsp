@@ -152,9 +152,10 @@ td {
 	                                                     <th>상품명</th>
 	                                                     <th>상품코드</th>
 	                                                     <th>적립방식</th>
-	                                                     <th>금리</th>
+	                                                     <!-- <th>금리</th> -->
+	                                                     <!-- <th>예치금액</th> -->                                                     
 	                                                     <!-- <th>가입기간</th> -->
-	                                                     <th>상품설명</th>
+	                                                     <th>상품설명</th> 
 	                                                    <th>등록일</th>
 	                                                     <th>관리</th>
                                                     </tr>
@@ -206,38 +207,29 @@ td {
                                                         ${product.accumulateMethod}
                                                     </td>
 
-                                                  
-                                                    <!-- 타입 -->
-                                                    <td>
-                                                        <!-- <div class="d-flex">
-                                                            <div class="me-2">
-                                                                <i class="mdi mdi-check-circle-outline text-success"></i>
-                                                            </div>
-                                                            <div>
-                                                                <p class="mb-0">Paid</p>
-                                                            </div>
-                                                        </div> -->
+
+                                                     <!-- 타입 -->
+                                                 <%--    <td>                                                       
                                                          ${product.savingsType}
                                                     </td>
                                                     
+ --%>
+                                                    <!-- 예치금액 -->
+                                                 <%--    <td>
+                                                        ${product.minAmount}원
+                                                    </td>
+                                                --%>
+                                                    
                                                     
                                                     <!-- 가입기간 -->
-                                                   <%--  <td>
-                                                        ${product.minPeriod} ~ ${product.maxPeriod}
+                                                 <%--    <td>
+                                                        ${product.minPeriod}개월 ~ ${product.maxPeriod}개월
                                                     </td>
-                                                     --%>
+                                                --%>
                                                     
                                                     <!-- 상품설명 -->
                                                     <td style="font-size:15px;">
-                                                       <%--  <div class="d-flex align-items-center">
-                                                            <div class="me-2">
-                                                                <!-- <img src=> -->
-                                                            </div>
-                                                            <div>
-                                                                <h5 class="font-size-14 text-truncate mb-0">${product.productDesc}</h5>
-                                                            </div>
-                                                        </div> --%>
-                                                        
+                                                      
                                                         ${product.productDesc}
                                                     </td>
                                                    

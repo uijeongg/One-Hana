@@ -12,9 +12,9 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SmsService {
 
 	
-	String apiKey = "";
-	String apiSecret = "";
-	String fromNumber = "";
+	String apiKey = "NCS4KZVSO4QYWNRF";
+	String apiSecret = "GOG1KI9HKCLMDRQOVOQGNXCZVGV0XSXR";
+	String fromNumber = "01086289491";
 	public void sendMessage(String toNumber, String message) {
 
 		Message coolsms = new Message(apiKey, apiSecret);
@@ -35,20 +35,13 @@ public class SmsService {
 		}
 	}
 
-	public int sendAuthNumberMessage(String tel) {
-		int randomNumber = generateAuthNo();
-		sendMessage(tel, "[ModuHana] 인증번호 " + randomNumber + " 를 입력하세요.");
-		return randomNumber;
-	}
-	
-	/**
-     * 6자리 인증키 생성, int 반환
-     * @return
-     */
-    private static int generateAuthNo() {
-        java.util.Random generator = new java.util.Random();
-        generator.setSeed(System.currentTimeMillis());
-        return generator.nextInt(1000000) % 1000000;
-    }
-
+	/*
+	 * public int sendAuthNumberMessage(String tel) { int randomNumber =
+	 * generateAuthNo(); sendMessage(tel, "[ModuHana] 인증번호 " + randomNumber +
+	 * " 를 입력하세요."); return randomNumber; }
+	 * 
+	 * private static int generateAuthNo() { java.util.Random generator = new
+	 * java.util.Random(); generator.setSeed(System.currentTimeMillis()); return
+	 * generator.nextInt(1000000) % 1000000; }
+	 */
 }
