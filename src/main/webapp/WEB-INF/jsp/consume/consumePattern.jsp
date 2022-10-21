@@ -24,12 +24,36 @@
 <!-- my css  -->
 
 <link href="/resources/mycss/consumeDate.css" rel="stylesheet">
-<!-- <link href="/resources/mycss/chart.css" rel="stylesheet"> -->
+<link href="/resources/mycss/chart.css" rel="stylesheet"> 
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
 .nav-tabs {
     border-bottom:3px solid #008485;
     width:900px;
+}
+
+.modalbtn:focus {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}
+
+.modalbtn:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
+}
+
+.setNotice:focus {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}
+
+.setNotice:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
 }
 </style>
 
@@ -144,7 +168,7 @@
             <img src="${pageContext.request.contextPath}/resources/myicon/memoGreen.png" 
                  style="width:100%; position: relative;"/>
              
-                 <div  id="chartcomment" class="main_image_text" style="position:absolute; top:575px; left:800px;"></div>    
+                 <div  id="chartcomment" class="main_image_text" style="position:absolute; top:575px; left:770px;"></div>    
             </div>
             <!-- 코멘트 end -->
         
@@ -168,7 +192,7 @@
                  style="width:105%; position: relative;" />
              
                  <div id="chart2comment" class="main_image_text" 
-                       style="font-size:18px; fontWeight:bold; position:absolute; top:1050px; left:160px;"></div>    
+                       style="font-size:18px; fontWeight:bold; position:absolute; top:1050px; left:165px;"></div>    
             </div>
             <!-- 코멘트 end -->
 
@@ -191,7 +215,7 @@
         <div class="d-flex justify-content-between">
         
             <!-- 그래프 -->
-            <div style="width:60%"> 
+            <div style="width:58%"> 
             
                 <div>
                     <div id="chart3" style="position: relative;"></div>
@@ -213,8 +237,8 @@
             <img src="${pageContext.request.contextPath}/resources/myicon/memoYello.png" 
                  style="width:100%; height:330px; position: relative;"/>
              
-                 <div id="chart3comment" class="main_image_text" style="position:absolute; top:1545px; left:915px;"></div>
-                 <div id="dateTopHisto" class="main_image_text" style="position:absolute; top:1650px; left:915px;"></div>        
+                 <div id="chart3comment" class="main_image_text" style="position:absolute; top:1550px; left:923px;"></div>
+                 <div id="dateTopHisto" class="main_image_text" style="position:absolute; top:1650px; left:925px;"></div>        
             </div>
             <!-- 코멘트 end -->
               
@@ -396,17 +420,17 @@
       <div style="width:900px; border:2px solid; border-radius:10px; border-color:#e0e0e0; padding:35px; margin-bottom:20px;">  
          
       
-        <div class="d-flex justify-content-between" style="width:340px; text-align:center;">
+        <div class="d-flex justify-content-between align-items-center" style="width:340px; text-align:center;">
       
             <div>
                 <h4 style=" margin-bottom:30px; text-align:center;"><strong style="color:#008485">시간대 </strong> 별 소비 <strong style="color:#008485">빈도</strong></h4> 
             </div>
          
          
-            <div style="display:inline;">
+            <div style="display:inline; margin-bottom:30px;">
               <!-- <div style="width: 100%"> -->
               <select name="selectMonth_times" id="selectMonth_times"
-                         style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;" onchange="timesSelect(this.value)">                        
+                         style="width:100px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;" onchange="timesSelect(this.value)">                        
                 <option value="6">6개월</option>
                 <option value="3">3개월</option>
              </select>
@@ -418,20 +442,20 @@
             
          <div class="d-flex justify-content-between">
                 
-            <div style="width:58% ">  
+            <div style="width:56% ">  
 	             <figure class="highcharts-figure">   
 	                  <div id="container7" style="height:500px;"></div>
 	             </figure>
             </div>
         
 		    <!-- 코멘트 start -->
-            <div class="main_image" style="width:40%;">
+            <div class="main_image" style="width:42%;">
                  <img src="${pageContext.request.contextPath}/resources/myicon/memo11.png" 
-                      style="width:115%; height:500px; position: relative;"/>
+                      style="width:120%; height:500px; position: relative;"/>
              
                  <div id="topCountComment" class="main_image_text" style="position:absolute; top:1642px; left:940px;"></div>
                  <div id="countMedianComment" class="main_image_text" style="position:absolute; top:1750px; left:895px;"></div> 
-                 <div id="setNoticeSMSParent" class="main_image_text" style="position:absolute; top:2050px; left:895px;"></div>     
+                 <div id="setNoticeSMSParent" class="main_image_text" style="position:absolute; top:2120px; left:1100x;"></div>     
             </div>
             <!-- 코멘트 end -->
 		        
@@ -472,7 +496,7 @@
             <!-- 알림모달 -->
             </div>
           
-            매주 <select name="noticeDate" id="noticeDate"
+          <!--   매주 <select name="noticeDate" id="noticeDate"
 	                     style="width:100px; margin-top:30px; background:white; color:#008485; border-radius:20px; text-align:center; height:30px;">	                    
 	            <option value="1">일요일</option>
 	            <option value="2">월요일</option>
@@ -483,12 +507,12 @@
 	            <option value="7">토요일</option>
 	            
 	        </select> 에 받기
-	          
+	           -->
           
           </div>
          
            <div id="modalFooter" style="text-align:center; margin-bottom:20px;">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="noticeBtn" onclick="doSetNotice()" style="width:150px; margin-top:10px; margin-bottom:25px;">문자 알림 받기</button>         
+            <button type="button" class="btn btn-primary modalbtn" data-bs-dismiss="modal" id="noticeBtn" onclick="doSetNotice()" style="width:150px; margin-top:10px; margin-bottom:25px;">문자 알림 받기</button>         
             </div>
         </div>
       </div>
@@ -835,11 +859,11 @@
                         chart.render();   
                         
                         str = '';
-                        str += '<div style="font-size:19px; text-align:center;"><strong style="font-size:21px;">' + weekComment + '</strong> 소비에 후하네요!<br><br>';
+                        str += '<div style="font-size:21px; text-align:center;"><strong style="font-size:21px;">' + weekComment + '</strong> 소비에 후하네요!<br><br>';
                         str += '한달 간,<br>소비가 가장 많았던 주는<br>';
-                        str += '<strong style="font-size:21px; color:#008485;">" ' + weekComment + ' "</strong> 입니다</div>';
+                        str += '<strong style="font-size:22px; color:#008485;">" ' + weekComment + ' "</strong> 입니다</div>';
                         
-                        str += '<br><div style="text-align:center; font-size:21px;"><img src="${pageContext.request.contextPath}/resources/myicon/notice2.png" class="animate__animated animate__bounce" style="width:10%;"/> 근 검 절 약 !</div>';
+                        str += '<br><div style="text-align:center; font-size:18px;"><img src="${pageContext.request.contextPath}/resources/myicon/notice2.png" class="animate__animated animate__bounce" style="width:10%;"/><strong style="font-size:21px; color:#008485">' + weekComment + '</strong> 에 방심금물! </div>';
                         $('#chartcomment').append(str);     
             })       
     }
@@ -1076,7 +1100,7 @@
         //console.log(receivedObject.dateList[1] + ' 입니다');
         let str = '';
         str += '<div style="text-align:center; font-size:18px;"> 한달 간,<br>소비가 가장 많았던 날은<br>';
-        str += '<strong style="font-size:20px; color:#f56991;">" '+receivedObject.dateList[1]+' "</strong> 입니다<br>';
+        str += '<strong style="font-size:22px; color:#f56991;">" '+receivedObject.dateList[1]+' "</strong> 입니다<br>';
         str += '<p style=" font-size:16px;">&nbsp;충동 구매가 있진 않았는지 확인해볼까요?</p></div>';
 
         $('#chart3comment').append(str);     
@@ -1238,9 +1262,9 @@
      
         		      //가장 잦은 소비는 편의점 (~회)과 커피전문점(~회) 입니다. 습관적 소비가 아닌지 되돌아보아요
         		        let str = '';
-        		        str += '<div style="text-align:center; font-size:18px;"> 당신은 혹시..  <strong style="font-size:20px;">' + countObject.cate3name[0] + '</strong> 러버? <br><br>';
+        		        str += '<div style="text-align:center; font-size:18px;"> 당신은 혹시..  <strong style="font-size:22px;">' + countObject.cate3name[0] + '</strong> 러버? <br><br>';
         		        str += '한달 간, <br> 가장 잦았던 소비 카테고리는<br>';
-        		        str += '<strong style="font-size:20px; color:#008485">" '+countObject.cate3name[0]+ '   ('+countObject.cate3count[0]+'회) "</strong> 입니다';
+        		        str += '<strong style="font-size:23px; color:#008485">" '+countObject.cate3name[0]+ '   ('+countObject.cate3count[0]+'회) "</strong> 입니다';
         		        /* str =+ ' 두번째 카테고리는 "'+ countObject.cate3name[1]+ '(' + countObject.cate3count[1] + '회)" 입니다';  */
         		        str += '<br><br><img src="${pageContext.request.contextPath}/resources/myicon/notice2.png" style="width:7%;"/> 습관적 소비가 아닌지<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;되돌아보아요</div>';
         		        $('#chart4comment').append(str);     	   
@@ -1611,7 +1635,7 @@
                  
                  //console.log(topCountData + "여기서 찍히나");
                  
-                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:205px; height:33px; font-size:16px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');      
+                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:354px; height:33px; font-size:16px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">문자 알림 받기</button>');      
         })
     }
      
@@ -1916,8 +1940,8 @@
                  
                  //console.log(topCountData + "여기서 찍히나");
                  
-                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:200px; font-size:18px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">알림 받기</button>');      
-        })
+                 $('#setNoticeSMSParent').append('<button type="button" class="setNotice col-3 btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#setNotice" style="width:354px; height:33px; font-size:16px; font-family:hanaBFont;" onclick="setNoticeSMS('+count+','+Number(time.substring(0,2))+')">문자 알림 받기</button>');      
+                   })
         $('#topCountComment').empty();
          $('#countMedianComment').empty();
         
@@ -2059,17 +2083,17 @@
                              
                              str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
                              str += '<h5 style="font-size:17px; color:#ff4d4d; display:inline;"> ' + cateArray[0].data[0][0] + ' </h5></div>';
-                             str += '<div style="font-size:17px; margin-bottom:10px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(firstAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
-                             str += '최대 소비 횟수인 ' + firstCountMax + '회에서 <br>평균 횟수인 ' + firstCountAvg + '회로 줄이면<br>';
-                             str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(firstSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
+                             str += '<div style="font-size:17px; margin-bottom:10px; color:#5a5a5a;">월별 금액 평균은<strong style="font-size:21px; color:black;"> " ' + (Math.floor(firstAmountAvg)).toLocaleString('ko-KR') + ' 원 "</strong> 이므로 <br>';
+                             str += '최대 소비 횟수인 <strong style="font-size:19px; color:black;">' + firstCountMax + '회</strong>에서 <br>평균 횟수인 <strong style="font-size:19px; color:black;">' + firstCountAvg + '회</strong>로 줄이면<br>';
+                             str += '약 <p style="font-size:22px; color:#ff4d4d; display:inline;">" ' + (Math.floor(firstSavingAmount)).toLocaleString('ko-KR') + ' 원 "</p> 세이빙 가능</div>';
 
                              
                           
                              str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
                              str += '<h5 style="font-size:17px; color:#ff7f00; display:inline;"> ' + cateArray[1].data[0][0] + ' </h5></div>';
-                             str += '<div style="font-size:17px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(secondAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
-                             str += '최대 소비 횟수인 ' + secondCountMax + '회에서 <br>평균 횟수인 ' + secondCountAvg + '회로 줄이면<br>';
-                             str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(secondSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
+                             str += '<div style="font-size:17px; color:#5a5a5a;">월별 금액 평균은 <strong style="font-size:21px; color:black;">" ' + (Math.floor(secondAmountAvg)).toLocaleString('ko-KR') + ' 원 "</strong> 이므로 <br>';
+                             str += '최대 소비 횟수인 <strong style="font-size:19px; color:black;">' + secondCountMax + '회</strong>에서 <br>평균 횟수인 <strong style="font-size:19px; color:black;">' + secondCountAvg + '회</strong>로 줄이면<br>';
+                             str += '약 <p style="font-size:22px; color:#ff7f00; display:inline;">" ' + (Math.floor(secondSavingAmount)).toLocaleString('ko-KR') + ' 원 "</p> 세이빙 가능</div>';
 
                              
                           //   str += '그러므로 생활비 예산에서 약 ' + newBudgetSaving + '원을 절약할 수 있습니다. 재설정 하시겠습니까? </div>';
@@ -2196,7 +2220,7 @@
                           let countTopSavingAmount = firstSavingAmount + secondSavingAmount;
                  
                           let str = '';
-                          str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 ' + firstAmountAvg + '원 이므로 <br>';
+                          str += '<div> "' + cateArray[0].data[0][0] + '"의 월별 사용금액 평균은 <strong style="font-size:17px;">' + firstAmountAvg + '</strong> 원 이므로 <br>';
                           str += '최대 소비 횟수인 ' + firstCountMax + '회에서 평균 ' + secondCountAvg + '회로 줄이면 약 ' + firstSavingAmount + '원을 세이빙 할 수 있습니다 <br><br>';
 
                           str += '"' + cateArray[1].data[0][0] + '"의 월별 사용금액 평균은 ' + secondAmountAvg + '원 이므로 <br>';
@@ -2223,7 +2247,7 @@
 	       $('#getModalTime').empty();
 	       
 	       str = '';
-	       str += '가장 빈번한 소비가 발생하는 ' + input2 + '~' + (input2+4) + '시가 되면<br> 소비 주의 알림 문자를 받을 수 있습니다. <br>';
+	       str += '가장 빈번한 소비가 발생하는 <strong style="color:red; font-size:23px;">' + input2 + '~' + (input2+4) + '시</strong>가 되면<br> 소비 주의 알림 문자를 받을 수 있습니다. <br>';
 	       str += '소비 주의 알림을 받겠습니까?';
 	       
 	      $('#getModalTime').append(str); 
@@ -2240,7 +2264,6 @@
 
             .then(res=>{
                 
-                 //$('#modalbody').empty();
                 //changeModal(toPocket);
                 
           })
@@ -2483,11 +2506,11 @@
            str = '';
            str += '<div style="text-align:center; font-size:18px;"> 소비 금액이 가장 많은 카테고리는<br>';
            str += '<strong style="color:#008485; font-size:20px;">[ 요식: 커피전문점 ]</strong> 이며, <br>';
-           str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:20px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
+           str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:22px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
            
            str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
            str += ' <br>소비를 평균 만큼만 줄여도<br>';
-           str += '최소 <strong style="font-size:20px; color:#ff3333;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 !!</div>';
+           str += '최소 <strong style="font-size:23px; color:#ff3333;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 !!</div>';
            
           $('#sumMedianComment').append(str);    
           
@@ -2715,7 +2738,7 @@
     	                  
     	                  str += '<div> <img src="${pageContext.request.contextPath}/resources/myicon/check3.png" style="width:7%; display:inline;"/>';
     	                  str += '<h5 style="font-size:17px; color:#ff4d4d; display:inline;"> ' + cateArray[0].data[0][0] + ' </h5></div>';
-    	                  str += '<div style="font-size:17px; margin-bottom:10px; color:#5a5a5a;">월별 금액 평균은 ' + (Math.floor(firstAmountAvg)).toLocaleString('ko-KR') + '원 이므로 <br>';
+    	                  str += '<div style="font-size:17px; margin-bottom:10px; color:#5a5a5a;">월별 금액 평균은 <strong style="20px;">"' + (Math.floor(firstAmountAvg)).toLocaleString('ko-KR') + '</strong> 원" 이므로 <br>';
     	                  str += '최대 소비 횟수인 ' + firstCountMax + '회에서 <br>평균 횟수인 ' + firstCountAvg + '회로 줄이면<br>';
     	                  str += '약 <p style="font-size:21px; color:#333333; display:inline;">' + (Math.floor(firstSavingAmount)).toLocaleString('ko-KR') + ' 원</p> 세이빙 가능</div>';
 
@@ -2822,11 +2845,11 @@
            str = '';
            str += '<div style="text-align:center; font-size:18px;"> 소비 금액이 가장 많은 카테고리는<br>';
            str += '<strong style="color:#008485; font-size:20px;">[ 요식: 커피전문점 ]</strong> 이며, <br>';
-           str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:20px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
+           str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:22px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
            
            str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
            str += ' <br>소비를 평균 만큼만 줄여도<br>';
-           str += '최소 <strong style="font-size:20px; color:#ff3333;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 !!</div>';
+           str += '최소 <strong style="font-size:23px; color:#ff3333;">" ' + (Math.floor(savingAmount)).toLocaleString('ko-KR') + ' 원 " </strong> 세이빙 !!</div>';
            
           $('#sumMedianComment').append(str);    
           

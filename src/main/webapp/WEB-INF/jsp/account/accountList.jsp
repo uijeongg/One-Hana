@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -62,14 +63,16 @@
 	
 	            <td style="font-size:19px; width:250px; height:50px; border-right:2px solid #008485;">${ account.accountName }</td>
 	            <td style="font-size:20px; width:280px; height:50px; border-right:2px solid #008485; color:black; font-weight:bold;">${ account.accountNo }</td>
-	            <td style="font-size:20px; width:230px; height:50px; text-align:right;"><strong style="color:#008485">${ account.balance }</strong> 원</td>
+	            <td style="font-size:20px; width:230px; height:50px; text-align:right;"><strong style="color:#008485"><fmt:formatNumber value="${ account.balance }" pattern="#,###"/></strong> 원</td>
+	                                                                                            
+	        
 	        </tr>   
 	        </c:forEach>
 	       </tbody>
 	    </table>
 	 
 	   <br>
-	 
+	   <br><br>
 	    <div style="text-align:center; margin-left:220px;">
 		   <input type="submit" id="gogo" value="통장전환"
 		          style="width:200px; height:60px; border-radius:5px; background-color:#008485; color:white; border:none; font-weight:bold; font-size:20px;"> <%-- post버튼 --%>

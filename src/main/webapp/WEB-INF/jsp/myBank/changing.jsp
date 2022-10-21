@@ -72,19 +72,25 @@ $(document).on('click','#checkAll',function(){
 
 
 </script>
+
 <style type="text/css">
 .btn-primary:hover {
-background-color: #e90061 !important;
-color: white !important;
-border-color:#e90061 !important;
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
 }
 
 .btn-primary:focus {
-background-color: #008485 !important;
-color: white !important;
-border-color:#008485 !important;
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important;
 }
+
+
+
 </style>
+
+
 
 </head>
 <body>
@@ -115,7 +121,7 @@ border-color:#008485 !important;
 			
 			<h5 style="margin-left:40px; padding-top:20px; font-size:26px; margin-bottom:15px;">${ accountOne.accountName }</h5>
 			<h5 style="margin-left:40px; font-size:24px;">${ accountOne.accountNo }</h5><br>
-			<h5 style="text-align:right; margin-bottom:40px; padding-right:60px; font-size:23px;">잔액 
+			<h5 style="text-align:right; margin-bottom:40px; padding-right:60px; font-size:23px;">잔액&nbsp; 
 			    <strong style="margin-bottom:40px; font-size:30px; color:#008485;">
 			    <fmt:formatNumber value="${ accountOne.balance }" pattern="#,###"/>&nbsp;</strong>
 			원</h5>
@@ -228,7 +234,7 @@ border-color:#008485 !important;
           </p>
           
           <div class="modal-body">
-                <iframe src="${pageContext.request.contextPath }/resources/document/myone_manual.pdf"
+                <iframe src="${pageContext.request.contextPath }/resources/document/myonehana.pdf"
                         style="width:100%; height:600px;">
                 </iframe>  
           </div>

@@ -40,6 +40,19 @@ border:none !important;
     outline: 0;
     box-shadow:none !important; 
 }
+
+.divBtn:hover {
+    background:#008485 !important;
+    color:white !important;
+    border:1px solid #008485 !important;
+}
+
+.divBtn:focus {
+    background:#008485 !important;
+    border:1px solid !important;
+    box-shadow:none !important; 
+}
+
 </style>
 
 <script>
@@ -167,7 +180,7 @@ $(document).ready(function(){
     	).then(response=>{
     		if(response != null){
 	    		console.log(response[0].FIXEDSUM)
-    			$('#fixedAll').val((response[0].FIXEDSUM).toLocaleString('ko-KR'));
+    			$('#fixedAll').val(response[0].FIXEDSUM);
 	    		
 	    		calculateBudget();
     		}
@@ -189,7 +202,7 @@ $(document).ready(function(){
         	 if(response != null){
         	     console.log(response[0].MYASSET) //픽스드썸은 as값
         	     $('#calcul').val((response[0].MYASSET).toLocaleString('ko-KR'));
-        	     
+        	     //$('#calcul').val(response[0].MYASSET);
         	 }
          })	
     }
@@ -203,7 +216,7 @@ $(document).ready(function(){
 //고정비 다 입력하고 최종 '설정 완료 누르면 fixedSum값이 자동 예산 분할 설정의 고정비 주머니 분할 금액으로 바로 뜨게 하고 싶음
 
 function allFixedSettings(){
-	let fixedAllMoney = ($('#fixedAll').val()).replace(/,/g, "")*1;
+	let fixedAllMoney = $('#fixedAll').val()*1;
 	console.log(fixedAllMoney);
 	$('input[name=autoDivAmount2]').attr('value',fixedAllMoney);
 }
@@ -216,6 +229,8 @@ function autoDivSetting(input) {
 	
 	let pocketCode = input.substring(8);
     let autoDivAmount = $('#autoDivAmount'+pocketCode).val()*1;
+    
+    
     let autoDivDate = $('#autoDivDate'+pocketCode).val();
 	//console.log("들어갈 포켓코드 : "+pocketCode);
 	//console.log("분할금액 : " + autoDivAmount);
@@ -279,7 +294,7 @@ function autoDivSetting(input) {
 		
         var pocketCode = '${divideMap.pocketCode}'
       //  console.log(pocketCode)
-        let calcul2 = $('#calcul').val();
+        let calcul2 = ($('#calcul').val()).replace(/,/g, "")*1;
 		//console.log(calcul2);
         //console.log(divAmount)
         
@@ -287,7 +302,7 @@ function autoDivSetting(input) {
 	    calcul2 = calcul2 - divAmount       
        // console.log("calcul2의 값은? : "+ calcul2);
 	    
-        $('#calcul').val((calcul2*1).toLocaleString('ko-KR'));
+        $('#calcul').val((calcul2).toLocaleString('ko-KR'));
         
         
         

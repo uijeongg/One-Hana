@@ -236,63 +236,7 @@ td, th {
 </div>
    
    
-   
-   
-   
-   <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->   
-   
-   
-     <div style="font-family:hanaBFont; margin-bottom:20px; border:3px solid #9d9d9d; padding:10px; width:60%; border-radius:40px; display:flex; justify-content:space-between;" class= "row">
-     <div class="col-8">
-     <div class="d-flex flex-column">
-     <div class="d-flex" style="font-family:hanaBFont; margin-top:17px;">
-     <input name="checkSavings" type="checkbox" value="'+data[i].SAVINGSNAME+'" style="margin-left:15px; margin-right:10px;">
-     
-     <h4 style="margin-left:10px; margin-right:20px;">마이원하나 적금</h4>
-      margin-right:20px;
-<%--    <c:if test="${product.status eq 'new'}"> 
-           <img src="${pageContext.request.contextPath}/resources/myicon/newest3.png" 
-           class="animate__animated animate__heartBeat" style="width:16%; margin-top:-20px;"/>
-     </c:if> --%>
-     
-     </div>
-                     
-                      
-     <div style="margin-left:20px;">
-     <pre style="word-wrap:break-word; white-space:pre-wrap; white-space:-moz-pre-wrap; white-space:-pre-wrap; 
-     white-space:-o-pre-wrap; word-break:break-all;
-     font-weight:bold; font-size:18px; font-family:hanaBFont; fontWeight:bold; margin-top:7px;">어쩌고저쩌고어쩌고저쩌고</pre>
-     </div>
-                   
-                      
-                      
-                      
-     </div>
-     <button type="button" style="margin-left:20px; background-color:#fca474; border:none; color:white;  width:300px; height:42px; font-family:hanaBFont; border-radius:30px;">
-     자세히보기 </button> </div>
-                      
-                      
-     <div class="col-3" style="text-align:right; margin-left:20px; font-weight:bold; display: flex; justify-content: flex-end; align-items: center;">
-     <div style="font-size:20px; display:inline;"> 최대 연 <br><strong style="font-size:30px; color:#008485;"> 5.5 % </strong><br>  (세전, 6 개월) </div>
-     </div><br></div>
-   
-   
-   
-   <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
-   
-   
-   
 
-<!-- 	
-	<div>
-	    <button type="button" class="selectSavings col-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#selectSavings"
-	     style="width:200px; font-size:18px; font-family:hanaBFont;" > onclick="intoSelectSavings()"
-	        나만의 예적금 찾기
-	    </button>  
-	</div>   
-	 -->
-	
-	
 </div>	
 	
 
@@ -680,7 +624,7 @@ function sortSavings() {
             	 
             	  str3 += '<h5 style="font-size:23px;">" <strong style="font-size:23px; color:#008485; display:inline;">정의정</strong> 님이 선택하신 조건에 딱 맞는 상품을 추천해드려요! "</h5>';
             	  str3 += '</div>';            	  
-            	  str3 += '<hr style="width:800px; margin-bottom:30px; height:7px; background-color:#066262;">';
+            	  str3 += '<hr style="width:830px; margin-bottom:30px; height:7px; background-color:#066262;">';
             	  
             	  $('#savingsHeader').append(str3);
             	 
@@ -743,7 +687,7 @@ function sortSavings() {
             	  
             	  
                   str2 = '';
-                  str2 += '<div style="margin-left:550px;">';
+                  str2 += '<div style="margin-left:580px;">';
                   str2 += '<button type="button" class="compareSavings col-3 btn btn-primary" onclick="compareSavings();" data-bs-toggle="modal" data-bs-target="#compareSavings"';
                   str2 += 'style="width:400px; height:50px; font-size:20px; color:#434343; background-color:#66b5b6; border:none; border-radius:30px; font-family:hanaBFont;">';
                   str2 += '선택한 상품 비교하기';

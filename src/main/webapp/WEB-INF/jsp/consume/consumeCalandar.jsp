@@ -38,7 +38,7 @@
 
 
     <!-- page title start -->
-    <div style="margin-left:640px;" class="animate__animated animate__bounce" >
+    <div style="margin-left:690px;" class="animate__animated animate__bounce" >
         <img src="${pageContext.request.contextPath}/resources/myicon/cal.png" 
             style="width:70px; height:60px;"/>
        
@@ -46,7 +46,7 @@
          <span style="color:#008485; font-size:30px; font-weight:bold; margin-top: 20px; display:inline;">소비 달력</span>
          <span style="font-size:30px; margin-top: 20px; display:inline;"></span>
     </div>
-    <hr style="width:900px; height:7px; background-color:#066262;">
+    <hr style="width:980px; height:7px; background-color:#066262;">
     <!-- page title end -->
     
     

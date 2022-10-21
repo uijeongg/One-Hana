@@ -143,7 +143,7 @@
 			<!-- 코멘트 start -->
 			<div  class="main_image" style="width:40%;">
 			<img src="${pageContext.request.contextPath}/resources/myicon/memoBlue.png" 
-                 style="width:120%; position: relative;"/>
+                 style="width:122%; position: relative;"/>
 		     
 		         <div id="container1comment" class="main_image_text" style="position:absolute; top:460px; left:970px;"></div>
 				 
@@ -545,7 +545,7 @@ $(document).ready(function(){
                        str1 += '<div style="text-align:center;"><h6 style="font-size:17px;">' + settingAmountList[0].POCKETNAME + ' 주머니 예산은<br></h6>';
                        str1 += '<h5 style="font-size:20px; display:inline;">"' + (Math.floor(settingAmountList[0].AUTODIVAMOUNT)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:17px; display:inline;"> 이며,' ;
                        str1 += '<br>' + thirdConsumeList.length + '개월 간' + ' 평균 사용 금액은</h6><br>';
-                       str1 += '<h5 style="font-size:20px; display:inline;">"' + (Math.floor(sumAvg1)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:17px; display:inline;"> 입니다</h6><br></div>';
+                       str1 += '<h5 style="font-size:23px; display:inline;">"' + (Math.floor(sumAvg1)).toLocaleString('ko-KR') + ' 원"</h5><h6 style="font-size:17px; display:inline;"> 입니다</h6><br></div>';
                        
                  
                        
@@ -553,12 +553,12 @@ $(document).ready(function(){
                            
                            str1 += '<div style="margin-top:10px;" class="d-flex flex-column">';
                            
-                           str1 += '<div class="d-flex justify-content-start align-items-center" style=" padding-left:0px; width:200px;"><img src="${pageContext.request.contextPath}/resources/myicon/comment1.png" style="width:26%;"/>';
-                           str1 += '<h5 style="padding-top:30px; color:red; font-size:18px; font-weight:bold; display:inline;">&nbsp;COMMENT</h5></div>';
+                           str1 += '<div class="d-flex justify-content-start align-items-center" style=" padding-left:0px; width:200px;"><img src="${pageContext.request.contextPath}/resources/myicon/green11.png" style="width:26%;"/>';
+                           str1 += '<h5 style="padding-top:30px; color:green; font-size:18px; font-weight:bold; display:inline;">&nbsp;COMMENT</h5></div>';
                            
                            
                            str1 += '<div style="text-align:center;"><h5 style="font-size:17px; display:inline;">'+ (Math.floor(sumAvg1)).toLocaleString('ko-KR') + '원</h5><h5 style="font-size:17px; display:inline;">은 예산 대비</h5><br>';
-                           str1 += '<h5 style="font-size:20px; color:red; display:inline;">" 20% 이하 "</h5><h5 style="font-size:17px; display:inline;">의 금액입니다</h5><br>';
+                           str1 += '<h5 style="font-size:20px; color:green; display:inline;">" 20% 이하 "</h5><h5 style="font-size:17px; display:inline;">의 금액입니다</h5><br>';
                            str1 += '<h5 style="font-size:17px; display:inline;">' + settingAmountList[0].POCKETNAME + ' 주머니 예산을<br>평균금액 이하로 줄여도 충분!! </h5></div>';
                            
                            

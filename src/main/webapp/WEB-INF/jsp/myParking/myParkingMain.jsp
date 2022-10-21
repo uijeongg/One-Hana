@@ -64,9 +64,9 @@
     
 
     <!-- page title start -->
-    <div style="margin-left:670px; margin-top:9px;" class="animate__animated animate__bounce" >
+    <div style="margin-left:670px; margin-top:11px;" class="animate__animated animate__bounce" >
         <img src="${pageContext.request.contextPath}/resources/myicon/park.PNG" 
-            style="width:80px; height:70px;"/>
+            style="width:80px; height:79px;"/>
         <span style="font-size:30px; font-weight:bold; margin-top:80px;">&nbsp; 나의 </span> 
         <span style="color:#008485; font-weight:bold; font-size:30px; margin-top:80px;"> 파킹 </span>
         <!-- <span style="font-size:30px; font-weight:bold; margin-top:80px;">현황 </span> -->
@@ -111,16 +111,19 @@
    
 
 
-    <div style="text-align:center; margin-top:20px; margin-left:130px;">
-    <img src="${pageContext.request.contextPath}/resources/myicon/cong2.gif" style="width:80px; height:70px;"/>
-        <h5 style="font-size:20px; margin-bottom:20px;">파킹 주머니 목표금액에 도달했습니다 <br>이제 파킹 주머니의 잔액을 <strong style="color:#f86823">출금</strong>할 수 있습니다!<br></h5>
-        <%-- <button><a href="${pageContext.request.contextPath}/savingsMain">금융 상품 추천받기</a></button> --%>
-        <div class="btn1"><a href="${pageContext.request.contextPath }/savingsMain" style="padding:15px; color:#008485;">금융상품 보러가기</a></div>
-                                            
-                                            
-    </div>
+ <div style="border:3px solid #008485; border-radius:120px; width:500px; margin-left:560px; margin-top:30px; margin-bottom:30px;">
+    <div style="text-align:center; margin-top:20px; margin-left:0px;">
+    <img src="${pageContext.request.contextPath}/resources/myicon/cong2.gif" style="width:80px; height:60px; display:inline"/><strong style="display:inline; font-size:26px; color:#008485;">&nbsp;&nbsp;축하합니다</strong>
+        <div style="font-size:20px; ">파킹 주머니 목표금액에 도달했습니다 <br>이제 파킹 주머니의 잔액을 <strong style="color:#f86823">출금</strong>할 수 있습니다!</div>
+        <img class="main_image" src="${pageContext.request.contextPath}/resources/myicon/orange1.png" style="width:37%; height:100px; position: relative;"/>
+        <div class="main_image_text" style="position:absolute; top:843px; left:730px; color:white; fontWeight:bold; font-size:18px;">
+             <a href="${pageContext.request.contextPath }/savingsMain" style="color:white;">금융상품 보러가기</a></div> 
+    </div>       
 
+    <%-- <div class="btn1 "><a href="${pageContext.request.contextPath }/savingsMain" style="padding:15px; color:#008485;">금융상품 보러가기</a></div> --%>
+ </div>
 
+            
 
 <!--  --><!--  -->
 </div>
@@ -236,13 +239,13 @@
                            show: false,
                            color: '#fff'
                          },
-                         /* value: {
+                        value: {
                            show: true,
                            color: '#008485',
-                           offsetY: -160,
-                           fontSize: '30px'
+                           offsetY: 180,
+                           fontSize: '26px'
                            
-                         } */
+                         }
                        }
                      }
                    },
@@ -312,7 +315,7 @@ $(document).ready(function(){
               var options = {
                       series: [{
                         name: "파킹 금액",
-                        data: parkingSum
+                        data: /* parkingSum */ [ 2400000, 2700000 ,3700000 ,4000000 ,4300000 , 5000000]
                     }],
                       chart: {
                     	  width: 400,
@@ -339,7 +342,7 @@ $(document).ready(function(){
                       },
                     },
                     xaxis: {
-                      categories: /* parkingMonth */['4월','5월','6월','7월','8월','9월'],
+                      categories: /* parkingMonth */['5월','6월','7월','8월','9월','10월'],
                     }
                     };
 
@@ -395,7 +398,7 @@ $(document).ready(function(){
                  series: [{
                  name: '고정비',
                  type: 'column',
-                 data: parking2Sum
+                 data: /* parking2Sum */ [ 187920, 203810, 436280, 477440, 453820, 202582]
                }, {
                  name: '생활비',
                  type: 'column',
@@ -425,7 +428,7 @@ $(document).ready(function(){
                  offsetX: 110
                },
                xaxis: {
-                 categories: /* parkingMonth */ ['4월','5월','6월','7월','8월','9월'],
+                 categories: /* parkingMonth */ ['5월','6월','7월','8월','9월','10월'],
                },
                yaxis: [
                  {
