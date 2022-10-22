@@ -12,9 +12,9 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SmsService {
 
 	
-	String apiKey = "NCS4KZVSO4QYWNRF";
-	String apiSecret = "GOG1KI9HKCLMDRQOVOQGNXCZVGV0XSXR";
-	String fromNumber = "01086289491";
+	String apiKey = "";
+	String apiSecret = "";
+	String fromNumber = "";
 	public void sendMessage(String toNumber, String message) {
 
 		Message coolsms = new Message(apiKey, apiSecret);
