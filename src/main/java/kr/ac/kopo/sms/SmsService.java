@@ -37,7 +37,7 @@ public class SmsService {
 
 	/*
 	 * public int sendAuthNumberMessage(String tel) { int randomNumber =
-	 * generateAuthNo(); sendMessage(tel, "[ModuHana] 인증번호 " + randomNumber +
+	 * generateAuthNo(); sendMessage(tel, " 마이원하나 " + randomNumber +
 	 * " 를 입력하세요."); return randomNumber; }
 	 * 
 	 * private static int generateAuthNo() { java.util.Random generator = new
