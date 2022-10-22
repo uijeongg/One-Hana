@@ -313,7 +313,7 @@ $(document).ready(function(){
               var options = {
                       series: [{
                         name: "파킹 금액",
-                        data: /* parkingSum */ [ 2354200, 2790500 ,3756820 ,4035780 ,4304520 , 5000000]
+                        data: parkingSum 
                     }],
                       chart: {
                     	  width: 400,
@@ -340,7 +340,7 @@ $(document).ready(function(){
                       },
                     },
                     xaxis: {
-                      categories: /* parkingMonth */['5월','6월','7월','8월','9월','10월'],
+                      categories: parkingMonth,
                     }
                     };
 
@@ -396,11 +396,11 @@ $(document).ready(function(){
                  series: [{
                  name: '고정비',
                  type: 'column',
-                 data: /* parking2Sum */ [ 187920, 203810, 436280, 477440, 453820, 202582]
+                 data: parking2Sum
                }, {
                  name: '생활비',
                  type: 'column',
-                 data: /* parking3Sum */ [ 54200, 79050 , 116820 ,152380 ,204520 , 260000]
+                 data: parking3Sum
                }
                /* , {
                  name: 'Revenue',
@@ -426,7 +426,7 @@ $(document).ready(function(){
                  offsetX: 110
                },
                xaxis: {
-                 categories: /* parkingMonth */ ['5월','6월','7월','8월','9월','10월'],
+                 categories: parkingMonth,
                },
                yaxis: [
                  {

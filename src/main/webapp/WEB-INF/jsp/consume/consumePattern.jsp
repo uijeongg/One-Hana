@@ -2505,7 +2505,7 @@
     
            str = '';
            str += '<div style="text-align:center; font-size:18px;"> 소비 금액이 가장 많은 카테고리는<br>';
-           str += '<strong style="color:#008485; font-size:20px;">[ 요식: 커피전문점 ]</strong> 이며, <br>';
+           str += '<strong style="color:#008485; font-size:20px;"></strong> 이며, <br>';
            str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:22px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
            
            str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
@@ -2844,7 +2844,7 @@
     
            str = '';
            str += '<div style="text-align:center; font-size:18px;"> 소비 금액이 가장 많은 카테고리는<br>';
-           str += '<strong style="color:#008485; font-size:20px;">[ 요식: 커피전문점 ]</strong> 이며, <br>';
+           str += '<strong style="color:#008485; font-size:20px;"></strong> 이며, <br>';
            str += '<br>한 달 평균 사용금액은<br> <strong style="font-size:22px; color:#008485;"> " ' + (Math.floor(amountAvg)).toLocaleString('ko-KR') + ' 원 " </strong> 입니다</div>';
            
            str += '<div style="margin-top:20px; text-align:center; font-size:18px;"> <img src="${pageContext.request.contextPath}/resources/myicon/notice3.gif" style="width:15%;"/>';
