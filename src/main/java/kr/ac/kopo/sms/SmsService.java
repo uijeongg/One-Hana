@@ -24,7 +24,7 @@ public class SmsService {
 		params.put("from", fromNumber);
 		params.put("type", "SMS");
 		params.put("text", message);
-		params.put("ModuHana", "test app 1.2"); // application name and version
+		params.put("MyOnehana", "test app 1.2"); // application name and version
 
 		try {
 			JSONObject obj = (JSONObject)coolsms.send(params);
